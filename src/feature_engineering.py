@@ -1,13 +1,14 @@
 """
 Feature Engineering Module for House Price Prediction System.
-Implements domain-specific property transformations:
-- Total_Rooms: sum of bedrooms and bathrooms
-- Area_per_Bedroom: measures spaciousness of living quarters
-- Bathroom_to_Bedroom_Ratio: proxy for luxury and convenience
-- Luxury_Score: composite amenity, parking, and balcony index
-- Age_Category: binned architectural lifecycle stage
-- Log_Area: reduces right-skewness of square footage
-Avoids target leakage (Price per sqft is calculated ONLY for EDA, never in features).
+Generates domain-specific features adapted to the property dataset:
+- Property_Age (from YearBuilt)
+- Total_Rooms (Bedrooms + Bathrooms)
+- Area_per_Bedroom
+- Bathroom_to_Bedroom_Ratio
+- Log_Area
+- Bed_Bath_Interaction
+- Rooms_per_Floor
+- Est_Depreciation
 """
 
 import logging
@@ -21,76 +22,48 @@ logger = logging.getLogger(__name__)
 
 def add_engineered_features(df: pd.DataFrame, is_training: bool = False) -> pd.DataFrame:
     """
-    Applies feature engineering transformations to a property DataFrame.
-    Guarantees no target leakage.
+    Applies feature engineering transformations to property DataFrame.
+    Guarantees zero target leakage.
     """
     data = df.copy()
 
-    # 1. Total Rooms
+    # 1. Property Age
+    if "YearBuilt" in data.columns:
+        data["Property_Age"] = 2026 - data["YearBuilt"]
+    else:
+        data["Property_Age"] = data.get("Property_Age", 10.0)
+
+    # 2. Total Rooms
     data["Total_Rooms"] = data["Bedrooms"] + data["Bathrooms"]
 
-    # 2. Area per Bedroom (Space efficiency)
+    # 3. Area per Bedroom (Space efficiency)
     safe_bedrooms = np.maximum(data["Bedrooms"], 1)
-    data["Area_per_Bedroom"] = (data["Area_sqft"] / safe_bedrooms).round(2)
+    data["Area_per_Bedroom"] = (data["Area"] / safe_bedrooms).round(2)
 
-    # 3. Bathroom to Bedroom Ratio
+    # 4. Bathroom to Bedroom Ratio
     data["Bathroom_to_Bedroom_Ratio"] = (data["Bathrooms"] / safe_bedrooms).round(3)
 
-    # 4. Luxury Composite Score
-    # Combines amenities, parking spaces, and balconies with business-driven weights
-    amenities = data["Amenities_Count"] if "Amenities_Count" in data.columns else 0
-    parking = data["Parking_Spaces"] if "Parking_Spaces" in data.columns else 0
-    balconies = data["Balconies"] if "Balconies" in data.columns else 0
-    data["Luxury_Score"] = (amenities * 1.5 + parking * 1.2 + balconies * 1.0).round(2)
+    # 5. Log Area
+    data["Log_Area"] = np.log1p(data["Area"]).round(4)
 
-    # 5. Advanced Real Estate Interactions & Densities
+    # 6. Bed Bath Interaction
     data["Bed_Bath_Interaction"] = data["Bedrooms"] * data["Bathrooms"]
-    floors_safe = np.maximum(data["Floors"] if "Floors" in data.columns else 1, 1)
-    data["Rooms_per_Floor"] = (data["Total_Rooms"] / floors_safe).round(2)
-    rooms_safe = np.maximum(data["Total_Rooms"], 1)
-    data["Amenities_per_Room"] = (amenities / rooms_safe).round(2)
-    
-    age_col = data["Property_Age"] if "Property_Age" in data.columns else 0
-    data["Est_Depreciation"] = np.maximum(0.65, 1.0 - (age_col * 0.007)).round(4)
-    data["Log_Area"] = np.log1p(data["Area_sqft"]).round(4)
-    data["Floor_Area_Ratio"] = (data["Area_sqft"] / floors_safe).round(2)
-    
-    area_k = np.maximum(data["Area_sqft"] / 1000.0, 0.1)
-    data["Room_Density"] = (data["Total_Rooms"] / area_k).round(2)
-    data["Luxury_Density"] = (data["Luxury_Score"] / area_k).round(2)
 
-    # 5. Age Category Binning
-    if "Property_Age" in data.columns:
-        def categorize_age(age_val):
-            if pd.isna(age_val):
-                return "Modern (6-15 yrs)"
-            if age_val <= 5:
-                return "New Construction (0-5 yrs)"
-            elif age_val <= 15:
-                return "Modern (6-15 yrs)"
-            elif age_val <= 25:
-                return "Mature (16-25 yrs)"
-            else:
-                return "Established (>25 yrs)"
+    # 7. Rooms per Floor
+    safe_floors = np.maximum(data["Floors"] if "Floors" in data.columns else 1, 1)
+    data["Rooms_per_Floor"] = (data["Total_Rooms"] / safe_floors).round(2)
 
-        data["Age_Category"] = data["Property_Age"].apply(categorize_age)
+    # 8. Estimated Depreciation
+    data["Est_Depreciation"] = np.maximum(0.60, 1.0 - (data["Property_Age"] * 0.005)).round(4)
 
-    # 6. EDA Only: Price per sqft (never included in feature set to prevent target leakage)
-    if is_training and "Price" in data.columns and "Area_sqft" in data.columns:
-        data["Price_per_sqft"] = (data["Price"] / data["Area_sqft"]).round(2)
+    # EDA Only: Price per sqft
+    if is_training and "Price" in data.columns and "Area" in data.columns:
+        data["Price_per_sqft"] = (data["Price"] / data["Area"]).round(2)
 
     return data
 
 
 class FeatureEngineeringTransformer(BaseEstimator, TransformerMixin):
-    """
-    Scikit-learn compatible transformer for feature engineering.
-    Can be seamlessly embedded in a Scikit-Learn Pipeline.
-    """
-
-    def __init__(self):
-        pass
-
     def fit(self, X, y=None):
         return self
 
@@ -105,5 +78,4 @@ if __name__ == "__main__":
     if TRAIN_DATA_PATH.exists():
         df_train = pd.read_csv(TRAIN_DATA_PATH)
         df_feat = add_engineered_features(df_train, is_training=True)
-        logger.info(f"Engineered features added. New columns: {[c for c in df_feat.columns if c not in df_train.columns]}")
-        print(df_feat[["Total_Rooms", "Area_per_Bedroom", "Bathroom_to_Bedroom_Ratio", "Luxury_Score", "Age_Category"]].head())
+        print("Engineered features sample:\n", df_feat.head(2))

@@ -1,6 +1,7 @@
 """
 Configuration module for House Price Prediction & Property Analytics System.
-Defines paths, feature definitions, hyperparameters, and global constants.
+Configured for the user's property dataset schema:
+Id, Area, Bedrooms, Bathrooms, Floors, YearBuilt, Location, Condition, Garage, Price
 """
 
 from pathlib import Path
@@ -31,62 +32,45 @@ TARGET_COLUMN = "Price"
 
 # Raw Feature Definitions
 NUMERICAL_FEATURES = [
-    "Area_sqft",
+    "Area",
     "Bedrooms",
     "Bathrooms",
-    "Parking_Spaces",
     "Floors",
-    "Property_Age",
-    "Balconies",
-    "Amenities_Count",
-    "Nearby_Schools"
+    "YearBuilt"
 ]
 
 CATEGORICAL_FEATURES = [
     "Location",
-    "Property_Type",
-    "Furnishing_Status",
-    "Availability"
+    "Condition",
+    "Garage"
 ]
 
 # Engineered Features
 ENGINEERED_NUMERICAL_FEATURES = [
+    "Property_Age",
     "Total_Rooms",
     "Area_per_Bedroom",
     "Bathroom_to_Bedroom_Ratio",
-    "Luxury_Score",
+    "Log_Area",
     "Bed_Bath_Interaction",
     "Rooms_per_Floor",
-    "Amenities_per_Room",
-    "Est_Depreciation",
-    "Log_Area",
-    "Floor_Area_Ratio",
-    "Room_Density",
-    "Luxury_Density"
+    "Est_Depreciation"
 ]
 
-ENGINEERED_CATEGORICAL_FEATURES = [
-    "Age_Category"
-]
+ENGINEERED_CATEGORICAL_FEATURES = []
 
 ALL_NUMERICAL_FEATURES = NUMERICAL_FEATURES + ENGINEERED_NUMERICAL_FEATURES
 ALL_CATEGORICAL_FEATURES = CATEGORICAL_FEATURES + ENGINEERED_CATEGORICAL_FEATURES
 
 # Valid Categories for Validation
 VALID_LOCATIONS = [
-    "Downtown Central", "Silicon Hills", "Greenwood Heights",
-    "Riverside District", "Lakeside Estates", "Harbor Point",
-    "Midtown Corridor", "Oakridge Valley", "Sunset Park", "Westend Terrace"
+    "Downtown", "Urban", "Suburban", "Rural"
 ]
 
-VALID_PROPERTY_TYPES = [
-    "Apartment", "Independent House", "Luxury Villa", "Penthouse", "Studio Apartment"
+VALID_CONDITIONS = [
+    "Excellent", "Good", "Fair", "Poor"
 ]
 
-VALID_FURNISHING_STATUSES = [
-    "Furnished", "Semi-Furnished", "Unfurnished"
-]
-
-VALID_AVAILABILITIES = [
-    "Ready to Move", "Under Construction"
+VALID_GARAGES = [
+    "Yes", "No"
 ]

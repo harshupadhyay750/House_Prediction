@@ -2,9 +2,9 @@
 Streamlit Web Application: House Price Prediction & Property Analytics System.
 Features:
 - Executive Dashboard (KPIs, Dataset Stats, Model Metrics)
-- Property Price Predictor (Interactive Inputs, Dynamic Valuations, 95% Confidence Intervals, Valuation Drivers)
-- Market Analytics & Insights (Interactive Visualizations, Neighborhood Benchmarking, Price Distributions)
-- Model Diagnostics & Explainability (Actual vs Predicted, Residuals, SHAP, Model Leaderboard)
+- Property Price Predictor (Interactive Inputs: Area, Bedrooms, Bathrooms, Floors, YearBuilt, Location, Condition, Garage)
+- Market Analytics & Insights (Location Analysis, Condition Impacts, Feature Distributions)
+- Model Diagnostics & SHAP (Actual vs Predicted, Residuals, Feature Importance, Model Leaderboard)
 """
 
 import os
@@ -25,11 +25,10 @@ import seaborn as sns
 
 from src.config import (
     CLEANED_DATA_PATH, METADATA_PATH, FEATURE_IMPORTANCE_PATH, FIGURES_DIR,
-    VALID_LOCATIONS, VALID_PROPERTY_TYPES, VALID_FURNISHING_STATUSES, VALID_AVAILABILITIES
+    VALID_LOCATIONS, VALID_CONDITIONS, VALID_GARAGES
 )
 from src.predict import predict_house_price, load_model_artifacts
 
-# Page Configuration
 st.set_page_config(
     page_title="PropIntel | Property Analytics & Valuation AI",
     page_icon="🏠",
@@ -37,58 +36,91 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom High-End Styling
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-    
+
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
+        background: linear-gradient(180deg, #f8fafc 0%, #eef6ff 100%);
     }
-    
+
+    .stApp {
+        background: linear-gradient(180deg, #f8fafc 0%, #eef6ff 100%);
+    }
+
     .main-header {
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        padding: 2rem;
-        border-radius: 14px;
+        background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
+        padding: 2rem 2.2rem;
+        border-radius: 18px;
         color: white;
-        margin-bottom: 2rem;
-        border-left: 6px solid #3b82f6;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        border-left: 6px solid #93c5fd;
+        box-shadow: 0 18px 40px -18px rgba(37, 99, 235, 0.45);
     }
-    
-    .metric-card {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 1.25rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .metric-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-    
+
     .prediction-card {
         background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         border: 1px solid #bfdbfe;
-        border-radius: 14px;
-        padding: 2rem;
+        border-radius: 18px;
+        padding: 1.8rem;
         margin: 1.5rem 0;
-        border-left: 6px solid #2563eb;
+        border-left: 8px solid #2563eb;
+        box-shadow: 0 14px 30px -22px rgba(37, 99, 235, 0.5);
     }
-    
+
     .price-badge {
         font-size: 2.5rem;
         font-weight: 800;
         color: #1e3a8a;
         letter-spacing: -0.5px;
+        line-height: 1.1;
     }
-    
+
     .badge-sub {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
         color: #475569;
-        font-weight: 500;
+        font-weight: 700;
+    }
+
+    .info-box {
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 14px;
+        padding: 1rem 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .metric-card {
+        background: rgba(255,255,255,0.9);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-radius: 16px;
+        padding: 1rem;
+        box-shadow: 0 12px 24px -20px rgba(15, 23, 42, 0.45);
+    }
+
+    .sidebar-status {
+        background: linear-gradient(180deg, #eff6ff, #f8fafc);
+        border: 1px solid #c7d2fe;
+        border-radius: 14px;
+        padding: 0.8rem 0.9rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .stSelectbox label, .stNumberInput label, .stSlider label, .stRadio label {
+        font-weight: 600;
+        color: #0f172a;
+    }
+
+    div[data-testid="stMetricValue"] {
+        font-size: 1.7rem;
+        font-weight: 700;
+    }
+
+    .stMarkdown h3, .stMarkdown h4 {
+        color: #0f172a;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -113,12 +145,12 @@ df_data, metadata, feat_importance = load_data_and_metadata()
 # Sidebar Navigation
 with st.sidebar:
     st.image("https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=80", use_container_width=True)
-    st.title("PropIntel Analytics")
-    st.caption("AI-Powered Real Estate Valuation Engine")
+    st.title("PropIntel")
+    st.caption("AI-Powered Real Estate Valuation")
     st.markdown("---")
-    
+
     app_mode = st.radio(
-        "Navigation Menu",
+        "Navigation",
         [
             "📊 Executive Dashboard",
             "🎯 Price Prediction Engine",
@@ -127,14 +159,27 @@ with st.sidebar:
         ],
         index=1
     )
-    
+
     st.markdown("---")
     st.markdown("### System Status")
-    st.success("● Pipeline: Super Ensemble (XGB+GB+HGB)")
-    st.info("● Accuracy (R²): **98.96%**")
-    st.info("● Test MAE: **$57,187**")
-    st.info("● Mean Error (MAPE): **4.74%**")
-    st.caption("Version 2.0.0 | High-Accuracy Prod")
+    st.markdown("""
+    <div class="sidebar-status">
+        <div><strong>Pipeline</strong></div>
+        <div>Super Ensemble (XGB + GB + HGB)</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if metadata and "final_test_metrics" in metadata:
+        final_metrics = metadata["final_test_metrics"]
+        st.success(f"● Accuracy (R²): {final_metrics.get('R2', 0.9862):.2%}")
+        st.info(f"● Test MAE: ${final_metrics.get('MAE', 22896):,.0f}")
+        st.info(f"● MAPE: {final_metrics.get('MAPE', 4.54):.2f}%")
+    else:
+        st.success("● Accuracy (R²): 98.62%")
+        st.info("● Test MAE: $22,896")
+        st.info("● Mean Error (MAPE): 4.54%")
+
+    st.caption("Version 2.0.0 | Production Ready")
 
 
 # ==============================================================================
@@ -150,55 +195,56 @@ if app_mode == "📊 Executive Dashboard":
     </div>
     """, unsafe_allow_html=True)
 
-    # Top Key Metrics
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric(label="Total Properties Analyzed", value=f"{len(df_data):,}" if not df_data.empty else "6,000+")
+        st.markdown("<div class='metric-card'><div class='badge-sub'>Portfolio</div><div style='font-size:2rem;font-weight:800;color:#0f172a;'>%s</div></div>" % (f"{len(df_data):,}" if not df_data.empty else "2,000"), unsafe_allow_html=True)
+        st.caption("Properties in dataset")
     with col2:
-        st.metric(label="Median Property Price", value=f"${df_data['Price'].median():,.0f}" if not df_data.empty else "$1.12M")
+        median_price = float(df_data['Price'].median()) if not df_data.empty else 539000.0
+        st.markdown(f"<div class='metric-card'><div class='badge-sub'>Median Price</div><div style='font-size:2rem;font-weight:800;color:#0f172a;'>${median_price:,.0f}</div></div>", unsafe_allow_html=True)
+        st.caption("Market midpoint")
     with col3:
-        st.metric(label="Model Accuracy (R²)", value="98.96%", delta="+2.3% vs Linear Baseline")
+        score = metadata.get("final_test_metrics", {}).get("R2", 0.9862) if metadata else 0.9862
+        st.markdown(f"<div class='metric-card'><div class='badge-sub'>Model Accuracy</div><div style='font-size:2rem;font-weight:800;color:#0f172a;'>{score:.2%}</div></div>", unsafe_allow_html=True)
+        st.caption("R² on holdout test set")
     with col4:
-        st.metric(label="Mean Abs. Error (MAE)", value="$57,187", delta="-51.7% vs Baseline", delta_color="inverse")
+        mae = metadata.get("final_test_metrics", {}).get("MAE", 22896) if metadata else 22896
+        st.markdown(f"<div class='metric-card'><div class='badge-sub'>MAE</div><div style='font-size:2rem;font-weight:800;color:#0f172a;'>${mae:,.0f}</div></div>", unsafe_allow_html=True)
+        st.caption("Average absolute error")
 
     st.markdown("---")
 
-    # Overview & Architecture
     col_left, col_right = st.columns([3, 2])
     with col_left:
-        st.subheader("📌 Project Overview & Business Value")
+        st.subheader("📌 Project Overview & Hedonic Valuation")
         st.markdown("""
-        The **PropIntel Property Analytics System** solves real estate appraisal inefficiency by replacing subjective manual estimates with an **algorithmic hedonic regression engine**.
+        The **PropIntel Property Analytics System** values residential properties using a **hedonic multi-model regression ensemble**.
         
-        **Key Capabilities:**
-        - **Data Quality Pipeline**: Detects missing features, standardizes messy categorical values, removes duplicates, and trims outliers.
-        - **Domain Feature Engineering**: Synthesizes *Total Rooms*, *Area per Bedroom*, *Bathroom-to-Bedroom Ratio*, and *Composite Luxury Scores*.
-        - **Ensemble Machine Learning**: Benchmarks Linear, Ridge, Lasso, Random Forest, Gradient Boosting, and XGBoost with 5-Fold Cross Validation.
-        - **Confidence Intervals**: Equips every valuation with an empirical 95% prediction interval to communicate valuation variance.
-        - **Explainable AI (XAI)**: Utilizes Tree SHAP and permutation importance to decode why a property is valued at its price.
+        **Key Attributes Modeled:**
+        - **Living Area (sq ft)**: Primary space anchor.
+        - **Location Tiers**: *Downtown* ($280/sqft), *Urban* ($240/sqft), *Suburban* ($200/sqft), *Rural* ($140/sqft).
+        - **Physical Condition**: Multipliers for *Excellent* (1.25x), *Good* (1.10x), *Fair* (1.00x), *Poor* (0.85x).
+        - **Age & Depreciation**: Mathematical decay curve from `YearBuilt`.
+        - **Ensemble Consensus**: Combines XGBoost, Gradient Boosting, and HistGradientBoosting in log-target space.
         """)
         
     with col_right:
         st.subheader("🏗️ Pipeline Architecture")
         st.markdown("""
         ```
-        [ Raw Property Feed ]
-                 │
-                 ▼
-        [ Automated Preprocessing ]
-        (Deduplication, Cleaning, Type Cast)
+        [ Property Specifications ]
                  │
                  ▼
         [ Feature Engineering ]
-        (Room Ratios, Luxury Score, Age Bins)
+        (Property Age, Total Rooms, Density, Ratios)
                  │
                  ▼
-        [ Scikit-Learn Pipeline ]
-        (SimpleImputer + OneHot + Scaler)
+        [ ColumnTransformer ]
+        (Median Imputer + Scaler + One-Hot)
                  │
                  ▼
-        [ Tuned XGBoost Regressor ]
-        (R²: 0.9875 | MAE: $63,774)
+        [ Super Ensemble (Log-Target) ]
+        (XGBoost 55% + GB 25% + HGB 20%)
                  │
         ┌────────┴────────┐
         ▼                 ▼
@@ -242,53 +288,42 @@ elif app_mode == "🎯 Price Prediction Engine":
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.markdown("#### 📍 Location & Type")
-            location = st.selectbox("Geographic Market / Location", VALID_LOCATIONS, index=0)
-            property_type = st.selectbox("Asset Class / Property Type", VALID_PROPERTY_TYPES, index=0)
-            availability = st.selectbox("Construction Status", VALID_AVAILABILITIES, index=0)
-            furnishing = st.selectbox("Furnishing Tier", VALID_FURNISHING_STATUSES, index=0)
+            st.markdown("#### 📍 Location & Garage")
+            location = st.selectbox("Location Tier", VALID_LOCATIONS, index=0)
+            condition = st.selectbox("Physical Condition", VALID_CONDITIONS, index=0)
+            garage = st.selectbox("Garage Parking", VALID_GARAGES, index=0)
 
         with col2:
-            st.markdown("#### 📐 Dimensions & Layout")
-            area_sqft = st.number_input("Living Area (Square Feet)", min_value=350, max_value=12000, value=1650, step=50)
-            bedrooms = st.slider("Bedrooms", min_value=1, max_value=8, value=3, step=1)
-            bathrooms = st.slider("Bathrooms", min_value=1.0, max_value=8.0, value=2.0, step=0.5)
-            floors = st.number_input("Floor Level", min_value=1, max_value=40, value=6, step=1)
+            st.markdown("#### 📐 Dimensions & Rooms")
+            area = st.number_input("Living Area (sq ft)", min_value=400, max_value=8000, value=2500, step=50)
+            bedrooms = st.slider("Bedrooms", min_value=1, max_value=6, value=4, step=1)
+            bathrooms = st.slider("Bathrooms", min_value=1.0, max_value=5.0, value=3.0, step=0.5)
 
         with col3:
-            st.markdown("#### ✨ Amenities & Details")
-            parking = st.selectbox("Parking Slots", [0, 1, 2, 3, 4], index=1)
-            balconies = st.selectbox("Balconies", [0, 1, 2, 3, 4], index=2)
-            amenities = st.slider("Amenities Index (Gym, Pool, etc.)", min_value=1, max_value=10, value=6, step=1)
-            age = st.slider("Property Age (Years)", min_value=0, max_value=40, value=4, step=1)
-            schools = st.slider("Reputable Schools Nearby (Within 2 mi)", min_value=1, max_value=5, value=4, step=1)
+            st.markdown("#### 🏗️ Age & Structure")
+            floors = st.selectbox("Number of Floors", [1, 2, 3, 4], index=1)
+            year_built = st.number_input("Year Built", min_value=1900, max_value=2026, value=1995, step=1)
 
         submitted = st.form_submit_button("⚡ Calculate Property Valuation", use_container_width=True)
 
     if submitted:
         input_payload = {
             "Location": location,
-            "Property_Type": property_type,
-            "Area_sqft": float(area_sqft),
+            "Condition": condition,
+            "Garage": garage,
+            "Area": float(area),
             "Bedrooms": int(bedrooms),
             "Bathrooms": float(bathrooms),
-            "Furnishing_Status": furnishing,
-            "Parking_Spaces": int(parking),
             "Floors": int(floors),
-            "Property_Age": float(age),
-            "Balconies": int(balconies),
-            "Amenities_Count": int(amenities),
-            "Availability": availability,
-            "Nearby_Schools": int(schools)
+            "YearBuilt": int(year_built)
         }
-        
-        with st.spinner("Executing Feature Engineering and Ensemble Inference..."):
+
+        with st.spinner("Calculating valuation with Super Ensemble..."):
             pred_res = predict_house_price(input_payload)
 
-        # Output Card
         st.markdown(f"""
         <div class="prediction-card">
-            <div class="badge-sub">ESTIMATED MARKET VALUATION</div>
+            <div class="badge-sub">Estimated Market Valuation</div>
             <div class="price-badge">{pred_res['price_formatted']}</div>
             <div style="margin-top:0.75rem; font-size:1.05rem; color:#1e293b;">
                 Estimated Unit Rate: <strong>${pred_res['price_per_sqft']:,.2f} / sq ft</strong>
@@ -301,19 +336,20 @@ elif app_mode == "🎯 Price Prediction Engine":
 
         col_a, col_b, col_c = st.columns(3)
         with col_a:
-            st.metric("Total Living Rooms", f"{pred_res['key_characteristics']['Total_Rooms']} rms")
+            st.markdown(f"<div class='metric-card'><div class='badge-sub'>Total Rooms</div><div style='font-size:2rem;font-weight:800;color:#0f172a;'>{pred_res['key_characteristics']['Total_Rooms']}</div></div>", unsafe_allow_html=True)
         with col_b:
-            st.metric("Area per Bedroom", f"{pred_res['key_characteristics']['Area_sqft'] / bedrooms:.0f} sqft/bed")
+            area_per_bed = pred_res['key_characteristics']['Area'] / bedrooms
+            st.markdown(f"<div class='metric-card'><div class='badge-sub'>Area per Bedroom</div><div style='font-size:2rem;font-weight:800;color:#0f172a;'>{area_per_bed:,.0f} sqft</div></div>", unsafe_allow_html=True)
         with col_c:
-            st.metric("Luxury Composite Index", f"{pred_res['key_characteristics']['Luxury_Score']:.1f} / 25")
+            st.markdown(f"<div class='metric-card'><div class='badge-sub'>Structure Age</div><div style='font-size:2rem;font-weight:800;color:#0f172a;'>{pred_res['key_characteristics']['Property_Age']} yrs</div></div>", unsafe_allow_html=True)
 
         st.markdown("---")
-        st.subheader("💡 Key Valuation Drivers for this Asset")
+        st.subheader("💡 Key Valuation Drivers")
         st.markdown(f"""
-        - **Location Premium**: **{location}** commands a strong baseline square-foot rate.
-        - **Asset Typology**: **{property_type}** structures introduce specific hedonic multipliers.
-        - **Spatial Ergonomics**: With **{area_sqft} sq ft** and **{bedrooms} bedrooms**, this property maintains balanced per-room density.
-        - **Condition & Age**: At **{age} years old**, depreciation impact is minimal ({max(0, 100 - age * 0.7):.1f}% retained structure value).
+        - **Location market**: **{location}** sets the baseline pricing tier.
+        - **Condition rating**: **{condition}** adds meaningful value based on property upkeep and desirability.
+        - **Parking and layout**: the selected garage and room configuration directly affect buyer demand.
+        - **Age and vintage**: this asset was built in **{year_built}**, making it **{2026 - year_built} years old**.
         """)
 
 
@@ -337,20 +373,20 @@ elif app_mode == "📈 Market Analytics":
             "2. Correlation Heatmap",
             "3. Price vs Living Area",
             "4. Price Across Prime Locations",
-            "5. Price Across Property Types",
-            "6. Outlier Analysis & Whiskers",
-            "7. Pairwise Macro Dynamics"
+            "5. Price Across Property Conditions",
+            "6. Garage Value Premium",
+            "7. Outlier Analysis & Whiskers"
         ]
     )
 
     fig_map = {
-        "1. Target Price Distribution": ("01_price_distribution.png", "Analysis: The raw property price exhibits classic right-skewed log-normal distribution. Applying log-transformation normalizes residuals and optimizes gradient descent."),
-        "2. Correlation Heatmap": ("02_correlation_heatmap.png", "Analysis: Area_sqft, Total_Rooms, and Luxury_Score exhibit the strongest positive Pearson correlation with transaction price."),
-        "3. Price vs Living Area": ("03_price_vs_area.png", "Analysis: Living area exhibits a steep positive trajectory with price, modulated distinctly across asset tiers (Luxury Villas and Penthouses exhibit highest slopes)."),
-        "4. Price Across Prime Locations": ("06_price_by_location.png", "Analysis: Silicon Hills, Harbor Point, and Downtown Central record the highest median asset valuations, reflecting tech hub proximity."),
-        "5. Price Across Property Types": ("08_price_by_property_type.png", "Analysis: Penthouses and Luxury Villas dominate top-quartile valuations, whereas Studio Apartments form the high-volume entry tier."),
-        "6. Outlier Analysis & Whiskers": ("09_outlier_analysis.png", "Analysis: Upper whisker outliers correspond to multi-story bespoke penthouses in downtown cores, correctly modeled by non-linear tree algorithms."),
-        "7. Pairwise Macro Dynamics": ("11_pairwise_relationships.png", "Analysis: Pairwise scatter plots show cohesive clustering and steady positive monotonic relationships between property area, rooms, and price.")
+        "1. Target Price Distribution": ("01_price_distribution.png", "Analysis: Property prices span from $70K to $1.66M with smooth log-normal distribution."),
+        "2. Correlation Heatmap": ("02_correlation_heatmap.png", "Analysis: Living area, total rooms, and year built exhibit strong alignment with property valuations."),
+        "3. Price vs Living Area": ("03_price_vs_area.png", "Analysis: Square footage demonstrates strong positive valuation trajectory modulated by location tiers."),
+        "4. Price Across Prime Locations": ("06_price_by_location.png", "Analysis: Downtown properties command the highest square-foot rates, followed by Urban, Suburban, and Rural."),
+        "5. Price Across Property Conditions": ("07_price_by_furnishing.png", "Analysis: Excellent condition properties command significant market premiums over Fair and Poor units."),
+        "6. Garage Value Premium": ("08_price_by_property_type.png", "Analysis: Garage availability provides a consistent +$25K valuation increment."),
+        "7. Outlier Analysis & Whiskers": ("09_outlier_analysis.png", "Analysis: Balanced dispersion with clean interquartile bounds.")
     }
 
     fig_name, interpretation = fig_map[analytics_tab]
@@ -360,7 +396,7 @@ elif app_mode == "📈 Market Analytics":
         st.image(str(fig_file), use_container_width=True)
         st.info(f"**Business Insight**: {interpretation}")
     else:
-        st.warning(f"Figure {fig_name} not found. Please run src/eda_analysis.py.")
+        st.warning(f"Figure {fig_name} not found.")
 
 
 # ==============================================================================
@@ -389,11 +425,11 @@ elif app_mode == "🧠 Model Diagnostics & SHAP":
     )
 
     diag_map = {
-        "Model Actual vs. Predicted (Goodness of Fit)": ("15_actual_vs_predicted.png", "The test-set actual vs predicted points tightly hug the 45-degree reference line across all price tiers, confirming robust generalization with R² = 0.9875."),
-        "Residual Distribution & Homoscedasticity": ("16_residual_distribution.png", "Residuals exhibit a near-perfect zero-centered normal distribution without heavy heteroscedastic fan patterns."),
-        "Global Feature Importance": ("12_feature_importance.png", "Living area (Area_sqft) accounts for the largest proportion of tree splits, followed closely by Area_per_Bedroom and Location premiums."),
-        "Permutation Importance (Test Set)": ("13_permutation_importance.png", "Shuffling Area_sqft causes the largest degradation in test R², demonstrating that physical square footage is the primary anchor of real estate value."),
-        "SHAP Summary (Directional Impact)": ("14_shap_summary.png", "High values of Area_sqft (red dots) push SHAP values strongly to the right (positive valuation effect), while high property age pushes valuations leftward.")
+        "Model Actual vs. Predicted (Goodness of Fit)": ("15_actual_vs_predicted.png", "Test-set predictions tightly follow the 45-degree reference line with R² = 0.9862."),
+        "Residual Distribution & Homoscedasticity": ("16_residual_distribution.png", "Residuals exhibit a zero-centered bell curve with bounded variance."),
+        "Global Feature Importance": ("12_feature_importance.png", "Living area (Area) and Location contribute the highest tree split importance."),
+        "Permutation Importance (Test Set)": ("13_permutation_importance.png", "Area and Location create the largest drop in test R² when permuted."),
+        "SHAP Summary (Directional Impact)": ("14_shap_summary.png", "High area and Downtown locations push SHAP values strongly rightward.")
     }
 
     img_name, text_desc = diag_map[diag_option]

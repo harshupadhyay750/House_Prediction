@@ -1,6 +1,7 @@
 """
 FastAPI REST API for House Price Prediction System.
 Exposes endpoints for single and batch property valuations with Pydantic validation.
+Adapted to the user dataset schema: Area, Bedrooms, Bathrooms, Floors, YearBuilt, Location, Condition, Garage.
 """
 
 from typing import List, Optional, Dict, Any
@@ -10,14 +11,13 @@ from pydantic import BaseModel, Field
 
 from src.predict import predict_house_price, load_model_artifacts
 from src.config import (
-    VALID_LOCATIONS, VALID_PROPERTY_TYPES,
-    VALID_FURNISHING_STATUSES, VALID_AVAILABILITIES
+    VALID_LOCATIONS, VALID_CONDITIONS, VALID_GARAGES
 )
 
 app = FastAPI(
     title="🏠 House Price Prediction & Property Analytics API",
     description="Enterprise Machine Learning REST API for real estate valuation and analytics.",
-    version="1.0.0"
+    version="2.0.0"
 )
 
 app.add_middleware(
@@ -30,19 +30,14 @@ app.add_middleware(
 
 
 class PropertyInput(BaseModel):
-    Area_sqft: float = Field(..., ge=100, le=30000, description="Gross living area in square feet", json_schema_extra={"example": 1500.0})
-    Bedrooms: int = Field(..., ge=1, le=15, description="Number of bedrooms", json_schema_extra={"example": 3})
-    Bathrooms: float = Field(..., ge=1.0, le=15.0, description="Number of bathrooms", json_schema_extra={"example": 2.0})
-    Location: str = Field("Downtown Central", description=f"Prime locality. Options: {VALID_LOCATIONS}", json_schema_extra={"example": "Downtown Central"})
-    Property_Type: str = Field("Apartment", description=f"Type of asset. Options: {VALID_PROPERTY_TYPES}", json_schema_extra={"example": "Apartment"})
-    Furnishing_Status: str = Field("Furnished", description=f"Furnishing tier. Options: {VALID_FURNISHING_STATUSES}", json_schema_extra={"example": "Furnished"})
-    Parking_Spaces: int = Field(1, ge=0, le=10, description="Designated parking slots", json_schema_extra={"example": 1})
-    Floors: int = Field(5, ge=1, le=50, description="Floor level or total stories", json_schema_extra={"example": 5})
-    Property_Age: float = Field(3.0, ge=0, le=100, description="Age of structure in years", json_schema_extra={"example": 3.0})
-    Balconies: int = Field(1, ge=0, le=10, description="Number of private balconies", json_schema_extra={"example": 2})
-    Amenities_Count: int = Field(5, ge=0, le=20, description="Count of premium community amenities", json_schema_extra={"example": 6})
-    Availability: str = Field("Ready to Move", description=f"Construction status: {VALID_AVAILABILITIES}", json_schema_extra={"example": "Ready to Move"})
-    Nearby_Schools: int = Field(3, ge=0, le=10, description="Reputable schools within 2-mile radius", json_schema_extra={"example": 4})
+    Area: float = Field(..., ge=100, le=30000, description="Gross living area in sq ft", json_schema_extra={"example": 2500.0})
+    Bedrooms: int = Field(3, ge=1, le=15, description="Number of bedrooms", json_schema_extra={"example": 4})
+    Bathrooms: float = Field(2.0, ge=0.5, le=15.0, description="Number of bathrooms", json_schema_extra={"example": 3.0})
+    Floors: int = Field(1, ge=1, le=20, description="Number of floors", json_schema_extra={"example": 2})
+    YearBuilt: int = Field(1995, ge=1850, le=2026, description="Year property was constructed", json_schema_extra={"example": 1990})
+    Location: str = Field("Downtown", description=f"Location tier: {VALID_LOCATIONS}", json_schema_extra={"example": "Downtown"})
+    Condition: str = Field("Good", description=f"Physical condition: {VALID_CONDITIONS}", json_schema_extra={"example": "Excellent"})
+    Garage: str = Field("Yes", description=f"Garage parking availability: {VALID_GARAGES}", json_schema_extra={"example": "Yes"})
 
 
 class PredictionInterval(BaseModel):
@@ -102,10 +97,6 @@ def get_model_info():
 
 @app.post("/predict", response_model=PredictionOutput, tags=["Prediction"])
 def predict_price(property_data: PropertyInput):
-    """
-    Accepts property characteristics and returns the predicted market valuation
-    along with a 95% confidence interval and valuation per sq ft.
-    """
     try:
         result = predict_house_price(property_data.model_dump())
         return result
@@ -117,7 +108,6 @@ def predict_price(property_data: PropertyInput):
 
 @app.post("/batch-predict", tags=["Prediction"])
 def batch_predict(batch: BatchPropertyInput):
-    """Batch prediction endpoint for institutional portfolio valuation."""
     results = []
     for prop in batch.properties:
         try:
