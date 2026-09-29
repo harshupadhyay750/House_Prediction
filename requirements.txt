@@ -1,5 +1,6 @@
-# Production Dependencies for House Price Prediction & Property Analytics System
-pandas>=2.2.0
+# Production Dependencies for PropIntel Streamlit App
+# pandas pinned to <3.0 to avoid Arrow-backed string dtype breaking seaborn/matplotlib
+pandas>=2.2.0,<3.0
 numpy>=1.26.0
 scikit-learn>=1.4.0
 scipy>=1.12.0
@@ -8,10 +9,6 @@ seaborn>=0.13.0
 xgboost>=2.0.0
 shap>=0.45.0
 streamlit>=1.32.0
-fastapi>=0.110.0
-uvicorn>=0.28.0
 pydantic>=2.6.0
 joblib>=1.3.0
-pytest>=8.0.0
-httpx>=0.27.0
 requests>=2.31.0

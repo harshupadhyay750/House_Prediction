@@ -433,8 +433,13 @@ elif app_tab == "📈 Live Market Analytics":
 
     if not df_data.empty:
         df_display = df_data.copy()
+        # Cast categorical columns to plain str to avoid Arrow-backed StringArray issues (pandas 3.x)
+        for _cat_col in ["Location", "Condition", "Garage"]:
+            if _cat_col in df_display.columns:
+                df_display[_cat_col] = df_display[_cat_col].astype(str)
         rate = active_curr_info["rate"]
         df_display["Price_Local"] = df_display["Price"] * rate
+
 
         chart_col1, chart_col2 = st.columns(2)
 
