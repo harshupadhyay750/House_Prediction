@@ -54,7 +54,15 @@ ENGINEERED_NUMERICAL_FEATURES = [
     "Total_Rooms",
     "Area_per_Bedroom",
     "Bathroom_to_Bedroom_Ratio",
-    "Luxury_Score"
+    "Luxury_Score",
+    "Bed_Bath_Interaction",
+    "Rooms_per_Floor",
+    "Amenities_per_Room",
+    "Est_Depreciation",
+    "Log_Area",
+    "Floor_Area_Ratio",
+    "Room_Density",
+    "Luxury_Density"
 ]
 
 ENGINEERED_CATEGORICAL_FEATURES = [

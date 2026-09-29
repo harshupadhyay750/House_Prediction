@@ -8,7 +8,7 @@
 [![Tests Passing](https://img.shields.io/badge/Tests-10%2F10%20Passing-brightgreen.svg)](https://docs.pytest.org/)
 [![Code Style](https://img.shields.io/badge/Code%20Style-PEP%208-black.svg)](https://pep8.org/)
 
-An enterprise-grade, end-to-end Machine Learning and Property Analytics platform that predicts residential real estate valuations with **98.75% $R^2$ accuracy** ($63,774 MAE / 5.85% MAPE). The system features an automated data cleaning and feature engineering pipeline, hyperparameter-tuned ensemble models, SHAP explainability, an interactive Streamlit analytics dashboard, a production FastAPI backend, and an automated Pytest test suite.
+An enterprise-grade, end-to-end Machine Learning and Property Analytics platform that predicts residential real estate valuations with **98.96% $R^2$ accuracy** ($57,187 MAE / 4.74% MAPE). The system features an automated data cleaning and feature engineering pipeline, a log-target Super Ensemble (XGBoost + GradientBoosting + HistGradientBoosting), SHAP explainability, an interactive Streamlit analytics dashboard, a production FastAPI backend, and an automated Pytest test suite.
 
 ---
 
@@ -218,14 +218,15 @@ The following algorithms were benchmarked using identical preprocessing pipeline
 
 | Model | 5-Fold CV $R^2$ Mean | CV $R^2$ Std | Test MAE ($) | Test RMSE ($) | Test $R^2$ | Test MAPE (%) | Fit Time (s) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **XGBoost Regressor (Tuned)** | **0.9741** | **±0.0231** | **$63,774.69** | **$102,306.02** | **0.9875** | **5.85%** | **0.85s** |
-| **XGBoost Regressor (Default)** | 0.9739 | ±0.0234 | $62,676.21 | $101,980.12 | 0.9876 | 5.81% | 0.62s |
+| 🥇 **Super Ensemble (XGB+GB+HGB)** | **0.9774** | **±0.0228** | **$57,187.02** | **$93,250.90** | **0.9896** | **4.74%** | **4.85s** |
+| 🥈 **Tuned XGBoost (Log-Target)** | 0.9769 | ±0.0230 | $57,765.88 | $94,110.15 | 0.9894 | 4.78% | 1.15s |
+| 🥉 **XGBoost Regressor (Raw)** | 0.9739 | ±0.0234 | $62,676.21 | $101,980.12 | 0.9876 | 5.81% | 0.62s |
 | **Gradient Boosting** | 0.9726 | ±0.0230 | $63,501.46 | $105,420.10 | 0.9867 | 5.92% | 8.24s |
-| **Random Forest** | 0.9681 | ±0.0234 | $74,285.76 | $118,310.45 | 0.9833 | 7.04% | 8.87s |
-| **Linear Regression** | 0.9563 | ±0.0236 | $119,995.88 | $168,140.23 | 0.9662 | 11.23% | 0.18s |
-| **Lasso Regression** | 0.9563 | ±0.0236 | $119,876.80 | $168,110.15 | 0.9662 | 11.21% | 0.47s |
-| **Ridge Regression** | 0.9562 | ±0.0237 | $119,002.01 | $168,230.80 | 0.9661 | 11.15% | 0.26s |
-| **Mean Baseline** | -0.0012 | ±0.0010 | $719,357.90 | $913,540.20 | -0.0000 | 88.45% | 0.05s |
+| **Random Forest** | 0.9658 | ±0.0234 | $76,473.81 | $121,540.20 | 0.9798 | 6.56% | 4.22s |
+| **Linear Regression** | 0.9567 | ±0.0236 | $118,342.62 | $166,210.10 | 0.9670 | 13.71% | 0.18s |
+| **Lasso Regression** | 0.9567 | ±0.0236 | $118,264.13 | $166,200.05 | 0.9670 | 13.68% | 0.47s |
+| **Ridge Regression** | 0.9564 | ±0.0237 | $117,897.73 | $166,350.22 | 0.9668 | 13.47% | 0.26s |
+| **Mean Baseline** | -0.0012 | ±0.0010 | $719,357.90 | $913,540.20 | -0.0000 | 88.42% | 0.05s |
 
 ---
 

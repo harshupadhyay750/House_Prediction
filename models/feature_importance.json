@@ -1,136 +1,136 @@
 {
     "top_features": [
         {
+            "Feature": "Log_Area",
+            "Importance": 0.40355202555656433
+        },
+        {
             "Feature": "Area_sqft",
-            "Importance": 0.4233352541923523
+            "Importance": 0.3502839207649231
         },
         {
-            "Feature": "Bathrooms",
-            "Importance": 0.12882979214191437
-        },
-        {
-            "Feature": "Location_Oakridge Valley",
-            "Importance": 0.058361586183309555
+            "Feature": "Total_Rooms",
+            "Importance": 0.03484920412302017
         },
         {
             "Feature": "Property_Type_Independent House",
-            "Importance": 0.053193870931863785
-        },
-        {
-            "Feature": "Location_Sunset Park",
-            "Importance": 0.036607660353183746
-        },
-        {
-            "Feature": "Location_Silicon Hills",
-            "Importance": 0.030221344903111458
-        },
-        {
-            "Feature": "Location_Greenwood Heights",
-            "Importance": 0.026314731687307358
-        },
-        {
-            "Feature": "Property_Type_Penthouse",
-            "Importance": 0.024124255403876305
-        },
-        {
-            "Feature": "Location_Harbor Point",
-            "Importance": 0.0236652921885252
-        },
-        {
-            "Feature": "Location_Downtown Central",
-            "Importance": 0.023057574406266212
+            "Importance": 0.033351343125104904
         },
         {
             "Feature": "Bedrooms",
-            "Importance": 0.017294030636548996
-        },
-        {
-            "Feature": "Property_Type_Studio Apartment",
-            "Importance": 0.01696469821035862
-        },
-        {
-            "Feature": "Age_Category_Mature (16-25 yrs)",
-            "Importance": 0.01693013496696949
+            "Importance": 0.019252747297286987
         },
         {
             "Feature": "Property_Type_Apartment",
-            "Importance": 0.016105126589536667
+            "Importance": 0.016087420284748077
         },
         {
-            "Feature": "Area_per_Bedroom",
-            "Importance": 0.012160218320786953
+            "Feature": "Location_Oakridge Valley",
+            "Importance": 0.015192671678960323
+        },
+        {
+            "Feature": "Location_Sunset Park",
+            "Importance": 0.01338134240359068
+        },
+        {
+            "Feature": "Age_Category_New Construction (0-5 yrs)",
+            "Importance": 0.011892911978065968
+        },
+        {
+            "Feature": "Location_Silicon Hills",
+            "Importance": 0.011830449104309082
+        },
+        {
+            "Feature": "Bed_Bath_Interaction",
+            "Importance": 0.011710148304700851
+        },
+        {
+            "Feature": "Location_Greenwood Heights",
+            "Importance": 0.010716676712036133
+        },
+        {
+            "Feature": "Location_Harbor Point",
+            "Importance": 0.008029543794691563
+        },
+        {
+            "Feature": "Location_Downtown Central",
+            "Importance": 0.007899227552115917
         },
         {
             "Feature": "Location_Westend Terrace",
-            "Importance": 0.011533655226230621
+            "Importance": 0.00486412737518549
         },
         {
-            "Feature": "Property_Age",
-            "Importance": 0.010787881910800934
-        },
-        {
-            "Feature": "Availability_Ready To Move",
-            "Importance": 0.009011490270495415
+            "Feature": "Age_Category_Established (>25 yrs)",
+            "Importance": 0.00415603443980217
         },
         {
             "Feature": "Availability_Under Construction",
-            "Importance": 0.00849967636168003
+            "Importance": 0.004092736169695854
         },
         {
-            "Feature": "Property_Type_Luxury Villa",
-            "Importance": 0.007427392993122339
+            "Feature": "Bathrooms",
+            "Importance": 0.0038763675838708878
+        },
+        {
+            "Feature": "Property_Type_Studio Apartment",
+            "Importance": 0.0038612985517829657
+        },
+        {
+            "Feature": "Property_Age",
+            "Importance": 0.0037325341254472733
         }
     ],
     "top_permutation": [
         {
             "Feature": "Area_sqft",
-            "Permutation_Mean": 1.4494674793453908,
-            "Permutation_Std": 0.023421473500389322
+            "Permutation_Mean": 1.0257318078317177,
+            "Permutation_Std": 0.015920174916946098
+        },
+        {
+            "Feature": "Log_Area",
+            "Permutation_Mean": 0.11560598290822202,
+            "Permutation_Std": 0.0053715628783664844
         },
         {
             "Feature": "Location",
-            "Permutation_Mean": 0.11100870650731239,
-            "Permutation_Std": 0.002497876346535888
+            "Permutation_Mean": 0.11158086872687378,
+            "Permutation_Std": 0.003038883240755415
         },
         {
             "Feature": "Property_Age",
-            "Permutation_Mean": 0.01610884513928392,
-            "Permutation_Std": 0.0022121545883283054
+            "Permutation_Mean": 0.009760550669174983,
+            "Permutation_Std": 0.0014228926049834056
         },
         {
             "Feature": "Property_Type",
-            "Permutation_Mean": 0.011302369688173285,
-            "Permutation_Std": 0.0005975372879395293
+            "Permutation_Mean": 0.008848781118702997,
+            "Permutation_Std": 0.0005891126191232261
         },
         {
             "Feature": "Availability",
-            "Permutation_Mean": 0.0033836594139321496,
-            "Permutation_Std": 0.00019450789827836235
-        },
-        {
-            "Feature": "Area_per_Bedroom",
-            "Permutation_Mean": 0.002544361434252407,
-            "Permutation_Std": 0.00019857057424558928
+            "Permutation_Mean": 0.00368863994888593,
+            "Permutation_Std": 0.00024597368000873213
         },
         {
             "Feature": "Bathrooms",
-            "Permutation_Mean": 0.0017872090238737926,
-            "Permutation_Std": 0.00020730968169304438
+            "Permutation_Mean": 0.0012674864121427153,
+            "Permutation_Std": 0.00028065411934090605
         },
         {
-            "Feature": "Furnishing_Status",
-            "Permutation_Mean": 0.0008659529301577873,
-            "Permutation_Std": 0.0004865358895983962
+            "Feature": "Area_per_Bedroom",
+            "Permutation_Mean": 0.0010552179423147124,
+            "Permutation_Std": 0.00025070103153859545
         },
         {
-            "Feature": "Bedrooms",
-            "Permutation_Mean": 0.0005677356839307146,
-            "Permutation_Std": 0.00011021497696731953
+            "Feature": "Total_Rooms",
+            "Permutation_Mean": 0.0008265734736293106,
+            "Permutation_Std": 0.0002892590468817463
         },
         {
-            "Feature": "Floors",
-            "Permutation_Mean": 0.00017914037825141892,
-            "Permutation_Std": 4.1644443616287655e-05
+            "Feature": "Est_Depreciation",
+            "Permutation_Mean": 0.0006126364943730422,
+            "Permutation_Std": 0.00019032246351706727
         }
     ]
 }

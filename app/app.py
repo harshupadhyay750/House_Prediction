@@ -130,10 +130,11 @@ with st.sidebar:
     
     st.markdown("---")
     st.markdown("### System Status")
-    st.success("● Pipeline Operational (XGBoost)")
-    st.info("● R² Score: **98.75%**")
-    st.info("● Test MAE: **$63,774**")
-    st.caption("Version 1.0.0 | Production Ready")
+    st.success("● Pipeline: Super Ensemble (XGB+GB+HGB)")
+    st.info("● Accuracy (R²): **98.96%**")
+    st.info("● Test MAE: **$57,187**")
+    st.info("● Mean Error (MAPE): **4.74%**")
+    st.caption("Version 2.0.0 | High-Accuracy Prod")
 
 
 # ==============================================================================
@@ -156,9 +157,9 @@ if app_mode == "📊 Executive Dashboard":
     with col2:
         st.metric(label="Median Property Price", value=f"${df_data['Price'].median():,.0f}" if not df_data.empty else "$1.12M")
     with col3:
-        st.metric(label="Model Accuracy (R²)", value="98.75%", delta="+2.1% vs Linear Baseline")
+        st.metric(label="Model Accuracy (R²)", value="98.96%", delta="+2.3% vs Linear Baseline")
     with col4:
-        st.metric(label="Mean Abs. Error (MAE)", value="$63,774", delta="-46.8% vs Baseline", delta_color="inverse")
+        st.metric(label="Mean Abs. Error (MAE)", value="$57,187", delta="-51.7% vs Baseline", delta_color="inverse")
 
     st.markdown("---")
 

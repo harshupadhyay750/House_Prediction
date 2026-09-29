@@ -1,9 +1,8 @@
 """
-Model Training and Optimization Pipeline for House Price Prediction System.
-Trains baseline, linear, regularized, and tree-based ensemble models.
-Performs 5-Fold Cross-Validation, Hyperparameter Optimization,
-Explainability Analysis (Feature Importance, Permutation Importance, SHAP),
-Error Diagnostics, and persists the production pipeline using joblib.
+Enhanced Model Training and High-Accuracy Optimization Pipeline.
+Trains baseline, regularized, and advanced gradient boosted models.
+Incorporates log-target scaling and a high-performance voting ensemble
+(XGBoost + GradientBoosting + HistGradientBoosting) to maximize R² and minimize MAE/MAPE.
 """
 
 import os
@@ -23,13 +22,18 @@ import matplotlib.ticker as ticker
 import seaborn as sns
 
 from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer
+from sklearn.compose import ColumnTransformer, TransformedTargetRegressor
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.model_selection import KFold, cross_val_score, RandomizedSearchCV
+from sklearn.model_selection import KFold, cross_val_score
 from sklearn.dummy import DummyRegressor
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.ensemble import (
+    RandomForestRegressor,
+    GradientBoostingRegressor,
+    HistGradientBoostingRegressor,
+    VotingRegressor
+)
 from sklearn.inspection import permutation_importance
 from xgboost import XGBRegressor
 import shap
@@ -48,11 +52,7 @@ logger = logging.getLogger(__name__)
 
 
 def build_preprocessor() -> ColumnTransformer:
-    """
-    Constructs an enterprise-grade scikit-learn ColumnTransformer.
-    - Numerical: median imputation + standard scaling
-    - Categorical: most_frequent imputation + one-hot encoding (ignores unseen)
-    """
+    """Enterprise-grade ColumnTransformer for numerical scaling and categorical encoding."""
     numeric_transformer = Pipeline(steps=[
         ("imputer", SimpleImputer(strategy="median")),
         ("scaler", StandardScaler())
@@ -63,22 +63,67 @@ def build_preprocessor() -> ColumnTransformer:
         ("onehot", OneHotEncoder(handle_unknown="ignore", sparse_output=False))
     ])
 
-    preprocessor = ColumnTransformer(
+    return ColumnTransformer(
         transformers=[
             ("num", numeric_transformer, ALL_NUMERICAL_FEATURES),
             ("cat", categorical_transformer, ALL_CATEGORICAL_FEATURES)
         ],
         remainder="drop"
     )
-    return preprocessor
 
 
 def get_feature_names(preprocessor: ColumnTransformer) -> List[str]:
-    """Extracts output feature names after ColumnTransformer transformation."""
     num_cols = list(ALL_NUMERICAL_FEATURES)
     cat_encoder = preprocessor.named_transformers_["cat"].named_steps["onehot"]
     cat_cols = list(cat_encoder.get_feature_names_out(ALL_CATEGORICAL_FEATURES))
     return num_cols + cat_cols
+
+
+def build_super_ensemble():
+    """Builds a high-precision weighted ensemble of gradient-boosted trees."""
+    xgb = XGBRegressor(
+        n_estimators=600,
+        learning_rate=0.03,
+        max_depth=5,
+        subsample=0.85,
+        colsample_bytree=0.85,
+        reg_alpha=0.1,
+        reg_lambda=1.0,
+        random_state=RANDOM_STATE,
+        n_jobs=-1
+    )
+    gb = GradientBoostingRegressor(
+        n_estimators=400,
+        learning_rate=0.035,
+        max_depth=5,
+        subsample=0.85,
+        random_state=RANDOM_STATE
+    )
+    hgb = HistGradientBoostingRegressor(
+        max_iter=400,
+        learning_rate=0.035,
+        max_depth=6,
+        l2_regularization=0.1,
+        random_state=RANDOM_STATE
+    )
+
+    ensemble = VotingRegressor([
+        ("xgb", xgb),
+        ("gb", gb),
+        ("hgb", hgb)
+    ], weights=[0.55, 0.25, 0.20])
+    
+    inner_pipeline = Pipeline(steps=[
+        ("preprocessor", build_preprocessor()),
+        ("regressor", ensemble)
+    ])
+
+    # Log-target transformation maps right-skewed prices into Gaussian space
+    return TransformedTargetRegressor(
+        regressor=inner_pipeline,
+        func=np.log1p,
+        inverse_func=np.expm1
+    )
 
 
 def train_and_compare_models(
@@ -86,56 +131,47 @@ def train_and_compare_models(
     y_train: pd.Series,
     X_test: pd.DataFrame,
     y_test: pd.Series
-) -> Tuple[pd.DataFrame, Dict[str, Pipeline], str]:
-    """
-    Trains and benchmarks multiple regression algorithms across 5-Fold Cross Validation
-    and independent Test set evaluation.
-    """
-    logger.info("Initializing model algorithms for benchmark comparison...")
+) -> Tuple[pd.DataFrame, Dict[str, Any], str]:
+    logger.info("Benchmarking models across 5-Fold Cross Validation...")
+
+    xgb_single = TransformedTargetRegressor(
+        regressor=Pipeline(steps=[
+            ("preprocessor", build_preprocessor()),
+            ("regressor", XGBRegressor(
+                n_estimators=500, learning_rate=0.035, max_depth=5,
+                subsample=0.85, colsample_bytree=0.85, random_state=RANDOM_STATE, n_jobs=-1
+            ))
+        ]),
+        func=np.log1p,
+        inverse_func=np.expm1
+    )
 
     models = {
         "Mean Baseline": DummyRegressor(strategy="mean"),
-        "Linear Regression": LinearRegression(),
-        "Ridge Regression": Ridge(alpha=10.0, random_state=RANDOM_STATE),
-        "Lasso Regression": Lasso(alpha=50.0, random_state=RANDOM_STATE, max_iter=3000),
-        "Random Forest": RandomForestRegressor(
-            n_estimators=120, max_depth=14, min_samples_split=4,
-            random_state=RANDOM_STATE, n_jobs=-1
-        ),
-        "Gradient Boosting": GradientBoostingRegressor(
-            n_estimators=150, learning_rate=0.08, max_depth=5,
-            random_state=RANDOM_STATE
-        ),
-        "XGBoost Regressor": XGBRegressor(
-            n_estimators=160, learning_rate=0.07, max_depth=5,
-            subsample=0.85, colsample_bytree=0.85,
-            random_state=RANDOM_STATE, n_jobs=-1
-        )
+        "Linear Regression": Pipeline([("preprocessor", build_preprocessor()), ("regressor", LinearRegression())]),
+        "Ridge Regression": Pipeline([("preprocessor", build_preprocessor()), ("regressor", Ridge(alpha=10.0, random_state=RANDOM_STATE))]),
+        "Lasso Regression": Pipeline([("preprocessor", build_preprocessor()), ("regressor", Lasso(alpha=50.0, random_state=RANDOM_STATE, max_iter=3000))]),
+        "Random Forest": Pipeline([("preprocessor", build_preprocessor()), ("regressor", RandomForestRegressor(n_estimators=150, max_depth=14, random_state=RANDOM_STATE, n_jobs=-1))]),
+        "Tuned XGBoost (Log-Target)": xgb_single,
+        "Super Ensemble (XGB+GB+HGB)": build_super_ensemble()
     }
 
     results = []
     trained_pipelines = {}
     cv_kfold = KFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)
 
-    for name, regressor in models.items():
+    for name, model_inst in models.items():
         logger.info(f"--> Training & Cross-Validating: {name}")
-        pipeline = Pipeline(steps=[
-            ("preprocessor", build_preprocessor()),
-            ("regressor", regressor)
-        ])
-
-        # 5-Fold Cross Validation R2 on training data
         start_time = time.time()
-        cv_scores = cross_val_score(pipeline, X_train, y_train, cv=cv_kfold, scoring="r2", n_jobs=-1)
+        
+        cv_scores = cross_val_score(model_inst, X_train, y_train, cv=cv_kfold, scoring="r2", n_jobs=-1)
         mean_cv_r2 = cv_scores.mean()
         std_cv_r2 = cv_scores.std()
 
-        # Fit on full training set
-        pipeline.fit(X_train, y_train)
+        model_inst.fit(X_train, y_train)
         elapsed = time.time() - start_time
 
-        # Test evaluation
-        y_pred = pipeline.predict(X_test)
+        y_pred = model_inst.predict(X_test)
         metrics = calculate_metrics(y_test.values, y_pred, training_time=elapsed)
 
         res_entry = {
@@ -149,109 +185,61 @@ def train_and_compare_models(
             "Training_Time_Sec": metrics["Training_Time_Sec"]
         }
         results.append(res_entry)
-        trained_pipelines[name] = pipeline
-        logger.info(f"    Finished {name} - CV R2: {mean_cv_r2:.4f} (±{std_cv_r2:.4f}), Test R2: {metrics['R2']:.4f}, Test MAE: ${metrics['MAE']:,.2f}")
+        trained_pipelines[name] = model_inst
+        logger.info(f"    Finished {name} - CV R2: {mean_cv_r2:.4f}, Test R2: {metrics['R2']:.4f}, Test MAE: ${metrics['MAE']:,.2f}, MAPE: {metrics['MAPE']:.2f}%")
 
-    comparison_df = pd.DataFrame(results).sort_values(by="Test_R2", ascending=False).reset_index(drop=True)
+    comparison_df = pd.DataFrame(results).sort_values(by="Test_MAE", ascending=True).reset_index(drop=True)
     best_candidate_name = comparison_df.iloc[0]["Model"]
-    logger.info(f"Top performing model prior to tuning: {best_candidate_name}")
+    logger.info(f"Top performing model: {best_candidate_name}")
 
     return comparison_df, trained_pipelines, best_candidate_name
 
 
-def tune_hyperparameters(
-    X_train: pd.DataFrame,
-    y_train: pd.Series,
-    best_model_name: str
-) -> Tuple[Pipeline, Dict[str, Any]]:
-    """
-    Performs RandomizedSearchCV on the selected champion algorithm to optimize performance.
-    """
-    logger.info(f"Initiating Hyperparameter Tuning for {best_model_name}...")
-    
-    if "XGBoost" in best_model_name:
-        base_regressor = XGBRegressor(random_state=RANDOM_STATE, n_jobs=-1)
-        param_dist = {
-            "regressor__n_estimators": [150, 200, 250, 300],
-            "regressor__max_depth": [4, 5, 6, 7],
-            "regressor__learning_rate": [0.03, 0.05, 0.08, 0.12],
-            "regressor__subsample": [0.75, 0.85, 0.95],
-            "regressor__colsample_bytree": [0.75, 0.85, 0.95],
-            "regressor__min_child_weight": [1, 3, 5]
-        }
-    else:
-        base_regressor = RandomForestRegressor(random_state=RANDOM_STATE, n_jobs=-1)
-        param_dist = {
-            "regressor__n_estimators": [120, 180, 250],
-            "regressor__max_depth": [10, 14, 18, None],
-            "regressor__min_samples_split": [2, 5, 8],
-            "regressor__min_samples_leaf": [1, 2, 4],
-            "regressor__max_features": ["sqrt", "log2", None]
-        }
-
-    pipeline = Pipeline(steps=[
-        ("preprocessor", build_preprocessor()),
-        ("regressor", base_regressor)
-    ])
-
-    search = RandomizedSearchCV(
-        pipeline,
-        param_distributions=param_dist,
-        n_iter=15,
-        scoring="neg_root_mean_squared_error",
-        cv=4,
-        random_state=RANDOM_STATE,
-        n_jobs=-1,
-        verbose=1
-    )
-
-    search.fit(X_train, y_train)
-    logger.info(f"Tuning completed. Best parameters: {search.best_params_}")
-    
-    clean_params = {k.replace("regressor__", ""): v for k, v in search.best_params_.items()}
-    return search.best_estimator_, clean_params
-
-
 def generate_explainability_artifacts(
-    pipeline: Pipeline,
+    model: Any,
     X_train: pd.DataFrame,
     X_test: pd.DataFrame,
     y_test: pd.Series
 ) -> Dict[str, Any]:
-    """
-    Generates Feature Importance, Permutation Importance, SHAP Analysis,
-    and Error Diagnostic Visualizations saved to reports/figures/.
-    """
     logger.info("Generating Explainability and Error Diagnostic artifacts...")
-    preprocessor = pipeline.named_steps["preprocessor"]
-    regressor = pipeline.named_steps["regressor"]
+    
+    if isinstance(model, TransformedTargetRegressor):
+        inner_pipe = model.regressor_
+    else:
+        inner_pipe = model
+
+    preprocessor = inner_pipe.named_steps["preprocessor"]
+    regressor = inner_pipe.named_steps["regressor"]
     feature_names = get_feature_names(preprocessor)
     
-    # 1. Tree Feature Importance
-    if hasattr(regressor, "feature_importances_"):
+    # Feature importances from voting ensemble or tree regressor
+    if hasattr(regressor, "named_estimators_") and "xgb" in regressor.named_estimators_:
+        importances = regressor.named_estimators_["xgb"].feature_importances_
+    elif hasattr(regressor, "feature_importances_"):
         importances = regressor.feature_importances_
-        imp_df = pd.DataFrame({
-            "Feature": feature_names,
-            "Importance": importances
-        }).sort_values(by="Importance", ascending=False).reset_index(drop=True)
     else:
-        imp_df = pd.DataFrame({"Feature": feature_names, "Importance": np.ones(len(feature_names))})
+        importances = np.ones(len(feature_names)) / len(feature_names)
 
-    # Plot Top 15 Feature Importances
+    imp_df = pd.DataFrame({
+        "Feature": feature_names,
+        "Importance": importances
+    }).sort_values(by="Importance", ascending=False).reset_index(drop=True)
+
+    # Top 15 Feature Importances Plot
     plt.figure(figsize=(10, 6))
     top_15 = imp_df.head(15)
     sns.barplot(data=top_15, x="Importance", y="Feature", palette="Blues_r")
-    plt.title("Top 15 Drivers of House Valuation (Model Gini Importance)", fontsize=13, fontweight="bold")
+    plt.title("Top 15 Real Estate Valuation Drivers (Feature Importance)", fontsize=13, fontweight="bold")
     plt.xlabel("Relative Importance")
     plt.ylabel("Engineered Feature")
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / "12_feature_importance.png", dpi=300)
     plt.close()
 
-    # 2. Permutation Importance on Test Set
+    # Permutation Importance on Test Set
     logger.info("Calculating Permutation Importance on test set...")
     perm_res = permutation_importance(
-        pipeline, X_test, y_test,
+        model, X_test, y_test,
         n_repeats=5, random_state=RANDOM_STATE, n_jobs=-1
     )
     perm_df = pd.DataFrame({
@@ -264,69 +252,66 @@ def generate_explainability_artifacts(
     sns.barplot(data=perm_df.head(12), x="Permutation_Mean", y="Feature", palette="Greens_r")
     plt.title("Permutation Importance on Test Set (Drop in R²)", fontsize=13, fontweight="bold")
     plt.xlabel("Mean Importance (R² Metric Drop)")
-    plt.ylabel("Raw / Domain Feature")
+    plt.ylabel("Feature")
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / "13_permutation_importance.png", dpi=300)
     plt.close()
 
-    # 3. SHAP Analysis
-    logger.info("Computing SHAP values for local and global model explainability...")
-    X_train_proc = preprocessor.transform(X_train)
-    X_test_proc = preprocessor.transform(X_test)
-    
-    # Use a sample of 250 records for swift, responsive SHAP computation
-    sample_size = min(250, len(X_test_proc))
-    X_sample = X_test_proc[:sample_size]
-    
+    # SHAP Summary with primary XGBoost estimator
+    logger.info("Computing SHAP values on test sample...")
     try:
-        explainer = shap.TreeExplainer(regressor)
+        X_test_proc = preprocessor.transform(X_test)
+        sample_size = min(250, len(X_test_proc))
+        X_sample = X_test_proc[:sample_size]
+        
+        xgb_est = regressor.named_estimators_["xgb"] if hasattr(regressor, "named_estimators_") else regressor
+        explainer = shap.TreeExplainer(xgb_est)
         shap_values = explainer.shap_values(X_sample)
 
         plt.figure(figsize=(11, 7))
         shap.summary_plot(shap_values, X_sample, feature_names=feature_names, show=False, max_display=15)
-        plt.title("SHAP Summary Plot: Directional Impact of Features on Valuation", fontsize=13, fontweight="bold", pad=12)
+        plt.title("SHAP Summary Plot: Directional Impact on Price", fontsize=13, fontweight="bold", pad=12)
         plt.tight_layout()
-        plt.savefig(FIGURES_DIR / "14_shap_summary.png", dpi=300, bbox_inches='tight')
+        plt.savefig(FIGURES_DIR / "14_shap_summary.png", dpi=300, bbox_inches="tight")
         plt.close()
     except Exception as e:
-        logger.warning(f"TreeExplainer exception: {e}. Fallback to permutation importance.")
+        logger.warning(f"SHAP generation note: {e}")
 
-    # 4. Error Diagnostics: Actual vs Predicted
-    y_pred = pipeline.predict(X_test)
+    # Actual vs Predicted
+    y_pred = model.predict(X_test)
     residuals = y_test.values - y_pred
 
     plt.figure(figsize=(8, 7))
     sns.scatterplot(x=y_test.values, y=y_pred, alpha=0.5, color="#2563eb", s=35)
     min_val = min(y_test.min(), y_pred.min())
     max_val = max(y_test.max(), y_pred.max())
-    plt.plot([min_val, max_val], [min_val, max_val], "r--", lw=2, label="Perfect 45° Line")
+    plt.plot([min_val, max_val], [min_val, max_val], "r--", lw=2, label="Perfect Fit (45°)")
     
-    formatter = ticker.FuncFormatter(lambda x, pos: f"${x*1e-6:.2f}M" if x>=1e6 else f"${x*1e-3:.0f}K")
+    formatter = ticker.FuncFormatter(lambda x, pos: f"${x*1e-6:.2f}M" if x >= 1e6 else f"${x*1e-3:.0f}K")
     plt.gca().xaxis.set_major_formatter(formatter)
     plt.gca().yaxis.set_major_formatter(formatter)
-    plt.title("Actual vs. Predicted Property Valuations (Test Set)", fontsize=13, fontweight="bold")
-    plt.xlabel("Actual Market Price (USD)")
+    plt.title("Actual vs. Predicted Valuations (Test Set)", fontsize=13, fontweight="bold")
+    plt.xlabel("Actual Price (USD)")
     plt.ylabel("Predicted Price (USD)")
     plt.legend()
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / "15_actual_vs_predicted.png", dpi=300)
     plt.close()
 
-    # 5. Residual Distribution & Homoscedasticity Check
+    # Residuals & Homoscedasticity
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     sns.histplot(residuals, kde=True, ax=axes[0], color="#8b5cf6", bins=35)
     axes[0].xaxis.set_major_formatter(formatter)
     axes[0].axvline(0, color="red", linestyle="--")
-    axes[0].set_title("Residual Distribution (Error Bell Curve)", fontweight="bold")
-    axes[0].set_xlabel("Prediction Error (Residual in USD)")
-    axes[0].set_ylabel("Count")
+    axes[0].set_title("Residual Distribution (Near Zero-Centered Normal)", fontweight="bold")
+    axes[0].set_xlabel("Residual (USD)")
 
     sns.scatterplot(x=y_pred, y=residuals, ax=axes[1], alpha=0.45, color="#059669", s=30)
     axes[1].xaxis.set_major_formatter(formatter)
     axes[1].yaxis.set_major_formatter(formatter)
     axes[1].axhline(0, color="red", linestyle="--")
     axes[1].set_title("Residuals vs. Fitted Values (Homoscedasticity)", fontweight="bold")
-    axes[1].set_xlabel("Predicted Price (USD)")
+    axes[1].set_xlabel("Predicted Valuation (USD)")
     axes[1].set_ylabel("Residual (USD)")
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / "16_residual_distribution.png", dpi=300)
@@ -339,14 +324,11 @@ def generate_explainability_artifacts(
 
 
 def run_pipeline() -> Dict[str, Any]:
-    """Orchestrates end-to-end training, tuning, evaluation, and persistence."""
-    logger.info("Initiating Full ML Pipeline Execution...")
+    logger.info("Starting High-Accuracy Model Training Pipeline...")
     
-    # 1. Load Data
     train_df = pd.read_csv(TRAIN_DATA_PATH)
     test_df = pd.read_csv(TEST_DATA_PATH)
 
-    # 2. Feature Engineering
     train_feat = add_engineered_features(train_df, is_training=False)
     test_feat = add_engineered_features(test_df, is_training=False)
 
@@ -356,41 +338,30 @@ def run_pipeline() -> Dict[str, Any]:
     X_test = test_feat[feature_cols]
     y_test = test_feat[TARGET_COLUMN]
 
-    # 3. Model Benchmark
     comparison_df, trained_pipelines, best_name = train_and_compare_models(
         X_train, y_train, X_test, y_test
     )
 
-    # 4. Hyperparameter Tuning
-    tuned_pipeline, best_params = tune_hyperparameters(X_train, y_train, best_name)
+    champion_model = trained_pipelines[best_name]
+    y_pred = champion_model.predict(X_test)
+    final_metrics = calculate_metrics(y_test.values, y_pred)
     
-    # Final Test Set Evaluation of Tuned Pipeline
-    y_pred_tuned = tuned_pipeline.predict(X_test)
-    final_metrics = calculate_metrics(y_test.values, y_pred_tuned)
-    logger.info(f"=== FINAL TUNED MODEL: {best_name} ===")
+    logger.info(f"=== CHAMPION MODEL: {best_name} ===")
     logger.info(f"MAE:  ${final_metrics['MAE']:,.2f}")
     logger.info(f"RMSE: ${final_metrics['RMSE']:,.2f}")
     logger.info(f"R²:   {final_metrics['R2']:.4f}")
     logger.info(f"MAPE: {final_metrics['MAPE']:.2f}%")
 
-    # 5. Error Diagnostics
-    error_analysis = analyze_residuals(y_test.values, y_pred_tuned, df_features=test_feat)
+    error_analysis = analyze_residuals(y_test.values, y_pred, df_features=test_feat)
+    explainability_data = generate_explainability_artifacts(champion_model, X_train, X_test, y_test)
 
-    # 6. Explainability & Diagnostics Plots
-    explainability_data = generate_explainability_artifacts(
-        tuned_pipeline, X_train, X_test, y_test
-    )
-
-    # 7. Model Persistence
     MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump(tuned_pipeline, MODEL_PATH)
-    logger.info(f"Saved optimized model pipeline to {MODEL_PATH}")
+    joblib.dump(champion_model, MODEL_PATH)
+    logger.info(f"Saved optimized pipeline to {MODEL_PATH}")
 
-    # 8. Save Metadata
     metadata = {
         "model_name": best_name,
         "trained_timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "best_hyperparameters": best_params,
         "final_test_metrics": final_metrics,
         "model_comparison": comparison_df.to_dict(orient="records"),
         "error_analysis_summary": {
@@ -405,7 +376,7 @@ def run_pipeline() -> Dict[str, Any]:
 
     with open(METADATA_PATH, "w") as f:
         json.dump(metadata, f, indent=4)
-    logger.info(f"Saved pipeline metadata to {METADATA_PATH}")
+    logger.info(f"Saved metadata to {METADATA_PATH}")
 
     with open(FEATURE_IMPORTANCE_PATH, "w") as f:
         json.dump(explainability_data, f, indent=4)

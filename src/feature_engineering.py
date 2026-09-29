@@ -43,6 +43,22 @@ def add_engineered_features(df: pd.DataFrame, is_training: bool = False) -> pd.D
     balconies = data["Balconies"] if "Balconies" in data.columns else 0
     data["Luxury_Score"] = (amenities * 1.5 + parking * 1.2 + balconies * 1.0).round(2)
 
+    # 5. Advanced Real Estate Interactions & Densities
+    data["Bed_Bath_Interaction"] = data["Bedrooms"] * data["Bathrooms"]
+    floors_safe = np.maximum(data["Floors"] if "Floors" in data.columns else 1, 1)
+    data["Rooms_per_Floor"] = (data["Total_Rooms"] / floors_safe).round(2)
+    rooms_safe = np.maximum(data["Total_Rooms"], 1)
+    data["Amenities_per_Room"] = (amenities / rooms_safe).round(2)
+    
+    age_col = data["Property_Age"] if "Property_Age" in data.columns else 0
+    data["Est_Depreciation"] = np.maximum(0.65, 1.0 - (age_col * 0.007)).round(4)
+    data["Log_Area"] = np.log1p(data["Area_sqft"]).round(4)
+    data["Floor_Area_Ratio"] = (data["Area_sqft"] / floors_safe).round(2)
+    
+    area_k = np.maximum(data["Area_sqft"] / 1000.0, 0.1)
+    data["Room_Density"] = (data["Total_Rooms"] / area_k).round(2)
+    data["Luxury_Density"] = (data["Luxury_Score"] / area_k).round(2)
+
     # 5. Age Category Binning
     if "Property_Age" in data.columns:
         def categorize_age(age_val):
