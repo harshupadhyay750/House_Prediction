@@ -1,7 +1,8 @@
 """
 FastAPI REST API for House Price Prediction System.
 Exposes endpoints for single and batch property valuations with Pydantic validation.
-Adapted to the user dataset schema: Area, Bedrooms, Bathrooms, Floors, YearBuilt, Location, Condition, Garage.
+Supports worldwide property valuation across any area on Earth with multi-currency conversion
+(USD, INR with Lakhs/Crores, EUR, GBP, AED, CAD, AUD, JPY, etc.) and unit toggles (sq ft / sq m).
 """
 
 from typing import List, Optional, Dict, Any
@@ -13,11 +14,12 @@ from src.predict import predict_house_price, load_model_artifacts
 from src.config import (
     VALID_LOCATIONS, VALID_CONDITIONS, VALID_GARAGES
 )
+from src.global_market import GLOBAL_COUNTRIES, EXCHANGE_RATES
 
 app = FastAPI(
-    title="🏠 House Price Prediction & Property Analytics API",
-    description="Enterprise Machine Learning REST API for real estate valuation and analytics.",
-    version="2.0.0"
+    title="🏠 PropIntel Global Real Estate Valuation & Analytics API",
+    description="Enterprise Machine Learning REST API for global real estate valuation across any area on Earth with multi-currency conversion.",
+    version="2.1.0"
 )
 
 app.add_middleware(
@@ -30,14 +32,20 @@ app.add_middleware(
 
 
 class PropertyInput(BaseModel):
-    Area: float = Field(..., ge=100, le=30000, description="Gross living area in sq ft", json_schema_extra={"example": 2500.0})
-    Bedrooms: int = Field(3, ge=1, le=15, description="Number of bedrooms", json_schema_extra={"example": 4})
-    Bathrooms: float = Field(2.0, ge=0.5, le=15.0, description="Number of bathrooms", json_schema_extra={"example": 3.0})
+    Area: float = Field(..., ge=10, le=30000, description="Gross living area (sq ft or sq m)", json_schema_extra={"example": 2500.0})
+    Area_Unit: Optional[str] = Field("sq ft", description="Unit of measurement: 'sq ft' or 'sq m'", json_schema_extra={"example": "sq ft"})
+    Bedrooms: int = Field(3, ge=1, le=20, description="Number of bedrooms", json_schema_extra={"example": 4})
+    Bathrooms: float = Field(2.0, ge=0.5, le=20.0, description="Number of bathrooms", json_schema_extra={"example": 3.0})
     Floors: int = Field(1, ge=1, le=20, description="Number of floors", json_schema_extra={"example": 2})
     YearBuilt: int = Field(1995, ge=1850, le=2026, description="Year property was constructed", json_schema_extra={"example": 1990})
-    Location: str = Field("Downtown", description=f"Location tier: {VALID_LOCATIONS}", json_schema_extra={"example": "Downtown"})
+    Location: str = Field("Downtown", description=f"Settlement density tier: {VALID_LOCATIONS}", json_schema_extra={"example": "Downtown"})
     Condition: str = Field("Good", description=f"Physical condition: {VALID_CONDITIONS}", json_schema_extra={"example": "Excellent"})
     Garage: str = Field("Yes", description=f"Garage parking availability: {VALID_GARAGES}", json_schema_extra={"example": "Yes"})
+    Country: Optional[str] = Field("United States", description="Country for regional indexing", json_schema_extra={"example": "India"})
+    City: Optional[str] = Field(None, description="Metropolitan city or region", json_schema_extra={"example": "Mumbai (MMR)"})
+    Custom_City: Optional[str] = Field(None, description="Optional custom city name for any location on Earth", json_schema_extra={"example": "Whitefield"})
+    Custom_Multiplier: Optional[float] = Field(None, description="Optional custom real estate index multiplier (e.g. 1.25)", json_schema_extra={"example": 1.4})
+    Currency: Optional[str] = Field("USD", description="Currency code (USD, INR, EUR, GBP, AED, CAD, AUD, JPY, SGD, etc.)", json_schema_extra={"example": "INR"})
 
 
 class PredictionInterval(BaseModel):
@@ -50,7 +58,16 @@ class PredictionInterval(BaseModel):
 class PredictionOutput(BaseModel):
     predicted_price: float
     price_formatted: str
+    currency: Optional[str] = "USD"
+    currency_symbol: Optional[str] = "$"
+    country: Optional[str] = "United States"
+    city: Optional[str] = None
+    regional_multiplier: Optional[float] = 1.0
+    exchange_rate: Optional[float] = 1.0
     price_per_sqft: float
+    price_per_sqm: Optional[float] = None
+    price_per_sqft_formatted: Optional[str] = None
+    price_per_sqm_formatted: Optional[str] = None
     prediction_interval_95: PredictionInterval
     model_used: str
     key_characteristics: Dict[str, Any]
@@ -63,9 +80,11 @@ class BatchPropertyInput(BaseModel):
 @app.get("/", tags=["General"])
 def root():
     return {
-        "message": "Welcome to the House Price Prediction & Property Analytics API",
+        "message": "Welcome to the PropIntel Global Real Estate Valuation & Analytics API",
         "documentation": "/docs",
         "health": "/health",
+        "currencies": "/currencies",
+        "locations": "/locations",
         "status": "operational"
     }
 
@@ -85,6 +104,24 @@ def health_check():
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=f"Model artifact unavailable: {str(e)}"
         )
+
+
+@app.get("/currencies", tags=["Global Markets"])
+def get_supported_currencies():
+    """List all supported global currencies with symbols and baseline exchange rates."""
+    return {
+        "count": len(EXCHANGE_RATES),
+        "currencies": EXCHANGE_RATES
+    }
+
+
+@app.get("/locations", tags=["Global Markets"])
+def get_supported_locations():
+    """List all global countries, benchmark cities, and market multipliers."""
+    return {
+        "count": len(GLOBAL_COUNTRIES),
+        "countries": GLOBAL_COUNTRIES
+    }
 
 
 @app.get("/model-info", tags=["Analytics"])

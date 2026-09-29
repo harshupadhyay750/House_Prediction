@@ -1,8 +1,9 @@
 """
 Unit and Integration Test Suite for House Price Prediction System.
 Tests data preprocessing, feature engineering, model persistence,
-prediction logic, edge cases, invalid inputs, and API endpoints using pytest.
-Adapted to the property dataset schema.
+prediction logic, edge cases, invalid inputs, global market localization,
+multi-currency conversions (INR, EUR, GBP, AED, etc.), unit conversion,
+and API endpoints using pytest.
 """
 
 import pytest
@@ -17,6 +18,10 @@ from src.config import (
 from src.data_preprocessing import clean_raw_data, inspect_dataset
 from src.feature_engineering import add_engineered_features
 from src.predict import predict_house_price, load_model_artifacts, validate_property_input
+from src.global_market import (
+    GLOBAL_COUNTRIES, EXCHANGE_RATES, convert_and_localize_price,
+    format_indian_currency, convert_area_to_sqft
+)
 from src.api import app
 
 client = TestClient(app)
@@ -113,7 +118,7 @@ def test_model_artifact_loading_trains_when_missing(tmp_path, monkeypatch):
 # ---------------- PREDICTION FUNCTION TESTS ----------------
 
 def test_predict_house_price_valid_payload():
-    """Verify prediction returns valid numerical outputs and bounds."""
+    """Verify prediction returns valid numerical outputs and bounds in default USD."""
     sample = {
         "Area": 2400,
         "Bedrooms": 3,
@@ -134,6 +139,7 @@ def test_predict_house_price_valid_payload():
     assert result["prediction_interval_95"]["lower_bound"] < result["predicted_price"]
     assert result["prediction_interval_95"]["upper_bound"] > result["predicted_price"]
     assert result["price_per_sqft"] > 0
+    assert "$" in result["price_formatted"]
 
 
 def test_predict_house_price_invalid_area():
@@ -158,6 +164,83 @@ def test_predict_house_price_invalid_bedrooms():
         predict_house_price(bad_sample)
 
 
+# ---------------- GLOBAL VALUATION & MULTI-CURRENCY TESTS ----------------
+
+def test_global_prediction_inr():
+    """Verify prediction in Indian Rupees with Mumbai market multiplier and Lakh/Crore formatting."""
+    payload = {
+        "Area": 2000,
+        "Bedrooms": 3,
+        "Bathrooms": 2.0,
+        "Floors": 1,
+        "YearBuilt": 2005,
+        "Location": "Downtown",
+        "Condition": "Excellent",
+        "Garage": "Yes",
+        "Country": "India",
+        "City": "Mumbai (MMR)",
+        "Currency": "INR"
+    }
+    res = predict_house_price(payload)
+    assert res["currency"] == "INR"
+    assert res["currency_symbol"] == "₹"
+    assert "₹" in res["price_formatted"]
+    assert "Cr" in res["price_formatted"] or "Lakh" in res["price_formatted"]
+    assert res["predicted_price"] > 10000000  # Multi-Crore property in Mumbai
+    assert res["regional_multiplier"] == 1.6
+    assert res["price_per_sqft"] > 0
+    assert res["price_per_sqm"] > 0
+
+
+def test_global_prediction_euro_and_uk():
+    """Verify predictions in EUR and GBP currencies with correct symbols."""
+    payload_eur = {
+        "Area": 1800,
+        "Country": "France",
+        "City": "Paris Central",
+        "Currency": "EUR"
+    }
+    res_eur = predict_house_price(payload_eur)
+    assert res_eur["currency"] == "EUR"
+    assert res_eur["currency_symbol"] == "€"
+    assert res_eur["predicted_price"] > 0
+
+    payload_gbp = {
+        "Area": 1500,
+        "Country": "United Kingdom",
+        "City": "Central London",
+        "Currency": "GBP"
+    }
+    res_gbp = predict_house_price(payload_gbp)
+    assert res_gbp["currency"] == "GBP"
+    assert res_gbp["currency_symbol"] == "£"
+
+
+def test_square_meter_unit_conversion():
+    """Verify input in square meters converts seamlessly to square feet."""
+    payload_sqm = {
+        "Area": 185.0,  # ~1,991 sq ft
+        "Area_Unit": "sq m",
+        "Bedrooms": 3,
+        "Bathrooms": 2.0,
+        "YearBuilt": 2000
+    }
+    res = predict_house_price(payload_sqm)
+    assert abs(res["key_characteristics"]["Area_sqft"] - (185.0 * 10.7639104)) < 2.0
+    assert res["key_characteristics"]["Area_sqm"] == 185.0
+
+
+def test_format_indian_currency():
+    """Verify Indian currency comma grouping and Lakh/Crore representations."""
+    compact_cr, full_cr = format_indian_currency(18500000)
+    assert "1.85 Cr" in compact_cr
+    assert full_cr == "₹1,85,00,000"
+
+    compact_lakh, full_lakh = format_indian_currency(7500000)
+    assert "75.00 Lakh" in compact_lakh
+    assert full_lakh == "₹75,00,000"
+
+
 # ---------------- FASTAPI ENDPOINT TESTS ----------------
 
 def test_api_health_endpoint():
@@ -167,6 +250,19 @@ def test_api_health_endpoint():
     data = response.json()
     assert data["status"] == "healthy"
     assert data["model_loaded"] is True
+
+
+def test_api_currencies_and_locations_endpoints():
+    """Verify /currencies and /locations return global market datasets."""
+    res_curr = client.get("/currencies")
+    assert res_curr.status_code == 200
+    assert "INR" in res_curr.json()["currencies"]
+    assert "EUR" in res_curr.json()["currencies"]
+
+    res_loc = client.get("/locations")
+    assert res_loc.status_code == 200
+    assert "India" in res_loc.json()["countries"]
+    assert "United States" in res_loc.json()["countries"]
 
 
 def test_api_predict_endpoint_success():
@@ -190,10 +286,34 @@ def test_api_predict_endpoint_success():
     assert "prediction_interval_95" in res
 
 
+def test_api_predict_global_inr_payload():
+    """Verify POST /predict with INR and Indian metropolitan location."""
+    payload = {
+        "Area": 2200,
+        "Area_Unit": "sq ft",
+        "Bedrooms": 3,
+        "Bathrooms": 3.0,
+        "Floors": 1,
+        "YearBuilt": 2015,
+        "Location": "Downtown",
+        "Condition": "Excellent",
+        "Garage": "Yes",
+        "Country": "India",
+        "City": "Bengaluru (Silicon Valley of India)",
+        "Currency": "INR"
+    }
+    response = client.post("/predict", json=payload)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["currency"] == "INR"
+    assert "₹" in data["price_formatted"]
+    assert data["predicted_price"] > 1000000
+
+
 def test_api_predict_endpoint_validation_error():
     """Verify invalid JSON payload triggers 422 Unprocessable Entity."""
     bad_payload = {
-        "Area": 20,
+        "Area": 1,
         "Bedrooms": 0
     }
     response = client.post("/predict", json=bad_payload)
