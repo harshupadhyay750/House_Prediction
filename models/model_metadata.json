@@ -1,74 +1,74 @@
 {
-    "model_name": "Tuned XGBoost (Log-Target)",
-    "trained_timestamp": "2026-09-29 17:05:24",
+    "model_name": "Super Ensemble (XGB+GB+HGB)",
+    "trained_timestamp": "2026-09-29 23:19:04",
     "final_test_metrics": {
-        "MAE": 22925.89,
-        "MSE": 1172419240.09,
-        "RMSE": 34240.61,
-        "R2": 0.986,
-        "MAPE": 4.57,
+        "MAE": 21290.57,
+        "MSE": 982649118.57,
+        "RMSE": 31347.23,
+        "R2": 0.9883,
+        "MAPE": 4.1,
         "Training_Time_Sec": 0.0
     },
     "model_comparison": [
         {
-            "Model": "Tuned XGBoost (Log-Target)",
-            "CV_R2_Mean": 0.9853,
-            "CV_R2_Std": 0.0015,
-            "Test_MAE": 22925.89,
-            "Test_RMSE": 34240.61,
-            "Test_R2": 0.986,
-            "Test_MAPE": 4.57,
-            "Training_Time_Sec": 1.221
+            "Model": "Super Ensemble (XGB+GB+HGB)",
+            "CV_R2_Mean": 0.9873,
+            "CV_R2_Std": 0.0012,
+            "Test_MAE": 21290.57,
+            "Test_RMSE": 31347.23,
+            "Test_R2": 0.9883,
+            "Test_MAPE": 4.1,
+            "Training_Time_Sec": 7.996
         },
         {
-            "Model": "Super Ensemble (XGB+GB+HGB)",
-            "CV_R2_Mean": 0.9855,
-            "CV_R2_Std": 0.0018,
-            "Test_MAE": 23118.29,
-            "Test_RMSE": 34598.55,
-            "Test_R2": 0.9857,
-            "Test_MAPE": 4.55,
-            "Training_Time_Sec": 10.729
+            "Model": "Tuned XGBoost (Log-Target)",
+            "CV_R2_Mean": 0.9872,
+            "CV_R2_Std": 0.0015,
+            "Test_MAE": 21505.45,
+            "Test_RMSE": 32065.29,
+            "Test_R2": 0.9877,
+            "Test_MAPE": 4.12,
+            "Training_Time_Sec": 1.552
         },
         {
             "Model": "Random Forest",
-            "CV_R2_Mean": 0.9625,
-            "CV_R2_Std": 0.005,
-            "Test_MAE": 36457.34,
-            "Test_RMSE": 52529.6,
-            "Test_R2": 0.9671,
-            "Test_MAPE": 7.69,
-            "Training_Time_Sec": 1.217
-        },
-        {
-            "Model": "Lasso Regression",
-            "CV_R2_Mean": 0.9203,
-            "CV_R2_Std": 0.0111,
-            "Test_MAE": 58227.2,
-            "Test_RMSE": 82274.12,
-            "Test_R2": 0.9193,
-            "Test_MAPE": 15.61,
-            "Training_Time_Sec": 0.087
-        },
-        {
-            "Model": "Linear Regression",
-            "CV_R2_Mean": 0.9202,
-            "CV_R2_Std": 0.0111,
-            "Test_MAE": 58230.47,
-            "Test_RMSE": 82271.23,
-            "Test_R2": 0.9193,
-            "Test_MAPE": 15.63,
-            "Training_Time_Sec": 1.717
+            "CV_R2_Mean": 0.9748,
+            "CV_R2_Std": 0.003,
+            "Test_MAE": 29861.57,
+            "Test_RMSE": 44084.62,
+            "Test_R2": 0.9768,
+            "Test_MAPE": 6.24,
+            "Training_Time_Sec": 1.478
         },
         {
             "Model": "Ridge Regression",
-            "CV_R2_Mean": 0.9198,
-            "CV_R2_Std": 0.0106,
-            "Test_MAE": 58619.76,
-            "Test_RMSE": 82944.18,
-            "Test_R2": 0.918,
-            "Test_MAPE": 15.45,
-            "Training_Time_Sec": 0.171
+            "CV_R2_Mean": 0.973,
+            "CV_R2_Std": 0.0032,
+            "Test_MAE": 31112.75,
+            "Test_RMSE": 44978.15,
+            "Test_R2": 0.9759,
+            "Test_MAPE": 7.47,
+            "Training_Time_Sec": 0.163
+        },
+        {
+            "Model": "Lasso Regression",
+            "CV_R2_Mean": 0.9744,
+            "CV_R2_Std": 0.002,
+            "Test_MAE": 31163.57,
+            "Test_RMSE": 43696.47,
+            "Test_R2": 0.9772,
+            "Test_MAPE": 7.25,
+            "Training_Time_Sec": 0.093
+        },
+        {
+            "Model": "Linear Regression",
+            "CV_R2_Mean": 0.9744,
+            "CV_R2_Std": 0.0019,
+            "Test_MAE": 31238.27,
+            "Test_RMSE": 43699.72,
+            "Test_R2": 0.9772,
+            "Test_MAPE": 7.28,
+            "Training_Time_Sec": 1.651
         },
         {
             "Model": "Mean Baseline",
@@ -78,39 +78,39 @@
             "Test_RMSE": 289940.48,
             "Test_R2": -0.0023,
             "Test_MAPE": 59.6,
-            "Training_Time_Sec": 2.017
+            "Training_Time_Sec": 2.14
         }
     ],
     "error_analysis_summary": {
-        "mean_residual": 4205.21169921875,
-        "std_residual": 33981.39836219553,
+        "mean_residual": 3192.576327522768,
+        "std_residual": 31184.236000982262,
         "tier_summary": [
             {
                 "Price_Tier": "Budget (Q1)",
-                "Mean_Absolute_Error": 11670.11,
-                "Median_Absolute_Error": 9878.13,
-                "Mean_MAPE": 5.57,
+                "Mean_Absolute_Error": 10284.4,
+                "Median_Absolute_Error": 7992.48,
+                "Mean_MAPE": 4.81,
                 "Record_Count": 100
             },
             {
                 "Price_Tier": "Mid-Tier (Q2)",
-                "Mean_Absolute_Error": 20325.62,
-                "Median_Absolute_Error": 16866.02,
-                "Mean_MAPE": 4.99,
+                "Mean_Absolute_Error": 16975.13,
+                "Median_Absolute_Error": 13039.04,
+                "Mean_MAPE": 4.16,
                 "Record_Count": 100
             },
             {
                 "Price_Tier": "Upper-Tier (Q3)",
-                "Mean_Absolute_Error": 23648.67,
-                "Median_Absolute_Error": 20048.31,
-                "Mean_MAPE": 4.03,
+                "Mean_Absolute_Error": 20791.67,
+                "Median_Absolute_Error": 19006.8,
+                "Mean_MAPE": 3.56,
                 "Record_Count": 100
             },
             {
                 "Price_Tier": "Luxury (Q4)",
-                "Mean_Absolute_Error": 36059.15,
-                "Median_Absolute_Error": 22777.41,
-                "Mean_MAPE": 3.68,
+                "Mean_Absolute_Error": 37111.07,
+                "Median_Absolute_Error": 31259.75,
+                "Mean_MAPE": 3.87,
                 "Record_Count": 100
             }
         ]
@@ -128,11 +128,19 @@
         "Property_Age",
         "Total_Rooms",
         "Area_per_Bedroom",
+        "Area_per_Room",
+        "Area_per_Floor",
         "Bathroom_to_Bedroom_Ratio",
         "Log_Area",
         "Bed_Bath_Interaction",
         "Rooms_per_Floor",
-        "Est_Depreciation"
+        "Est_Depreciation",
+        "Effective_Area",
+        "Condition_Score",
+        "Location_Tier_Score",
+        "Garage_Binary",
+        "Quality_Space_Interaction",
+        "Location_Area_Interaction"
     ],
     "training_samples": 1600,
     "test_samples": 400

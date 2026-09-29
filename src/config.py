@@ -50,11 +50,19 @@ ENGINEERED_NUMERICAL_FEATURES = [
     "Property_Age",
     "Total_Rooms",
     "Area_per_Bedroom",
+    "Area_per_Room",
+    "Area_per_Floor",
     "Bathroom_to_Bedroom_Ratio",
     "Log_Area",
     "Bed_Bath_Interaction",
     "Rooms_per_Floor",
-    "Est_Depreciation"
+    "Est_Depreciation",
+    "Effective_Area",
+    "Condition_Score",
+    "Location_Tier_Score",
+    "Garage_Binary",
+    "Quality_Space_Interaction",
+    "Location_Area_Interaction"
 ]
 
 ENGINEERED_CATEGORICAL_FEATURES = []

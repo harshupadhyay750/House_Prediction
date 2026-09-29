@@ -83,9 +83,9 @@ def get_feature_names(preprocessor: ColumnTransformer) -> List[str]:
 def build_super_ensemble():
     """Builds a high-precision weighted ensemble of gradient-boosted trees."""
     xgb = XGBRegressor(
-        n_estimators=600,
-        learning_rate=0.03,
-        max_depth=5,
+        n_estimators=800,
+        learning_rate=0.025,
+        max_depth=4,
         subsample=0.85,
         colsample_bytree=0.85,
         reg_alpha=0.1,
@@ -94,16 +94,16 @@ def build_super_ensemble():
         n_jobs=-1
     )
     gb = GradientBoostingRegressor(
-        n_estimators=400,
-        learning_rate=0.035,
-        max_depth=5,
+        n_estimators=500,
+        learning_rate=0.03,
+        max_depth=4,
         subsample=0.85,
         random_state=RANDOM_STATE
     )
     hgb = HistGradientBoostingRegressor(
-        max_iter=400,
-        learning_rate=0.035,
-        max_depth=6,
+        max_iter=500,
+        learning_rate=0.03,
+        max_depth=5,
         l2_regularization=0.1,
         random_state=RANDOM_STATE
     )
@@ -112,7 +112,7 @@ def build_super_ensemble():
         ("xgb", xgb),
         ("gb", gb),
         ("hgb", hgb)
-    ], weights=[0.55, 0.25, 0.20])
+    ], weights=[0.60, 0.25, 0.15])
     
     inner_pipeline = Pipeline(steps=[
         ("preprocessor", build_preprocessor()),
@@ -139,8 +139,9 @@ def train_and_compare_models(
         regressor=Pipeline(steps=[
             ("preprocessor", build_preprocessor()),
             ("regressor", XGBRegressor(
-                n_estimators=500, learning_rate=0.035, max_depth=5,
-                subsample=0.85, colsample_bytree=0.85, random_state=RANDOM_STATE, n_jobs=-1
+                n_estimators=700, learning_rate=0.025, max_depth=4,
+                subsample=0.85, colsample_bytree=0.85, reg_alpha=0.1, reg_lambda=1.0,
+                random_state=RANDOM_STATE, n_jobs=-1
             ))
         ]),
         func=np.log1p,

@@ -5,10 +5,10 @@
 [![Framework](https://img.shields.io/badge/Framework-Scikit--Learn%20%7C%20XGBoost-orange.svg)](https://scikit-learn.org/)
 [![Web App](https://img.shields.io/badge/Streamlit-1.58.0-red.svg)](https://streamlit.io/)
 [![REST API](https://img.shields.io/badge/FastAPI-0.136.3-teal.svg)](https://fastapi.tiangolo.com/)
-[![Tests Passing](https://img.shields.io/badge/Tests-10%2F10%20Passing-brightgreen.svg)](https://docs.pytest.org/)
+[![Tests Passing](https://img.shields.io/badge/Tests-17%2F17%20Passing-brightgreen.svg)](https://docs.pytest.org/)
 [![Code Style](https://img.shields.io/badge/Code%20Style-PEP%208-black.svg)](https://pep8.org/)
 
-An enterprise-grade, end-to-end Machine Learning and Property Analytics platform that predicts residential real estate valuations with **98.96% $R^2$ accuracy** ($57,187 MAE / 4.74% MAPE). The system features an automated data cleaning and feature engineering pipeline, a log-target Super Ensemble (XGBoost + GradientBoosting + HistGradientBoosting), SHAP explainability, an interactive Streamlit analytics dashboard, a production FastAPI backend, and an automated Pytest test suite.
+An enterprise-grade, end-to-end Machine Learning and Property Analytics platform that predicts residential real estate valuations across any market on Earth with **98.83% $R^2$ accuracy** ($21,290 MAE / 4.10% MAPE). The system features an automated data cleaning and feature engineering pipeline, a log-target Super Ensemble (XGBoost + GradientBoosting + HistGradientBoosting), multi-currency valuation (INR with Crores/Lakhs, EUR, GBP, AED, etc.), interactive Streamlit analytics dashboard, production FastAPI backend, and an automated Pytest test suite.
 
 ---
 
