@@ -1,0 +1,1201 @@
+Property_ID,Location,Property_Type,Area_sqft,Bedrooms,Bathrooms,Furnishing_Status,Parking_Spaces,Floors,Property_Age,Balconies,Amenities_Count,Availability,Nearby_Schools,Price
+PROP_15565,Oakridge Valley,Apartment,1747,3,3.0,Furnished,1,22,1.0,1,5,Ready To Move,4.0,738200.0
+PROP_10805,Sunset Park,Apartment,1337,2,2.0,Furnished,3,8,19.0,2,10,Ready To Move,4.0,560000.0
+PROP_14254,Midtown Corridor,Apartment,1365,2,1.0,Semi-Furnished,1,8,0.0,2,7,Under Construction,5.0,684100.0
+PROP_10592,Riverside District,Independent House,2414,4,4.0,Semi-Furnished,2,1,8.0,1,3,Ready To Move,1.0,1205900.0
+PROP_12777,Silicon Hills,Independent House,2477,4,4.0,Semi-Furnished,0,1,10.0,1,3,Ready To Move,5.0,1571000.0
+PROP_15722,Silicon Hills,Independent House,2367,3,3.0,Furnished,1,1,14.0,2,2,Ready To Move,2.0,1423800.0
+PROP_10795,Sunset Park,Apartment,1085,1,1.0,Furnished,2,8,3.0,1,6,Ready To Move,2.0,492100.0
+PROP_12340,Oakridge Valley,Apartment,705,1,1.0,Semi-Furnished,2,20,5.0,1,5,Ready To Move,2.0,318100.0
+PROP_13875,Harbor Point,Apartment,2098,4,4.0,Furnished,2,22,1.0,2,2,Ready To Move,4.0,1369300.0
+PROP_10147,Sunset Park,Independent House,2788,3,3.0,Semi-Furnished,0,1,2.0,1,5,Ready To Move,3.0,1204300.0
+PROP_14244,Downtown Central,Apartment,1307,2,2.0,Unfurnished,2,14,3.0,2,7,Ready To Move,5.0,811500.0
+PROP_15209,Harbor Point,Luxury Villa,4271,4,5.0,Semi-Furnished,1,3,15.0,2,3,Ready To Move,3.0,2572900.0
+PROP_11047,Silicon Hills,Apartment,1233,2,3.0,Furnished,2,15,3.0,1,2,Ready To Move,4.0,813500.0
+PROP_12171,Greenwood Heights,Apartment,1627,3,3.0,Semi-Furnished,2,19,5.0,1,7,Ready To Move,2.0,794800.0
+PROP_15356,Oakridge Valley,Apartment,1206,2,1.0,Unfurnished,2,1,3.0,2,5,Ready To Move,5.0,502800.0
+PROP_13272,Silicon Hills,Apartment,1914,3,3.0,Furnished,1,5,2.0,0,6,Under Construction,4.0,1097100.0
+PROP_10538,Westend Terrace,Independent House,2465,3,2.0,Unfurnished,2,2,22.0,1,4,Ready To Move,2.0,1076200.0
+PROP_12393,Lakeside Estates,Independent House,2354,3,4.0,Unfurnished,1,2,5.0,0,7,Ready To Move,5.0,1199600.0
+PROP_11649,Harbor Point,Apartment,921,1,1.0,Unfurnished,1,23,12.0,1,6,Ready To Move,1.0,529200.0
+PROP_15506,Sunset Park,Luxury Villa,4261,5,5.0,Furnished,2,3,5.0,1,5,Under Construction,5.0,1935100.0
+PROP_15351,Downtown Central,Penthouse,4708,5,6.0,Unfurnished,1,19,23.0,0,6,Under Construction,4.0,2673000.0
+PROP_10524,Lakeside Estates,Studio Apartment,509,1,1.0,Semi-Furnished,2,16,13.0,1,6,Ready To Move,4.0,314300.0
+PROP_13644,Greenwood Heights,Apartment,1500,2,2.0,Furnished,3,19,3.0,1,4,Ready To Move,1.0,726900.0
+PROP_12406,Sunset Park,Apartment,1261,1,1.0,Furnished,1,11,0.0,1,3,Under Construction,2.0,471500.0
+PROP_11119,Oakridge Valley,Apartment,1150,2,2.0,Semi-Furnished,1,4,6.0,0,4,Under Construction,4.0,481900.0
+PROP_13361,Sunset Park,Studio Apartment,508,1,1.0,Furnished,0,3,0.0,1,5,Ready To Move,5.0,289700.0
+PROP_11052,Greenwood Heights,Studio Apartment,531,1,1.0,Semi-Furnished,2,1,38.0,1,6,Ready To Move,4.0,223800.0
+PROP_10373,Riverside District,Apartment,1905,3,3.0,Semi-Furnished,1,22,3.0,2,6,Ready To Move,5.0,916600.0
+PROP_10143,Sunset Park,Penthouse,4909,3,5.0,Furnished,1,27,3.0,3,8,Ready To Move,2.0,2742400.0
+PROP_12718,Greenwood Heights,Apartment,1236,2,2.0,Semi-Furnished,2,13,3.0,1,7,Under Construction,3.0,499800.0
+PROP_14417,Lakeside Estates,Independent House,2649,3,4.0,Unfurnished,1,2,11.0,1,7,Under Construction,2.0,1373700.0
+PROP_14205,Lakeside Estates,Independent House,2169,3,3.0,Furnished,3,2,0.0,2,10,Under Construction,4.0,1395100.0
+PROP_11887,Greenwood Heights,Apartment,1671,3,3.0,Unfurnished,0,21,2.0,1,5,Ready To Move,4.0,786500.0
+PROP_12781,Midtown Corridor,Independent House,2350,2,1.0,Semi-Furnished,1,2,0.0,1,5,Ready To Move,4.0,1256400.0
+PROP_12402,Westend Terrace,Apartment,1369,2,2.0,Furnished,2,13,3.0,2,6,Ready To Move,2.0,679900.0
+PROP_10793,Greenwood Heights,Apartment,1316,2,1.0,Furnished,1,23,2.0,3,7,Ready To Move,4.0,648000.0
+PROP_10444,Riverside District,Studio Apartment,466,1,1.0,Furnished,3,16,9.0,1,7,Under Construction,1.0,308000.0
+PROP_10377,Riverside District,Penthouse,4137,4,6.0,Furnished,0,26,6.0,2,1,Ready To Move,1.0,3001700.0
+PROP_14792,Downtown Central,Apartment,2121,4,4.0,Semi-Furnished,1,21,6.0,1,4,Ready To Move,1.0,1089300.0
+PROP_12646,Westend Terrace,Luxury Villa,4341,4,5.0,Furnished,1,2,0.0,2,6,Ready To Move,4.0,2786200.0
+PROP_10498,Midtown Corridor,Independent House,2518,3,2.0,Unfurnished,1,1,10.0,2,2,Ready To Move,4.0,1268100.0
+PROP_10467,Westend Terrace,Apartment,1264,2,1.0,Semi-Furnished,1,1,16.0,2,5,Ready To Move,2.0,474700.0
+PROP_14812,Oakridge Valley,Apartment,1052,2,2.0,Unfurnished,1,22,16.0,2,6,Ready To Move,3.0,414100.0
+PROP_13887,Silicon Hills,Apartment,1346,2,2.0,Semi-Furnished,2,3,6.0,2,1,Ready To Move,4.0,810600.0
+PROP_12093,Silicon Hills,Studio Apartment,512,1,1.0,Semi-Furnished,2,2,1.0,1,4,Ready To Move,3.0,338000.0
+PROP_13670,Lakeside Estates,Apartment,1386,2,2.0,Semi-Furnished,1,10,5.0,2,8,Ready To Move,3.0,811400.0
+PROP_15459,Greenwood Heights,Penthouse,2673,3,4.0,Unfurnished,1,33,18.0,2,1,Ready To Move,5.0,1365600.0
+PROP_10830,Lakeside Estates,Apartment,1150,2,2.0,Semi-Furnished,1,1,1.0,2,6,Ready To Move,2.0,627700.0
+PROP_10352,Harbor Point,Apartment,1054,1,1.0,Unfurnished,0,24,2.0,1,6,Ready To Move,5.0,629900.0
+PROP_12790,Riverside District,Apartment,1568,3,4.0,Semi-Furnished,2,16,14.0,2,6,Ready To Move,4.0,866300.0
+PROP_15212,Westend Terrace,Luxury Villa,5158,6,6.0,Furnished,2,2,3.0,3,9,Ready To Move,4.0,3144100.0
+PROP_15425,Silicon Hills,Apartment,1414,2,1.0,Unfurnished,1,9,4.0,2,4,Under Construction,2.0,843000.0
+PROP_11266,Midtown Corridor,Luxury Villa,4879,5,6.0,Furnished,2,2,3.0,2,5,Under Construction,4.0,2839600.0
+PROP_14073,Sunset Park,Independent House,2622,4,3.0,Semi-Furnished,1,3,1.0,2,3,Ready To Move,2.0,1174500.0
+PROP_15781,Westend Terrace,Apartment,986,1,1.0,Furnished,0,8,3.0,0,5,Ready To Move,2.0,499100.0
+PROP_10133,Greenwood Heights,Studio Apartment,580,1,1.0,Furnished,0,1,28.0,1,7,Ready To Move,2.0,258300.0
+PROP_11752,Harbor Point,Independent House,2171,4,4.0,Furnished,2,1,6.0,1,5,Under Construction,2.0,1291100.0
+PROP_12211,Midtown Corridor,Apartment,580,1,1.0,Semi-Furnished,1,24,2.0,1,6,Ready To Move,4.0,343800.0
+PROP_13240,Silicon Hills,Studio Apartment,444,1,1.0,Semi-Furnished,1,2,7.0,2,4,Ready To Move,4.0,323900.0
+PROP_10055,Oakridge Valley,Independent House,2827,4,3.0,Semi-Furnished,1,1,21.0,2,8,Ready To Move,5.0,995700.0
+PROP_13056,Oakridge Valley,Apartment,1299,2,1.0,Semi-Furnished,1,17,1.0,2,8,Ready To Move,5.0,560100.0
+PROP_15954,Downtown Central,Independent House,3098,5,5.0,Furnished,1,2,4.0,1,4,Ready To Move,3.0,2023400.0
+PROP_14824,Sunset Park,Luxury Villa,4493,4,5.0,Unfurnished,1,2,9.0,1,1,Under Construction,4.0,2155800.0
+PROP_13163,Riverside District,Apartment,1361,3,3.0,Unfurnished,1,24,4.0,1,8,Under Construction,4.0,670000.0
+PROP_14584,Midtown Corridor,Apartment,1488,2,1.0,Semi-Furnished,1,15,0.0,2,4,Ready To Move,2.0,748900.0
+PROP_14221,Westend Terrace,Apartment,1070,1,2.0,Furnished,1,2,4.0,2,3,Ready To Move,2.0,514400.0
+PROP_11893,Lakeside Estates,Independent House,2898,3,2.0,Unfurnished,1,2,1.0,2,4,Ready To Move,1.0,1521700.0
+PROP_15260,Westend Terrace,Apartment,1303,3,4.0,Semi-Furnished,2,2,15.0,2,2,Under Construction,2.0,563800.0
+PROP_10756,Harbor Point,Luxury Villa,4326,4,4.0,Unfurnished,0,4,4.0,1,6,Ready To Move,4.0,3044700.0
+PROP_11451,Silicon Hills,Independent House,2557,4,4.0,Semi-Furnished,3,2,7.0,1,5,Under Construction,1.0,1724200.0
+PROP_10037,Sunset Park,Apartment,1141,1,1.0,Furnished,0,13,7.0,1,4,Ready To Move,1.0,463200.0
+PROP_13220,Silicon Hills,Penthouse,3859,4,5.0,Furnished,1,23,1.0,1,2,Under Construction,5.0,2934200.0
+PROP_15881,Harbor Point,Independent House,2272,3,2.0,Unfurnished,1,1,16.0,1,2,Under Construction,1.0,1176100.0
+PROP_14323,Westend Terrace,Independent House,2346,3,3.0,Semi-Furnished,0,2,22.0,2,5,Ready To Move,4.0,1032900.0
+PROP_15198,Sunset Park,Studio Apartment,497,1,1.0,Semi-Furnished,2,11,0.0,2,6,Under Construction,3.0,275700.0
+PROP_15589,Oakridge Valley,Penthouse,4118,4,5.0,Semi-Furnished,2,19,9.0,2,8,Ready To Move,1.0,1980200.0
+PROP_14283,Oakridge Valley,Apartment,1377,2,2.0,Semi-Furnished,2,23,21.0,2,8,Ready To Move,3.0,513000.0
+PROP_11787,Downtown Central,Independent House,3021,5,5.0,Unfurnished,2,2,1.0,1,4,Ready To Move,5.0,2001400.0
+PROP_15532,Greenwood Heights,Independent House,3373,4,4.0,Furnished,2,3,12.0,2,5,Ready To Move,3.0,1523900.0
+PROP_12637,Westend Terrace,Apartment,1471,2,2.0,Furnished,2,16,2.0,2,9,Ready To Move,5.0,768200.0
+PROP_13764,Silicon Hills,Penthouse,3838,4,5.0,Furnished,2,34,7.0,2,2,Under Construction,4.0,2934300.0
+PROP_12660,Oakridge Valley,Apartment,1187,2,2.0,Unfurnished,1,23,3.0,1,5,Ready To Move,4.0,474900.0
+PROP_10172,Downtown Central,Penthouse,4307,5,6.0,Semi-Furnished,2,20,10.0,1,8,Under Construction,4.0,2845600.0
+PROP_12075,Riverside District,Penthouse,6347,5,6.0,Furnished,1,19,2.0,1,4,Ready To Move,1.0,3847400.0
+PROP_11728,Harbor Point,Penthouse,4554,4,5.0,Unfurnished,0,19,1.0,3,8,Ready To Move,3.0,3479000.0
+PROP_12378,Oakridge Valley,Luxury Villa,4227,4,4.0,Unfurnished,2,3,5.0,1,5,Ready To Move,4.0,1765100.0
+PROP_12396,Sunset Park,Independent House,2938,4,3.0,Semi-Furnished,1,3,12.0,1,5,Ready To Move,5.0,1257200.0
+PROP_13081,Harbor Point,Apartment,1228,2,2.0,Semi-Furnished,1,8,10.0,1,6,Ready To Move,2.0,683100.0
+PROP_14585,Downtown Central,Independent House,1484,2,3.0,Furnished,2,2,14.0,0,6,Ready To Move,5.0,935100.0
+PROP_14561,Downtown Central,Independent House,2087,2,2.0,Semi-Furnished,2,2,9.0,2,4,Under Construction,4.0,1192800.0
+PROP_12875,Riverside District,Independent House,2223,4,3.0,Furnished,3,3,9.0,1,6,Ready To Move,4.0,1221500.0
+PROP_15882,Downtown Central,Studio Apartment,431,1,1.0,Furnished,1,17,7.0,1,6,Ready To Move,1.0,288000.0
+PROP_10560,Riverside District,Independent House,2344,3,3.0,Semi-Furnished,0,1,0.0,2,4,Ready To Move,1.0,1129300.0
+PROP_13323,Westend Terrace,Apartment,1095,2,2.0,Unfurnished,2,6,5.0,1,5,Ready To Move,5.0,514800.0
+PROP_14263,Oakridge Valley,Luxury Villa,4596,4,4.0,Semi-Furnished,1,2,14.0,1,3,Ready To Move,1.0,2022800.0
+PROP_10078,Sunset Park,Independent House,2718,3,3.0,Furnished,0,2,9.0,1,5,Ready To Move,4.0,1161300.0
+PROP_15663,Sunset Park,Studio Apartment,598,1,1.0,Semi-Furnished,2,11,1.0,2,5,Ready To Move,1.0,312100.0
+PROP_10117,Westend Terrace,Apartment,1773,2,2.0,Furnished,1,13,7.0,2,8,Ready To Move,4.0,765600.0
+PROP_14589,Sunset Park,Independent House,1999,3,2.0,Furnished,1,3,3.0,0,5,Under Construction,3.0,853900.0
+PROP_10978,Oakridge Valley,Apartment,993,2,2.0,Semi-Furnished,0,8,11.0,1,8,Ready To Move,2.0,415400.0
+PROP_10737,Harbor Point,Apartment,1685,3,3.0,Furnished,0,5,21.0,1,5,Ready To Move,1.0,894900.0
+PROP_11450,Downtown Central,Apartment,1488,2,2.0,Semi-Furnished,2,10,24.0,1,10,Ready To Move,5.0,759300.0
+PROP_13858,Lakeside Estates,Apartment,1543,3,2.0,Furnished,2,3,1.0,1,3,Ready To Move,3.0,887700.0
+PROP_14343,Silicon Hills,Studio Apartment,514,1,1.0,Furnished,2,2,7.0,1,5,Ready To Move,3.0,394000.0
+PROP_14833,Silicon Hills,Apartment,1514,2,2.0,Semi-Furnished,2,11,16.0,1,3,Ready To Move,1.0,861900.0
+PROP_14102,Midtown Corridor,Studio Apartment,452,1,1.0,Unfurnished,1,5,0.0,1,4,Under Construction,1.0,259800.0
+PROP_11016,Sunset Park,Apartment,1418,2,1.0,Furnished,1,22,2.0,1,9,Ready To Move,3.0,652700.0
+PROP_11164,Greenwood Heights,Luxury Villa,5326,5,5.0,Unfurnished,2,3,0.0,2,7,Ready To Move,3.0,2929500.0
+PROP_10124,Midtown Corridor,Penthouse,3921,3,5.0,Furnished,2,24,16.0,1,8,Ready To Move,4.0,2433000.0
+PROP_12907,Harbor Point,Independent House,2788,4,3.0,Semi-Furnished,2,2,10.0,0,2,Ready To Move,5.0,1464900.0
+PROP_11699,Westend Terrace,Apartment,1372,2,2.0,Semi-Furnished,2,3,7.0,1,5,Ready To Move,3.0,601100.0
+PROP_14158,Sunset Park,Penthouse,4900,4,5.0,Semi-Furnished,1,29,8.0,1,3,Ready To Move,1.0,2905700.0
+PROP_13648,Westend Terrace,Penthouse,3984,3,5.0,Furnished,2,31,8.0,3,7,Ready To Move,4.0,2442100.0
+PROP_10234,Downtown Central,Independent House,2782,4,4.0,Furnished,2,2,19.0,2,3,Ready To Move,3.0,1478200.0
+PROP_12005,Downtown Central,Apartment,1671,3,2.0,Semi-Furnished,2,8,20.0,3,4,Under Construction,5.0,800500.0
+PROP_13290,Downtown Central,Penthouse,4595,4,5.0,Unfurnished,0,20,7.0,1,3,Ready To Move,4.0,3519200.0
+PROP_13677,Lakeside Estates,Apartment,1935,3,3.0,Furnished,0,16,3.0,2,7,Under Construction,4.0,998700.0
+PROP_11004,Riverside District,Luxury Villa,4445,4,4.0,Unfurnished,1,4,15.0,1,8,Ready To Move,3.0,2460200.0
+PROP_13917,Riverside District,Independent House,2553,3,3.0,Unfurnished,2,3,8.0,0,7,Ready To Move,1.0,1140900.0
+PROP_14299,Riverside District,Studio Apartment,550,1,1.0,Unfurnished,2,19,30.0,2,4,Under Construction,1.0,232600.0
+PROP_13736,Silicon Hills,Apartment,1442,3,2.0,Semi-Furnished,1,3,8.0,1,5,Under Construction,3.0,821200.0
+PROP_13422,Lakeside Estates,Apartment,1468,3,3.0,Semi-Furnished,1,16,0.0,2,4,Ready To Move,3.0,824800.0
+PROP_14842,Greenwood Heights,Independent House,2084,2,1.0,Furnished,2,3,13.0,1,5,Under Construction,2.0,859600.0
+PROP_10542,Midtown Corridor,Studio Apartment,463,1,1.0,Semi-Furnished,1,11,3.0,2,6,Ready To Move,3.0,290900.0
+PROP_15196,Sunset Park,Penthouse,4859,5,6.0,Semi-Furnished,0,27,15.0,2,3,Ready To Move,3.0,2416400.0
+PROP_13771,Downtown Central,Apartment,1731,3,2.0,Semi-Furnished,1,22,0.0,1,2,Ready To Move,5.0,971900.0
+PROP_12095,Sunset Park,Independent House,1899,2,3.0,Furnished,1,2,2.0,1,5,Ready To Move,1.0,933100.0
+PROP_11327,Oakridge Valley,Independent House,2426,4,4.0,Semi-Furnished,1,3,24.0,1,4,Ready To Move,5.0,938500.0
+PROP_15656,Silicon Hills,Independent House,2999,4,4.0,Unfurnished,1,2,5.0,2,3,Ready To Move,2.0,1732100.0
+PROP_12771,Riverside District,Apartment,1658,2,1.0,Semi-Furnished,2,16,1.0,1,3,Ready To Move,3.0,799300.0
+PROP_12850,Riverside District,Independent House,2707,4,3.0,Semi-Furnished,1,3,9.0,1,4,Ready To Move,1.0,1335600.0
+PROP_12181,Midtown Corridor,Apartment,1491,2,3.0,Unfurnished,1,13,0.0,2,4,Ready To Move,5.0,723000.0
+PROP_12801,Greenwood Heights,Independent House,2711,4,4.0,Furnished,2,3,39.0,1,2,Ready To Move,4.0,951900.0
+PROP_11304,Harbor Point,Studio Apartment,527,1,1.0,Semi-Furnished,0,6,33.0,1,8,Ready To Move,3.0,270600.0
+PROP_15858,Harbor Point,Independent House,3062,4,5.0,Semi-Furnished,1,2,11.0,1,9,Ready To Move,4.0,1781500.0
+PROP_10305,Greenwood Heights,Apartment,1014,2,2.0,Furnished,3,7,5.0,2,6,Ready To Move,5.0,539600.0
+PROP_11511,Harbor Point,Apartment,1523,2,1.0,Furnished,0,14,6.0,2,7,Under Construction,1.0,772500.0
+PROP_15927,Downtown Central,Apartment,1431,2,2.0,Furnished,1,1,4.0,2,10,Ready To Move,1.0,767900.0
+PROP_12540,Sunset Park,Independent House,3361,5,4.0,Furnished,1,2,7.0,1,6,Ready To Move,1.0,1324600.0
+PROP_11729,Sunset Park,Apartment,1544,3,2.0,Semi-Furnished,1,21,2.0,2,3,Ready To Move,4.0,651100.0
+PROP_13963,Westend Terrace,Independent House,2919,4,3.0,Unfurnished,1,1,9.0,3,2,Ready To Move,5.0,1378400.0
+PROP_12068,Lakeside Estates,Apartment,1055,1,1.0,Semi-Furnished,0,8,1.0,1,5,Ready To Move,2.0,546500.0
+PROP_15444,Midtown Corridor,Apartment,1619,2,2.0,Furnished,0,17,40.0,1,4,Ready To Move,3.0,631300.0
+PROP_13397,Silicon Hills,Independent House,2357,3,3.0,Furnished,1,1,8.0,1,5,Ready To Move,4.0,1335100.0
+PROP_15741,Harbor Point,Apartment,1425,3,3.0,Furnished,3,1,11.0,1,8,Under Construction,4.0,858800.0
+PROP_12575,Greenwood Heights,Apartment,1799,3,2.0,Furnished,1,9,16.0,0,5,Under Construction,5.0,698200.0
+PROP_14217,Downtown Central,Apartment,883,1,1.0,Semi-Furnished,1,7,13.0,1,10,Ready To Move,1.0,525100.0
+PROP_12090,Silicon Hills,Independent House,2099,3,4.0,Unfurnished,2,1,3.0,2,8,Ready To Move,2.0,1267100.0
+PROP_12931,Midtown Corridor,Independent House,2583,4,4.0,Unfurnished,2,1,8.0,1,9,Ready To Move,3.0,1262000.0
+PROP_15159,Sunset Park,Independent House,2784,5,4.0,Semi-Furnished,1,1,2.0,1,5,Ready To Move,1.0,1315300.0
+PROP_10941,Silicon Hills,Penthouse,4026,5,6.0,Semi-Furnished,0,20,0.0,3,5,Ready To Move,1.0,3290900.0
+PROP_12889,Harbor Point,Apartment,1587,2,1.0,Semi-Furnished,2,23,2.0,3,4,Ready To Move,4.0,937700.0
+PROP_10335,Westend Terrace,Studio Apartment,536,1,1.0,Furnished,1,15,1.0,1,7,Ready To Move,4.0,315600.0
+PROP_10463,Westend Terrace,Independent House,3388,5,4.0,Furnished,1,2,14.0,1,5,Under Construction,5.0,1488000.0
+PROP_11583,Harbor Point,Apartment,1830,3,2.0,Furnished,1,24,9.0,1,3,Under Construction,1.0,865400.0
+PROP_11510,Westend Terrace,Luxury Villa,5737,6,7.0,Unfurnished,1,2,5.0,1,2,Ready To Move,2.0,3238700.0
+PROP_15069,Oakridge Valley,Studio Apartment,628,1,1.0,Semi-Furnished,0,12,0.0,2,10,Ready To Move,1.0,332300.0
+PROP_10682,Oakridge Valley,Apartment,1350,2,1.0,Unfurnished,2,13,3.0,1,6,Ready To Move,3.0,537600.0
+PROP_14816,Oakridge Valley,Penthouse,5358,4,6.0,Semi-Furnished,2,22,0.0,2,7,Ready To Move,4.0,2783200.0
+PROP_12207,Westend Terrace,Independent House,2264,3,2.0,Semi-Furnished,0,2,19.0,1,5,Under Construction,5.0,936900.0
+PROP_15062,Westend Terrace,Independent House,2537,3,3.0,Unfurnished,1,2,4.0,1,8,Ready To Move,2.0,1219300.0
+PROP_14128,Downtown Central,Apartment,1635,3,2.0,Semi-Furnished,1,6,17.0,2,7,Ready To Move,5.0,943900.0
+PROP_10732,Silicon Hills,Apartment,1545,2,2.0,Semi-Furnished,1,11,3.0,1,2,Ready To Move,4.0,870100.0
+PROP_10649,Harbor Point,Independent House,2511,4,4.0,Unfurnished,1,2,3.0,2,2,Ready To Move,5.0,1591300.0
+PROP_10271,Riverside District,Independent House,2899,4,5.0,Unfurnished,1,1,4.0,1,8,Ready To Move,4.0,1525700.0
+PROP_11829,Oakridge Valley,Independent House,2539,4,4.0,Semi-Furnished,2,2,5.0,2,2,Ready To Move,5.0,983900.0
+PROP_14637,Greenwood Heights,Luxury Villa,4771,5,5.0,Furnished,2,3,17.0,1,7,Ready To Move,2.0,2185700.0
+PROP_13910,Oakridge Valley,Luxury Villa,5063,5,5.0,Semi-Furnished,1,3,3.0,1,7,Ready To Move,4.0,2344200.0
+PROP_10448,Downtown Central,Penthouse,4373,3,4.0,Furnished,0,30,21.0,1,6,Ready To Move,3.0,2554100.0
+PROP_11965,Silicon Hills,Luxury Villa,5493,4,5.0,Semi-Furnished,2,4,8.0,2,6,Ready To Move,1.0,4130700.0
+PROP_10268,Riverside District,Apartment,1546,3,3.0,Semi-Furnished,1,7,5.0,2,7,Ready To Move,5.0,824800.0
+PROP_14564,Oakridge Valley,Apartment,1470,2,1.0,Unfurnished,1,1,21.0,2,7,Ready To Move,2.0,543800.0
+PROP_10593,Greenwood Heights,Penthouse,3824,4,5.0,Semi-Furnished,1,30,6.0,3,1,Ready To Move,1.0,2248900.0
+PROP_10035,Midtown Corridor,Independent House,2173,3,3.0,Semi-Furnished,2,1,15.0,2,1,Ready To Move,2.0,1095300.0
+PROP_10389,Lakeside Estates,Studio Apartment,694,1,1.0,Unfurnished,1,8,2.0,2,4,Ready To Move,1.0,409800.0
+PROP_14262,Harbor Point,Penthouse,4423,3,4.0,Semi-Furnished,2,27,25.0,2,5,Ready To Move,5.0,2853300.0
+PROP_13468,Sunset Park,Apartment,1338,2,2.0,Furnished,2,24,4.0,0,7,Ready To Move,5.0,589600.0
+PROP_13690,Harbor Point,Apartment,1291,2,1.0,Semi-Furnished,0,4,13.0,1,3,Under Construction,3.0,649600.0
+PROP_11744,Lakeside Estates,Apartment,1256,2,1.0,Unfurnished,2,16,10.0,3,2,Under Construction,1.0,610400.0
+PROP_10470,Sunset Park,Apartment,1216,2,2.0,Semi-Furnished,1,20,17.0,1,5,Ready To Move,5.0,533500.0
+PROP_13997,Harbor Point,Apartment,1476,2,1.0,Semi-Furnished,0,15,2.0,2,5,Ready To Move,3.0,807000.0
+PROP_14112,Greenwood Heights,Luxury Villa,4485,4,5.0,Furnished,0,2,11.0,1,6,Ready To Move,3.0,2351200.0
+PROP_10904,Silicon Hills,Apartment,1737,3,2.0,Semi-Furnished,2,14,3.0,2,1,Ready To Move,4.0,1092500.0
+PROP_13515,Downtown Central,Apartment,1806,3,3.0,Semi-Furnished,3,10,18.0,2,6,Ready To Move,5.0,875900.0
+PROP_10628,Greenwood Heights,Apartment,1358,2,2.0,Furnished,1,9,1.0,1,10,Under Construction,3.0,627600.0
+PROP_13590,Greenwood Heights,Apartment,1164,1,1.0,Furnished,0,11,13.0,1,9,Under Construction,2.0,485400.0
+PROP_11429,Oakridge Valley,Luxury Villa,4941,4,4.0,Semi-Furnished,2,2,16.0,2,6,Under Construction,5.0,2006300.0
+PROP_11653,Greenwood Heights,Apartment,1565,2,1.0,Furnished,2,19,8.0,1,2,Ready To Move,2.0,625900.0
+PROP_13844,Oakridge Valley,Apartment,1666,3,3.0,Semi-Furnished,3,8,8.0,1,10,Ready To Move,5.0,714900.0
+PROP_12376,Sunset Park,Independent House,2977,4,3.0,Furnished,1,3,21.0,2,7,Ready To Move,4.0,1204600.0
+PROP_14149,Oakridge Valley,Apartment,1102,2,3.0,Furnished,1,20,0.0,1,6,Ready To Move,2.0,523900.0
+PROP_14750,Greenwood Heights,Studio Apartment,559,1,1.0,Semi-Furnished,0,6,5.0,2,3,Ready To Move,4.0,274100.0
+PROP_11123,Greenwood Heights,Apartment,1363,2,2.0,Furnished,1,13,2.0,1,5,Ready To Move,3.0,669400.0
+PROP_13946,Sunset Park,Independent House,1888,3,4.0,Furnished,2,1,2.0,1,5,Ready To Move,1.0,906200.0
+PROP_13023,Riverside District,Apartment,1999,4,3.0,Semi-Furnished,1,16,8.0,1,2,Ready To Move,4.0,957500.0
+PROP_10199,Silicon Hills,Luxury Villa,4856,4,5.0,Semi-Furnished,2,3,1.0,2,6,Ready To Move,5.0,3747500.0
+PROP_15461,Oakridge Valley,Independent House,2947,4,3.0,Unfurnished,1,1,6.0,2,6,Ready To Move,5.0,1135900.0
+PROP_12518,Riverside District,Independent House,3090,5,4.0,Semi-Furnished,0,2,4.0,2,10,Under Construction,3.0,1518300.0
+PROP_15997,Harbor Point,Apartment,1783,3,2.0,Semi-Furnished,1,19,6.0,2,4,Ready To Move,5.0,1053900.0
+PROP_14467,Oakridge Valley,Apartment,839,1,1.0,Furnished,1,3,1.0,2,6,Ready To Move,2.0,387700.0
+PROP_12446,Midtown Corridor,Apartment,1051,2,1.0,Semi-Furnished,1,23,2.0,1,8,Ready To Move,1.0,563200.0
+PROP_14022,Harbor Point,Studio Apartment,470,1,1.0,Furnished,1,4,2.0,1,10,Ready To Move,4.0,382800.0
+PROP_12139,Harbor Point,Independent House,1962,3,3.0,Unfurnished,0,3,2.0,1,6,Under Construction,2.0,1110500.0
+PROP_12621,Greenwood Heights,Apartment,1493,2,2.0,Semi-Furnished,2,10,4.0,0,4,Ready To Move,3.0,685900.0
+PROP_14340,Riverside District,Independent House,2481,3,3.0,Furnished,2,1,1.0,1,6,Under Construction,2.0,1243500.0
+PROP_12074,Lakeside Estates,Apartment,1395,2,2.0,Furnished,1,15,5.0,2,9,Ready To Move,5.0,763000.0
+PROP_15102,Sunset Park,Apartment,1228,2,2.0,Unfurnished,0,20,8.0,1,3,Under Construction,3.0,433800.0
+PROP_11114,Sunset Park,Apartment,1948,3,2.0,Unfurnished,1,18,26.0,1,5,Ready To Move,2.0,693400.0
+PROP_15254,Riverside District,Apartment,1395,2,2.0,Semi-Furnished,0,6,6.0,1,8,Under Construction,4.0,642000.0
+PROP_15763,Riverside District,Apartment,2047,3,2.0,Furnished,1,16,2.0,2,9,Under Construction,2.0,1043700.0
+PROP_11515,Oakridge Valley,Apartment,1278,2,2.0,Semi-Furnished,1,1,2.0,1,2,Ready To Move,3.0,525000.0
+PROP_10350,Silicon Hills,Apartment,1509,2,1.0,Semi-Furnished,1,4,1.0,2,8,Ready To Move,3.0,918400.0
+PROP_14733,Riverside District,Apartment,1646,3,2.0,Semi-Furnished,1,21,5.0,1,6,Ready To Move,1.0,851900.0
+PROP_14383,Harbor Point,Apartment,942,1,1.0,Semi-Furnished,0,24,2.0,3,3,Ready To Move,1.0,476100.0
+PROP_15993,Harbor Point,Luxury Villa,5010,4,5.0,Furnished,1,2,5.0,1,6,Ready To Move,2.0,3514300.0
+PROP_10283,Harbor Point,Penthouse,4243,4,6.0,Semi-Furnished,1,30,0.0,1,7,Ready To Move,4.0,3422500.0
+PROP_12028,Silicon Hills,Apartment,1616,3,2.0,Unfurnished,1,18,9.0,1,7,Under Construction,1.0,878000.0
+PROP_13136,Downtown Central,Apartment,1983,3,3.0,Semi-Furnished,0,13,7.0,1,2,Ready To Move,4.0,999000.0
+PROP_10445,Oakridge Valley,Luxury Villa,6353,6,6.0,Semi-Furnished,0,3,4.0,1,6,Ready To Move,4.0,2773000.0
+PROP_10886,Lakeside Estates,Luxury Villa,4453,4,5.0,Furnished,2,2,17.0,1,3,Ready To Move,2.0,2972000.0
+PROP_10708,Greenwood Heights,Apartment,1334,2,1.0,Furnished,3,12,3.0,1,6,Ready To Move,1.0,633000.0
+PROP_15949,Midtown Corridor,Independent House,2878,3,3.0,Semi-Furnished,2,2,5.0,0,4,Ready To Move,1.0,1442900.0
+PROP_13047,Riverside District,Penthouse,4697,4,5.0,Semi-Furnished,2,32,5.0,2,6,Under Construction,2.0,3069800.0
+PROP_10072,Lakeside Estates,Apartment,1415,2,2.0,Semi-Furnished,1,21,1.0,2,9,Ready To Move,1.0,815300.0
+PROP_11223,Downtown Central,Penthouse,3967,3,5.0,Semi-Furnished,1,32,2.0,1,5,Ready To Move,3.0,3050700.0
+PROP_14351,Midtown Corridor,Independent House,3518,5,3.0,Furnished,2,2,8.0,1,8,Ready To Move,3.0,1883000.0
+PROP_10579,Sunset Park,Luxury Villa,3978,4,5.0,Semi-Furnished,1,2,12.0,2,5,Ready To Move,2.0,1901000.0
+PROP_11502,Riverside District,Apartment,883,1,1.0,Unfurnished,1,21,2.0,0,10,Ready To Move,1.0,479300.0
+PROP_11655,Westend Terrace,Studio Apartment,660,1,1.0,Furnished,0,18,4.0,1,7,Under Construction,5.0,336600.0
+PROP_10105,Oakridge Valley,Studio Apartment,678,1,1.0,Semi-Furnished,1,5,20.0,2,2,Ready To Move,5.0,248200.0
+PROP_12588,Midtown Corridor,Studio Apartment,605,1,1.0,Furnished,1,2,4.0,1,9,Ready To Move,1.0,373400.0
+PROP_13400,Riverside District,Apartment,1373,2,2.0,Semi-Furnished,1,15,8.0,1,8,Ready To Move,3.0,650800.0
+PROP_11346,Silicon Hills,Apartment,1359,2,1.0,Semi-Furnished,1,6,7.0,1,7,Under Construction,1.0,740800.0
+PROP_11774,Silicon Hills,Penthouse,4730,4,5.0,Semi-Furnished,1,21,6.0,0,6,Ready To Move,4.0,3814400.0
+PROP_12639,Downtown Central,Apartment,1510,3,4.0,Semi-Furnished,1,13,20.0,2,4,Ready To Move,5.0,734700.0
+PROP_13731,Greenwood Heights,Studio Apartment,520,1,1.0,Semi-Furnished,2,9,1.0,2,8,Ready To Move,1.0,303100.0
+PROP_11775,Silicon Hills,Apartment,1222,2,3.0,Unfurnished,0,8,2.0,2,7,Under Construction,1.0,725200.0
+PROP_13871,Silicon Hills,Studio Apartment,596,1,1.0,Unfurnished,0,13,4.0,3,7,Ready To Move,3.0,406400.0
+PROP_14808,Harbor Point,Independent House,1671,2,3.0,Furnished,1,2,11.0,1,5,Ready To Move,1.0,1034400.0
+PROP_14596,Sunset Park,Apartment,1076,2,3.0,Semi-Furnished,2,9,0.0,1,4,Ready To Move,3.0,501500.0
+PROP_10153,Harbor Point,Apartment,1335,2,1.0,Unfurnished,1,18,2.0,3,7,Ready To Move,1.0,705900.0
+PROP_10464,Oakridge Valley,Apartment,1364,2,2.0,Furnished,3,7,0.0,0,6,Under Construction,4.0,583400.0
+PROP_13076,Silicon Hills,Independent House,3258,5,4.0,Semi-Furnished,1,1,33.0,2,10,Under Construction,4.0,1596000.0
+PROP_11096,Greenwood Heights,Apartment,1134,2,1.0,Semi-Furnished,1,8,0.0,2,4,Under Construction,4.0,501800.0
+PROP_10161,Harbor Point,Independent House,2902,4,3.0,Furnished,2,2,1.0,1,9,Ready To Move,1.0,1809300.0
+PROP_14246,Sunset Park,Apartment,758,1,1.0,Unfurnished,0,10,13.0,1,4,Ready To Move,1.0,286400.0
+PROP_14922,Midtown Corridor,Independent House,3283,5,5.0,Semi-Furnished,2,1,24.0,1,6,Under Construction,4.0,1576500.0
+PROP_15229,Lakeside Estates,Independent House,2022,3,2.0,Semi-Furnished,0,2,15.0,1,9,Ready To Move,1.0,1088300.0
+PROP_10907,Sunset Park,Penthouse,4026,3,4.0,Semi-Furnished,1,21,15.0,1,4,Ready To Move,1.0,1944000.0
+PROP_11443,Oakridge Valley,Independent House,1920,3,2.0,Semi-Furnished,2,2,40.0,1,6,Ready To Move,5.0,607500.0
+PROP_11890,Oakridge Valley,Apartment,1276,2,1.0,Unfurnished,0,23,1.0,2,5,Ready To Move,2.0,465800.0
+PROP_12375,Midtown Corridor,Apartment,1882,4,3.0,Semi-Furnished,1,16,27.0,1,1,Ready To Move,2.0,824700.0
+PROP_13570,Lakeside Estates,Apartment,1293,2,2.0,Semi-Furnished,2,16,4.0,1,3,Ready To Move,1.0,697400.0
+PROP_12928,Lakeside Estates,Apartment,1625,3,3.0,Semi-Furnished,2,1,2.0,1,5,Under Construction,3.0,858900.0
+PROP_12795,Westend Terrace,Apartment,1085,2,3.0,Furnished,2,15,7.0,1,6,Under Construction,3.0,496100.0
+PROP_10109,Harbor Point,Luxury Villa,4544,5,6.0,Semi-Furnished,1,3,5.0,1,6,Ready To Move,2.0,3215900.0
+PROP_15451,Midtown Corridor,Independent House,2189,3,4.0,Furnished,1,2,15.0,0,4,Ready To Move,3.0,1085600.0
+PROP_12961,Oakridge Valley,Independent House,2178,3,3.0,Semi-Furnished,0,3,11.0,2,7,Ready To Move,4.0,871000.0
+PROP_14839,Greenwood Heights,Apartment,1701,3,3.0,Furnished,0,5,5.0,1,5,Under Construction,3.0,766100.0
+PROP_14688,Oakridge Valley,Apartment,1922,3,3.0,Unfurnished,1,6,17.0,1,3,Ready To Move,5.0,656400.0
+PROP_14967,Silicon Hills,Independent House,3463,5,4.0,Semi-Furnished,0,3,1.0,2,6,Ready To Move,3.0,2323900.0
+PROP_14142,Sunset Park,Apartment,1524,3,3.0,Furnished,0,18,0.0,1,5,Under Construction,2.0,661700.0
+PROP_12766,Lakeside Estates,Penthouse,4079,4,6.0,Semi-Furnished,1,24,16.0,2,5,Ready To Move,2.0,2450000.0
+PROP_15440,Sunset Park,Apartment,1230,1,2.0,Unfurnished,1,22,18.0,1,3,Ready To Move,5.0,444000.0
+PROP_13684,Lakeside Estates,Studio Apartment,524,1,1.0,Furnished,1,7,3.0,1,3,Ready To Move,1.0,315800.0
+PROP_11171,Oakridge Valley,Luxury Villa,4424,4,4.0,Furnished,1,4,3.0,1,3,Under Construction,1.0,1973700.0
+PROP_11183,Harbor Point,Studio Apartment,666,1,1.0,Semi-Furnished,2,7,1.0,2,3,Ready To Move,5.0,421000.0
+PROP_15480,Harbor Point,Apartment,1542,2,2.0,Furnished,1,10,0.0,1,3,Ready To Move,5.0,914800.0
+PROP_14310,Riverside District,Luxury Villa,3996,4,5.0,Furnished,2,3,7.0,2,4,Under Construction,3.0,2192700.0
+PROP_14872,Midtown Corridor,Independent House,2648,5,5.0,Semi-Furnished,3,2,5.0,0,5,Under Construction,3.0,1357600.0
+PROP_10953,Oakridge Valley,Apartment,850,2,2.0,Semi-Furnished,1,3,8.0,1,4,Ready To Move,3.0,342600.0
+PROP_14235,Westend Terrace,Independent House,3274,4,4.0,Semi-Furnished,1,3,0.0,1,8,Ready To Move,5.0,1758900.0
+PROP_15541,Greenwood Heights,Apartment,1210,2,2.0,Semi-Furnished,0,16,4.0,1,6,Under Construction,1.0,510400.0
+PROP_12313,Midtown Corridor,Apartment,1298,2,2.0,Unfurnished,3,1,2.0,2,8,Ready To Move,1.0,690200.0
+PROP_13366,Downtown Central,Apartment,1446,2,2.0,Unfurnished,1,7,2.0,1,6,Ready To Move,2.0,783600.0
+PROP_14092,Westend Terrace,Penthouse,5291,4,5.0,Furnished,0,20,4.0,1,4,Under Construction,3.0,2724100.0
+PROP_15146,Lakeside Estates,Apartment,576,1,1.0,Semi-Furnished,1,3,11.0,2,5,Ready To Move,3.0,292100.0
+PROP_10265,Sunset Park,Luxury Villa,4433,4,5.0,Unfurnished,2,4,25.0,1,5,Ready To Move,1.0,1948900.0
+PROP_15218,Lakeside Estates,Apartment,2059,4,3.0,Furnished,1,24,6.0,0,7,Ready To Move,1.0,1106200.0
+PROP_10398,Harbor Point,Apartment,1763,3,4.0,Unfurnished,1,18,2.0,1,6,Ready To Move,2.0,970400.0
+PROP_11628,Silicon Hills,Luxury Villa,4818,4,5.0,Furnished,1,4,1.0,1,4,Ready To Move,3.0,3814900.0
+PROP_13275,Lakeside Estates,Penthouse,4945,5,6.0,Semi-Furnished,1,29,3.0,2,6,Ready To Move,3.0,3710900.0
+PROP_15996,Oakridge Valley,Apartment,1444,2,1.0,Unfurnished,1,17,0.0,1,4,Ready To Move,3.0,572200.0
+PROP_13516,Downtown Central,Apartment,1557,2,1.0,Semi-Furnished,2,2,5.0,1,3,Ready To Move,2.0,732200.0
+PROP_14987,Lakeside Estates,Apartment,2180,4,4.0,Furnished,2,8,8.0,1,3,Ready To Move,5.0,1095400.0
+PROP_12984,Lakeside Estates,Apartment,1073,2,2.0,Unfurnished,1,12,8.0,1,10,Ready To Move,2.0,609300.0
+PROP_14734,Sunset Park,Penthouse,4554,4,6.0,Semi-Furnished,1,23,9.0,0,8,Ready To Move,5.0,2516300.0
+PROP_11082,Oakridge Valley,Independent House,2460,3,2.0,Furnished,3,1,5.0,2,3,Ready To Move,3.0,1110700.0
+PROP_12508,Harbor Point,Apartment,1336,2,2.0,Semi-Furnished,1,20,11.0,1,8,Under Construction,5.0,660700.0
+PROP_14458,Oakridge Valley,Apartment,1878,3,3.0,Unfurnished,2,16,8.0,1,4,Ready To Move,1.0,774900.0
+PROP_12285,Riverside District,Independent House,2878,4,4.0,Unfurnished,1,2,1.0,1,8,Ready To Move,3.0,1533100.0
+PROP_11841,Westend Terrace,Luxury Villa,5105,5,5.0,Furnished,2,3,3.0,1,3,Ready To Move,3.0,2894800.0
+PROP_14512,Lakeside Estates,Apartment,1233,2,2.0,Unfurnished,1,9,9.0,2,8,Under Construction,4.0,630000.0
+PROP_14748,Oakridge Valley,Apartment,1182,2,1.0,Semi-Furnished,3,21,5.0,2,8,Ready To Move,3.0,540500.0
+PROP_14537,Greenwood Heights,Independent House,2397,3,3.0,Furnished,2,2,2.0,1,8,Ready To Move,2.0,1225400.0
+PROP_12341,Lakeside Estates,Studio Apartment,531,1,1.0,Unfurnished,2,5,3.0,1,6,Ready To Move,5.0,327300.0
+PROP_14608,Oakridge Valley,Independent House,2505,3,2.0,Furnished,1,3,7.0,3,7,Ready To Move,3.0,1116600.0
+PROP_15789,Harbor Point,Luxury Villa,4866,5,5.0,Furnished,2,4,1.0,1,8,Ready To Move,2.0,3489100.0
+PROP_14216,Westend Terrace,Apartment,1456,3,2.0,Semi-Furnished,1,7,8.0,2,10,Under Construction,4.0,669400.0
+PROP_15242,Lakeside Estates,Apartment,1370,2,2.0,Unfurnished,2,15,16.0,1,10,Ready To Move,5.0,672900.0
+PROP_13234,Westend Terrace,Apartment,2086,4,4.0,Semi-Furnished,1,3,5.0,3,8,Ready To Move,2.0,912200.0
+PROP_15611,Sunset Park,Luxury Villa,4383,4,5.0,Furnished,2,3,9.0,1,6,Ready To Move,2.0,2274900.0
+PROP_11901,Harbor Point,Independent House,2266,3,2.0,Semi-Furnished,1,2,2.0,2,4,Under Construction,1.0,1346400.0
+PROP_12059,Midtown Corridor,Studio Apartment,513,1,1.0,Furnished,2,11,2.0,1,6,Ready To Move,4.0,334600.0
+PROP_11341,Midtown Corridor,Independent House,1785,2,1.0,Unfurnished,1,2,2.0,0,3,Ready To Move,5.0,952400.0
+PROP_11270,Lakeside Estates,Apartment,878,2,1.0,Semi-Furnished,1,2,10.0,2,6,Ready To Move,5.0,479300.0
+PROP_12275,Greenwood Heights,Independent House,2385,3,4.0,Furnished,2,3,8.0,2,9,Ready To Move,4.0,1189300.0
+PROP_14496,Lakeside Estates,Studio Apartment,537,1,1.0,Semi-Furnished,2,7,7.0,1,5,Ready To Move,5.0,331700.0
+PROP_11030,Greenwood Heights,Independent House,3431,4,4.0,Semi-Furnished,1,2,27.0,2,5,Ready To Move,2.0,1414600.0
+PROP_11321,Downtown Central,Apartment,1994,4,4.0,Furnished,2,3,23.0,1,10,Under Construction,2.0,831700.0
+PROP_12592,Silicon Hills,Apartment,1280,2,2.0,Semi-Furnished,2,4,9.0,1,3,Ready To Move,2.0,808600.0
+PROP_13561,Westend Terrace,Luxury Villa,4701,4,4.0,Semi-Furnished,1,3,11.0,1,4,Under Construction,2.0,2296400.0
+PROP_13183,Harbor Point,Independent House,2191,3,4.0,Semi-Furnished,2,2,3.0,2,7,Ready To Move,2.0,1460800.0
+PROP_14954,Lakeside Estates,Luxury Villa,4434,4,4.0,Furnished,1,3,2.0,1,3,Under Construction,2.0,2794800.0
+PROP_13904,Sunset Park,Apartment,1485,2,2.0,Unfurnished,2,3,7.0,3,5,Ready To Move,1.0,590600.0
+PROP_15344,Silicon Hills,Apartment,1590,3,2.0,Semi-Furnished,3,13,9.0,0,6,Ready To Move,3.0,858300.0
+PROP_15492,Downtown Central,Apartment,1268,2,2.0,Furnished,0,17,1.0,1,2,Ready To Move,3.0,745500.0
+PROP_12083,Harbor Point,Apartment,1386,2,2.0,Furnished,1,11,10.0,0,3,Ready To Move,4.0,791900.0
+PROP_12436,Sunset Park,Independent House,2928,4,3.0,Semi-Furnished,1,3,1.0,2,3,Ready To Move,3.0,1291500.0
+PROP_15165,Greenwood Heights,Independent House,2578,3,3.0,Semi-Furnished,0,2,13.0,2,10,Under Construction,2.0,1029100.0
+PROP_11712,Harbor Point,Luxury Villa,4638,3,3.0,Furnished,2,2,11.0,1,1,Under Construction,4.0,2805100.0
+PROP_10783,Silicon Hills,Penthouse,5563,3,5.0,Furnished,1,22,2.0,1,2,Under Construction,5.0,4209000.0
+PROP_12245,Oakridge Valley,Studio Apartment,549,1,1.0,Semi-Furnished,2,3,11.0,0,4,Ready To Move,5.0,254100.0
+PROP_13654,Oakridge Valley,Apartment,1114,1,1.0,Semi-Furnished,1,13,6.0,1,10,Ready To Move,5.0,509800.0
+PROP_13880,Riverside District,Apartment,1119,2,1.0,Semi-Furnished,0,18,3.0,2,10,Under Construction,3.0,582000.0
+PROP_14204,Westend Terrace,Apartment,1443,2,2.0,Unfurnished,2,16,7.0,1,4,Under Construction,2.0,634200.0
+PROP_10169,Midtown Corridor,Studio Apartment,398,1,1.0,Furnished,3,2,9.0,0,6,Ready To Move,5.0,318000.0
+PROP_12199,Harbor Point,Apartment,1313,2,2.0,Semi-Furnished,1,9,29.0,3,5,Ready To Move,2.0,635100.0
+PROP_11725,Midtown Corridor,Apartment,1402,3,3.0,Unfurnished,1,21,5.0,3,10,Ready To Move,2.0,776600.0
+PROP_11899,Riverside District,Luxury Villa,4803,4,5.0,Semi-Furnished,1,2,4.0,1,10,Under Construction,2.0,2627500.0
+PROP_14049,Lakeside Estates,Apartment,1564,3,2.0,Furnished,3,8,16.0,2,8,Ready To Move,3.0,829700.0
+PROP_10853,Riverside District,Apartment,1384,3,3.0,Semi-Furnished,2,6,5.0,1,5,Ready To Move,5.0,716900.0
+PROP_10673,Lakeside Estates,Apartment,1154,2,3.0,Unfurnished,2,9,1.0,0,7,Ready To Move,4.0,631300.0
+PROP_14530,Harbor Point,Luxury Villa,3991,4,5.0,Furnished,1,2,2.0,0,8,Ready To Move,2.0,2951000.0
+PROP_11239,Oakridge Valley,Apartment,2166,4,4.0,Semi-Furnished,0,6,2.0,0,3,Ready To Move,3.0,742000.0
+PROP_10297,Lakeside Estates,Penthouse,5491,5,7.0,Semi-Furnished,1,22,0.0,1,5,Ready To Move,2.0,3955000.0
+PROP_12633,Harbor Point,Apartment,1212,1,1.0,Semi-Furnished,0,8,34.0,2,4,Ready To Move,5.0,560300.0
+PROP_14067,Lakeside Estates,Apartment,951,1,1.0,Furnished,1,8,1.0,1,3,Ready To Move,3.0,566100.0
+PROP_13177,Lakeside Estates,Studio Apartment,544,1,1.0,Semi-Furnished,1,16,5.0,3,6,Ready To Move,3.0,350700.0
+PROP_11357,Midtown Corridor,Luxury Villa,3956,3,4.0,Furnished,2,4,1.0,2,6,Ready To Move,1.0,2767900.0
+PROP_14229,Harbor Point,Studio Apartment,510,1,1.0,Furnished,1,16,5.0,2,5,Ready To Move,3.0,369500.0
+PROP_13080,Downtown Central,Apartment,1110,2,3.0,Semi-Furnished,0,4,17.0,1,6,Ready To Move,5.0,571300.0
+PROP_11214,Lakeside Estates,Independent House,2065,2,1.0,Semi-Furnished,1,2,0.0,1,4,Ready To Move,2.0,1228500.0
+PROP_11726,Lakeside Estates,Studio Apartment,610,1,1.0,Unfurnished,1,18,0.0,1,6,Ready To Move,5.0,386900.0
+PROP_12334,Harbor Point,Apartment,988,1,1.0,Semi-Furnished,3,9,21.0,1,6,Ready To Move,1.0,499500.0
+PROP_14723,Riverside District,Studio Apartment,560,1,1.0,Semi-Furnished,1,4,5.0,2,7,Ready To Move,3.0,333300.0
+PROP_14273,Harbor Point,Apartment,1630,3,3.0,Furnished,0,14,17.0,1,3,Under Construction,3.0,893300.0
+PROP_14900,Lakeside Estates,Luxury Villa,4119,4,5.0,Semi-Furnished,3,2,7.0,1,7,Ready To Move,1.0,2724700.0
+PROP_15231,Riverside District,Apartment,703,1,1.0,Furnished,0,14,0.0,2,3,Ready To Move,5.0,399800.0
+PROP_13325,Sunset Park,Apartment,1240,2,2.0,Semi-Furnished,3,9,18.0,2,8,Ready To Move,1.0,579100.0
+PROP_14622,Harbor Point,Independent House,2218,3,3.0,Unfurnished,3,1,1.0,3,7,Ready To Move,4.0,1554300.0
+PROP_12675,Midtown Corridor,Apartment,1579,3,2.0,Furnished,1,10,10.0,1,3,Ready To Move,2.0,808400.0
+PROP_13351,Silicon Hills,Independent House,2505,4,4.0,Unfurnished,2,2,2.0,1,6,Ready To Move,2.0,1739800.0
+PROP_11912,Harbor Point,Apartment,1728,3,4.0,Semi-Furnished,2,20,3.0,2,5,Ready To Move,4.0,1042100.0
+PROP_14514,Greenwood Heights,Apartment,1235,2,1.0,Semi-Furnished,2,8,0.0,1,5,Ready To Move,2.0,597800.0
+PROP_15753,Riverside District,Independent House,3089,4,4.0,Semi-Furnished,1,1,2.0,1,6,Ready To Move,5.0,1668500.0
+PROP_14446,Oakridge Valley,Studio Apartment,481,1,1.0,Furnished,1,2,15.0,2,7,Ready To Move,3.0,265100.0
+PROP_10311,Greenwood Heights,Studio Apartment,526,1,1.0,Furnished,1,1,2.0,2,3,Ready To Move,3.0,280800.0
+PROP_14240,Greenwood Heights,Apartment,1144,2,3.0,Semi-Furnished,2,16,8.0,1,2,Ready To Move,3.0,546800.0
+PROP_10446,Silicon Hills,Independent House,2391,4,4.0,Furnished,2,1,13.0,1,7,Ready To Move,3.0,1690000.0
+PROP_11192,Silicon Hills,Independent House,1551,2,3.0,Unfurnished,2,2,0.0,1,2,Under Construction,2.0,1000900.0
+PROP_15956,Downtown Central,Independent House,3167,4,3.0,Furnished,2,1,6.0,3,10,Ready To Move,5.0,1892600.0
+PROP_13157,Silicon Hills,Independent House,3183,4,5.0,Furnished,1,2,6.0,0,9,Ready To Move,3.0,2139600.0
+PROP_13877,Midtown Corridor,Apartment,2058,4,4.0,Semi-Furnished,1,12,8.0,1,6,Ready To Move,1.0,966500.0
+PROP_15819,Sunset Park,Apartment,1630,2,2.0,Furnished,1,21,2.0,1,8,Ready To Move,2.0,720700.0
+PROP_15785,Harbor Point,Independent House,2164,3,4.0,Unfurnished,0,3,0.0,1,6,Ready To Move,2.0,1373500.0
+PROP_15182,Riverside District,Independent House,2915,5,5.0,Furnished,1,3,6.0,1,4,Ready To Move,2.0,1569500.0
+PROP_14708,Midtown Corridor,Independent House,2488,4,3.0,Unfurnished,1,3,4.0,1,5,Ready To Move,1.0,1398600.0
+PROP_11579,Sunset Park,Studio Apartment,578,1,1.0,Furnished,0,7,16.0,2,2,Ready To Move,4.0,256200.0
+PROP_14736,Oakridge Valley,Apartment,1269,1,1.0,Unfurnished,1,14,30.0,2,5,Ready To Move,5.0,410000.0
+PROP_15910,Downtown Central,Apartment,1525,2,2.0,Semi-Furnished,1,22,7.0,1,7,Ready To Move,3.0,871700.0
+PROP_11522,Downtown Central,Independent House,2766,4,5.0,Unfurnished,3,2,5.0,0,5,Ready To Move,2.0,1725000.0
+PROP_12623,Midtown Corridor,Apartment,1416,2,2.0,Semi-Furnished,2,8,11.0,3,10,Under Construction,2.0,711300.0
+PROP_15631,Downtown Central,Apartment,956,2,1.0,Furnished,0,11,0.0,2,3,Ready To Move,3.0,590700.0
+PROP_10429,Riverside District,Apartment,996,2,2.0,Semi-Furnished,3,5,0.0,2,5,Ready To Move,5.0,655000.0
+PROP_15147,Silicon Hills,Apartment,1517,3,3.0,Furnished,2,8,6.0,1,4,Ready To Move,3.0,939300.0
+PROP_11785,Lakeside Estates,Independent House,2172,3,3.0,Furnished,1,2,18.0,1,5,Ready To Move,1.0,1178600.0
+PROP_10101,Silicon Hills,Apartment,1394,2,2.0,Semi-Furnished,1,8,5.0,1,6,Under Construction,1.0,851100.0
+PROP_14336,Riverside District,Independent House,2511,3,4.0,Semi-Furnished,1,1,0.0,1,3,Ready To Move,3.0,1407500.0
+PROP_10243,Riverside District,Apartment,1798,2,2.0,Furnished,0,21,1.0,1,3,Under Construction,1.0,821300.0
+PROP_13975,Harbor Point,Studio Apartment,493,1,1.0,Unfurnished,1,4,1.0,0,6,Ready To Move,1.0,304900.0
+PROP_15173,Harbor Point,Studio Apartment,496,1,1.0,Furnished,1,16,15.0,2,6,Ready To Move,4.0,339200.0
+PROP_10606,Sunset Park,Penthouse,4938,5,6.0,Semi-Furnished,2,33,7.0,1,8,Ready To Move,5.0,2784400.0
+PROP_11641,Silicon Hills,Apartment,1177,2,2.0,Unfurnished,2,22,6.0,0,5,Ready To Move,2.0,786100.0
+PROP_13592,Midtown Corridor,Apartment,1434,3,2.0,Furnished,1,12,5.0,1,5,Ready To Move,1.0,719900.0
+PROP_15477,Harbor Point,Independent House,2487,4,3.0,Furnished,0,2,4.0,1,5,Ready To Move,3.0,1544900.0
+PROP_15017,Riverside District,Independent House,2988,4,5.0,Unfurnished,1,3,8.0,2,3,Ready To Move,3.0,1470800.0
+PROP_12630,Oakridge Valley,Independent House,1983,3,2.0,Semi-Furnished,3,2,0.0,0,5,Ready To Move,3.0,937100.0
+PROP_12018,Riverside District,Studio Apartment,584,1,1.0,Semi-Furnished,2,19,4.0,2,9,Under Construction,2.0,349300.0
+PROP_13797,Harbor Point,Independent House,2830,4,5.0,Unfurnished,1,3,9.0,1,6,Ready To Move,5.0,1768300.0
+PROP_14487,Downtown Central,Independent House,2432,2,1.0,Furnished,1,3,0.0,1,5,Ready To Move,2.0,1396100.0
+PROP_10755,Lakeside Estates,Penthouse,4047,3,4.0,Unfurnished,1,18,10.0,0,6,Ready To Move,1.0,2676200.0
+PROP_15584,Lakeside Estates,Penthouse,5020,5,7.0,Furnished,2,22,8.0,0,5,Ready To Move,3.0,3459900.0
+PROP_10142,Midtown Corridor,Apartment,1333,2,2.0,Furnished,2,8,6.0,2,7,Ready To Move,2.0,676200.0
+PROP_14854,Greenwood Heights,Apartment,877,2,1.0,Furnished,2,14,1.0,1,3,Ready To Move,2.0,485100.0
+PROP_11434,Silicon Hills,Apartment,1567,2,2.0,Furnished,2,21,2.0,1,4,Under Construction,4.0,996200.0
+PROP_15626,Greenwood Heights,Penthouse,4759,4,5.0,Semi-Furnished,1,24,11.0,1,5,Ready To Move,2.0,2472700.0
+PROP_11466,Sunset Park,Independent House,2825,4,3.0,Furnished,1,1,13.0,1,7,Under Construction,4.0,1134100.0
+PROP_14995,Westend Terrace,Independent House,2361,4,5.0,Semi-Furnished,1,2,0.0,1,6,Ready To Move,1.0,1247800.0
+PROP_10054,Silicon Hills,Apartment,1639,3,3.0,Semi-Furnished,2,6,12.0,1,7,Ready To Move,3.0,965100.0
+PROP_11056,Midtown Corridor,Luxury Villa,5137,5,5.0,Semi-Furnished,0,3,27.0,2,1,Ready To Move,1.0,2717100.0
+PROP_13228,Harbor Point,Apartment,587,1,1.0,Unfurnished,1,24,7.0,1,4,Ready To Move,5.0,341200.0
+PROP_13196,Oakridge Valley,Apartment,1251,2,2.0,Semi-Furnished,2,15,6.0,2,5,Ready To Move,3.0,536300.0
+PROP_14673,Oakridge Valley,Penthouse,4637,3,4.0,Semi-Furnished,1,29,25.0,0,10,Ready To Move,5.0,1820000.0
+PROP_10815,Harbor Point,Apartment,1329,2,2.0,Semi-Furnished,2,4,4.0,2,8,Under Construction,2.0,742600.0
+PROP_13540,Lakeside Estates,Luxury Villa,4288,4,5.0,Furnished,1,4,0.0,0,3,Ready To Move,5.0,3081500.0
+PROP_13444,Downtown Central,Apartment,882,2,1.0,Semi-Furnished,1,18,2.0,1,6,Ready To Move,1.0,551800.0
+PROP_15416,Harbor Point,Luxury Villa,4282,5,6.0,Furnished,1,3,5.0,0,6,Ready To Move,2.0,3295500.0
+PROP_10949,Harbor Point,Studio Apartment,622,1,1.0,Furnished,1,6,10.0,1,2,Ready To Move,2.0,388300.0
+PROP_10038,Midtown Corridor,Apartment,1348,2,1.0,Furnished,1,11,0.0,1,6,Ready To Move,1.0,712300.0
+PROP_13281,Silicon Hills,Apartment,1208,2,2.0,Furnished,1,4,4.0,2,8,Ready To Move,4.0,845400.0
+PROP_12923,Lakeside Estates,Apartment,1042,2,3.0,Unfurnished,1,13,10.0,2,9,Ready To Move,5.0,601000.0
+PROP_12499,Greenwood Heights,Apartment,994,2,2.0,Furnished,1,2,3.0,2,6,Ready To Move,2.0,521600.0
+PROP_13850,Westend Terrace,Apartment,1750,3,3.0,Semi-Furnished,1,4,11.0,2,2,Ready To Move,5.0,765300.0
+PROP_15990,Midtown Corridor,Apartment,1300,2,2.0,Unfurnished,1,13,4.0,2,3,Ready To Move,1.0,654400.0
+PROP_12823,Sunset Park,Apartment,1675,2,2.0,Furnished,1,3,14.0,1,5,Ready To Move,5.0,715100.0
+PROP_14163,Sunset Park,Independent House,2717,3,3.0,Unfurnished,1,2,7.0,1,6,Ready To Move,3.0,1156600.0
+PROP_11162,Silicon Hills,Studio Apartment,610,1,1.0,Semi-Furnished,3,18,15.0,2,2,Ready To Move,1.0,388700.0
+PROP_14587,Greenwood Heights,Studio Apartment,418,1,1.0,Furnished,1,15,5.0,1,8,Under Construction,5.0,279400.0
+PROP_15638,Downtown Central,Independent House,2164,2,1.0,Semi-Furnished,0,2,1.0,1,3,Ready To Move,1.0,1252400.0
+PROP_14121,Downtown Central,Independent House,2387,4,3.0,Furnished,2,2,5.0,0,5,Ready To Move,4.0,1467900.0
+PROP_15245,Oakridge Valley,Luxury Villa,3859,4,4.0,Semi-Furnished,1,3,1.0,1,9,Under Construction,1.0,1895400.0
+PROP_12155,Silicon Hills,Luxury Villa,4713,4,4.0,Semi-Furnished,1,2,6.0,2,3,Under Construction,1.0,3295200.0
+PROP_15355,Greenwood Heights,Luxury Villa,5480,6,6.0,Semi-Furnished,2,2,7.0,1,7,Ready To Move,4.0,3054500.0
+PROP_15859,Silicon Hills,Apartment,1964,3,3.0,Semi-Furnished,3,21,3.0,1,6,Ready To Move,2.0,1203300.0
+PROP_12347,Sunset Park,Luxury Villa,5333,5,5.0,Semi-Furnished,1,3,8.0,1,8,Ready To Move,1.0,2651300.0
+PROP_15247,Oakridge Valley,Apartment,1565,2,1.0,Unfurnished,3,4,9.0,2,5,Ready To Move,3.0,543000.0
+PROP_14140,Downtown Central,Apartment,1271,3,3.0,Semi-Furnished,1,19,0.0,1,5,Ready To Move,4.0,748700.0
+PROP_14290,Downtown Central,Independent House,2309,3,2.0,Furnished,1,2,2.0,2,5,Under Construction,3.0,1427000.0
+PROP_13467,Harbor Point,Independent House,2636,3,3.0,Unfurnished,2,3,2.0,2,4,Ready To Move,1.0,1617300.0
+PROP_15936,Silicon Hills,Apartment,1158,2,1.0,Furnished,3,21,0.0,1,8,Under Construction,5.0,759800.0
+PROP_14529,Silicon Hills,Apartment,1079,2,1.0,Semi-Furnished,2,5,11.0,1,4,Under Construction,1.0,550000.0
+PROP_13303,Lakeside Estates,Apartment,1949,4,4.0,Furnished,0,4,0.0,1,6,Under Construction,2.0,1049000.0
+PROP_12867,Greenwood Heights,Independent House,2702,3,3.0,Unfurnished,3,1,5.0,1,4,Ready To Move,4.0,1306800.0
+PROP_12817,Oakridge Valley,Apartment,1331,2,2.0,Unfurnished,2,16,9.0,1,6,Under Construction,1.0,490000.0
+PROP_15097,Downtown Central,Luxury Villa,6334,6,7.0,Furnished,1,4,18.0,0,6,Ready To Move,5.0,4425400.0
+PROP_12520,Sunset Park,Studio Apartment,633,1,1.0,Furnished,1,18,0.0,2,7,Under Construction,1.0,355500.0
+PROP_14823,Midtown Corridor,Apartment,1421,2,2.0,Semi-Furnished,2,7,8.0,1,3,Ready To Move,5.0,713400.0
+PROP_15608,Harbor Point,Independent House,2459,3,4.0,Semi-Furnished,2,2,1.0,2,5,Ready To Move,3.0,1603100.0
+PROP_14144,Lakeside Estates,Studio Apartment,605,1,1.0,Unfurnished,1,12,22.0,0,2,Ready To Move,5.0,289100.0
+PROP_15390,Greenwood Heights,Apartment,1466,3,3.0,Furnished,1,17,2.0,1,6,Ready To Move,2.0,647200.0
+PROP_14233,Oakridge Valley,Apartment,1528,2,2.0,Furnished,0,21,4.0,2,8,Ready To Move,3.0,636200.0
+PROP_10434,Greenwood Heights,Apartment,1487,2,1.0,Semi-Furnished,2,7,11.0,2,5,Under Construction,2.0,530200.0
+PROP_14972,Sunset Park,Apartment,1216,2,1.0,Furnished,2,19,7.0,1,9,Ready To Move,4.0,606900.0
+PROP_11358,Riverside District,Luxury Villa,4918,5,6.0,Semi-Furnished,1,2,19.0,2,4,Ready To Move,4.0,2798200.0
+PROP_14866,Oakridge Valley,Luxury Villa,3853,4,4.0,Unfurnished,1,2,3.0,2,3,Ready To Move,5.0,1932400.0
+PROP_12937,Greenwood Heights,Studio Apartment,494,1,1.0,Furnished,1,6,2.0,2,6,Ready To Move,2.0,311200.0
+PROP_10058,Harbor Point,Studio Apartment,660,1,1.0,Furnished,2,18,4.0,1,4,Ready To Move,3.0,414300.0
+PROP_13265,Westend Terrace,Studio Apartment,604,1,1.0,Furnished,2,17,5.0,2,2,Ready To Move,3.0,357200.0
+PROP_11454,Westend Terrace,Apartment,1796,3,3.0,Unfurnished,2,12,4.0,1,6,Ready To Move,3.0,875700.0
+PROP_15047,Silicon Hills,Penthouse,4927,4,5.0,Semi-Furnished,2,27,2.0,1,4,Ready To Move,3.0,3951900.0
+PROP_12454,Greenwood Heights,Studio Apartment,648,1,1.0,Unfurnished,1,8,5.0,1,2,Ready To Move,4.0,283000.0
+PROP_10260,Silicon Hills,Apartment,1387,2,2.0,Semi-Furnished,1,12,1.0,1,6,Ready To Move,1.0,868400.0
+PROP_12352,Oakridge Valley,Apartment,1582,3,3.0,Furnished,2,18,11.0,1,10,Ready To Move,4.0,664100.0
+PROP_10279,Harbor Point,Independent House,1816,2,3.0,Semi-Furnished,2,1,4.0,2,5,Ready To Move,3.0,1124500.0
+PROP_12385,Downtown Central,Apartment,1626,3,3.0,Semi-Furnished,3,6,12.0,2,3,Ready To Move,5.0,855900.0
+PROP_13045,Oakridge Valley,Penthouse,4463,5,7.0,Unfurnished,2,33,2.0,1,1,Ready To Move,1.0,2404900.0
+PROP_11159,Lakeside Estates,Luxury Villa,4841,4,5.0,Furnished,1,3,13.0,0,6,Ready To Move,1.0,2970300.0
+PROP_15850,Silicon Hills,Independent House,2726,3,3.0,Semi-Furnished,2,1,3.0,1,8,Ready To Move,1.0,1844900.0
+PROP_11022,Westend Terrace,Apartment,1359,2,1.0,Furnished,1,22,0.0,1,9,Under Construction,1.0,632500.0
+PROP_12004,Sunset Park,Independent House,2467,3,3.0,Furnished,1,2,0.0,1,5,Ready To Move,5.0,1100600.0
+PROP_14837,Midtown Corridor,Studio Apartment,585,1,1.0,Furnished,2,15,18.0,1,3,Ready To Move,3.0,309200.0
+PROP_10266,Riverside District,Apartment,1145,2,1.0,Furnished,0,15,0.0,0,8,Ready To Move,2.0,611200.0
+PROP_14251,Lakeside Estates,Luxury Villa,4632,4,5.0,Unfurnished,0,4,7.0,1,8,Ready To Move,1.0,2873400.0
+PROP_12490,Harbor Point,Penthouse,4433,4,6.0,Semi-Furnished,0,18,2.0,0,5,Ready To Move,2.0,3610800.0
+PROP_10933,Harbor Point,Independent House,2803,4,3.0,Unfurnished,1,1,2.0,1,5,Ready To Move,4.0,1788200.0
+PROP_10044,Sunset Park,Apartment,1801,3,4.0,Furnished,1,18,2.0,1,7,Ready To Move,2.0,819100.0
+PROP_14921,Harbor Point,Luxury Villa,4035,3,4.0,Furnished,1,2,1.0,1,8,Ready To Move,4.0,3144400.0
+PROP_15041,Riverside District,Penthouse,4883,5,7.0,Semi-Furnished,2,23,13.0,1,6,Ready To Move,4.0,2766900.0
+PROP_13008,Greenwood Heights,Penthouse,5198,4,5.0,Unfurnished,3,31,4.0,1,3,Ready To Move,4.0,2735400.0
+PROP_13114,Sunset Park,Apartment,1252,2,1.0,Furnished,0,21,5.0,1,3,Ready To Move,1.0,537400.0
+PROP_11815,Oakridge Valley,Apartment,2102,4,3.0,Semi-Furnished,1,21,2.0,2,3,Ready To Move,4.0,925700.0
+PROP_14722,Sunset Park,Independent House,2633,4,3.0,Unfurnished,1,2,4.0,0,5,Ready To Move,2.0,1238300.0
+PROP_12855,Downtown Central,Luxury Villa,4674,4,4.0,Unfurnished,2,3,0.0,1,4,Ready To Move,4.0,3122900.0
+PROP_10954,Westend Terrace,Luxury Villa,4025,4,5.0,Semi-Furnished,0,3,0.0,1,2,Ready To Move,4.0,2275400.0
+PROP_11835,Downtown Central,Independent House,3169,4,3.0,Semi-Furnished,2,2,6.0,3,6,Ready To Move,2.0,1825000.0
+PROP_13492,Downtown Central,Independent House,1931,2,1.0,Unfurnished,1,3,0.0,0,1,Ready To Move,3.0,1049600.0
+PROP_15276,Oakridge Valley,Apartment,1490,2,2.0,Unfurnished,2,17,15.0,3,4,Under Construction,2.0,472500.0
+PROP_14330,Midtown Corridor,Studio Apartment,512,1,1.0,Furnished,2,14,9.0,0,2,Ready To Move,2.0,279600.0
+PROP_14044,Riverside District,Penthouse,5051,4,5.0,Furnished,2,22,5.0,2,8,Ready To Move,3.0,3222800.0
+PROP_11197,Harbor Point,Independent House,2400,3,3.0,Unfurnished,2,2,3.0,2,5,Ready To Move,4.0,1436400.0
+PROP_12472,Sunset Park,Studio Apartment,643,1,1.0,Semi-Furnished,2,13,20.0,1,7,Ready To Move,5.0,298700.0
+PROP_13329,Midtown Corridor,Penthouse,4219,3,4.0,Semi-Furnished,1,30,13.0,1,5,Ready To Move,1.0,2506600.0
+PROP_12065,Greenwood Heights,Independent House,1709,2,3.0,Furnished,1,2,1.0,3,3,Ready To Move,4.0,919000.0
+PROP_13356,Silicon Hills,Apartment,1439,2,3.0,Semi-Furnished,2,3,2.0,0,7,Ready To Move,3.0,890300.0
+PROP_13309,Silicon Hills,Luxury Villa,3812,3,4.0,Semi-Furnished,0,2,2.0,1,8,Ready To Move,4.0,3145700.0
+PROP_13322,Midtown Corridor,Independent House,2344,3,3.0,Semi-Furnished,2,2,2.0,1,3,Ready To Move,3.0,1282200.0
+PROP_12587,Harbor Point,Apartment,1452,3,3.0,Semi-Furnished,1,4,6.0,1,6,Ready To Move,4.0,892800.0
+PROP_14981,Midtown Corridor,Apartment,1845,3,2.0,Semi-Furnished,2,23,1.0,1,4,Under Construction,4.0,943400.0
+PROP_10477,Riverside District,Apartment,1440,2,2.0,Semi-Furnished,0,13,3.0,1,5,Ready To Move,3.0,697000.0
+PROP_12364,Greenwood Heights,Independent House,2749,4,4.0,Furnished,1,1,19.0,2,3,Ready To Move,5.0,1245300.0
+PROP_13978,Oakridge Valley,Apartment,1458,2,2.0,Semi-Furnished,1,9,1.0,0,5,Under Construction,3.0,543900.0
+PROP_14624,Silicon Hills,Apartment,1697,3,4.0,Furnished,1,7,1.0,1,8,Ready To Move,2.0,1067100.0
+PROP_12048,Midtown Corridor,Apartment,1359,2,1.0,Unfurnished,0,14,2.0,1,4,Under Construction,3.0,602600.0
+PROP_10164,Riverside District,Luxury Villa,4616,4,5.0,Semi-Furnished,3,3,5.0,2,6,Ready To Move,4.0,2662100.0
+PROP_15688,Silicon Hills,Studio Apartment,754,1,1.0,Unfurnished,2,14,5.0,1,10,Ready To Move,5.0,553000.0
+PROP_11129,Oakridge Valley,Independent House,2384,3,3.0,Semi-Furnished,1,2,0.0,1,5,Ready To Move,2.0,1015700.0
+PROP_15432,Midtown Corridor,Apartment,1135,1,2.0,Semi-Furnished,1,22,18.0,3,7,Ready To Move,5.0,516300.0
+PROP_13399,Downtown Central,Independent House,2418,3,4.0,Semi-Furnished,0,3,0.0,0,4,Under Construction,2.0,1453700.0
+PROP_11929,Westend Terrace,Studio Apartment,510,1,1.0,Unfurnished,1,3,0.0,1,7,Ready To Move,3.0,264400.0
+PROP_14829,Riverside District,Apartment,1101,2,2.0,Furnished,2,9,6.0,1,9,Ready To Move,3.0,634700.0
+PROP_11677,Sunset Park,Independent House,2735,4,4.0,Furnished,1,1,1.0,0,9,Ready To Move,5.0,1357400.0
+PROP_10868,Harbor Point,Penthouse,4429,4,5.0,Furnished,1,30,5.0,1,8,Ready To Move,1.0,3164000.0
+PROP_10665,Midtown Corridor,Apartment,1367,2,1.0,Semi-Furnished,1,10,10.0,1,10,Ready To Move,3.0,698000.0
+PROP_15205,Downtown Central,Independent House,2644,4,5.0,Semi-Furnished,2,2,13.0,1,10,Ready To Move,1.0,1707400.0
+PROP_12187,Riverside District,Apartment,1235,2,2.0,Semi-Furnished,2,17,2.0,1,8,Under Construction,2.0,593100.0
+PROP_15044,Harbor Point,Luxury Villa,3554,3,3.0,Furnished,1,2,5.0,1,6,Ready To Move,1.0,2777200.0
+PROP_15736,Silicon Hills,Apartment,1438,3,2.0,Furnished,1,13,0.0,2,4,Ready To Move,2.0,1011000.0
+PROP_15483,Lakeside Estates,Studio Apartment,548,1,1.0,Unfurnished,1,15,8.0,1,2,Ready To Move,2.0,285500.0
+PROP_15709,Harbor Point,Luxury Villa,3962,3,3.0,Furnished,2,4,15.0,1,10,Under Construction,2.0,2552100.0
+PROP_12036,Harbor Point,Apartment,1734,3,3.0,Unfurnished,1,18,10.0,2,4,Ready To Move,1.0,979700.0
+PROP_14459,Oakridge Valley,Luxury Villa,3693,3,4.0,Furnished,2,2,10.0,1,4,Ready To Move,3.0,1781400.0
+PROP_12002,Harbor Point,Apartment,1102,2,2.0,Semi-Furnished,1,17,13.0,2,5,Under Construction,4.0,558000.0
+PROP_10974,Harbor Point,Luxury Villa,4808,5,6.0,Semi-Furnished,1,3,15.0,0,4,Ready To Move,1.0,3297400.0
+PROP_14207,Westend Terrace,Apartment,1309,2,2.0,Semi-Furnished,1,14,7.0,2,2,Ready To Move,4.0,525200.0
+PROP_10183,Downtown Central,Independent House,2080,3,2.0,Furnished,0,2,10.0,0,3,Under Construction,5.0,1211400.0
+PROP_11703,Silicon Hills,Independent House,3592,5,5.0,Semi-Furnished,2,1,13.0,1,8,Ready To Move,2.0,2320500.0
+PROP_12851,Greenwood Heights,Apartment,1523,2,2.0,Semi-Furnished,3,18,5.0,2,4,Ready To Move,5.0,708700.0
+PROP_11985,Lakeside Estates,Luxury Villa,4869,5,5.0,Semi-Furnished,3,4,2.0,1,9,Under Construction,4.0,2840000.0
+PROP_14131,Westend Terrace,Apartment,834,1,1.0,Semi-Furnished,2,13,11.0,2,5,Ready To Move,4.0,436200.0
+PROP_12996,Lakeside Estates,Apartment,1253,2,1.0,Furnished,1,24,4.0,1,4,Under Construction,5.0,661800.0
+PROP_11376,Westend Terrace,Independent House,2336,3,3.0,Furnished,1,2,14.0,0,3,Under Construction,3.0,1033300.0
+PROP_12701,Midtown Corridor,Independent House,2495,3,2.0,Furnished,2,2,27.0,2,4,Ready To Move,5.0,1101300.0
+PROP_10552,Greenwood Heights,Studio Apartment,568,1,1.0,Furnished,1,14,1.0,2,2,Ready To Move,2.0,289700.0
+PROP_12595,Midtown Corridor,Apartment,876,1,1.0,Unfurnished,2,14,1.0,2,6,Under Construction,4.0,488300.0
+PROP_15309,Downtown Central,Apartment,1171,2,1.0,Furnished,0,11,0.0,3,2,Ready To Move,3.0,727300.0
+PROP_12141,Greenwood Heights,Luxury Villa,4997,5,6.0,Furnished,1,3,31.0,2,6,Ready To Move,2.0,2207800.0
+PROP_13500,Downtown Central,Penthouse,4528,4,6.0,Semi-Furnished,2,32,5.0,1,4,Ready To Move,2.0,3351200.0
+PROP_13215,Greenwood Heights,Independent House,2412,3,3.0,Unfurnished,3,3,3.0,2,2,Under Construction,4.0,1133700.0
+PROP_12167,Silicon Hills,Penthouse,5672,5,6.0,Semi-Furnished,2,18,30.0,2,3,Ready To Move,2.0,3575500.0
+PROP_12868,Harbor Point,Independent House,2835,3,2.0,Furnished,2,3,4.0,2,6,Ready To Move,4.0,1858200.0
+PROP_14007,Sunset Park,Apartment,1492,2,2.0,Semi-Furnished,1,7,22.0,1,1,Under Construction,5.0,537400.0
+PROP_15028,Midtown Corridor,Independent House,2712,4,4.0,Furnished,1,3,14.0,0,6,Ready To Move,4.0,1464800.0
+PROP_12311,Sunset Park,Luxury Villa,4290,5,6.0,Furnished,2,2,4.0,1,6,Ready To Move,1.0,2432900.0
+PROP_10289,Downtown Central,Independent House,3391,5,6.0,Furnished,0,1,0.0,1,7,Ready To Move,4.0,2157300.0
+PROP_14342,Sunset Park,Apartment,1915,3,2.0,Unfurnished,0,15,5.0,2,6,Ready To Move,4.0,737400.0
+PROP_13650,Lakeside Estates,Luxury Villa,4591,5,5.0,Semi-Furnished,3,2,19.0,2,5,Ready To Move,4.0,2997000.0
+PROP_14643,Harbor Point,Apartment,1415,3,3.0,Unfurnished,1,7,5.0,1,4,Ready To Move,1.0,803000.0
+PROP_10438,Lakeside Estates,Independent House,2483,3,2.0,Furnished,1,3,1.0,1,3,Under Construction,4.0,1443800.0
+PROP_14534,Oakridge Valley,Luxury Villa,4150,3,3.0,Semi-Furnished,1,2,6.0,0,4,Ready To Move,2.0,1840500.0
+PROP_12574,Greenwood Heights,Independent House,1434,2,2.0,Furnished,1,1,2.0,1,7,Ready To Move,4.0,779300.0
+PROP_14636,Lakeside Estates,Apartment,1375,2,1.0,Unfurnished,0,21,2.0,3,6,Ready To Move,5.0,689900.0
+PROP_12272,Sunset Park,Apartment,1615,2,2.0,Semi-Furnished,3,23,4.0,1,8,Ready To Move,1.0,766500.0
+PROP_15778,Midtown Corridor,Studio Apartment,568,1,1.0,Unfurnished,1,11,4.0,2,8,Ready To Move,3.0,337600.0
+PROP_13580,Greenwood Heights,Apartment,816,1,1.0,Semi-Furnished,0,5,2.0,1,5,Ready To Move,2.0,337700.0
+PROP_13453,Sunset Park,Apartment,1734,3,3.0,Semi-Furnished,0,15,11.0,1,5,Ready To Move,5.0,671400.0
+PROP_10862,Oakridge Valley,Apartment,1532,3,4.0,Semi-Furnished,1,15,5.0,2,3,Ready To Move,1.0,618300.0
+PROP_12458,Oakridge Valley,Apartment,589,1,1.0,Semi-Furnished,2,6,6.0,0,5,Ready To Move,3.0,265300.0
+PROP_11894,Westend Terrace,Luxury Villa,4742,4,4.0,Unfurnished,0,2,0.0,1,10,Ready To Move,3.0,3011100.0
+PROP_13258,Greenwood Heights,Apartment,1228,2,1.0,Semi-Furnished,0,8,7.0,1,4,Ready To Move,4.0,561200.0
+PROP_14032,Greenwood Heights,Apartment,1617,2,2.0,Furnished,1,9,2.0,2,7,Ready To Move,1.0,745200.0
+PROP_13602,Silicon Hills,Studio Apartment,533,1,1.0,Furnished,1,10,1.0,2,8,Under Construction,2.0,354800.0
+PROP_12613,Greenwood Heights,Apartment,2066,3,3.0,Semi-Furnished,1,24,1.0,2,5,Under Construction,3.0,828200.0
+PROP_14997,Riverside District,Studio Apartment,564,1,1.0,Furnished,1,1,4.0,1,1,Under Construction,3.0,289100.0
+PROP_12546,Sunset Park,Apartment,1011,1,1.0,Semi-Furnished,3,7,7.0,0,3,Under Construction,3.0,409700.0
+PROP_10378,Silicon Hills,Apartment,1698,3,2.0,Semi-Furnished,1,11,15.0,1,3,Ready To Move,5.0,908700.0
+PROP_11279,Sunset Park,Independent House,2549,4,3.0,Unfurnished,1,1,24.0,2,7,Ready To Move,1.0,980600.0
+PROP_12681,Downtown Central,Apartment,1614,3,2.0,Semi-Furnished,0,23,5.0,2,4,Ready To Move,3.0,979100.0
+PROP_14194,Silicon Hills,Independent House,2741,4,5.0,Semi-Furnished,1,1,0.0,3,5,Ready To Move,1.0,1919600.0
+PROP_11122,Lakeside Estates,Studio Apartment,543,1,1.0,Furnished,1,16,0.0,1,6,Ready To Move,2.0,350900.0
+PROP_15955,Riverside District,Apartment,1202,2,1.0,Semi-Furnished,2,7,9.0,1,9,Under Construction,5.0,605900.0
+PROP_14182,Harbor Point,Independent House,3229,5,6.0,Furnished,0,3,0.0,0,3,Under Construction,1.0,1855000.0
+PROP_15087,Greenwood Heights,Penthouse,4920,5,6.0,Semi-Furnished,1,23,2.0,1,5,Ready To Move,1.0,3136800.0
+PROP_11801,Silicon Hills,Independent House,2538,4,3.0,Furnished,0,2,13.0,2,7,Ready To Move,5.0,1608200.0
+PROP_11275,Lakeside Estates,Apartment,1439,2,1.0,Semi-Furnished,1,4,2.0,2,4,Ready To Move,5.0,829600.0
+PROP_13139,Sunset Park,Apartment,1934,4,3.0,Semi-Furnished,1,11,2.0,1,6,Ready To Move,2.0,755300.0
+PROP_15462,Midtown Corridor,Independent House,2728,3,3.0,Semi-Furnished,1,1,5.0,1,4,Ready To Move,2.0,1541400.0
+PROP_14014,Downtown Central,Apartment,1232,2,3.0,Furnished,2,3,0.0,1,4,Under Construction,2.0,676000.0
+PROP_10879,Riverside District,Luxury Villa,5534,6,6.0,Semi-Furnished,1,3,4.0,3,7,Ready To Move,1.0,3330600.0
+PROP_10280,Midtown Corridor,Apartment,867,1,1.0,Semi-Furnished,0,9,21.0,2,9,Ready To Move,1.0,417000.0
+PROP_11459,Oakridge Valley,Penthouse,5712,5,6.0,Semi-Furnished,2,27,8.0,0,7,Ready To Move,5.0,2859800.0
+PROP_10248,Oakridge Valley,Independent House,2709,3,4.0,Semi-Furnished,2,3,11.0,2,7,Ready To Move,2.0,1132300.0
+PROP_11868,Sunset Park,Luxury Villa,4636,4,4.0,Unfurnished,2,2,0.0,1,7,Under Construction,4.0,2005100.0
+PROP_12755,Sunset Park,Independent House,2466,4,4.0,Unfurnished,1,3,0.0,2,3,Ready To Move,4.0,1174100.0
+PROP_13469,Downtown Central,Independent House,2720,4,4.0,Semi-Furnished,1,1,0.0,1,4,Ready To Move,3.0,1538100.0
+PROP_14396,Riverside District,Apartment,1118,1,1.0,Semi-Furnished,3,2,6.0,2,4,Under Construction,3.0,528200.0
+PROP_11563,Lakeside Estates,Apartment,2199,4,3.0,Furnished,2,22,0.0,2,5,Ready To Move,4.0,1242600.0
+PROP_12740,Sunset Park,Apartment,1246,2,2.0,Semi-Furnished,1,9,7.0,0,7,Ready To Move,5.0,574500.0
+PROP_14010,Midtown Corridor,Apartment,1225,2,2.0,Furnished,1,16,6.0,2,4,Ready To Move,2.0,677200.0
+PROP_15200,Silicon Hills,Apartment,1190,2,2.0,Semi-Furnished,3,10,8.0,1,3,Under Construction,4.0,734800.0
+PROP_12239,Westend Terrace,Independent House,2653,3,3.0,Semi-Furnished,2,2,12.0,0,3,Ready To Move,2.0,1208800.0
+PROP_12672,Riverside District,Apartment,1297,2,2.0,Furnished,1,23,13.0,1,6,Ready To Move,1.0,605800.0
+PROP_13544,Oakridge Valley,Independent House,2725,4,3.0,Furnished,2,2,21.0,0,7,Ready To Move,2.0,1033100.0
+PROP_13129,Silicon Hills,Luxury Villa,5003,4,5.0,Semi-Furnished,2,2,0.0,1,10,Ready To Move,1.0,3529800.0
+PROP_12368,Lakeside Estates,Independent House,2716,4,4.0,Furnished,2,2,7.0,1,6,Ready To Move,3.0,1566300.0
+PROP_11636,Sunset Park,Independent House,3111,4,5.0,Unfurnished,1,3,8.0,1,1,Under Construction,2.0,1236700.0
+PROP_11814,Midtown Corridor,Apartment,1734,3,2.0,Semi-Furnished,0,19,9.0,2,4,Ready To Move,2.0,877400.0
+PROP_11179,Silicon Hills,Independent House,2333,3,4.0,Semi-Furnished,0,1,37.0,2,6,Ready To Move,2.0,1220900.0
+PROP_12956,Downtown Central,Luxury Villa,4783,5,6.0,Semi-Furnished,2,3,4.0,1,9,Under Construction,3.0,3075100.0
+PROP_14373,Oakridge Valley,Apartment,1302,2,2.0,Furnished,2,16,1.0,2,5,Ready To Move,3.0,597700.0
+PROP_13573,Westend Terrace,Apartment,1764,3,3.0,Semi-Furnished,1,12,1.0,1,10,Ready To Move,5.0,851700.0
+PROP_14219,Greenwood Heights,Apartment,761,1,1.0,Semi-Furnished,1,16,0.0,0,4,Ready To Move,2.0,397600.0
+PROP_12896,Greenwood Heights,Independent House,3102,5,5.0,Semi-Furnished,2,2,3.0,2,4,Ready To Move,4.0,1590500.0
+PROP_13804,Midtown Corridor,Apartment,1663,3,3.0,Unfurnished,0,12,4.0,2,8,Ready To Move,4.0,841500.0
+PROP_12558,Lakeside Estates,Studio Apartment,455,1,1.0,Semi-Furnished,1,15,3.0,0,7,Ready To Move,2.0,300800.0
+PROP_15644,Greenwood Heights,Studio Apartment,567,1,1.0,Furnished,1,16,5.0,1,6,Ready To Move,4.0,321500.0
+PROP_14575,Silicon Hills,Apartment,885,2,2.0,Furnished,1,12,11.0,2,4,Ready To Move,4.0,573400.0
+PROP_10487,Downtown Central,Studio Apartment,627,1,1.0,Semi-Furnished,1,6,12.0,1,4,Ready To Move,2.0,370100.0
+PROP_13482,Downtown Central,Studio Apartment,516,1,1.0,Unfurnished,3,16,9.0,1,7,Ready To Move,5.0,333300.0
+PROP_13715,Silicon Hills,Apartment,1181,2,2.0,Semi-Furnished,2,13,5.0,0,5,Ready To Move,5.0,741700.0
+PROP_12670,Silicon Hills,Apartment,1102,2,2.0,Furnished,1,21,7.0,1,8,Ready To Move,2.0,727300.0
+PROP_12373,Greenwood Heights,Apartment,1023,1,1.0,Unfurnished,0,20,13.0,1,5,Ready To Move,1.0,388500.0
+PROP_14613,Midtown Corridor,Luxury Villa,5414,6,7.0,Semi-Furnished,1,2,5.0,3,4,Ready To Move,3.0,3083300.0
+PROP_10484,Sunset Park,Penthouse,4653,4,5.0,Semi-Furnished,1,22,12.0,2,7,Ready To Move,5.0,2403700.0
+PROP_15086,Riverside District,Independent House,2110,3,3.0,Unfurnished,3,2,2.0,1,7,Under Construction,2.0,1127700.0
+PROP_12193,Riverside District,Apartment,1268,2,1.0,Semi-Furnished,1,15,19.0,1,2,Ready To Move,5.0,536600.0
+PROP_10209,Westend Terrace,Apartment,1405,2,2.0,Semi-Furnished,0,10,5.0,1,8,Ready To Move,1.0,643600.0
+PROP_10858,Harbor Point,Penthouse,4759,4,5.0,Furnished,2,19,0.0,2,5,Ready To Move,5.0,4042800.0
+PROP_15538,Oakridge Valley,Apartment,1114,2,2.0,Furnished,2,6,1.0,1,2,Ready To Move,1.0,470600.0
+PROP_15417,Lakeside Estates,Independent House,2752,4,4.0,Unfurnished,1,3,3.0,2,6,Ready To Move,2.0,1697200.0
+PROP_14271,Lakeside Estates,Penthouse,5052,5,7.0,Semi-Furnished,1,19,0.0,1,3,Under Construction,3.0,3397300.0
+PROP_14973,Westend Terrace,Apartment,1333,1,1.0,Semi-Furnished,1,18,7.0,1,2,Under Construction,3.0,528300.0
+PROP_10329,Downtown Central,Apartment,1263,2,2.0,Semi-Furnished,0,9,2.0,2,3,Under Construction,2.0,700300.0
+PROP_10047,Silicon Hills,Studio Apartment,521,1,1.0,Unfurnished,2,14,0.0,0,7,Ready To Move,2.0,373200.0
+PROP_13541,Silicon Hills,Penthouse,4786,5,6.0,Furnished,2,32,3.0,1,8,Ready To Move,2.0,3728300.0
+PROP_10870,Greenwood Heights,Luxury Villa,4463,4,4.0,Semi-Furnished,1,2,12.0,1,10,Ready To Move,3.0,2300300.0
+PROP_12638,Westend Terrace,Apartment,1367,3,3.0,Furnished,1,4,3.0,2,4,Ready To Move,3.0,715200.0
+PROP_15057,Lakeside Estates,Apartment,1649,3,2.0,Semi-Furnished,1,2,1.0,0,6,Ready To Move,3.0,859800.0
+PROP_13788,Greenwood Heights,Luxury Villa,5252,5,5.0,Semi-Furnished,1,2,2.0,1,7,Ready To Move,2.0,2880100.0
+PROP_11307,Lakeside Estates,Independent House,1803,3,3.0,Semi-Furnished,1,2,3.0,0,6,Ready To Move,3.0,1031700.0
+PROP_11562,Downtown Central,Independent House,2854,3,2.0,Furnished,1,3,5.0,1,7,Ready To Move,3.0,1788900.0
+PROP_11633,Oakridge Valley,Penthouse,4166,5,6.0,Semi-Furnished,1,25,2.0,1,7,Ready To Move,1.0,2103700.0
+PROP_12124,Greenwood Heights,Independent House,1777,3,4.0,Semi-Furnished,1,2,1.0,3,6,Ready To Move,3.0,918300.0
+PROP_11021,Lakeside Estates,Penthouse,4644,4,5.0,Semi-Furnished,1,25,3.0,1,5,Ready To Move,3.0,3616900.0
+PROP_14841,Downtown Central,Independent House,2069,2,1.0,Unfurnished,1,1,8.0,2,6,Ready To Move,1.0,1180400.0
+PROP_10669,Westend Terrace,Penthouse,5245,5,7.0,Semi-Furnished,1,25,12.0,1,10,Ready To Move,3.0,3069300.0
+PROP_11050,Silicon Hills,Independent House,2290,4,4.0,Furnished,1,1,4.0,2,8,Ready To Move,4.0,1660000.0
+PROP_14633,Greenwood Heights,Luxury Villa,3007,3,3.0,Unfurnished,2,3,11.0,1,2,Ready To Move,2.0,1661000.0
+PROP_14777,Sunset Park,Luxury Villa,4449,4,4.0,Furnished,2,3,1.0,2,5,Ready To Move,5.0,2436900.0
+PROP_11085,Oakridge Valley,Independent House,3142,5,5.0,Semi-Furnished,1,3,1.0,0,5,Ready To Move,1.0,1318500.0
+PROP_11397,Sunset Park,Apartment,889,1,1.0,Semi-Furnished,1,17,11.0,1,8,Ready To Move,1.0,385800.0
+PROP_10277,Downtown Central,Independent House,2813,4,3.0,Furnished,1,3,11.0,1,7,Under Construction,4.0,1383700.0
+PROP_13759,Downtown Central,Luxury Villa,4784,5,5.0,Semi-Furnished,2,3,1.0,2,7,Under Construction,1.0,3294200.0
+PROP_11198,Silicon Hills,Luxury Villa,5136,5,5.0,Unfurnished,0,3,7.0,2,8,Ready To Move,3.0,3921200.0
+PROP_10935,Midtown Corridor,Independent House,2674,4,5.0,Furnished,1,2,10.0,2,8,Under Construction,5.0,1411000.0
+PROP_13332,Lakeside Estates,Independent House,3375,5,4.0,Semi-Furnished,1,2,26.0,1,7,Ready To Move,4.0,1685000.0
+PROP_15624,Midtown Corridor,Apartment,1027,1,1.0,Semi-Furnished,0,8,3.0,1,5,Ready To Move,3.0,489800.0
+PROP_13433,Westend Terrace,Luxury Villa,3750,3,3.0,Unfurnished,3,3,2.0,1,4,Ready To Move,4.0,2115700.0
+PROP_13925,Riverside District,Penthouse,3252,3,4.0,Furnished,2,33,4.0,2,4,Ready To Move,2.0,2019500.0
+PROP_14803,Downtown Central,Apartment,908,1,2.0,Semi-Furnished,1,9,2.0,3,6,Ready To Move,1.0,589700.0
+PROP_14031,Riverside District,Apartment,1337,2,1.0,Furnished,1,8,26.0,2,4,Ready To Move,1.0,559300.0
+PROP_11590,Oakridge Valley,Independent House,2593,3,3.0,Furnished,2,2,2.0,1,5,Ready To Move,4.0,947200.0
+PROP_12034,Silicon Hills,Studio Apartment,507,1,1.0,Furnished,1,12,2.0,1,6,Under Construction,5.0,378100.0
+PROP_15687,Silicon Hills,Apartment,1686,3,2.0,Furnished,1,12,3.0,0,6,Ready To Move,3.0,994700.0
+PROP_13086,Downtown Central,Penthouse,5796,5,6.0,Semi-Furnished,2,25,1.0,1,6,Ready To Move,2.0,4529200.0
+PROP_11746,Oakridge Valley,Apartment,1141,2,1.0,Semi-Furnished,2,13,7.0,0,4,Ready To Move,5.0,450900.0
+PROP_13895,Downtown Central,Independent House,2329,4,3.0,Furnished,2,3,8.0,3,8,Under Construction,5.0,1407200.0
+PROP_12832,Sunset Park,Independent House,3245,5,5.0,Semi-Furnished,1,2,1.0,1,2,Ready To Move,4.0,1615100.0
+PROP_14754,Sunset Park,Independent House,2352,3,2.0,Semi-Furnished,1,1,7.0,1,1,Ready To Move,1.0,996200.0
+PROP_11352,Sunset Park,Independent House,2390,4,3.0,Semi-Furnished,1,2,12.0,1,5,Ready To Move,3.0,1028200.0
+PROP_13972,Oakridge Valley,Apartment,1317,2,1.0,Furnished,2,7,1.0,2,3,Ready To Move,2.0,539700.0
+PROP_14099,Sunset Park,Apartment,1442,2,2.0,Semi-Furnished,2,11,1.0,1,2,Ready To Move,2.0,567100.0
+PROP_11998,Lakeside Estates,Apartment,1365,2,2.0,Semi-Furnished,0,11,1.0,2,8,Ready To Move,1.0,764300.0
+PROP_12751,Oakridge Valley,Studio Apartment,502,1,1.0,Furnished,1,9,9.0,1,5,Under Construction,1.0,229000.0
+PROP_15345,Riverside District,Independent House,2222,3,3.0,Semi-Furnished,2,1,14.0,1,3,Ready To Move,2.0,1157900.0
+PROP_14171,Oakridge Valley,Apartment,1789,3,3.0,Furnished,2,5,4.0,2,6,Ready To Move,4.0,807100.0
+PROP_14739,Lakeside Estates,Apartment,1695,2,2.0,Furnished,1,12,3.0,1,4,Under Construction,3.0,829200.0
+PROP_13548,Downtown Central,Apartment,724,1,1.0,Semi-Furnished,3,11,13.0,2,5,Ready To Move,3.0,433000.0
+PROP_10363,Harbor Point,Apartment,1218,2,1.0,Semi-Furnished,1,1,2.0,1,4,Under Construction,2.0,634800.0
+PROP_13655,Riverside District,Studio Apartment,634,1,1.0,Furnished,2,14,3.0,2,8,Under Construction,5.0,393500.0
+PROP_11788,Downtown Central,Apartment,1232,2,2.0,Semi-Furnished,1,6,3.0,1,10,Under Construction,2.0,636600.0
+PROP_11732,Midtown Corridor,Studio Apartment,544,1,1.0,Semi-Furnished,2,15,1.0,1,6,Under Construction,2.0,323600.0
+PROP_12759,Midtown Corridor,Independent House,3342,5,6.0,Semi-Furnished,1,2,3.0,2,4,Ready To Move,1.0,1834800.0
+PROP_14270,Downtown Central,Apartment,1726,3,3.0,Unfurnished,0,4,9.0,1,4,Ready To Move,1.0,905400.0
+PROP_11261,Downtown Central,Apartment,1219,2,3.0,Furnished,1,16,6.0,3,6,Under Construction,5.0,705000.0
+PROP_12993,Downtown Central,Apartment,1521,3,3.0,Furnished,2,9,2.0,1,3,Under Construction,3.0,841100.0
+PROP_12452,Silicon Hills,Studio Apartment,491,1,1.0,Furnished,1,9,5.0,1,4,Under Construction,1.0,279200.0
+PROP_12019,Greenwood Heights,Penthouse,4683,4,5.0,Semi-Furnished,1,18,9.0,1,10,Ready To Move,5.0,2597500.0
+PROP_11135,Lakeside Estates,Apartment,2087,4,4.0,Unfurnished,3,14,0.0,0,4,Ready To Move,4.0,1228700.0
+PROP_14197,Silicon Hills,Apartment,1208,2,2.0,Semi-Furnished,1,12,9.0,1,4,Ready To Move,4.0,731000.0
+PROP_14727,Lakeside Estates,Penthouse,3833,3,4.0,Semi-Furnished,2,28,0.0,1,5,Ready To Move,2.0,2936100.0
+PROP_12570,Westend Terrace,Studio Apartment,562,1,1.0,Unfurnished,1,18,6.0,2,4,Ready To Move,1.0,285300.0
+PROP_11722,Midtown Corridor,Apartment,1216,2,3.0,Furnished,2,17,7.0,2,5,Ready To Move,4.0,707000.0
+PROP_14983,Downtown Central,Independent House,3131,5,6.0,Furnished,2,2,4.0,1,6,Ready To Move,1.0,1902100.0
+PROP_12494,Lakeside Estates,Independent House,3377,4,5.0,Furnished,2,1,5.0,1,8,Ready To Move,1.0,1739200.0
+PROP_11393,Westend Terrace,Luxury Villa,4696,4,4.0,Furnished,1,2,3.0,2,4,Ready To Move,3.0,2724700.0
+PROP_10993,Harbor Point,Studio Apartment,667,1,1.0,Semi-Furnished,1,1,15.0,2,8,Ready To Move,1.0,389200.0
+PROP_10911,Downtown Central,Apartment,1368,2,2.0,Furnished,1,10,9.0,1,2,Ready To Move,1.0,733600.0
+PROP_15646,Harbor Point,Luxury Villa,5108,4,4.0,Furnished,2,3,9.0,1,6,Ready To Move,2.0,3605300.0
+PROP_10173,Lakeside Estates,Independent House,2236,3,3.0,Semi-Furnished,2,2,7.0,2,9,Ready To Move,3.0,1206600.0
+PROP_15431,Sunset Park,Independent House,2318,2,2.0,Furnished,3,2,10.0,1,10,Ready To Move,3.0,1071300.0
+PROP_12979,Sunset Park,Penthouse,3663,3,4.0,Semi-Furnished,1,28,8.0,1,5,Ready To Move,3.0,1825600.0
+PROP_13280,Oakridge Valley,Independent House,2353,3,3.0,Semi-Furnished,1,2,1.0,2,8,Ready To Move,4.0,1070200.0
+PROP_14751,Oakridge Valley,Apartment,1293,2,2.0,Unfurnished,2,9,14.0,2,5,Under Construction,3.0,485300.0
+PROP_10188,Westend Terrace,Independent House,3184,4,4.0,Unfurnished,1,2,0.0,0,7,Ready To Move,1.0,1470300.0
+PROP_15582,Midtown Corridor,Luxury Villa,4348,3,4.0,Unfurnished,1,2,2.0,1,8,Ready To Move,5.0,2939600.0
+PROP_14700,Greenwood Heights,Apartment,1228,2,2.0,Unfurnished,1,15,2.0,1,4,Under Construction,3.0,486300.0
+PROP_10688,Harbor Point,Independent House,2404,3,4.0,Unfurnished,1,2,3.0,0,7,Under Construction,3.0,1447600.0
+PROP_15934,Westend Terrace,Independent House,1752,2,2.0,Semi-Furnished,1,2,11.0,0,6,Ready To Move,1.0,786700.0
+PROP_13308,Sunset Park,Independent House,3542,5,4.0,Semi-Furnished,1,2,0.0,3,6,Under Construction,2.0,1568200.0
+PROP_15647,Greenwood Heights,Apartment,1393,3,3.0,Unfurnished,2,9,3.0,1,4,Under Construction,5.0,613200.0
+PROP_11654,Sunset Park,Apartment,1079,1,1.0,Semi-Furnished,1,22,21.0,2,3,Ready To Move,5.0,425500.0
+PROP_15929,Silicon Hills,Apartment,1581,3,3.0,Furnished,1,23,13.0,2,8,Ready To Move,5.0,845100.0
+PROP_14928,Silicon Hills,Apartment,1300,2,2.0,Semi-Furnished,2,5,5.0,0,7,Ready To Move,2.0,885500.0
+PROP_12131,Westend Terrace,Apartment,1301,2,2.0,Semi-Furnished,2,14,6.0,1,3,Ready To Move,3.0,581100.0
+PROP_15773,Oakridge Valley,Apartment,1688,2,2.0,Semi-Furnished,2,7,4.0,1,2,Ready To Move,2.0,677600.0
+PROP_13755,Downtown Central,Apartment,1258,2,1.0,Semi-Furnished,1,2,5.0,2,6,Under Construction,5.0,725100.0
+PROP_11294,Sunset Park,Independent House,2678,4,4.0,Furnished,1,1,1.0,1,5,Ready To Move,5.0,1303400.0
+PROP_11356,Sunset Park,Apartment,1505,2,2.0,Unfurnished,2,2,3.0,1,7,Ready To Move,1.0,643500.0
+PROP_10053,Riverside District,Luxury Villa,5491,5,5.0,Semi-Furnished,1,4,5.0,1,6,Ready To Move,1.0,3076100.0
+PROP_14701,Westend Terrace,Independent House,2620,3,3.0,Unfurnished,1,2,2.0,0,6,Ready To Move,3.0,1296600.0
+PROP_14307,Oakridge Valley,Apartment,1353,2,1.0,Furnished,1,16,1.0,3,7,Ready To Move,3.0,605200.0
+PROP_15806,Oakridge Valley,Apartment,816,1,1.0,Furnished,1,8,7.0,0,8,Ready To Move,1.0,371300.0
+PROP_12505,Westend Terrace,Apartment,1144,2,3.0,Semi-Furnished,1,23,4.0,1,5,Ready To Move,4.0,578500.0
+PROP_15077,Downtown Central,Apartment,1428,2,3.0,Semi-Furnished,1,20,0.0,1,8,Under Construction,1.0,700300.0
+PROP_10971,Westend Terrace,Independent House,3007,4,5.0,Furnished,1,2,5.0,2,7,Under Construction,3.0,1419700.0
+PROP_12132,Sunset Park,Apartment,1444,2,2.0,Unfurnished,0,12,9.0,2,7,Ready To Move,1.0,597300.0
+PROP_14927,Downtown Central,Penthouse,4792,5,6.0,Semi-Furnished,1,23,0.0,1,8,Ready To Move,4.0,3547200.0
+PROP_12009,Riverside District,Apartment,1747,3,2.0,Semi-Furnished,1,13,0.0,2,3,Ready To Move,3.0,866900.0
+PROP_13509,Harbor Point,Apartment,1200,2,2.0,Semi-Furnished,1,6,13.0,1,8,Under Construction,2.0,641500.0
+PROP_12615,Harbor Point,Independent House,2930,5,5.0,Semi-Furnished,1,3,11.0,1,8,Ready To Move,2.0,1664800.0
+PROP_13934,Silicon Hills,Independent House,2340,4,3.0,Semi-Furnished,1,3,3.0,1,5,Ready To Move,3.0,1551100.0
+PROP_11403,Lakeside Estates,Studio Apartment,672,1,1.0,Semi-Furnished,0,18,0.0,1,5,Ready To Move,2.0,389500.0
+PROP_12089,Silicon Hills,Apartment,1629,3,3.0,Furnished,1,6,0.0,1,5,Under Construction,3.0,889700.0
+PROP_14998,Lakeside Estates,Independent House,2205,3,3.0,Semi-Furnished,0,2,0.0,0,2,Ready To Move,4.0,1291200.0
+PROP_14191,Riverside District,Apartment,1643,2,1.0,Semi-Furnished,0,11,0.0,2,4,Ready To Move,4.0,834600.0
+PROP_10151,Greenwood Heights,Apartment,1234,2,2.0,Furnished,2,10,13.0,1,10,Under Construction,5.0,530200.0
+PROP_12088,Midtown Corridor,Apartment,1515,3,3.0,Semi-Furnished,1,2,16.0,1,5,Ready To Move,3.0,703700.0
+PROP_11268,Greenwood Heights,Apartment,1182,2,1.0,Semi-Furnished,0,2,5.0,1,6,Under Construction,3.0,453500.0
+PROP_12451,Silicon Hills,Penthouse,4236,3,4.0,Furnished,0,27,26.0,1,4,Ready To Move,5.0,2693800.0
+PROP_12293,Lakeside Estates,Independent House,1710,3,4.0,Semi-Furnished,1,2,4.0,0,2,Ready To Move,3.0,1006200.0
+PROP_14825,Silicon Hills,Apartment,1735,3,3.0,Furnished,0,19,0.0,1,5,Ready To Move,1.0,1051300.0
+PROP_15799,Oakridge Valley,Apartment,1699,3,3.0,Semi-Furnished,1,4,7.0,2,5,Ready To Move,2.0,679100.0
+PROP_14024,Lakeside Estates,Apartment,1198,2,1.0,Unfurnished,1,12,8.0,1,4,Ready To Move,3.0,636000.0
+PROP_15705,Sunset Park,Luxury Villa,5552,6,7.0,Unfurnished,2,3,14.0,1,3,Ready To Move,2.0,2623000.0
+PROP_12086,Riverside District,Studio Apartment,691,1,1.0,Unfurnished,2,16,5.0,1,4,Ready To Move,4.0,346300.0
+PROP_14931,Sunset Park,Apartment,885,1,1.0,Semi-Furnished,1,10,0.0,2,7,Ready To Move,5.0,427000.0
+PROP_14583,Lakeside Estates,Independent House,2602,3,3.0,Semi-Furnished,2,2,5.0,1,4,Ready To Move,2.0,1364600.0
+PROP_12927,Oakridge Valley,Apartment,1230,2,1.0,Furnished,2,20,6.0,2,10,Ready To Move,2.0,608700.0
+PROP_14757,Oakridge Valley,Apartment,2044,3,3.0,Furnished,1,23,0.0,1,3,Ready To Move,4.0,873400.0
+PROP_11777,Lakeside Estates,Studio Apartment,601,1,1.0,Furnished,1,14,10.0,1,8,Under Construction,1.0,334500.0
+PROP_12208,Midtown Corridor,Apartment,1161,2,2.0,Semi-Furnished,3,11,2.0,3,10,Ready To Move,2.0,651000.0
+PROP_12733,Greenwood Heights,Apartment,1463,2,1.0,Semi-Furnished,2,22,5.0,3,8,Under Construction,3.0,650000.0
+PROP_12501,Lakeside Estates,Apartment,1412,2,2.0,Semi-Furnished,1,19,0.0,2,2,Ready To Move,4.0,804300.0
+PROP_14660,Westend Terrace,Apartment,1300,3,3.0,Unfurnished,1,19,0.0,1,5,Under Construction,4.0,569900.0
+PROP_13528,Greenwood Heights,Studio Apartment,633,1,1.0,Furnished,1,2,0.0,0,8,Under Construction,2.0,338100.0
+PROP_15598,Sunset Park,Independent House,2840,5,4.0,Semi-Furnished,2,2,9.0,2,3,Ready To Move,1.0,1111100.0
+PROP_15754,Midtown Corridor,Independent House,2504,4,4.0,Furnished,0,1,19.0,2,6,Ready To Move,2.0,1224400.0
+PROP_11556,Downtown Central,Studio Apartment,507,1,1.0,Furnished,0,18,3.0,3,7,Ready To Move,4.0,356300.0
+PROP_12793,Oakridge Valley,Luxury Villa,4685,3,3.0,Semi-Furnished,0,3,0.0,1,6,Ready To Move,5.0,2258800.0
+PROP_15935,Downtown Central,Apartment,1048,1,1.0,Furnished,1,4,9.0,2,5,Ready To Move,3.0,574500.0
+PROP_12565,Lakeside Estates,Independent House,2865,3,3.0,Semi-Furnished,2,3,23.0,2,4,Ready To Move,3.0,1436900.0
+PROP_11874,Greenwood Heights,Apartment,1493,2,2.0,Semi-Furnished,0,7,0.0,2,7,Ready To Move,4.0,681200.0
+PROP_14088,Harbor Point,Independent House,3092,4,4.0,Unfurnished,1,2,25.0,1,6,Ready To Move,4.0,1573200.0
+PROP_13411,Riverside District,Apartment,1310,2,2.0,Furnished,1,13,13.0,1,5,Under Construction,3.0,609400.0
+PROP_11581,Sunset Park,Independent House,2826,5,5.0,Furnished,2,3,9.0,1,4,Under Construction,3.0,1200600.0
+PROP_13368,Midtown Corridor,Independent House,2068,3,4.0,Semi-Furnished,1,2,26.0,1,9,Ready To Move,1.0,1066800.0
+PROP_11386,Riverside District,Luxury Villa,5391,5,5.0,Unfurnished,1,2,7.0,3,2,Ready To Move,1.0,3491600.0
+PROP_14492,Sunset Park,Independent House,2401,3,2.0,Unfurnished,2,2,40.0,2,4,Ready To Move,4.0,800800.0
+PROP_15135,Oakridge Valley,Apartment,1085,2,2.0,Semi-Furnished,2,23,0.0,3,4,Under Construction,2.0,452900.0
+PROP_15042,Midtown Corridor,Studio Apartment,428,1,1.0,Furnished,1,8,11.0,1,8,Ready To Move,5.0,312600.0
+PROP_14520,Oakridge Valley,Luxury Villa,4045,4,4.0,Furnished,1,3,14.0,0,6,Ready To Move,3.0,1857000.0
+PROP_13863,Downtown Central,Apartment,1973,4,4.0,Unfurnished,2,11,3.0,2,2,Ready To Move,3.0,1025900.0
+PROP_11292,Sunset Park,Luxury Villa,3902,3,4.0,Furnished,1,3,5.0,1,6,Ready To Move,3.0,2092500.0
+PROP_15367,Downtown Central,Apartment,1225,2,2.0,Semi-Furnished,0,2,12.0,2,6,Ready To Move,5.0,612200.0
+PROP_13291,Westend Terrace,Penthouse,5409,3,4.0,Furnished,1,22,0.0,0,4,Ready To Move,5.0,3226500.0
+PROP_11427,Silicon Hills,Apartment,1303,2,3.0,Semi-Furnished,1,20,1.0,1,7,Under Construction,3.0,744600.0
+PROP_14644,Greenwood Heights,Apartment,1526,2,2.0,Unfurnished,2,14,6.0,1,6,Ready To Move,1.0,641800.0
+PROP_13235,Harbor Point,Luxury Villa,4071,3,4.0,Semi-Furnished,1,4,10.0,2,9,Ready To Move,4.0,2815800.0
+PROP_10224,Silicon Hills,Luxury Villa,4479,4,5.0,Semi-Furnished,1,4,3.0,2,6,Ready To Move,1.0,3545800.0
+PROP_14661,Downtown Central,Independent House,2716,3,3.0,Semi-Furnished,0,1,4.0,1,3,Ready To Move,4.0,1658600.0
+PROP_14243,Silicon Hills,Studio Apartment,605,1,1.0,Furnished,2,9,10.0,1,3,Under Construction,5.0,360500.0
+PROP_15798,Downtown Central,Independent House,3704,5,5.0,Semi-Furnished,0,2,10.0,2,4,Ready To Move,1.0,2106500.0
+PROP_11438,Sunset Park,Independent House,2899,4,4.0,Semi-Furnished,3,3,15.0,2,4,Under Construction,2.0,1068500.0
+PROP_14762,Midtown Corridor,Apartment,1515,3,4.0,Semi-Furnished,2,1,14.0,1,2,Ready To Move,5.0,761100.0
+PROP_12532,Greenwood Heights,Penthouse,4501,4,6.0,Semi-Furnished,1,18,15.0,1,4,Ready To Move,5.0,2339200.0
+PROP_11390,Harbor Point,Apartment,1670,3,2.0,Furnished,2,15,12.0,2,7,Ready To Move,5.0,1005200.0
+PROP_12919,Harbor Point,Apartment,1554,2,3.0,Unfurnished,1,1,16.0,0,3,Ready To Move,3.0,798900.0
+PROP_11825,Silicon Hills,Luxury Villa,4906,6,7.0,Semi-Furnished,1,3,3.0,2,4,Ready To Move,4.0,3768500.0
+PROP_13872,Oakridge Valley,Apartment,1955,4,4.0,Furnished,1,3,2.0,3,4,Ready To Move,1.0,780500.0
+PROP_12301,Sunset Park,Apartment,1605,2,3.0,Furnished,2,3,32.0,2,3,Ready To Move,3.0,541700.0
+PROP_12062,Riverside District,Studio Apartment,586,1,1.0,Furnished,1,8,7.0,2,7,Under Construction,4.0,346800.0
+PROP_13285,Oakridge Valley,Independent House,3018,3,4.0,Furnished,2,1,3.0,1,7,Ready To Move,3.0,1321400.0
+PROP_15586,Midtown Corridor,Apartment,1052,1,1.0,Furnished,0,24,25.0,1,10,Ready To Move,5.0,499500.0
+PROP_11911,Lakeside Estates,Apartment,1489,3,2.0,Semi-Furnished,2,14,0.0,1,9,Ready To Move,4.0,892800.0
+PROP_15237,Greenwood Heights,Penthouse,3633,3,4.0,Semi-Furnished,1,34,6.0,1,8,Ready To Move,3.0,2180700.0
+PROP_14710,Riverside District,Apartment,1091,1,2.0,Furnished,2,15,2.0,2,5,Ready To Move,1.0,559700.0
+PROP_14948,Sunset Park,Apartment,1720,3,3.0,Semi-Furnished,1,22,6.0,0,7,Under Construction,5.0,710400.0
+PROP_14926,Midtown Corridor,Studio Apartment,562,1,1.0,Furnished,1,3,6.0,3,10,Ready To Move,5.0,380600.0
+PROP_11284,Oakridge Valley,Apartment,1437,2,2.0,Semi-Furnished,0,3,5.0,2,4,Ready To Move,5.0,542900.0
+PROP_13305,Sunset Park,Luxury Villa,4594,4,5.0,Unfurnished,1,3,5.0,1,7,Ready To Move,4.0,2227300.0
+PROP_12858,Oakridge Valley,Independent House,2850,4,4.0,Furnished,0,1,11.0,2,5,Ready To Move,2.0,1120000.0
+PROP_14001,Silicon Hills,Luxury Villa,5613,6,6.0,Semi-Furnished,3,2,14.0,1,7,Ready To Move,2.0,3956800.0
+PROP_13643,Sunset Park,Independent House,2455,3,3.0,Furnished,2,2,2.0,0,7,Ready To Move,2.0,1158100.0
+PROP_11301,Midtown Corridor,Apartment,1513,3,2.0,Semi-Furnished,1,24,1.0,2,5,Ready To Move,3.0,816000.0
+PROP_11148,Silicon Hills,Apartment,901,1,1.0,Unfurnished,1,15,2.0,1,4,Ready To Move,2.0,549900.0
+PROP_11876,Downtown Central,Penthouse,4471,4,5.0,Unfurnished,0,25,0.0,1,2,Ready To Move,1.0,3221600.0
+PROP_14865,Harbor Point,Apartment,1030,2,2.0,Semi-Furnished,1,7,4.0,1,7,Ready To Move,2.0,605200.0
+PROP_11042,Greenwood Heights,Apartment,1028,1,1.0,Semi-Furnished,1,18,5.0,1,10,Ready To Move,3.0,504800.0
+PROP_10417,Westend Terrace,Apartment,1951,4,5.0,Semi-Furnished,1,18,1.0,1,6,Ready To Move,1.0,1021800.0
+PROP_12103,Midtown Corridor,Apartment,961,1,1.0,Semi-Furnished,1,23,2.0,1,10,Ready To Move,2.0,540300.0
+PROP_10374,Greenwood Heights,Apartment,1330,2,2.0,Semi-Furnished,2,12,3.0,1,5,Ready To Move,1.0,607800.0
+PROP_13448,Oakridge Valley,Independent House,3011,5,5.0,Unfurnished,2,2,0.0,2,4,Ready To Move,4.0,1458500.0
+PROP_12310,Sunset Park,Apartment,1220,2,2.0,Furnished,1,24,10.0,1,3,Under Construction,3.0,488800.0
+PROP_13819,Downtown Central,Apartment,1793,3,4.0,Semi-Furnished,2,6,11.0,2,4,Ready To Move,3.0,937400.0
+PROP_10094,Westend Terrace,Apartment,1590,2,1.0,Unfurnished,1,18,17.0,1,3,Ready To Move,2.0,652000.0
+PROP_12958,Silicon Hills,Penthouse,4918,5,6.0,Furnished,1,33,1.0,2,8,Ready To Move,4.0,3689800.0
+PROP_13683,Harbor Point,Studio Apartment,530,1,1.0,Semi-Furnished,2,15,5.0,0,4,Ready To Move,3.0,376100.0
+PROP_15841,Sunset Park,Independent House,2671,4,4.0,Unfurnished,0,2,7.0,3,8,Ready To Move,5.0,1130200.0
+PROP_12674,Silicon Hills,Independent House,1981,3,2.0,Semi-Furnished,0,3,9.0,1,7,Ready To Move,4.0,1236700.0
+PROP_14557,Harbor Point,Penthouse,4594,5,6.0,Unfurnished,3,23,7.0,2,6,Ready To Move,4.0,3423700.0
+PROP_13713,Westend Terrace,Luxury Villa,5929,6,7.0,Furnished,2,4,2.0,2,10,Ready To Move,5.0,3742600.0
+PROP_14081,Midtown Corridor,Independent House,1974,2,2.0,Semi-Furnished,1,1,16.0,1,5,Ready To Move,2.0,1024500.0
+PROP_15314,Riverside District,Independent House,2254,3,3.0,Semi-Furnished,2,1,7.0,2,7,Ready To Move,5.0,1216500.0
+PROP_10474,Lakeside Estates,Luxury Villa,4742,5,6.0,Semi-Furnished,1,2,40.0,1,6,Ready To Move,2.0,2092100.0
+PROP_15151,Harbor Point,Independent House,2685,3,3.0,Semi-Furnished,0,1,2.0,1,2,Ready To Move,4.0,1644200.0
+PROP_11220,Westend Terrace,Apartment,1539,3,4.0,Semi-Furnished,1,10,14.0,2,4,Ready To Move,2.0,653600.0
+PROP_12070,Oakridge Valley,Studio Apartment,469,1,1.0,Unfurnished,2,15,2.0,2,7,Under Construction,4.0,242200.0
+PROP_15435,Midtown Corridor,Luxury Villa,4226,5,6.0,Furnished,1,2,2.0,2,4,Ready To Move,2.0,2835000.0
+PROP_12653,Sunset Park,Apartment,1643,3,2.0,Semi-Furnished,1,4,10.0,2,5,Ready To Move,4.0,713700.0
+PROP_10042,Silicon Hills,Studio Apartment,634,1,1.0,Furnished,1,10,1.0,1,3,Ready To Move,2.0,441300.0
+PROP_15158,Oakridge Valley,Luxury Villa,4557,4,5.0,Semi-Furnished,2,3,9.0,2,4,Ready To Move,3.0,2230400.0
+PROP_11730,Harbor Point,Penthouse,5325,5,7.0,Unfurnished,3,26,9.0,2,7,Ready To Move,5.0,3863900.0
+PROP_11623,Silicon Hills,Apartment,1212,2,2.0,Semi-Furnished,2,3,4.0,2,3,Ready To Move,3.0,759300.0
+PROP_12321,Lakeside Estates,Studio Apartment,409,1,1.0,Furnished,1,17,11.0,2,4,Ready To Move,5.0,256300.0
+PROP_13212,Sunset Park,Apartment,1807,3,2.0,Unfurnished,2,23,40.0,2,7,Ready To Move,3.0,604100.0
+PROP_15156,Harbor Point,Apartment,881,2,2.0,Semi-Furnished,2,6,22.0,1,7,Under Construction,3.0,478400.0
+PROP_11029,Midtown Corridor,Apartment,1061,2,2.0,Furnished,1,16,6.0,1,10,Ready To Move,2.0,614400.0
+PROP_11959,Oakridge Valley,Studio Apartment,647,1,1.0,Semi-Furnished,1,6,18.0,1,5,Ready To Move,4.0,249700.0
+PROP_13971,Riverside District,Apartment,1531,2,1.0,Semi-Furnished,1,21,13.0,2,6,Ready To Move,4.0,675200.0
+PROP_12041,Silicon Hills,Studio Apartment,585,1,1.0,Semi-Furnished,1,14,3.0,1,8,Ready To Move,1.0,421500.0
+PROP_10709,Silicon Hills,Apartment,1036,2,2.0,Semi-Furnished,2,20,3.0,2,9,Ready To Move,3.0,664400.0
+PROP_10746,Silicon Hills,Apartment,1098,2,3.0,Semi-Furnished,1,18,2.0,2,8,Ready To Move,2.0,649000.0
+PROP_12255,Lakeside Estates,Independent House,2312,3,4.0,Semi-Furnished,1,2,14.0,2,2,Ready To Move,3.0,1241300.0
+PROP_15268,Downtown Central,Luxury Villa,5158,5,5.0,Furnished,1,4,15.0,2,8,Under Construction,1.0,2915700.0
+PROP_12484,Sunset Park,Independent House,3188,4,4.0,Semi-Furnished,0,2,0.0,1,9,Under Construction,5.0,1344400.0
+PROP_12213,Downtown Central,Apartment,814,1,1.0,Furnished,3,5,2.0,2,4,Ready To Move,1.0,496300.0
+PROP_11768,Downtown Central,Independent House,3380,4,4.0,Semi-Furnished,2,2,18.0,3,8,Ready To Move,1.0,1745300.0
+PROP_12148,Oakridge Valley,Apartment,1676,3,3.0,Furnished,2,12,4.0,1,9,Ready To Move,4.0,753300.0
+PROP_12887,Harbor Point,Luxury Villa,4459,4,5.0,Furnished,2,4,2.0,1,8,Under Construction,1.0,2870300.0
+PROP_11216,Westend Terrace,Luxury Villa,5395,5,5.0,Furnished,2,4,17.0,1,10,Ready To Move,4.0,2861200.0
+PROP_15642,Greenwood Heights,Luxury Villa,4513,4,5.0,Furnished,1,3,31.0,3,1,Ready To Move,3.0,2063000.0
+PROP_13656,Silicon Hills,Apartment,964,1,1.0,Furnished,2,13,20.0,2,7,Ready To Move,4.0,564700.0
+PROP_14161,Greenwood Heights,Apartment,1922,3,4.0,Unfurnished,2,8,0.0,3,6,Ready To Move,2.0,857400.0
+PROP_10994,Oakridge Valley,Studio Apartment,573,1,1.0,Furnished,1,7,0.0,0,8,Ready To Move,2.0,323200.0
+PROP_10880,Greenwood Heights,Apartment,1331,3,2.0,Furnished,0,9,7.0,2,10,Ready To Move,3.0,696500.0
+PROP_13845,Silicon Hills,Independent House,2450,4,5.0,Semi-Furnished,1,2,25.0,2,3,Ready To Move,1.0,1296600.0
+PROP_15545,Oakridge Valley,Studio Apartment,539,1,1.0,Furnished,1,7,2.0,0,3,Ready To Move,5.0,255200.0
+PROP_14619,Oakridge Valley,Independent House,3923,5,4.0,Semi-Furnished,1,3,2.0,1,4,Ready To Move,1.0,1518000.0
+PROP_13560,Lakeside Estates,Apartment,1547,3,3.0,Furnished,0,16,4.0,1,5,Ready To Move,5.0,894300.0
+PROP_14469,Greenwood Heights,Apartment,2108,4,4.0,Unfurnished,0,8,0.0,0,1,Ready To Move,4.0,904000.0
+PROP_13615,Downtown Central,Apartment,1801,2,2.0,Unfurnished,1,24,5.0,2,5,Ready To Move,2.0,965800.0
+PROP_11781,Midtown Corridor,Penthouse,4796,4,5.0,Unfurnished,2,29,10.0,1,5,Ready To Move,1.0,2843100.0
+PROP_13209,Oakridge Valley,Independent House,2878,4,4.0,Unfurnished,1,1,11.0,3,8,Under Construction,3.0,1042400.0
+PROP_14045,Oakridge Valley,Apartment,1469,2,2.0,Unfurnished,2,24,8.0,1,9,Ready To Move,4.0,571300.0
+PROP_15194,Greenwood Heights,Luxury Villa,5406,4,5.0,Semi-Furnished,2,2,0.0,1,4,Ready To Move,4.0,2899200.0
+PROP_11184,Harbor Point,Apartment,1649,3,3.0,Furnished,1,7,12.0,1,4,Ready To Move,5.0,905400.0
+PROP_11281,Downtown Central,Apartment,1341,2,2.0,Semi-Furnished,2,16,19.0,2,3,Under Construction,2.0,576900.0
+PROP_13841,Harbor Point,Penthouse,4936,5,6.0,Unfurnished,1,29,6.0,2,1,Ready To Move,4.0,2955900.0
+PROP_11048,Midtown Corridor,Luxury Villa,3915,3,4.0,Semi-Furnished,2,2,26.0,0,5,Ready To Move,5.0,1919300.0
+PROP_12510,Riverside District,Apartment,1544,3,3.0,Unfurnished,1,2,8.0,2,2,Ready To Move,1.0,655200.0
+PROP_13491,Westend Terrace,Studio Apartment,582,1,1.0,Unfurnished,2,1,13.0,1,5,Ready To Move,5.0,306000.0
+PROP_15014,Silicon Hills,Luxury Villa,5449,4,5.0,Furnished,1,3,3.0,2,2,Ready To Move,1.0,3917700.0
+PROP_13883,Riverside District,Apartment,1211,2,1.0,Furnished,3,14,5.0,1,6,Ready To Move,4.0,696100.0
+PROP_15797,Sunset Park,Independent House,2829,4,4.0,Semi-Furnished,2,1,5.0,1,6,Ready To Move,4.0,1403200.0
+PROP_14687,Westend Terrace,Apartment,1221,2,2.0,Unfurnished,2,19,1.0,0,8,Ready To Move,5.0,654800.0
+PROP_14189,Oakridge Valley,Luxury Villa,4595,4,5.0,Semi-Furnished,1,3,27.0,1,2,Ready To Move,4.0,1889900.0
+PROP_13969,Harbor Point,Apartment,1560,2,2.0,Semi-Furnished,0,5,1.0,1,10,Under Construction,1.0,792300.0
+PROP_10847,Lakeside Estates,Apartment,715,1,1.0,Semi-Furnished,1,16,13.0,1,8,Under Construction,1.0,387400.0
+PROP_12863,Riverside District,Luxury Villa,3974,4,4.0,Unfurnished,1,3,2.0,1,10,Ready To Move,1.0,2284000.0
+PROP_11069,Downtown Central,Luxury Villa,4784,5,6.0,Furnished,1,3,10.0,1,7,Ready To Move,4.0,3100200.0
+PROP_12395,Silicon Hills,Luxury Villa,4278,4,5.0,Unfurnished,2,3,26.0,2,1,Under Construction,4.0,2518200.0
+PROP_12559,Westend Terrace,Apartment,1327,3,3.0,Semi-Furnished,1,20,3.0,2,3,Under Construction,1.0,625700.0
+PROP_15932,Lakeside Estates,Penthouse,3747,3,4.0,Unfurnished,3,18,7.0,0,4,Under Construction,4.0,2459400.0
+PROP_15505,Oakridge Valley,Apartment,1939,3,3.0,Semi-Furnished,2,14,8.0,1,4,Ready To Move,4.0,667200.0
+PROP_11315,Riverside District,Apartment,1235,2,2.0,Semi-Furnished,1,4,16.0,1,4,Ready To Move,5.0,550400.0
+PROP_15525,Silicon Hills,Apartment,1417,2,2.0,Furnished,1,8,0.0,2,5,Ready To Move,3.0,798400.0
+PROP_12200,Lakeside Estates,Independent House,2306,4,4.0,Furnished,3,2,9.0,1,6,Under Construction,4.0,1311500.0
+PROP_13137,Oakridge Valley,Independent House,2905,4,3.0,Furnished,0,1,4.0,2,2,Ready To Move,4.0,1007200.0
+PROP_13103,Downtown Central,Apartment,1441,2,1.0,Semi-Furnished,1,8,10.0,0,3,Ready To Move,1.0,769400.0
+PROP_10064,Westend Terrace,Apartment,1416,2,2.0,Semi-Furnished,1,12,6.0,2,5,Under Construction,2.0,658200.0
+PROP_13420,Westend Terrace,Luxury Villa,5726,6,7.0,Semi-Furnished,2,3,1.0,1,9,Ready To Move,1.0,3359400.0
+PROP_11415,Silicon Hills,Luxury Villa,6470,6,7.0,Furnished,1,3,3.0,3,9,Ready To Move,3.0,4700600.0
+PROP_15422,Silicon Hills,Luxury Villa,4080,4,4.0,Unfurnished,2,3,16.0,2,3,Ready To Move,5.0,3053400.0
+PROP_12886,Midtown Corridor,Luxury Villa,4370,4,4.0,Unfurnished,1,3,1.0,1,5,Under Construction,4.0,2649500.0
+PROP_14033,Greenwood Heights,Luxury Villa,4914,4,5.0,Semi-Furnished,1,4,10.0,1,1,Ready To Move,2.0,2336300.0
+PROP_11792,Lakeside Estates,Apartment,641,1,1.0,Semi-Furnished,3,14,16.0,1,5,Ready To Move,1.0,366700.0
+PROP_10489,Riverside District,Apartment,1775,3,3.0,Semi-Furnished,1,10,1.0,0,3,Ready To Move,2.0,850700.0
+PROP_14718,Silicon Hills,Luxury Villa,5108,4,4.0,Semi-Furnished,0,3,1.0,1,2,Ready To Move,4.0,3959000.0
+PROP_10741,Riverside District,Apartment,1474,3,3.0,Semi-Furnished,0,20,17.0,0,9,Ready To Move,4.0,685900.0
+PROP_15223,Harbor Point,Studio Apartment,466,1,1.0,Semi-Furnished,1,18,5.0,2,2,Ready To Move,4.0,297300.0
+PROP_10748,Greenwood Heights,Apartment,1586,3,3.0,Semi-Furnished,2,14,3.0,0,5,Ready To Move,2.0,718700.0
+PROP_13849,Oakridge Valley,Luxury Villa,4877,4,5.0,Semi-Furnished,3,2,14.0,1,6,Ready To Move,2.0,2165700.0
+PROP_10661,Lakeside Estates,Luxury Villa,3836,4,5.0,Unfurnished,0,2,7.0,0,6,Under Construction,4.0,2249600.0
+PROP_10404,Lakeside Estates,Luxury Villa,4479,5,5.0,Furnished,2,3,3.0,2,6,Under Construction,5.0,2915500.0
+PROP_13861,Riverside District,Apartment,1620,3,2.0,Furnished,1,14,5.0,0,5,Under Construction,5.0,819200.0
+PROP_13508,Harbor Point,Apartment,2034,3,4.0,Furnished,2,6,3.0,2,10,Ready To Move,4.0,1239900.0
+PROP_14618,Lakeside Estates,Apartment,1472,2,2.0,Furnished,3,10,7.0,2,6,Ready To Move,4.0,875900.0
+PROP_12700,Westend Terrace,Independent House,2996,4,4.0,Furnished,3,1,8.0,2,6,Ready To Move,3.0,1595500.0
+PROP_14917,Greenwood Heights,Apartment,1353,2,2.0,Furnished,0,9,9.0,3,6,Ready To Move,5.0,610200.0
+PROP_14696,Greenwood Heights,Independent House,2183,3,4.0,Semi-Furnished,2,2,7.0,2,3,Ready To Move,4.0,997800.0
+PROP_14413,Oakridge Valley,Apartment,1585,3,3.0,Semi-Furnished,1,20,13.0,2,8,Ready To Move,2.0,636800.0
+PROP_13279,Midtown Corridor,Apartment,1177,2,2.0,Furnished,1,12,13.0,1,4,Under Construction,4.0,560400.0
+PROP_10385,Midtown Corridor,Luxury Villa,4489,4,5.0,Semi-Furnished,2,2,11.0,2,5,Under Construction,1.0,2268400.0
+PROP_11330,Midtown Corridor,Apartment,1377,2,1.0,Semi-Furnished,1,5,3.0,0,5,Ready To Move,3.0,660700.0
+PROP_12276,Oakridge Valley,Apartment,1639,3,2.0,Furnished,1,6,15.0,0,5,Ready To Move,3.0,599800.0
+PROP_11506,Riverside District,Apartment,1768,3,2.0,Furnished,1,22,6.0,2,4,Ready To Move,2.0,920400.0
+PROP_14896,Silicon Hills,Independent House,2452,3,4.0,Semi-Furnished,1,3,0.0,2,1,Ready To Move,4.0,1501100.0
+PROP_11338,Downtown Central,Studio Apartment,486,1,1.0,Furnished,1,10,1.0,1,6,Ready To Move,1.0,317600.0
+PROP_15976,Midtown Corridor,Apartment,1430,2,2.0,Semi-Furnished,1,6,11.0,2,3,Ready To Move,3.0,730800.0
+PROP_10943,Oakridge Valley,Penthouse,3802,3,4.0,Furnished,0,23,0.0,1,6,Ready To Move,2.0,2101400.0
+PROP_10728,Lakeside Estates,Apartment,1467,2,2.0,Semi-Furnished,1,2,5.0,1,2,Under Construction,4.0,727600.0
+PROP_13034,Downtown Central,Penthouse,4228,3,4.0,Furnished,1,20,0.0,2,6,Ready To Move,4.0,3415600.0
+PROP_15555,Westend Terrace,Apartment,1170,2,2.0,Unfurnished,2,12,3.0,2,8,Ready To Move,4.0,581500.0
+PROP_14348,Midtown Corridor,Apartment,1619,2,1.0,Furnished,1,24,9.0,1,5,Ready To Move,4.0,755600.0
+PROP_15211,Harbor Point,Penthouse,5330,5,6.0,Furnished,1,19,16.0,2,9,Ready To Move,3.0,3715900.0
+PROP_11425,Riverside District,Apartment,1463,2,1.0,Semi-Furnished,1,18,6.0,2,7,Ready To Move,1.0,676600.0
+PROP_11009,Westend Terrace,Independent House,3337,5,5.0,Furnished,1,1,0.0,0,4,Ready To Move,4.0,1707000.0
+PROP_11719,Westend Terrace,Studio Apartment,517,1,1.0,Furnished,1,4,0.0,2,3,Under Construction,5.0,296100.0
+PROP_10099,Sunset Park,Apartment,2034,3,4.0,Semi-Furnished,2,9,3.0,1,1,Ready To Move,1.0,783200.0
+PROP_15197,Harbor Point,Penthouse,4874,4,6.0,Semi-Furnished,3,26,9.0,3,7,Ready To Move,2.0,3594400.0
+PROP_10364,Harbor Point,Independent House,1529,3,3.0,Semi-Furnished,1,1,7.0,1,5,Ready To Move,4.0,998600.0
+PROP_11624,Harbor Point,Apartment,1164,2,2.0,Furnished,0,6,8.0,3,6,Ready To Move,4.0,709000.0
+PROP_13068,Westend Terrace,Apartment,1121,2,2.0,Semi-Furnished,0,23,9.0,1,10,Under Construction,3.0,513500.0
+PROP_11105,Greenwood Heights,Apartment,994,2,3.0,Furnished,2,22,19.0,1,2,Ready To Move,2.0,458700.0
+PROP_12303,Silicon Hills,Studio Apartment,600,1,1.0,Unfurnished,1,17,26.0,2,4,Ready To Move,2.0,302400.0
+PROP_13146,Riverside District,Apartment,1327,2,1.0,Furnished,1,23,3.0,1,5,Ready To Move,1.0,649400.0
+PROP_14120,Harbor Point,Independent House,2588,4,4.0,Semi-Furnished,0,2,12.0,3,7,Ready To Move,1.0,1579000.0
+PROP_12250,Downtown Central,Independent House,2520,3,2.0,Semi-Furnished,1,1,2.0,1,3,Ready To Move,3.0,1424400.0
+PROP_13428,Midtown Corridor,Apartment,1430,2,2.0,Furnished,0,19,13.0,2,4,Under Construction,3.0,729000.0
+PROP_15305,Westend Terrace,Luxury Villa,4203,4,5.0,Furnished,1,4,1.0,1,3,Under Construction,2.0,2395000.0
+PROP_12233,Silicon Hills,Independent House,2580,4,4.0,Furnished,0,2,4.0,1,6,Ready To Move,1.0,1821900.0
+PROP_12143,Sunset Park,Independent House,2703,4,5.0,Semi-Furnished,1,1,2.0,3,4,Under Construction,3.0,1256400.0
+PROP_14123,Downtown Central,Independent House,2562,3,4.0,Unfurnished,1,1,1.0,1,6,Ready To Move,4.0,1388100.0
+PROP_14418,Midtown Corridor,Studio Apartment,569,1,1.0,Semi-Furnished,1,9,1.0,2,2,Ready To Move,3.0,289200.0
+PROP_13865,Midtown Corridor,Independent House,1904,2,1.0,Furnished,2,2,9.0,3,9,Ready To Move,5.0,1111200.0
+PROP_10725,Downtown Central,Independent House,3245,4,4.0,Semi-Furnished,2,3,2.0,2,4,Ready To Move,1.0,1881100.0
+PROP_14386,Harbor Point,Luxury Villa,5186,5,6.0,Semi-Furnished,1,2,15.0,3,1,Ready To Move,2.0,3138700.0
+PROP_13294,Harbor Point,Studio Apartment,473,1,1.0,Semi-Furnished,1,5,18.0,2,2,Ready To Move,3.0,274600.0
+PROP_14378,Oakridge Valley,Luxury Villa,5637,6,6.0,Furnished,1,2,7.0,2,4,Ready To Move,5.0,2577900.0
+PROP_11355,Westend Terrace,Apartment,1220,2,1.0,Semi-Furnished,2,10,13.0,3,5,Ready To Move,2.0,547300.0
+PROP_15180,Silicon Hills,Independent House,3777,5,4.0,Furnished,1,2,9.0,2,6,Ready To Move,1.0,2534300.0
+PROP_12693,Downtown Central,Apartment,1123,2,2.0,Semi-Furnished,0,13,0.0,1,4,Ready To Move,4.0,651000.0
+PROP_10116,Lakeside Estates,Studio Apartment,647,1,1.0,Furnished,1,11,21.0,1,6,Ready To Move,5.0,389900.0
+PROP_13466,Silicon Hills,Apartment,1174,1,1.0,Semi-Furnished,3,12,1.0,2,7,Ready To Move,1.0,699500.0
+PROP_14354,Sunset Park,Independent House,2443,4,4.0,Semi-Furnished,1,2,8.0,1,6,Ready To Move,5.0,1073600.0
+PROP_13181,Harbor Point,Apartment,1096,2,3.0,Furnished,1,8,12.0,2,9,Ready To Move,2.0,674500.0
+PROP_12523,Riverside District,Independent House,2474,3,2.0,Furnished,2,2,4.0,1,2,Under Construction,5.0,1218200.0
+PROP_11690,Lakeside Estates,Luxury Villa,5283,5,5.0,Semi-Furnished,1,3,4.0,1,6,Under Construction,2.0,3129500.0
+PROP_11674,Harbor Point,Studio Apartment,508,1,1.0,Furnished,1,5,25.0,1,4,Ready To Move,2.0,315200.0
+PROP_14940,Oakridge Valley,Independent House,1232,2,2.0,Semi-Furnished,1,2,0.0,2,7,Under Construction,5.0,591400.0
+PROP_15609,Lakeside Estates,Independent House,1949,3,3.0,Unfurnished,1,2,10.0,1,7,Ready To Move,1.0,1146300.0
+PROP_15154,Riverside District,Apartment,1258,2,1.0,Semi-Furnished,1,23,3.0,2,2,Ready To Move,5.0,604300.0
+PROP_14183,Riverside District,Independent House,2755,4,5.0,Unfurnished,1,3,5.0,2,4,Ready To Move,4.0,1296000.0
+PROP_13679,Westend Terrace,Independent House,2141,2,2.0,Semi-Furnished,1,2,0.0,2,4,Ready To Move,3.0,1076400.0
+PROP_10028,Greenwood Heights,Apartment,1012,1,1.0,Semi-Furnished,1,24,29.0,1,3,Ready To Move,1.0,363500.0
+PROP_10849,Oakridge Valley,Independent House,3115,5,5.0,Semi-Furnished,1,2,6.0,1,3,Under Construction,1.0,1347900.0
+PROP_14819,Lakeside Estates,Luxury Villa,5541,5,6.0,Furnished,0,3,4.0,1,3,Ready To Move,3.0,3778200.0
+PROP_11252,Silicon Hills,Studio Apartment,476,1,1.0,Unfurnished,1,18,0.0,2,5,Ready To Move,2.0,310700.0
+PROP_13254,Lakeside Estates,Independent House,2326,3,3.0,Semi-Furnished,1,3,6.0,2,8,Ready To Move,1.0,1380400.0
+PROP_13238,Westend Terrace,Penthouse,5879,5,6.0,Semi-Furnished,2,27,1.0,1,4,Ready To Move,1.0,3543800.0
+PROP_13699,Sunset Park,Apartment,733,1,1.0,Unfurnished,1,22,3.0,3,8,Ready To Move,1.0,354100.0
+PROP_15844,Oakridge Valley,Studio Apartment,800,1,1.0,Furnished,2,14,12.0,1,7,Ready To Move,3.0,336100.0
+PROP_11157,Riverside District,Apartment,1071,1,1.0,Furnished,2,2,6.0,3,5,Ready To Move,5.0,586900.0
+PROP_14138,Lakeside Estates,Penthouse,4265,3,4.0,Unfurnished,1,22,13.0,1,4,Ready To Move,2.0,2668100.0
+PROP_14040,Midtown Corridor,Apartment,1624,2,2.0,Furnished,1,18,21.0,0,10,Ready To Move,1.0,705100.0
+PROP_12636,Oakridge Valley,Penthouse,2878,3,5.0,Unfurnished,0,33,7.0,1,4,Ready To Move,3.0,1410800.0
+PROP_14139,Downtown Central,Apartment,988,1,1.0,Furnished,2,16,1.0,1,5,Ready To Move,1.0,588300.0
+PROP_15272,Oakridge Valley,Luxury Villa,3724,4,4.0,Furnished,1,2,10.0,1,7,Under Construction,5.0,1704800.0
+PROP_14321,Greenwood Heights,Penthouse,3771,4,6.0,Semi-Furnished,0,29,8.0,1,5,Ready To Move,5.0,2153000.0
+PROP_15690,Westend Terrace,Apartment,1560,2,1.0,Furnished,0,12,5.0,2,8,Ready To Move,2.0,769300.0
+PROP_11671,Harbor Point,Independent House,1903,3,3.0,Semi-Furnished,1,3,4.0,0,7,Ready To Move,5.0,1177700.0
+PROP_10509,Riverside District,Penthouse,3712,3,5.0,Furnished,1,34,2.0,1,6,Ready To Move,1.0,2455800.0
+PROP_10504,Riverside District,Penthouse,4493,4,5.0,Furnished,1,32,8.0,2,5,Under Construction,3.0,2359400.0
+PROP_15536,Westend Terrace,Luxury Villa,3963,4,5.0,Unfurnished,1,4,0.0,2,5,Ready To Move,2.0,1999800.0
+PROP_15704,Oakridge Valley,Apartment,1051,2,2.0,Semi-Furnished,0,15,11.0,1,5,Ready To Move,4.0,414500.0
+PROP_15653,Silicon Hills,Penthouse,3646,4,5.0,Semi-Furnished,0,21,6.0,1,6,Ready To Move,5.0,2729300.0
+PROP_10990,Westend Terrace,Apartment,901,1,1.0,Semi-Furnished,1,6,4.0,2,5,Ready To Move,3.0,418000.0
+PROP_10191,Riverside District,Studio Apartment,584,1,1.0,Semi-Furnished,1,17,25.0,1,4,Ready To Move,3.0,272600.0
+PROP_10357,Westend Terrace,Apartment,1542,3,3.0,Semi-Furnished,1,13,16.0,1,8,Ready To Move,5.0,724800.0
+PROP_12986,Harbor Point,Independent House,2912,4,4.0,Unfurnished,0,3,5.0,1,7,Under Construction,4.0,1613800.0
+PROP_15035,Riverside District,Apartment,1454,2,2.0,Unfurnished,1,20,8.0,0,5,Ready To Move,4.0,675800.0
+PROP_11739,Sunset Park,Independent House,2447,4,5.0,Semi-Furnished,1,1,1.0,2,3,Ready To Move,5.0,1127400.0
+PROP_12405,Downtown Central,Studio Apartment,679,1,1.0,Semi-Furnished,1,2,5.0,1,6,Ready To Move,5.0,388600.0
+PROP_10488,Greenwood Heights,Apartment,1273,2,3.0,Furnished,1,22,5.0,1,7,Ready To Move,5.0,669100.0
+PROP_10733,Greenwood Heights,Independent House,2428,3,2.0,Unfurnished,2,1,5.0,2,5,Ready To Move,5.0,1096700.0
+PROP_12844,Lakeside Estates,Apartment,1055,2,3.0,Furnished,2,14,4.0,2,6,Ready To Move,5.0,609900.0
+PROP_15873,Downtown Central,Apartment,1600,3,3.0,Unfurnished,2,11,6.0,1,9,Ready To Move,5.0,953900.0
+PROP_13794,Midtown Corridor,Studio Apartment,383,1,1.0,Unfurnished,1,7,5.0,2,3,Ready To Move,2.0,210400.0
+PROP_14282,Oakridge Valley,Independent House,2052,3,3.0,Furnished,1,2,4.0,1,7,Ready To Move,1.0,863900.0
+PROP_14847,Westend Terrace,Luxury Villa,4690,4,4.0,Unfurnished,1,4,4.0,1,5,Ready To Move,4.0,2599700.0
+PROP_15446,Westend Terrace,Studio Apartment,556,1,1.0,Semi-Furnished,1,11,20.0,2,7,Ready To Move,2.0,282100.0
+PROP_14294,Westend Terrace,Luxury Villa,4459,4,5.0,Semi-Furnished,2,3,4.0,0,6,Ready To Move,2.0,2712100.0
+PROP_14882,Silicon Hills,Apartment,1775,3,4.0,Furnished,1,17,4.0,3,5,Ready To Move,2.0,1114900.0
+PROP_10200,Harbor Point,Independent House,2547,3,3.0,Semi-Furnished,2,2,0.0,3,6,Ready To Move,1.0,1655100.0
+PROP_13674,Sunset Park,Apartment,1092,2,1.0,Semi-Furnished,1,1,14.0,2,5,Under Construction,2.0,464500.0
+PROP_12206,Lakeside Estates,Apartment,1604,2,2.0,Semi-Furnished,2,3,1.0,1,6,Under Construction,3.0,829400.0
+PROP_14549,Harbor Point,Independent House,2934,3,3.0,Semi-Furnished,3,2,5.0,2,6,Under Construction,5.0,1727600.0
+PROP_15502,Silicon Hills,Penthouse,4477,4,5.0,Furnished,1,19,8.0,2,7,Ready To Move,4.0,3690600.0
+PROP_11150,Lakeside Estates,Penthouse,4251,4,5.0,Furnished,2,19,13.0,2,4,Under Construction,3.0,2757500.0
+PROP_13314,Greenwood Heights,Independent House,2703,3,2.0,Furnished,1,2,2.0,3,8,Ready To Move,2.0,1336100.0
+PROP_14225,Lakeside Estates,Independent House,1896,2,2.0,Unfurnished,1,2,40.0,2,9,Ready To Move,1.0,797600.0
+PROP_13638,Westend Terrace,Apartment,956,1,2.0,Furnished,1,20,4.0,1,5,Ready To Move,2.0,491400.0
+PROP_12930,Midtown Corridor,Independent House,2507,3,3.0,Semi-Furnished,3,3,3.0,3,6,Ready To Move,5.0,1417900.0
+PROP_11620,Westend Terrace,Independent House,3134,5,4.0,Semi-Furnished,1,3,27.0,1,8,Ready To Move,1.0,1257200.0
+PROP_12582,Lakeside Estates,Apartment,1498,3,3.0,Semi-Furnished,0,10,3.0,0,9,Ready To Move,2.0,776400.0
+PROP_13852,Downtown Central,Apartment,1102,1,1.0,Furnished,2,22,8.0,2,5,Under Construction,3.0,601500.0
+PROP_12758,Oakridge Valley,Independent House,2409,3,4.0,Furnished,1,1,29.0,0,5,Ready To Move,3.0,850000.0
+PROP_12846,Downtown Central,Independent House,2274,4,4.0,Furnished,0,1,5.0,2,3,Ready To Move,3.0,1444300.0
+PROP_13800,Lakeside Estates,Independent House,2368,3,3.0,Semi-Furnished,1,1,11.0,2,7,Ready To Move,5.0,1306100.0
+PROP_13806,Silicon Hills,Apartment,1767,3,3.0,Semi-Furnished,1,1,11.0,1,5,Ready To Move,1.0,1012700.0
+PROP_14220,Lakeside Estates,Independent House,2759,4,3.0,Unfurnished,1,2,13.0,1,4,Under Construction,4.0,1242400.0
+PROP_13891,Greenwood Heights,Apartment,1387,2,1.0,Semi-Furnished,1,7,0.0,1,3,Ready To Move,4.0,651200.0
+PROP_12215,Westend Terrace,Independent House,3863,5,5.0,Semi-Furnished,2,1,1.0,1,10,Under Construction,3.0,1786100.0
+PROP_15894,Westend Terrace,Apartment,1470,3,3.0,Semi-Furnished,2,23,17.0,1,5,Ready To Move,5.0,715200.0
+PROP_14261,Midtown Corridor,Studio Apartment,641,1,1.0,Unfurnished,3,6,13.0,1,4,Ready To Move,5.0,325800.0
+PROP_12797,Midtown Corridor,Apartment,1141,2,2.0,Unfurnished,1,4,10.0,1,5,Ready To Move,2.0,544500.0
+PROP_15239,Sunset Park,Independent House,3345,5,4.0,Furnished,0,1,13.0,2,1,Ready To Move,5.0,1348800.0
+PROP_10895,Sunset Park,Luxury Villa,3547,3,4.0,Furnished,1,3,1.0,1,9,Ready To Move,4.0,1840700.0
+PROP_12836,Midtown Corridor,Apartment,1155,2,2.0,Furnished,1,7,2.0,1,4,Ready To Move,1.0,631900.0
+PROP_13148,Midtown Corridor,Luxury Villa,5570,5,5.0,Semi-Furnished,0,2,15.0,2,2,Ready To Move,5.0,3142600.0
+PROP_13242,Greenwood Heights,Apartment,764,2,1.0,Semi-Furnished,2,2,2.0,0,4,Ready To Move,3.0,393000.0
+PROP_13225,Greenwood Heights,Apartment,1461,2,1.0,Unfurnished,1,1,28.0,1,4,Ready To Move,4.0,497200.0
+PROP_11277,Downtown Central,Apartment,1030,1,1.0,Semi-Furnished,2,22,24.0,1,5,Ready To Move,2.0,518500.0
+PROP_15607,Lakeside Estates,Apartment,1442,3,3.0,Semi-Furnished,2,7,3.0,0,8,Ready To Move,4.0,863800.0
+PROP_11605,Sunset Park,Apartment,1447,3,3.0,Furnished,2,14,1.0,1,9,Ready To Move,1.0,684700.0
+PROP_14555,Riverside District,Apartment,1722,3,3.0,Unfurnished,1,11,1.0,1,7,Ready To Move,4.0,867200.0
+PROP_10945,Greenwood Heights,Apartment,1022,2,1.0,Furnished,1,19,16.0,2,9,Ready To Move,1.0,460400.0
+PROP_11392,Greenwood Heights,Independent House,2469,3,3.0,Unfurnished,1,2,2.0,3,8,Under Construction,2.0,1150900.0
+PROP_14962,Westend Terrace,Apartment,1947,3,2.0,Semi-Furnished,2,20,1.0,1,9,Under Construction,5.0,828700.0
+PROP_15650,Westend Terrace,Studio Apartment,522,1,1.0,Semi-Furnished,1,11,6.0,0,4,Ready To Move,2.0,265100.0
+PROP_10103,Midtown Corridor,Apartment,1850,3,2.0,Furnished,3,16,0.0,0,4,Ready To Move,5.0,983700.0
+PROP_13973,Greenwood Heights,Independent House,3158,4,4.0,Unfurnished,1,1,0.0,1,9,Under Construction,1.0,1513800.0
+PROP_11426,Lakeside Estates,Independent House,2650,3,3.0,Semi-Furnished,1,1,2.0,1,4,Ready To Move,3.0,1333900.0
+PROP_15373,Harbor Point,Independent House,2604,4,4.0,Furnished,1,2,0.0,1,6,Ready To Move,3.0,1679000.0
+PROP_12289,Greenwood Heights,Apartment,946,1,1.0,Furnished,2,9,1.0,2,3,Under Construction,4.0,427200.0
+PROP_13239,Oakridge Valley,Apartment,1676,3,2.0,Semi-Furnished,2,8,3.0,1,9,Under Construction,2.0,681000.0
+PROP_10264,Greenwood Heights,Apartment,1226,2,2.0,Unfurnished,1,20,10.0,1,5,Ready To Move,1.0,516500.0
+PROP_12260,Oakridge Valley,Studio Apartment,560,1,1.0,Furnished,2,6,12.0,1,6,Ready To Move,4.0,308800.0
+PROP_10121,Westend Terrace,Studio Apartment,544,1,1.0,Unfurnished,3,8,7.0,2,5,Under Construction,3.0,289000.0
+PROP_10313,Sunset Park,Independent House,2203,3,4.0,Furnished,0,1,2.0,1,4,Ready To Move,3.0,1011400.0
+PROP_13663,Sunset Park,Apartment,1233,2,2.0,Unfurnished,2,22,1.0,1,8,Ready To Move,2.0,572100.0
+PROP_14398,Midtown Corridor,Studio Apartment,495,1,1.0,Furnished,1,18,3.0,2,4,Ready To Move,3.0,321300.0
+PROP_12298,Downtown Central,Apartment,1143,2,2.0,Semi-Furnished,1,22,8.0,3,10,Ready To Move,4.0,701800.0
+PROP_11802,Midtown Corridor,Independent House,2176,3,2.0,Semi-Furnished,2,1,1.0,1,2,Ready To Move,2.0,1160700.0
+PROP_15938,Harbor Point,Independent House,2048,2,1.0,Semi-Furnished,1,3,1.0,1,8,Ready To Move,3.0,1284600.0
+PROP_12398,Riverside District,Luxury Villa,4492,4,5.0,Unfurnished,1,4,18.0,0,6,Ready To Move,5.0,2620400.0
+PROP_13660,Riverside District,Apartment,1713,3,2.0,Furnished,0,21,8.0,3,9,Ready To Move,4.0,801600.0
+PROP_14532,Oakridge Valley,Luxury Villa,4095,4,4.0,Semi-Furnished,1,2,3.0,2,6,Ready To Move,1.0,1992300.0
+PROP_12366,Oakridge Valley,Apartment,1360,2,2.0,Unfurnished,1,22,13.0,1,6,Under Construction,4.0,468200.0
+PROP_14691,Sunset Park,Independent House,1837,2,3.0,Unfurnished,1,2,4.0,2,6,Ready To Move,3.0,843400.0
+PROP_12066,Oakridge Valley,Apartment,1103,1,1.0,Furnished,3,2,6.0,2,7,Ready To Move,2.0,498400.0
+PROP_14675,Oakridge Valley,Studio Apartment,658,1,1.0,Furnished,2,13,1.0,3,7,Ready To Move,2.0,369900.0
+PROP_14952,Westend Terrace,Apartment,1373,2,2.0,Furnished,1,4,5.0,2,5,Ready To Move,3.0,651600.0
+PROP_15919,Riverside District,Apartment,1680,3,3.0,Semi-Furnished,1,3,0.0,1,8,Ready To Move,5.0,880900.0
+PROP_13669,Midtown Corridor,Apartment,994,2,2.0,Semi-Furnished,1,19,9.0,1,5,Under Construction,2.0,516500.0
+PROP_11070,Riverside District,Independent House,2997,4,4.0,Furnished,1,3,0.0,3,3,Under Construction,3.0,1541300.0
+PROP_15406,Lakeside Estates,Apartment,1451,3,2.0,Semi-Furnished,2,6,15.0,2,7,Ready To Move,1.0,736700.0
+PROP_10328,Oakridge Valley,Apartment,1461,2,2.0,Furnished,1,9,1.0,1,6,Ready To Move,2.0,612700.0
+PROP_12304,Silicon Hills,Independent House,2500,4,5.0,Semi-Furnished,1,2,2.0,2,7,Ready To Move,5.0,1832000.0
+PROP_13372,Oakridge Valley,Luxury Villa,4587,4,4.0,Semi-Furnished,0,3,5.0,2,5,Ready To Move,4.0,1892400.0
+PROP_12628,Riverside District,Apartment,1506,3,3.0,Unfurnished,2,4,19.0,3,6,Ready To Move,3.0,740600.0
+PROP_15779,Downtown Central,Apartment,1270,2,2.0,Semi-Furnished,1,13,22.0,1,5,Under Construction,5.0,625300.0
+PROP_12822,Riverside District,Independent House,2422,3,3.0,Unfurnished,0,1,1.0,1,7,Ready To Move,5.0,1288900.0
+PROP_10717,Greenwood Heights,Luxury Villa,4417,3,3.0,Furnished,1,2,1.0,2,7,Ready To Move,2.0,2410400.0
+PROP_15290,Harbor Point,Apartment,1063,1,1.0,Furnished,2,14,5.0,2,1,Ready To Move,1.0,619400.0
+PROP_11251,Downtown Central,Independent House,1956,3,3.0,Semi-Furnished,2,2,16.0,3,10,Ready To Move,3.0,1129600.0
+PROP_11523,Harbor Point,Independent House,2205,3,2.0,Semi-Furnished,1,1,13.0,1,8,Under Construction,4.0,1173000.0
+PROP_12662,Sunset Park,Apartment,1441,3,3.0,Semi-Furnished,0,2,0.0,2,1,Ready To Move,1.0,609400.0
+PROP_11994,Sunset Park,Apartment,1251,1,1.0,Furnished,1,3,2.0,2,8,Ready To Move,3.0,628200.0
+PROP_14258,Lakeside Estates,Apartment,1863,3,3.0,Furnished,1,8,27.0,2,1,Ready To Move,1.0,863700.0
+PROP_14435,Riverside District,Luxury Villa,5080,5,5.0,Semi-Furnished,2,4,6.0,1,6,Ready To Move,3.0,2950100.0
+PROP_13364,Oakridge Valley,Independent House,2906,4,3.0,Furnished,0,2,0.0,3,7,Ready To Move,3.0,1328400.0
+PROP_10122,Westend Terrace,Luxury Villa,4381,4,4.0,Semi-Furnished,2,2,2.0,2,8,Ready To Move,4.0,2505200.0
+PROP_15664,Midtown Corridor,Studio Apartment,683,1,1.0,Semi-Furnished,1,18,16.0,1,4,Ready To Move,2.0,303700.0
+PROP_12073,Sunset Park,Independent House,2211,3,3.0,Furnished,1,1,14.0,1,5,Ready To Move,5.0,950100.0
+PROP_14831,Harbor Point,Apartment,1500,2,2.0,Semi-Furnished,1,15,3.0,0,6,Ready To Move,3.0,867200.0
+PROP_15950,Oakridge Valley,Apartment,1545,3,3.0,Semi-Furnished,0,3,4.0,2,8,Ready To Move,4.0,645900.0
+PROP_10827,Silicon Hills,Apartment,1099,2,2.0,Semi-Furnished,3,22,0.0,1,4,Ready To Move,5.0,820400.0
+PROP_10396,Downtown Central,Luxury Villa,4510,4,5.0,Semi-Furnished,2,3,2.0,1,4,Ready To Move,4.0,3043900.0
+PROP_13545,Westend Terrace,Studio Apartment,451,1,1.0,Semi-Furnished,1,18,0.0,2,1,Ready To Move,3.0,264700.0
+PROP_11168,Oakridge Valley,Apartment,936,2,2.0,Semi-Furnished,1,10,5.0,0,4,Ready To Move,4.0,466800.0
+PROP_10920,Lakeside Estates,Apartment,819,1,1.0,Semi-Furnished,2,20,26.0,1,3,Ready To Move,1.0,386300.0
+PROP_10323,Silicon Hills,Apartment,1191,3,3.0,Furnished,1,4,6.0,2,4,Ready To Move,5.0,859800.0
+PROP_13297,Midtown Corridor,Apartment,1609,2,2.0,Semi-Furnished,1,19,2.0,1,4,Ready To Move,1.0,809400.0
+PROP_10958,Midtown Corridor,Apartment,1406,2,2.0,Unfurnished,1,14,1.0,2,5,Ready To Move,1.0,711400.0
+PROP_11942,Harbor Point,Apartment,1081,2,2.0,Semi-Furnished,2,20,0.0,1,8,Under Construction,5.0,683400.0
+PROP_15452,Greenwood Heights,Apartment,1853,3,2.0,Semi-Furnished,1,16,14.0,1,5,Under Construction,4.0,705200.0
+PROP_13040,Greenwood Heights,Penthouse,3783,4,5.0,Semi-Furnished,1,34,4.0,1,3,Ready To Move,2.0,2040400.0
+PROP_10803,Harbor Point,Apartment,1034,2,3.0,Semi-Furnished,0,13,2.0,2,5,Under Construction,5.0,632500.0
+PROP_12175,Sunset Park,Independent House,2689,4,3.0,Furnished,1,2,2.0,0,6,Ready To Move,4.0,1169800.0
+PROP_12287,Greenwood Heights,Independent House,2058,2,2.0,Semi-Furnished,0,2,1.0,1,7,Under Construction,1.0,915100.0
+PROP_13195,Silicon Hills,Apartment,1175,2,2.0,Semi-Furnished,1,21,14.0,1,1,Ready To Move,1.0,627700.0
+PROP_11979,Lakeside Estates,Studio Apartment,549,1,1.0,Semi-Furnished,1,12,2.0,2,4,Ready To Move,2.0,327700.0
+PROP_15010,Harbor Point,Independent House,3091,4,4.0,Semi-Furnished,0,2,3.0,2,5,Ready To Move,3.0,1909000.0
+PROP_15187,Greenwood Heights,Apartment,1448,2,2.0,Semi-Furnished,1,20,2.0,1,2,Under Construction,1.0,681600.0
+PROP_10831,Sunset Park,Luxury Villa,4742,4,5.0,Semi-Furnished,1,3,6.0,1,4,Ready To Move,1.0,2187800.0
+PROP_14451,Riverside District,Apartment,1139,1,2.0,Furnished,2,7,5.0,2,7,Ready To Move,4.0,601200.0
+PROP_11353,Oakridge Valley,Apartment,1542,2,1.0,Semi-Furnished,2,19,15.0,1,7,Ready To Move,1.0,621500.0
+PROP_13773,Midtown Corridor,Apartment,1925,3,2.0,Semi-Furnished,0,15,3.0,2,7,Under Construction,5.0,902600.0
+PROP_11660,Greenwood Heights,Apartment,571,1,2.0,Furnished,1,11,0.0,1,7,Ready To Move,5.0,354200.0
+PROP_10450,Greenwood Heights,Independent House,2386,4,3.0,Unfurnished,2,2,6.0,2,10,Under Construction,2.0,1096100.0
+PROP_13028,Oakridge Valley,Apartment,1493,2,1.0,Furnished,1,6,1.0,1,5,Ready To Move,1.0,602400.0
+PROP_13909,Lakeside Estates,Apartment,1247,2,2.0,Furnished,1,15,5.0,1,6,Ready To Move,5.0,687700.0
+PROP_14477,Westend Terrace,Apartment,1376,3,3.0,Semi-Furnished,2,7,9.0,2,6,Ready To Move,2.0,662800.0
+PROP_12144,Harbor Point,Apartment,1202,2,2.0,Furnished,2,11,5.0,1,6,Ready To Move,4.0,749900.0
+PROP_11477,Midtown Corridor,Apartment,1349,2,2.0,Furnished,1,10,10.0,0,3,Ready To Move,1.0,689500.0
+PROP_12105,Greenwood Heights,Apartment,1836,3,2.0,Furnished,1,13,12.0,1,2,Ready To Move,4.0,812700.0
+PROP_14949,Greenwood Heights,Apartment,921,2,2.0,Semi-Furnished,1,2,20.0,1,1,Under Construction,3.0,331400.0
+PROP_12307,Riverside District,Apartment,1088,2,2.0,Semi-Furnished,1,1,0.0,2,8,Ready To Move,4.0,622000.0
+PROP_12392,Westend Terrace,Independent House,2577,5,6.0,Furnished,3,3,3.0,1,6,Ready To Move,2.0,1358800.0
+PROP_13704,Midtown Corridor,Studio Apartment,573,1,1.0,Unfurnished,1,9,2.0,1,4,Ready To Move,3.0,307600.0
+PROP_13232,Midtown Corridor,Independent House,2517,4,4.0,Semi-Furnished,1,3,2.0,0,7,Ready To Move,1.0,1437800.0
+PROP_14029,Midtown Corridor,Apartment,913,1,1.0,Furnished,2,22,5.0,0,1,Ready To Move,4.0,484100.0
+PROP_11196,Sunset Park,Independent House,2356,3,3.0,Unfurnished,1,2,25.0,2,6,Ready To Move,3.0,869700.0
+PROP_15192,Oakridge Valley,Apartment,2093,4,4.0,Furnished,1,8,0.0,1,7,Under Construction,1.0,837300.0
+PROP_13957,Sunset Park,Apartment,1221,2,1.0,Unfurnished,1,20,0.0,2,8,Ready To Move,1.0,545600.0
+PROP_13803,Oakridge Valley,Penthouse,4521,4,5.0,Unfurnished,1,30,2.0,1,6,Ready To Move,5.0,2350400.0
+PROP_11202,Harbor Point,Apartment,988,1,1.0,Unfurnished,2,10,0.0,1,2,Ready To Move,4.0,567000.0
+PROP_12112,Westend Terrace,Studio Apartment,600,1,1.0,Semi-Furnished,1,4,5.0,2,5,Ready To Move,2.0,301800.0
+PROP_10840,Oakridge Valley,Apartment,1245,1,1.0,Semi-Furnished,0,17,24.0,2,7,Ready To Move,5.0,405800.0
+PROP_13077,Sunset Park,Independent House,1328,2,2.0,Semi-Furnished,1,2,1.0,1,4,Ready To Move,2.0,669500.0
+PROP_15693,Oakridge Valley,Apartment,1522,2,2.0,Semi-Furnished,3,6,16.0,1,5,Ready To Move,5.0,584500.0
+PROP_13237,Silicon Hills,Apartment,1886,4,5.0,Semi-Furnished,1,8,14.0,1,8,Ready To Move,1.0,1098300.0
+PROP_14247,Greenwood Heights,Apartment,1324,2,1.0,Furnished,1,1,1.0,1,6,Ready To Move,3.0,642200.0
+PROP_13169,Downtown Central,Apartment,1274,2,3.0,Unfurnished,2,5,5.0,0,2,Under Construction,5.0,663300.0
+PROP_15326,Sunset Park,Penthouse,4606,4,5.0,Furnished,0,21,13.0,1,10,Ready To Move,1.0,2476400.0
+PROP_12003,Midtown Corridor,Apartment,1024,1,1.0,Semi-Furnished,1,15,5.0,1,4,Under Construction,5.0,499400.0
+PROP_13686,Greenwood Heights,Luxury Villa,4204,5,6.0,Unfurnished,2,2,0.0,2,6,Ready To Move,1.0,2125200.0
+PROP_14312,Westend Terrace,Independent House,2468,3,3.0,Furnished,2,2,7.0,2,6,Ready To Move,4.0,1171000.0
+PROP_15573,Sunset Park,Independent House,2807,4,3.0,Unfurnished,1,2,2.0,1,4,Ready To Move,5.0,1138800.0
+PROP_13499,Harbor Point,Apartment,1634,3,2.0,Semi-Furnished,0,11,2.0,2,10,Under Construction,3.0,935400.0
+PROP_11167,Harbor Point,Studio Apartment,648,1,1.0,Furnished,0,19,2.0,1,5,Ready To Move,4.0,420000.0
+PROP_14460,Midtown Corridor,Apartment,1097,1,1.0,Furnished,2,1,5.0,1,2,Ready To Move,2.0,586300.0
+PROP_13935,Greenwood Heights,Apartment,1499,2,3.0,Unfurnished,0,7,17.0,1,7,Ready To Move,2.0,611500.0
+PROP_14604,Downtown Central,Apartment,1123,2,2.0,Furnished,2,24,8.0,1,3,Ready To Move,1.0,667500.0
+PROP_13362,Harbor Point,Apartment,1545,3,2.0,Unfurnished,2,11,20.0,2,5,Ready To Move,5.0,772800.0
+PROP_14060,Harbor Point,Independent House,2878,4,4.0,Semi-Furnished,1,2,1.0,1,5,Ready To Move,5.0,1818000.0
+PROP_13355,Sunset Park,Luxury Villa,3735,4,5.0,Semi-Furnished,1,3,11.0,1,10,Ready To Move,3.0,1675600.0
+PROP_11040,Westend Terrace,Independent House,2716,3,2.0,Unfurnished,1,1,1.0,1,6,Under Construction,2.0,1225600.0
+PROP_11539,Harbor Point,Independent House,3756,5,6.0,Unfurnished,1,2,35.0,3,6,Ready To Move,3.0,1807500.0
+PROP_14375,Riverside District,Apartment,540,1,2.0,Unfurnished,2,7,0.0,0,2,Ready To Move,3.0,313600.0
+PROP_15343,Lakeside Estates,Studio Apartment,485,1,1.0,Semi-Furnished,2,11,0.0,2,5,Ready To Move,3.0,328100.0
+PROP_15706,Riverside District,Apartment,1780,3,3.0,Semi-Furnished,1,3,7.0,1,5,Ready To Move,3.0,842600.0
+PROP_11345,Midtown Corridor,Luxury Villa,4203,4,5.0,Semi-Furnished,1,3,0.0,0,6,Ready To Move,1.0,2853300.0
+PROP_12752,Oakridge Valley,Apartment,1122,2,2.0,Furnished,1,24,9.0,1,3,Under Construction,4.0,440600.0
+PROP_12543,Riverside District,Independent House,2649,3,2.0,Semi-Furnished,2,3,2.0,2,5,Ready To Move,2.0,1375900.0
+PROP_13789,Greenwood Heights,Independent House,2698,4,3.0,Furnished,0,2,16.0,1,10,Ready To Move,2.0,1042200.0
+PROP_15812,Sunset Park,Luxury Villa,3822,3,4.0,Semi-Furnished,2,2,16.0,2,4,Ready To Move,5.0,1823100.0
+PROP_13651,Downtown Central,Independent House,2826,4,5.0,Furnished,2,2,5.0,0,3,Under Construction,1.0,1717300.0
+PROP_11380,Midtown Corridor,Apartment,1274,2,2.0,Furnished,1,20,2.0,2,7,Ready To Move,2.0,729100.0
+PROP_11532,Greenwood Heights,Luxury Villa,4576,4,4.0,Furnished,2,3,12.0,2,4,Ready To Move,1.0,2308200.0
+PROP_11869,Lakeside Estates,Apartment,1565,2,2.0,Semi-Furnished,1,8,12.0,2,4,Ready To Move,4.0,760200.0
+PROP_15596,Riverside District,Luxury Villa,4522,3,4.0,Unfurnished,2,2,25.0,1,4,Ready To Move,2.0,2345100.0
+PROP_15670,Oakridge Valley,Independent House,2565,3,4.0,Furnished,1,3,5.0,3,7,Ready To Move,5.0,1030500.0
+PROP_11286,Downtown Central,Independent House,3222,4,5.0,Furnished,2,2,2.0,2,5,Ready To Move,1.0,1896300.0
+PROP_15313,Greenwood Heights,Luxury Villa,5028,5,6.0,Semi-Furnished,2,2,14.0,2,6,Under Construction,1.0,2438100.0
+PROP_12549,Silicon Hills,Luxury Villa,5648,5,6.0,Furnished,3,2,18.0,1,10,Under Construction,3.0,3900400.0
+PROP_11644,Silicon Hills,Apartment,1261,2,2.0,Semi-Furnished,2,20,40.0,0,2,Ready To Move,5.0,563100.0
+PROP_13345,Downtown Central,Studio Apartment,538,1,1.0,Unfurnished,1,4,5.0,1,4,Ready To Move,3.0,320800.0
+PROP_11773,Riverside District,Apartment,775,1,1.0,Unfurnished,1,21,3.0,2,5,Ready To Move,2.0,402800.0
+PROP_12439,Midtown Corridor,Independent House,3092,4,4.0,Semi-Furnished,2,2,10.0,1,1,Ready To Move,3.0,1611100.0
+PROP_10657,Midtown Corridor,Apartment,1049,2,2.0,Unfurnished,1,18,1.0,3,5,Under Construction,3.0,543200.0
+PROP_13833,Riverside District,Apartment,844,1,2.0,Furnished,1,10,0.0,1,7,Ready To Move,1.0,501600.0
+PROP_14862,Westend Terrace,Apartment,1681,3,2.0,Semi-Furnished,1,22,19.0,1,4,Ready To Move,5.0,713700.0
+PROP_11951,Sunset Park,Apartment,1230,2,2.0,Unfurnished,1,2,5.0,1,8,Ready To Move,5.0,545900.0
+PROP_14642,Downtown Central,Apartment,1668,2,2.0,Semi-Furnished,1,22,11.0,0,3,Ready To Move,1.0,848300.0
+PROP_11243,Oakridge Valley,Apartment,1470,2,1.0,Furnished,1,24,10.0,1,4,Ready To Move,4.0,552100.0
+PROP_10899,Harbor Point,Studio Apartment,562,1,1.0,Furnished,0,10,3.0,1,6,Ready To Move,3.0,330600.0
+PROP_15448,Westend Terrace,Luxury Villa,4272,4,4.0,Semi-Furnished,1,3,2.0,1,4,Under Construction,4.0,2287800.0
+PROP_13141,Harbor Point,Apartment,1199,2,1.0,Semi-Furnished,1,9,9.0,1,1,Ready To Move,3.0,664500.0
+PROP_14087,Silicon Hills,Luxury Villa,4652,4,4.0,Unfurnished,0,2,7.0,1,8,Ready To Move,5.0,3365400.0
+PROP_13616,Harbor Point,Apartment,1126,1,1.0,Furnished,0,24,5.0,2,5,Ready To Move,1.0,688300.0
+PROP_14893,Midtown Corridor,Apartment,845,1,1.0,Semi-Furnished,1,5,14.0,1,3,Ready To Move,1.0,382600.0
+PROP_14028,Silicon Hills,Apartment,1355,2,3.0,Unfurnished,3,8,18.0,2,9,Ready To Move,3.0,732500.0
+PROP_12479,Harbor Point,Luxury Villa,4419,5,6.0,Semi-Furnished,1,4,9.0,1,3,Ready To Move,2.0,3177300.0
+PROP_14287,Silicon Hills,Apartment,1276,2,1.0,Unfurnished,2,19,10.0,0,6,Ready To Move,5.0,712200.0
+PROP_10804,Westend Terrace,Independent House,2647,3,3.0,Furnished,1,1,2.0,2,6,Under Construction,5.0,1298700.0
+PROP_13244,Midtown Corridor,Luxury Villa,4269,3,3.0,Semi-Furnished,1,4,9.0,2,6,Ready To Move,5.0,2694500.0
+PROP_12791,Downtown Central,Apartment,1736,2,1.0,Semi-Furnished,1,16,6.0,1,4,Under Construction,5.0,889500.0
+PROP_15540,Downtown Central,Penthouse,5568,5,6.0,Furnished,1,24,12.0,2,7,Ready To Move,5.0,3952800.0
+PROP_11086,Greenwood Heights,Independent House,3162,5,5.0,Semi-Furnished,1,2,5.0,2,7,Under Construction,3.0,1465000.0
+PROP_10703,Silicon Hills,Apartment,1339,2,1.0,Semi-Furnished,2,20,11.0,2,5,Ready To Move,1.0,709600.0
+PROP_12813,Oakridge Valley,Studio Apartment,479,1,1.0,Unfurnished,1,17,9.0,2,7,Ready To Move,3.0,230300.0
+PROP_11963,Lakeside Estates,Apartment,1694,3,3.0,Furnished,1,18,13.0,1,7,Ready To Move,4.0,927900.0
+PROP_11117,Oakridge Valley,Studio Apartment,596,1,1.0,Semi-Furnished,0,13,10.0,2,5,Under Construction,4.0,245700.0
+PROP_11896,Lakeside Estates,Luxury Villa,4540,3,4.0,Furnished,1,2,4.0,2,6,Ready To Move,1.0,2832200.0
+PROP_14482,Harbor Point,Studio Apartment,561,1,1.0,Unfurnished,0,7,10.0,0,3,Under Construction,5.0,288600.0
+PROP_10738,Oakridge Valley,Penthouse,4250,3,4.0,Furnished,0,33,8.0,1,3,Under Construction,5.0,1851000.0
+PROP_13801,Oakridge Valley,Apartment,1784,3,3.0,Furnished,1,15,5.0,1,2,Ready To Move,4.0,752600.0
+PROP_13198,Downtown Central,Independent House,2562,3,3.0,Furnished,0,3,0.0,2,6,Ready To Move,1.0,1591700.0
+PROP_15334,Westend Terrace,Independent House,2453,3,2.0,Unfurnished,0,2,5.0,1,4,Ready To Move,1.0,1076400.0
+PROP_11488,Sunset Park,Apartment,1095,2,1.0,Furnished,0,22,3.0,2,5,Ready To Move,3.0,511900.0
+PROP_15140,Lakeside Estates,Luxury Villa,3882,4,5.0,Unfurnished,0,2,5.0,1,8,Under Construction,2.0,2396200.0
+PROP_12459,Westend Terrace,Luxury Villa,4017,4,4.0,Semi-Furnished,0,3,6.0,1,3,Ready To Move,5.0,2315800.0
+PROP_10380,Greenwood Heights,Studio Apartment,558,1,1.0,Unfurnished,0,16,14.0,2,5,Ready To Move,3.0,228300.0
+PROP_10276,Downtown Central,Independent House,2092,2,3.0,Furnished,2,3,2.0,0,2,Ready To Move,2.0,1310200.0
+PROP_13429,Lakeside Estates,Independent House,2585,3,2.0,Unfurnished,1,2,5.0,3,9,Ready To Move,3.0,1402400.0
+PROP_13565,Oakridge Valley,Independent House,2498,3,2.0,Furnished,1,3,1.0,2,6,Ready To Move,5.0,1184500.0
+PROP_15752,Harbor Point,Apartment,1854,3,3.0,Semi-Furnished,2,11,22.0,2,8,Ready To Move,2.0,931800.0
+PROP_14884,Lakeside Estates,Luxury Villa,5075,4,5.0,Semi-Furnished,1,2,6.0,2,9,Ready To Move,3.0,3322900.0
+PROP_11007,Lakeside Estates,Apartment,1152,2,2.0,Unfurnished,1,3,10.0,2,4,Ready To Move,5.0,598900.0
+PROP_13611,Sunset Park,Apartment,1420,3,3.0,Semi-Furnished,1,18,3.0,1,8,Ready To Move,4.0,714700.0
+PROP_10299,Greenwood Heights,Apartment,936,1,1.0,Unfurnished,1,21,4.0,2,4,Under Construction,5.0,378800.0
+PROP_11186,Westend Terrace,Apartment,1063,2,1.0,Furnished,1,8,6.0,0,8,Under Construction,3.0,582600.0
+PROP_12249,Silicon Hills,Apartment,1240,2,1.0,Unfurnished,2,18,1.0,1,10,Ready To Move,2.0,775700.0
+PROP_15830,Midtown Corridor,Independent House,2883,4,4.0,Unfurnished,1,3,33.0,2,5,Ready To Move,4.0,1275800.0
+PROP_12176,Greenwood Heights,Apartment,1229,2,1.0,Semi-Furnished,1,23,4.0,3,6,Ready To Move,1.0,501100.0
+PROP_11410,Riverside District,Apartment,1736,3,3.0,Semi-Furnished,2,8,2.0,0,8,Ready To Move,3.0,892800.0
+PROP_13065,Lakeside Estates,Apartment,1153,2,2.0,Semi-Furnished,1,4,1.0,1,5,Ready To Move,4.0,701500.0

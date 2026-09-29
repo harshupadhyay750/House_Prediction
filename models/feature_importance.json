@@ -1,0 +1,136 @@
+{
+    "top_features": [
+        {
+            "Feature": "Area_sqft",
+            "Importance": 0.4233352541923523
+        },
+        {
+            "Feature": "Bathrooms",
+            "Importance": 0.12882979214191437
+        },
+        {
+            "Feature": "Location_Oakridge Valley",
+            "Importance": 0.058361586183309555
+        },
+        {
+            "Feature": "Property_Type_Independent House",
+            "Importance": 0.053193870931863785
+        },
+        {
+            "Feature": "Location_Sunset Park",
+            "Importance": 0.036607660353183746
+        },
+        {
+            "Feature": "Location_Silicon Hills",
+            "Importance": 0.030221344903111458
+        },
+        {
+            "Feature": "Location_Greenwood Heights",
+            "Importance": 0.026314731687307358
+        },
+        {
+            "Feature": "Property_Type_Penthouse",
+            "Importance": 0.024124255403876305
+        },
+        {
+            "Feature": "Location_Harbor Point",
+            "Importance": 0.0236652921885252
+        },
+        {
+            "Feature": "Location_Downtown Central",
+            "Importance": 0.023057574406266212
+        },
+        {
+            "Feature": "Bedrooms",
+            "Importance": 0.017294030636548996
+        },
+        {
+            "Feature": "Property_Type_Studio Apartment",
+            "Importance": 0.01696469821035862
+        },
+        {
+            "Feature": "Age_Category_Mature (16-25 yrs)",
+            "Importance": 0.01693013496696949
+        },
+        {
+            "Feature": "Property_Type_Apartment",
+            "Importance": 0.016105126589536667
+        },
+        {
+            "Feature": "Area_per_Bedroom",
+            "Importance": 0.012160218320786953
+        },
+        {
+            "Feature": "Location_Westend Terrace",
+            "Importance": 0.011533655226230621
+        },
+        {
+            "Feature": "Property_Age",
+            "Importance": 0.010787881910800934
+        },
+        {
+            "Feature": "Availability_Ready To Move",
+            "Importance": 0.009011490270495415
+        },
+        {
+            "Feature": "Availability_Under Construction",
+            "Importance": 0.00849967636168003
+        },
+        {
+            "Feature": "Property_Type_Luxury Villa",
+            "Importance": 0.007427392993122339
+        }
+    ],
+    "top_permutation": [
+        {
+            "Feature": "Area_sqft",
+            "Permutation_Mean": 1.4494674793453908,
+            "Permutation_Std": 0.023421473500389322
+        },
+        {
+            "Feature": "Location",
+            "Permutation_Mean": 0.11100870650731239,
+            "Permutation_Std": 0.002497876346535888
+        },
+        {
+            "Feature": "Property_Age",
+            "Permutation_Mean": 0.01610884513928392,
+            "Permutation_Std": 0.0022121545883283054
+        },
+        {
+            "Feature": "Property_Type",
+            "Permutation_Mean": 0.011302369688173285,
+            "Permutation_Std": 0.0005975372879395293
+        },
+        {
+            "Feature": "Availability",
+            "Permutation_Mean": 0.0033836594139321496,
+            "Permutation_Std": 0.00019450789827836235
+        },
+        {
+            "Feature": "Area_per_Bedroom",
+            "Permutation_Mean": 0.002544361434252407,
+            "Permutation_Std": 0.00019857057424558928
+        },
+        {
+            "Feature": "Bathrooms",
+            "Permutation_Mean": 0.0017872090238737926,
+            "Permutation_Std": 0.00020730968169304438
+        },
+        {
+            "Feature": "Furnishing_Status",
+            "Permutation_Mean": 0.0008659529301577873,
+            "Permutation_Std": 0.0004865358895983962
+        },
+        {
+            "Feature": "Bedrooms",
+            "Permutation_Mean": 0.0005677356839307146,
+            "Permutation_Std": 0.00011021497696731953
+        },
+        {
+            "Feature": "Floors",
+            "Permutation_Mean": 0.00017914037825141892,
+            "Permutation_Std": 4.1644443616287655e-05
+        }
+    ]
+}

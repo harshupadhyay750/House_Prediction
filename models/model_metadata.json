@@ -1,0 +1,148 @@
+{
+    "model_name": "XGBoost Regressor",
+    "trained_timestamp": "2026-09-29 15:05:41",
+    "best_hyperparameters": {
+        "subsample": 0.85,
+        "n_estimators": 250,
+        "min_child_weight": 3,
+        "max_depth": 4,
+        "learning_rate": 0.08,
+        "colsample_bytree": 0.95
+    },
+    "final_test_metrics": {
+        "MAE": 63774.69,
+        "MSE": 10466522271.79,
+        "RMSE": 102306.02,
+        "R2": 0.9875,
+        "MAPE": 5.85,
+        "Training_Time_Sec": 0.0
+    },
+    "model_comparison": [
+        {
+            "Model": "XGBoost Regressor",
+            "CV_R2_Mean": 0.9739,
+            "CV_R2_Std": 0.0234,
+            "Test_MAE": 62676.21,
+            "Test_RMSE": 101837.25,
+            "Test_R2": 0.9876,
+            "Test_MAPE": 5.4,
+            "Training_Time_Sec": 1.173
+        },
+        {
+            "Model": "Gradient Boosting",
+            "CV_R2_Mean": 0.9726,
+            "CV_R2_Std": 0.023,
+            "Test_MAE": 63501.46,
+            "Test_RMSE": 105512.82,
+            "Test_R2": 0.9867,
+            "Test_MAPE": 5.3,
+            "Training_Time_Sec": 8.232
+        },
+        {
+            "Model": "Random Forest",
+            "CV_R2_Mean": 0.9681,
+            "CV_R2_Std": 0.0234,
+            "Test_MAE": 74285.76,
+            "Test_RMSE": 118424.18,
+            "Test_R2": 0.9833,
+            "Test_MAPE": 6.34,
+            "Training_Time_Sec": 8.79
+        },
+        {
+            "Model": "Linear Regression",
+            "CV_R2_Mean": 0.9563,
+            "CV_R2_Std": 0.0236,
+            "Test_MAE": 119995.88,
+            "Test_RMSE": 168399.98,
+            "Test_R2": 0.9662,
+            "Test_MAPE": 13.87,
+            "Training_Time_Sec": 1.828
+        },
+        {
+            "Model": "Lasso Regression",
+            "CV_R2_Mean": 0.9563,
+            "CV_R2_Std": 0.0236,
+            "Test_MAE": 119876.8,
+            "Test_RMSE": 168390.03,
+            "Test_R2": 0.9662,
+            "Test_MAPE": 13.83,
+            "Training_Time_Sec": 0.453
+        },
+        {
+            "Model": "Ridge Regression",
+            "CV_R2_Mean": 0.9562,
+            "CV_R2_Std": 0.0237,
+            "Test_MAE": 119002.01,
+            "Test_RMSE": 168465.69,
+            "Test_R2": 0.9661,
+            "Test_MAPE": 13.6,
+            "Training_Time_Sec": 0.247
+        },
+        {
+            "Model": "Mean Baseline",
+            "CV_R2_Mean": -0.0012,
+            "CV_R2_Std": 0.001,
+            "Test_MAE": 719357.9,
+            "Test_RMSE": 915582.18,
+            "Test_R2": -0.0,
+            "Test_MAPE": 88.42,
+            "Training_Time_Sec": 2.276
+        }
+    ],
+    "error_analysis_summary": {
+        "mean_residual": -4236.7736197916665,
+        "std_residual": 102218.25678947981,
+        "tier_summary": [
+            {
+                "Price_Tier": "Budget (Q1)",
+                "Mean_Absolute_Error": 30025.17,
+                "Median_Absolute_Error": 23343.59,
+                "Mean_MAPE": 7.5,
+                "Record_Count": 300
+            },
+            {
+                "Price_Tier": "Mid-Tier (Q2)",
+                "Mean_Absolute_Error": 43147.12,
+                "Median_Absolute_Error": 28031.94,
+                "Mean_MAPE": 5.91,
+                "Record_Count": 300
+            },
+            {
+                "Price_Tier": "Upper-Tier (Q3)",
+                "Mean_Absolute_Error": 58728.05,
+                "Median_Absolute_Error": 45371.5,
+                "Mean_MAPE": 5.17,
+                "Record_Count": 300
+            },
+            {
+                "Price_Tier": "Luxury (Q4)",
+                "Mean_Absolute_Error": 123198.44,
+                "Median_Absolute_Error": 96287.0,
+                "Mean_MAPE": 4.82,
+                "Record_Count": 300
+            }
+        ]
+    },
+    "feature_columns": [
+        "Location",
+        "Property_Type",
+        "Area_sqft",
+        "Bedrooms",
+        "Bathrooms",
+        "Furnishing_Status",
+        "Parking_Spaces",
+        "Floors",
+        "Property_Age",
+        "Balconies",
+        "Amenities_Count",
+        "Availability",
+        "Nearby_Schools",
+        "Total_Rooms",
+        "Area_per_Bedroom",
+        "Bathroom_to_Bedroom_Ratio",
+        "Luxury_Score",
+        "Age_Category"
+    ],
+    "training_samples": 4796,
+    "test_samples": 1200
+}
