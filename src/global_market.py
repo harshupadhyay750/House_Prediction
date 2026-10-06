@@ -112,7 +112,8 @@ EXCHANGE_RATES: Dict[str, Dict[str, Any]] = {
 }
 
 # Real estate price multipliers calibrated to global metropolitan real estate markets
-# Each country has default currency and cities with property indices relative to baseline USD market
+# All multipliers are RELATIVE TO US NATIONAL AVERAGE (US Benchmark = 1.00)
+# Model predicts US-baseline prices; these multipliers scale for local markets
 GLOBAL_COUNTRIES: Dict[str, Dict[str, Any]] = {
     "United States": {
         "flag": "🇺🇸",
@@ -120,269 +121,273 @@ GLOBAL_COUNTRIES: Dict[str, Dict[str, Any]] = {
         "base_multiplier": 1.00,
         "cities": {
             "National Benchmark": 1.00,
-            "New York City": 1.95,
-            "San Francisco Bay Area": 1.85,
-            "Los Angeles": 1.65,
-            "Seattle": 1.45,
-            "Boston": 1.40,
-            "Miami": 1.35,
+            "New York City": 2.20,
+            "San Francisco Bay Area": 2.10,
+            "Los Angeles": 1.75,
+            "Seattle": 1.50,
+            "Boston": 1.45,
+            "Miami": 1.40,
             "Austin": 1.20,
             "Chicago": 1.10,
-            "Phoenix": 1.00,
-            "Houston": 0.95
+            "Phoenix": 0.95,
+            "Houston": 0.90,
+            "Dallas": 0.92,
+            "Atlanta": 0.88
         }
     },
     "India": {
         "flag": "🇮🇳",
         "default_currency": "INR",
-        "base_multiplier": 0.85,
+        "base_multiplier": 0.30,
         "cities": {
-            "National Benchmark": 0.90,
+            "National Benchmark": 0.35,
             "Mumbai (MMR)": 1.60,
-            "Delhi NCR (Gurugram/Noida)": 1.35,
-            "Bengaluru (Silicon Valley of India)": 1.25,
-            "Hyderabad": 1.10,
-            "Pune": 1.00,
-            "Chennai": 0.95,
-            "Goa (Coastal Luxury)": 1.20,
-            "Kolkata": 0.80,
-            "Ahmedabad": 0.80,
-            "Chandigarh": 0.95,
-            "Jaipur": 0.75,
-            "Kochi": 0.80
+            "Delhi NCR (Gurugram/Noida)": 0.85,
+            "Bengaluru (Silicon Valley of India)": 0.60,
+            "Hyderabad": 0.48,
+            "Pune": 0.42,
+            "Chennai": 0.40,
+            "Goa (Coastal Luxury)": 0.55,
+            "Kolkata": 0.28,
+            "Ahmedabad": 0.28,
+            "Chandigarh": 0.35,
+            "Jaipur": 0.22,
+            "Kochi": 0.30,
+            "Lucknow": 0.18,
+            "Indore": 0.16
         }
     },
     "United Kingdom": {
         "flag": "🇬🇧",
         "default_currency": "GBP",
-        "base_multiplier": 1.20,
+        "base_multiplier": 1.10,
         "cities": {
-            "National Benchmark": 1.10,
-            "Central London": 1.95,
-            "Greater London": 1.65,
-            "Cambridge": 1.40,
-            "Oxford": 1.35,
+            "National Benchmark": 1.05,
+            "Central London": 2.50,
+            "Greater London": 1.80,
+            "Cambridge": 1.45,
+            "Oxford": 1.40,
             "Edinburgh": 1.15,
-            "Bristol": 1.15,
-            "Manchester": 1.00,
-            "Birmingham": 0.95,
-            "Leeds": 0.90
+            "Bristol": 1.10,
+            "Manchester": 0.95,
+            "Birmingham": 0.85,
+            "Leeds": 0.80
         }
     },
     "United Arab Emirates": {
         "flag": "🇦🇪",
         "default_currency": "AED",
-        "base_multiplier": 1.30,
+        "base_multiplier": 1.20,
         "cities": {
-            "National Benchmark": 1.15,
-            "Dubai (Downtown/Marina/Palm)": 1.55,
-            "Dubai (Suburban/Hills)": 1.35,
-            "Abu Dhabi (Al Reem/Saadiyat)": 1.30,
-            "Sharjah": 0.85,
-            "Ras Al Khaimah": 0.80,
-            "Ajman": 0.70
+            "National Benchmark": 1.10,
+            "Dubai (Downtown/Marina/Palm)": 1.80,
+            "Dubai (Suburban/Hills)": 1.30,
+            "Abu Dhabi (Al Reem/Saadiyat)": 1.25,
+            "Sharjah": 0.70,
+            "Ras Al Khaimah": 0.60,
+            "Ajman": 0.50
         }
     },
     "Canada": {
         "flag": "🇨🇦",
         "default_currency": "CAD",
-        "base_multiplier": 1.15,
+        "base_multiplier": 1.05,
         "cities": {
-            "National Benchmark": 1.10,
-            "Vancouver (Metro)": 1.65,
-            "Toronto (GTA)": 1.55,
+            "National Benchmark": 1.00,
+            "Vancouver (Metro)": 1.75,
+            "Toronto (GTA)": 1.60,
             "Victoria": 1.30,
-            "Montreal": 1.10,
-            "Ottawa": 1.05,
-            "Calgary": 0.95,
-            "Edmonton": 0.85
+            "Montreal": 1.05,
+            "Ottawa": 1.00,
+            "Calgary": 0.85,
+            "Edmonton": 0.75
         }
     },
     "Australia": {
         "flag": "🇦🇺",
         "default_currency": "AUD",
-        "base_multiplier": 1.25,
+        "base_multiplier": 1.15,
         "cities": {
-            "National Benchmark": 1.20,
-            "Sydney (Eastern Suburbs/CBD)": 1.75,
+            "National Benchmark": 1.10,
+            "Sydney (Eastern Suburbs/CBD)": 1.90,
             "Melbourne": 1.40,
-            "Brisbane": 1.15,
-            "Gold Coast": 1.20,
-            "Perth": 1.00,
-            "Canberra": 1.25,
-            "Adelaide": 0.95
+            "Brisbane": 1.10,
+            "Gold Coast": 1.15,
+            "Perth": 0.95,
+            "Canberra": 1.20,
+            "Adelaide": 0.85
         }
     },
     "Germany": {
         "flag": "🇩🇪",
         "default_currency": "EUR",
-        "base_multiplier": 1.20,
+        "base_multiplier": 1.10,
         "cities": {
-            "National Benchmark": 1.15,
-            "Munich": 1.65,
+            "National Benchmark": 1.05,
+            "Munich": 1.70,
             "Frankfurt": 1.40,
-            "Berlin": 1.30,
-            "Hamburg": 1.30,
-            "Stuttgart": 1.25,
-            "Cologne": 1.15,
-            "Leipzig": 0.90
+            "Berlin": 1.25,
+            "Hamburg": 1.25,
+            "Stuttgart": 1.20,
+            "Cologne": 1.10,
+            "Leipzig": 0.80
         }
     },
     "France": {
         "flag": "🇫🇷",
         "default_currency": "EUR",
-        "base_multiplier": 1.20,
+        "base_multiplier": 1.10,
         "cities": {
-            "National Benchmark": 1.15,
-            "Paris Central": 1.90,
-            "Nice & French Riviera": 1.40,
-            "Lyon": 1.20,
-            "Bordeaux": 1.20,
-            "Marseille": 1.00,
-            "Toulouse": 1.00
+            "National Benchmark": 1.05,
+            "Paris Central": 2.20,
+            "Nice & French Riviera": 1.45,
+            "Lyon": 1.15,
+            "Bordeaux": 1.15,
+            "Marseille": 0.90,
+            "Toulouse": 0.90
         }
     },
     "Singapore": {
         "flag": "🇸🇬",
         "default_currency": "SGD",
-        "base_multiplier": 2.15,
+        "base_multiplier": 2.30,
         "cities": {
-            "Central Core District (CCR)": 2.40,
-            "Rest of Central Region (RCR)": 2.10,
+            "Central Core District (CCR)": 2.80,
+            "Rest of Central Region (RCR)": 2.30,
             "Outside Central Region (OCR)": 1.85,
-            "Island-Wide Average": 2.15
+            "Island-Wide Average": 2.30
         }
     },
     "Japan": {
         "flag": "🇯🇵",
         "default_currency": "JPY",
-        "base_multiplier": 1.10,
+        "base_multiplier": 0.95,
         "cities": {
-            "National Benchmark": 1.05,
-            "Tokyo (23 Special Wards)": 1.65,
-            "Tokyo Metro / Yokohama": 1.30,
-            "Kyoto": 1.15,
-            "Osaka": 1.10,
-            "Fukuoka": 0.95,
-            "Sapporo": 0.85
+            "National Benchmark": 0.90,
+            "Tokyo (23 Special Wards)": 1.70,
+            "Tokyo Metro / Yokohama": 1.25,
+            "Kyoto": 1.10,
+            "Osaka": 1.05,
+            "Fukuoka": 0.85,
+            "Sapporo": 0.70
         }
     },
     "Switzerland": {
         "flag": "🇨🇭",
         "default_currency": "CHF",
-        "base_multiplier": 2.10,
+        "base_multiplier": 2.20,
         "cities": {
-            "National Benchmark": 1.95,
-            "Zurich": 2.35,
-            "Geneva": 2.30,
-            "Lausanne": 1.90,
-            "Basel": 1.85,
-            "Bern": 1.70
+            "National Benchmark": 2.00,
+            "Zurich": 2.60,
+            "Geneva": 2.55,
+            "Lausanne": 2.00,
+            "Basel": 1.90,
+            "Bern": 1.75
         }
     },
     "Spain": {
         "flag": "🇪🇸",
         "default_currency": "EUR",
-        "base_multiplier": 0.95,
+        "base_multiplier": 0.70,
         "cities": {
-            "National Benchmark": 0.95,
-            "Madrid": 1.30,
-            "Barcelona": 1.35,
-            "Mallorca & Balearics": 1.40,
-            "Malaga & Costa del Sol": 1.15,
-            "Valencia": 0.95,
-            "Seville": 0.85
+            "National Benchmark": 0.70,
+            "Madrid": 1.20,
+            "Barcelona": 1.25,
+            "Mallorca & Balearics": 1.35,
+            "Malaga & Costa del Sol": 1.05,
+            "Valencia": 0.80,
+            "Seville": 0.70
         }
     },
     "Italy": {
         "flag": "🇮🇹",
         "default_currency": "EUR",
-        "base_multiplier": 1.00,
+        "base_multiplier": 0.80,
         "cities": {
-            "National Benchmark": 1.00,
-            "Milan": 1.50,
-            "Rome": 1.30,
-            "Florence": 1.25,
-            "Bologna": 1.10,
-            "Turin": 0.90,
-            "Naples": 0.85
+            "National Benchmark": 0.80,
+            "Milan": 1.45,
+            "Rome": 1.25,
+            "Florence": 1.20,
+            "Bologna": 1.00,
+            "Turin": 0.75,
+            "Naples": 0.65
         }
     },
     "Netherlands": {
         "flag": "🇳🇱",
         "default_currency": "EUR",
-        "base_multiplier": 1.30,
+        "base_multiplier": 1.20,
         "cities": {
-            "National Benchmark": 1.25,
-            "Amsterdam": 1.80,
+            "National Benchmark": 1.15,
+            "Amsterdam": 1.85,
             "Utrecht": 1.40,
-            "The Hague": 1.25,
-            "Rotterdam": 1.20,
-            "Eindhoven": 1.15
+            "The Hague": 1.20,
+            "Rotterdam": 1.15,
+            "Eindhoven": 1.05
         }
     },
     "Saudi Arabia": {
         "flag": "🇸🇦",
         "default_currency": "SAR",
-        "base_multiplier": 1.10,
+        "base_multiplier": 0.65,
         "cities": {
-            "National Benchmark": 1.05,
-            "Riyadh": 1.30,
-            "Jeddah": 1.15,
-            "Khobar / Dammam": 1.05,
-            "Mecca / Medina": 1.35
+            "National Benchmark": 0.60,
+            "Riyadh": 0.90,
+            "Jeddah": 0.75,
+            "Khobar / Dammam": 0.60,
+            "Mecca / Medina": 1.00
         }
     },
     "China": {
         "flag": "🇨🇳",
         "default_currency": "CNY",
-        "base_multiplier": 1.20,
+        "base_multiplier": 0.70,
         "cities": {
-            "National Benchmark": 1.10,
-            "Shanghai": 1.75,
-            "Beijing": 1.70,
-            "Shenzhen": 1.65,
-            "Guangzhou": 1.35,
-            "Hangzhou": 1.25,
-            "Chengdu": 1.00
+            "National Benchmark": 0.65,
+            "Shanghai": 1.80,
+            "Beijing": 1.75,
+            "Shenzhen": 1.70,
+            "Guangzhou": 1.25,
+            "Hangzhou": 1.10,
+            "Chengdu": 0.75
         }
     },
     "Brazil": {
         "flag": "🇧🇷",
         "default_currency": "BRL",
-        "base_multiplier": 0.75,
+        "base_multiplier": 0.40,
         "cities": {
-            "National Benchmark": 0.85,
-            "São Paulo": 1.20,
-            "Rio de Janeiro": 1.15,
-            "Brasília": 1.10,
-            "Florianópolis": 1.05,
-            "Salvador": 0.80
+            "National Benchmark": 0.45,
+            "São Paulo": 0.80,
+            "Rio de Janeiro": 0.75,
+            "Brasília": 0.65,
+            "Florianópolis": 0.60,
+            "Salvador": 0.40
         }
     },
     "South Africa": {
         "flag": "🇿🇦",
         "default_currency": "ZAR",
-        "base_multiplier": 0.70,
+        "base_multiplier": 0.35,
         "cities": {
-            "National Benchmark": 0.85,
-            "Cape Town (Atlantic Seaboard)": 1.45,
-            "Cape Town (Suburbs)": 1.20,
-            "Johannesburg (Sandton)": 1.05,
-            "Pretoria": 0.95,
-            "Durban": 0.90
+            "National Benchmark": 0.40,
+            "Cape Town (Atlantic Seaboard)": 0.90,
+            "Cape Town (Suburbs)": 0.65,
+            "Johannesburg (Sandton)": 0.55,
+            "Pretoria": 0.45,
+            "Durban": 0.40
         }
     },
     "New Zealand": {
         "flag": "🇳🇿",
         "default_currency": "AUD",
-        "base_multiplier": 1.20,
+        "base_multiplier": 1.10,
         "cities": {
-            "National Benchmark": 1.15,
+            "National Benchmark": 1.05,
             "Auckland": 1.50,
             "Queenstown": 1.55,
-            "Wellington": 1.25,
-            "Christchurch": 1.00
+            "Wellington": 1.20,
+            "Christchurch": 0.90
         }
     },
     "Global Custom Location": {
@@ -391,11 +396,12 @@ GLOBAL_COUNTRIES: Dict[str, Dict[str, Any]] = {
         "base_multiplier": 1.00,
         "cities": {
             "Global Average Benchmark": 1.00,
+            "Ultra-Prime Financial Hub": 2.50,
             "High-Cost Metro Tier": 1.50,
             "Prime Tier": 1.25,
             "Standard Market Tier": 1.00,
-            "Developing / Emerging Market Tier": 0.75,
-            "Affordable / Rural Market Tier": 0.50
+            "Developing / Emerging Market Tier": 0.50,
+            "Affordable / Rural Market Tier": 0.30
         }
     }
 }

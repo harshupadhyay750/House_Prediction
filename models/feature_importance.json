@@ -1,136 +1,136 @@
 {
     "top_features": [
         {
-            "Feature": "Effective_Area",
-            "Importance": 0.3556821942329407
-        },
-        {
             "Feature": "Location_Area_Interaction",
-            "Importance": 0.163376584649086
-        },
-        {
-            "Feature": "Log_Area",
-            "Importance": 0.10272042453289032
+            "Importance": 0.31597939133644104
         },
         {
             "Feature": "Location_Rural",
-            "Importance": 0.09401638805866241
-        },
-        {
-            "Feature": "Location_Tier_Score",
-            "Importance": 0.0517125241458416
-        },
-        {
-            "Feature": "Condition_Score",
-            "Importance": 0.03740556165575981
+            "Importance": 0.14276185631752014
         },
         {
             "Feature": "Condition_Excellent",
-            "Importance": 0.03578461706638336
-        },
-        {
-            "Feature": "Condition_Poor",
-            "Importance": 0.0356091633439064
+            "Importance": 0.09189973026514053
         },
         {
             "Feature": "Location_Downtown",
-            "Importance": 0.029419444501399994
+            "Importance": 0.08872434496879578
         },
         {
-            "Feature": "Property_Age",
-            "Importance": 0.02368362806737423
+            "Feature": "Location_Tier_Score",
+            "Importance": 0.0701603814959526
         },
         {
-            "Feature": "YearBuilt",
-            "Importance": 0.018164370208978653
+            "Feature": "Condition_Score",
+            "Importance": 0.06046650558710098
+        },
+        {
+            "Feature": "Log_Area",
+            "Importance": 0.04673629254102707
+        },
+        {
+            "Feature": "Condition_Poor",
+            "Importance": 0.03288637846708298
+        },
+        {
+            "Feature": "Effective_Area",
+            "Importance": 0.021207356825470924
         },
         {
             "Feature": "Area",
-            "Importance": 0.012700452469289303
+            "Importance": 0.019559895619750023
         },
         {
-            "Feature": "Total_Rooms",
-            "Importance": 0.007317036390304565
+            "Feature": "Property_Age",
+            "Importance": 0.01677905209362507
         },
         {
             "Feature": "Quality_Space_Interaction",
-            "Importance": 0.005549107678234577
+            "Importance": 0.01640143431723118
         },
         {
-            "Feature": "Bed_Bath_Interaction",
-            "Importance": 0.005529210902750492
-        },
-        {
-            "Feature": "Bedrooms",
-            "Importance": 0.003911085892468691
-        },
-        {
-            "Feature": "Garage_No",
-            "Importance": 0.003282458521425724
-        },
-        {
-            "Feature": "Garage_Yes",
-            "Importance": 0.0029446850530803204
-        },
-        {
-            "Feature": "Garage_Binary",
-            "Importance": 0.002849947428330779
+            "Feature": "YearBuilt",
+            "Importance": 0.015484388917684555
         },
         {
             "Feature": "Est_Depreciation",
-            "Importance": 0.002240203320980072
+            "Importance": 0.006860788445919752
+        },
+        {
+            "Feature": "Garage_No",
+            "Importance": 0.0052086529321968555
+        },
+        {
+            "Feature": "Garage_Binary",
+            "Importance": 0.004916657693684101
+        },
+        {
+            "Feature": "Location_Urban",
+            "Importance": 0.004245067480951548
+        },
+        {
+            "Feature": "Total_Rooms",
+            "Importance": 0.00392448203638196
+        },
+        {
+            "Feature": "Bedrooms",
+            "Importance": 0.003839818760752678
+        },
+        {
+            "Feature": "Garage_Yes",
+            "Importance": 0.00372365047223866
         }
     ],
     "top_permutation": [
         {
-            "Feature": "Effective_Area",
-            "Permutation_Mean": 0.5930332109026478,
-            "Permutation_Std": 0.02887435297434633
-        },
-        {
             "Feature": "Location_Area_Interaction",
-            "Permutation_Mean": 0.437001355856832,
-            "Permutation_Std": 0.029199378709653757
+            "Permutation_Mean": 0.9125712757109943,
+            "Permutation_Std": 0.01881815606246108
         },
         {
             "Feature": "Condition_Score",
-            "Permutation_Mean": 0.08601045384355441,
-            "Permutation_Std": 0.005460365530054355
+            "Permutation_Mean": 0.08025750475597011,
+            "Permutation_Std": 0.007047390639592319
         },
         {
             "Feature": "YearBuilt",
-            "Permutation_Mean": 0.029919785105393948,
-            "Permutation_Std": 0.0013347449644286866
+            "Permutation_Mean": 0.044625529177846054,
+            "Permutation_Std": 0.005118366196500461
         },
         {
             "Feature": "Location_Tier_Score",
-            "Permutation_Mean": 0.009339352908270837,
-            "Permutation_Std": 0.0011706289920637891
-        },
-        {
-            "Feature": "Condition",
-            "Permutation_Mean": 0.004887975652865362,
-            "Permutation_Std": 0.0009690219460441588
-        },
-        {
-            "Feature": "Total_Rooms",
-            "Permutation_Mean": 0.0033804404042548698,
-            "Permutation_Std": 0.0004549834223147874
-        },
-        {
-            "Feature": "Property_Age",
-            "Permutation_Mean": 0.0031414495630600614,
-            "Permutation_Std": 0.0003857133150957671
-        },
-        {
-            "Feature": "Area",
-            "Permutation_Mean": 0.000980653595038472,
-            "Permutation_Std": 0.00022323875072167464
+            "Permutation_Mean": 0.03153886801165027,
+            "Permutation_Std": 0.004672986464465413
         },
         {
             "Feature": "Quality_Space_Interaction",
-            "Permutation_Mean": 0.0008297878793936287,
-            "Permutation_Std": 0.00042744191284045094
+            "Permutation_Mean": 0.027165013568801744,
+            "Permutation_Std": 0.001186958391859338
+        },
+        {
+            "Feature": "Effective_Area",
+            "Permutation_Mean": 0.02163485937933709,
+            "Permutation_Std": 0.0029368732344082133
+        },
+        {
+            "Feature": "Condition",
+            "Permutation_Mean": 0.006165632256508813,
+            "Permutation_Std": 0.0011324122775172828
+        },
+        {
+            "Feature": "Garage_Binary",
+            "Permutation_Mean": 0.00545305162333245,
+            "Permutation_Std": 0.0005546687488333916
+        },
+        {
+            "Feature": "Property_Age",
+            "Permutation_Mean": 0.00545037235062773,
+            "Permutation_Std": 0.0014783137511669945
+        },
+        {
+            "Feature": "Location",
+            "Permutation_Mean": 0.003828772442918682,
+            "Permutation_Std": 0.001143633660723413
         }
     ]
 }

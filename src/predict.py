@@ -303,4 +303,4 @@ if __name__ == "__main__":
     }
     res = predict_house_price(sample)
     print("--- SAMPLE GLOBAL PREDICTION RESULT ---")
-    print(json.dumps(res, indent=2, ensure_ascii=False))
+    print(json.dumps(res, indent=2, ensure_ascii=True))

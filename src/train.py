@@ -334,7 +334,7 @@ def run_pipeline() -> Dict[str, Any]:
     train_feat = add_engineered_features(train_df, is_training=False)
     test_feat = add_engineered_features(test_df, is_training=False)
 
-    feature_cols = [c for c in train_feat.columns if c not in [TARGET_COLUMN, "Property_ID", "Price_per_sqft"]]
+    feature_cols = [c for c in train_feat.columns if c not in [TARGET_COLUMN, "Id", "Property_ID", "Price_per_sqft"]]
     X_train = train_feat[feature_cols]
     y_train = train_feat[TARGET_COLUMN]
     X_test = test_feat[feature_cols]
