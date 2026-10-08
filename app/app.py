@@ -1,5 +1,5 @@
 """
-Streamlit Web Application: PropIntel | Advanced Global Real Estate Valuation & Analytics.
+Streamlit Web Application: PropIQ | Global Real Estate Valuation & Analytics.
 Production Hedonic AI Engine powered by Super Ensemble (XGBoost + GradientBoosting + HistGradientBoosting).
 
 Features:
@@ -24,6 +24,7 @@ import json
 import io
 import base64
 import urllib.parse
+from html import escape
 from pathlib import Path
 from datetime import datetime
 
@@ -56,17 +57,17 @@ from src.global_market import (
 # PAGE CONFIGURATION
 # ------------------------------------------------------------------------------
 st.set_page_config(
-    page_title="PropIntel Global | Premium Real Estate AI",
-    page_icon="🏢",
+    page_title="PropIQ | Property Valuation",
+    page_icon=str(PROJECT_ROOT / "PropIQ.png"),
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="auto"
 )
 
 # ------------------------------------------------------------------------------
 # THEME STATE (Dark Mode default for luxury aesthetics)
 # ------------------------------------------------------------------------------
 if "dark_mode" not in st.session_state:
-    st.session_state.dark_mode = True
+    st.session_state.dark_mode = False
 
 dark = st.session_state.dark_mode
 
@@ -347,6 +348,178 @@ st.markdown(f"""
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+    :root {
+        --ink: #182734;
+        --muted: #637381;
+        --navy: #19364a;
+        --blue: #315f78;
+        --gold: #c18b4a;
+        --paper: #f5f6f4;
+        --line: #dfe5e4;
+        --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body, [class*="css"], button, input, textarea, select {
+        font-family: 'DM Sans', sans-serif;
+        letter-spacing: 0;
+    }
+    .stApp { background: var(--paper); color: var(--ink); }
+    .block-container { max-width: 1240px; padding: 1.2rem 2rem 4rem; }
+        .st-key-mobile_navigation { display:none; }
+    [data-testid="stHeader"] { background: rgba(245,246,244,.94); }
+    [data-testid="stSidebar"] {
+        background: #fff;
+        border-right: 1px solid var(--line);
+    }
+    [data-testid="stSidebar"] > div { padding-top: 1.2rem; }
+    h1, h2, h3, h4 { color: var(--ink); font-family: 'DM Sans', sans-serif; letter-spacing: 0; }
+    h1 { font-weight: 600; }
+    p, label, small { color: var(--muted); }
+    .brand-logo {
+        display:flex; justify-content:center; align-items:center; overflow:hidden;
+        min-height:150px; border-radius:10px; background:#0b1218; margin-bottom:.8rem;
+    }
+    .brand-logo img { display:block; width:100%; max-width:190px; height:150px; object-fit:contain; }
+    div[role="radiogroup"] { gap:.35rem; }
+    div[role="radiogroup"] label {
+        background:transparent; border:1px solid transparent; border-radius:8px;
+        padding:.42rem .72rem; color:#52616d; font-size:.9rem;
+    }
+    div[role="radiogroup"] label:has(input:checked) {
+        color:var(--navy); background:#e8eef0; border-color:#d5e0e3; font-weight:700;
+    }
+    div[data-testid="stRadio"] > label { display:none; }
+    div.stButton > button, div.stFormSubmitButton > button, div[data-testid="stDownloadButton"] button {
+        min-height:2.8rem; border-radius:8px; border:1px solid #cbd6da;
+        background:white; color:var(--navy); font-weight:700;
+        transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    div.stButton > button:hover, div[data-testid="stDownloadButton"] button:hover {
+        transform:translateY(-1px); border-color:var(--blue); color:var(--navy);
+        box-shadow:0 5px 14px rgba(25,54,74,.09);
+    }
+    div.stFormSubmitButton > button {
+        background:var(--navy); color:#fff; border-color:var(--navy);
+    }
+    div.stFormSubmitButton > button:hover { background:#254b62; color:#fff; }
+    input, textarea, div[data-baseweb="select"] > div {
+        border-radius:7px !important;
+    }
+    div[data-testid="stNumberInput"] input:focus, div[data-testid="stTextInput"] input:focus {
+        border-color:var(--blue); box-shadow:0 0 0 2px rgba(49,95,120,.14);
+    }
+    [data-testid="stMetric"] {
+        background:white; border:1px solid var(--line); border-radius:9px;
+        padding:1rem 1.1rem; min-height:112px;
+    }
+    [data-testid="stMetricLabel"] { color:var(--muted); }
+    [data-testid="stMetricValue"] { color:var(--navy); font-weight:700; }
+    .landing-hero {
+        display:grid; grid-template-columns:1fr .88fr; gap:2rem; align-items:center;
+        overflow:hidden; border-radius:14px; background:var(--navy); color:white;
+        margin:1.1rem 0 1.8rem; min-height:330px;
+        box-shadow:0 14px 34px rgba(25,54,74,.13);
+    }
+    .landing-hero-copy { padding:2.5rem 0 2.5rem 2.7rem; }
+    .hero-kicker { color:#e4bd85; font-size:.76rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .landing-hero h1 { color:white; font-family:'DM Serif Display',serif; font-size:2.75rem; line-height:1.08; font-weight:400; margin:.8rem 0; max-width:560px; }
+    .landing-hero p { color:#d7e0e4; font-size:1rem; line-height:1.65; max-width:520px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.35rem; }
+    .hero-link { display:inline-block; text-decoration:none; padding:.72rem 1rem; border-radius:7px; font-weight:700; }
+    .hero-link-primary { background:#d4a05f; color:#172c3b; }
+    .hero-link-secondary { border:1px solid rgba(255,255,255,.4); color:white; }
+    .landing-hero a.hero-link { text-decoration:none !important; }
+    .landing-hero a.hero-link-primary { background:#d4a05f; color:#172c3b !important; }
+    .landing-hero a.hero-link-secondary { color:#fff !important; }
+    .landing-hero-visual { height:100%; min-height:330px; position:relative; }
+    .landing-hero-visual img { width:100%; height:100%; min-height:330px; object-fit:cover; display:block; }
+    .landing-hero-visual:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(25,54,74,.3),transparent 42%); }
+    .section-heading { margin:1.5rem 0 1rem; }
+    .section-eyebrow { color:var(--gold); font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .section-heading h1 { margin:.25rem 0; font-family:'DM Serif Display',serif; font-size:2.1rem; font-weight:400; }
+    .section-heading p { margin:0; }
+    .form-panel, .result-panel, .step-panel {
+        background:white; border:1px solid var(--line); border-radius:10px;
+        padding:1.25rem 1.4rem; margin:.75rem 0 1rem;
+    }
+    .form-panel h3 { font-size:1rem; margin:.15rem 0 .2rem; }
+    .form-panel p { font-size:.88rem; margin:.15rem 0 .9rem; }
+    .result-panel { padding:1.6rem 1.8rem; border-color:#d2dddf; animation:result-in .42s ease both; }
+    .result-topline { color:var(--muted); font-size:.78rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
+    .result-price { color:var(--navy); font-size:2.75rem; font-weight:700; line-height:1.15; margin:.4rem 0; overflow-wrap:anywhere; }
+    .result-place { color:var(--muted); font-size:.95rem; }
+    .range-title { font-size:.83rem; font-weight:700; color:var(--ink); margin-top:1.2rem; }
+    .range-labels { display:flex; justify-content:space-between; gap:1rem; color:var(--muted); font-size:.82rem; margin:.45rem 0; }
+    .range-track { height:8px; border-radius:99px; background:#dce5e7; position:relative; overflow:visible; margin:.8rem 0; }
+    .range-track:before { content:''; position:absolute; left:0; right:0; height:100%; border-radius:99px; background:#b7cbd0; }
+    .range-marker { position:absolute; left:50%; top:50%; width:16px; height:16px; background:var(--gold); border:3px solid white; border-radius:50%; transform:translate(-50%,-50%); box-shadow:0 1px 4px #52616d; }
+    .range-note { color:var(--muted); font-size:.76rem; margin-top:.6rem; }
+    .step-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.8rem; margin:1rem 0 1.6rem; }
+    .step-panel { margin:0; padding:1rem; min-height:132px; }
+    .step-number { color:var(--gold); font-size:.78rem; font-weight:700; }
+    .step-panel h3 { font-size:.95rem; margin:.45rem 0 .3rem; }
+    .step-panel p { font-size:.82rem; line-height:1.5; margin:0; }
+    .hero-header { background:var(--navy); border:0; border-radius:12px; padding:1.8rem 2rem; box-shadow:none; }
+    .hero-header h1 { color:white; font-family:'DM Serif Display',serif; font-weight:400; }
+    .hero-header p { color:#d7e0e4; }
+    .glass-card, .stat-card, .val-hero-card {
+        background:white; border:1px solid var(--line); border-radius:10px;
+        box-shadow:0 4px 16px rgba(25,54,74,.045); backdrop-filter:none;
+    }
+    .val-hero-card { background:white; border-color:#d2dddf; box-shadow:0 8px 24px rgba(25,54,74,.07); }
+    .price-hero { color:var(--navy); background:none; -webkit-text-fill-color:var(--navy); font-size:2.75rem; overflow-wrap:anywhere; }
+    .stat-val { color:var(--navy); }
+    .stat-chip { color:var(--muted); letter-spacing:.04em; }
+    .badge-pill { background:#f2f5f4; color:var(--ink); border-color:var(--line); border-radius:7px; }
+    .badge-accent { background:#f7f0e6; border-color:#e6d2b5; color:#72502d; }
+    .live-pulse { background:#eaf3ee; border-color:#cae2d3; color:#286044; }
+    .live-pulse-dot { background:#3d8b62; }
+    .share-box { background:#f5f7f6; border-color:var(--line); color:var(--navy); font-family:'DM Sans',sans-serif; }
+    [data-testid="stAlert"] { border-radius:8px; }
+    @keyframes result-in { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
+    @media (max-width:850px) {
+        .block-container { padding:1rem 1rem 3rem; }
+        .st-key-main_navigation { display:none !important; }
+        .st-key-mobile_navigation { display:block !important; }
+        .landing-hero { grid-template-columns:1fr; gap:0; }
+        .landing-hero-copy { padding:1.8rem 1.5rem; }
+        .landing-hero h1 { font-size:2.1rem; }
+        .landing-hero-visual, .landing-hero-visual img { min-height:210px; max-height:250px; }
+        .landing-hero-visual:after { background:linear-gradient(180deg,rgba(25,54,74,.2),transparent 45%); }
+        .step-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:520px) {
+        .result-panel { padding:1.2rem; }
+        .result-price { font-size:2rem; }
+        .section-heading h1 { font-size:1.75rem; }
+        .range-labels { font-size:.72rem; }
+        .step-grid { grid-template-columns:1fr; }
+        div[role="radiogroup"] label { padding:.36rem .5rem; font-size:.82rem; }
+    }
+</style>
+""", unsafe_allow_html=True)
+
+if dark:
+    st.markdown("""
+    <style>
+        :root { --ink:#e7edf1; --muted:#aab9c1; --navy:#172d3c; --blue:#85b1c5; --gold:#ddb77e; --paper:#111b22; --line:#34444e; --white:#202d35; }
+        .stApp, [data-testid="stHeader"] { background:var(--paper) !important; color:var(--ink); }
+        [data-testid="stSidebar"], [data-testid="stMetric"], .form-panel, .result-panel, .step-panel, .glass-card, .stat-card, .val-hero-card { background:var(--white) !important; color:var(--ink); border-color:var(--line); }
+        h1, h2, h3, h4, .brand-name, .result-price, .stat-val { color:var(--ink); }
+        p, label, small, .result-place, .range-labels, .range-note, .stat-sub { color:var(--muted); }
+        div[role="radiogroup"] label { color:var(--muted); }
+        div[role="radiogroup"] label:has(input:checked) { color:var(--ink); background:#2d414d; border-color:#435967; }
+        div.stButton > button, div[data-testid="stDownloadButton"] button { background:#263640; color:var(--ink); border-color:#485b65; }
+        .hero-header { background:#172d3c; }
+        .badge-pill { background:#2a3942; color:var(--ink); border-color:var(--line); }
+        .badge-accent { background:#3c3429; color:#f0cc97; border-color:#65543c; }
+        .share-box { background:#202d35; color:#c3d5dc; }
+    </style>
+    """, unsafe_allow_html=True)
+
 
 # ------------------------------------------------------------------------------
 # DATA & METADATA LOADER
@@ -403,7 +576,7 @@ def make_pdf_report(res, payload, active_currency, year_built, down_pct, loan_te
                                      spaceBefore=14, spaceAfter=4, fontName="Helvetica-Bold")
         body_style  = ParagraphStyle("body", parent=styles["Normal"], fontSize=10, spaceAfter=4)
 
-        story.append(Paragraph("🏢 PropIntel Global — Valuation Appraisal", title_style))
+        story.append(Paragraph("PropIQ — Property Valuation Report", title_style))
         story.append(Paragraph(f"Generated: {datetime.now().strftime('%B %d, %Y at %I:%M %p')} | Model: {model_title} | Test R²: {r2_score:.1%}", sub_style))
         story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor("#2563eb"), spaceAfter=12))
 
@@ -472,7 +645,7 @@ def make_pdf_report(res, payload, active_currency, year_built, down_pct, loan_te
 
         story.append(Spacer(1, 16))
         story.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor("#cbd5e1"), spaceAfter=8))
-        story.append(Paragraph("PropIntel Global Valuation Report — Calibrated with US Baseline & Regional Market Indices. For institutional informational purposes only.",
+        story.append(Paragraph("PropIQ Valuation Report — Calibrated with US Baseline & Regional Market Indices. For informational purposes only.",
                                 ParagraphStyle("footer", parent=styles["Normal"], fontSize=8, textColor=colors.HexColor("#94a3b8"))))
 
         doc.build(story)
@@ -481,7 +654,7 @@ def make_pdf_report(res, payload, active_currency, year_built, down_pct, loan_te
     except Exception:
         # Fallback text format
         lines = [
-            "PROPINTEL GLOBAL — VALUATION REPORT",
+            "PROPIQ — PROPERTY VALUATION REPORT",
             "=" * 50,
             f"Generated: {datetime.now().strftime('%B %d, %Y at %I:%M %p')}",
             f"Model: {model_title} | Test R²: {r2_score:.1%}",
@@ -502,7 +675,7 @@ def make_pdf_report(res, payload, active_currency, year_built, down_pct, loan_te
             f"  Rate/sqft: {res['price_per_sqft_formatted']}",
             f"  Rate/m²:   {res['price_per_sqm_formatted']}",
             "",
-            "PropIntel Global — For informational purposes only."
+            "PropIQ — For informational purposes only."
         ]
         return "\n".join(lines).encode("utf-8")
 
@@ -680,42 +853,30 @@ def plot_shap_waterfall(res, payload, dark_mode=True):
 # ------------------------------------------------------------------------------
 url_params = get_url_params()
 
+
+NAVIGATION_OPTIONS = ["Home", "Predict", "How it works", "Compare properties", "Market insights", "Model insights", "About"]
+
+
+def sync_navigation(source_key, target_key):
+    st.session_state[target_key] = st.session_state[source_key]
+
 with st.sidebar:
-    st.markdown("""
-    <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.2rem;">
-        <span style="font-size:1.8rem;">🏢</span>
-        <div>
-            <div style="font-size:1.3rem; font-weight:900; letter-spacing:-0.5px; line-height:1.1;">PropIntel</div>
-            <div style="font-size:0.75rem; color:#60a5fa; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">AI Valuation Terminal</div>
-        </div>
+    logo_data = base64.b64encode((PROJECT_ROOT / "PropIQ.png").read_bytes()).decode("ascii")
+    st.markdown(f"""
+    <div class="brand-logo">
+        <img src="data:image/png;base64,{logo_data}" alt="PropIQ - Predict Smarter, Choose Better">
     </div>
     """, unsafe_allow_html=True)
-    st.caption("Institutional Hedonic Real Estate AI Engine")
-
-    # Dark / Light Mode Switch
-    col_mode_t, col_mode_b = st.columns([3, 1])
-    with col_mode_t:
-        st.markdown(f"**{'🌙 Dark Obsidian' if dark else '☀️ Pure Light'}**")
-    with col_mode_b:
-        if st.button("Flip", key="theme_toggle", help="Switch between Dark Obsidian and Pure Light theme"):
+    col_mode_label, col_mode_button = st.columns([3, 1])
+    with col_mode_label:
+        st.caption("Dark appearance" if dark else "Light appearance")
+    with col_mode_button:
+        if st.button("Light" if dark else "Dark", key="theme_toggle", help="Switch the app's color theme"):
             st.session_state.dark_mode = not st.session_state.dark_mode
             st.rerun()
 
     st.markdown("---")
-
-    app_tab = st.radio(
-        "Navigation",
-        [
-            "🎯 Valuation & Financial Engine",
-            "🆚 Side-by-Side Comparison",
-            "📈 Live Market Analytics",
-            "🧠 Model Intelligence & XAI"
-        ],
-        index=0
-    )
-
-    st.markdown("---")
-    st.markdown("#### 🌐 Global Currency & Area Units")
+    st.markdown("#### Currency & units")
 
     currency_keys = list(EXCHANGE_RATES.keys())
     curr_labels = [f"{EXCHANGE_RATES[c]['flag']} {c} ({EXCHANGE_RATES[c]['symbol']})" for c in currency_keys]
@@ -738,19 +899,39 @@ with st.sidebar:
     is_sqm = "Meter" in active_unit
 
     st.markdown("---")
-    st.markdown("#### ⚡ AI Engine Performance")
+    st.markdown("#### Model performance")
     st.markdown(f"""
     <div style="background:{'rgba(30,41,59,0.7)' if dark else '#f1f5f9'}; border-radius:12px; padding:0.85rem; border:1px solid {border_col};">
-        <div style="font-size:0.75rem; text-transform:uppercase; color:{text_muted}; font-weight:700;">Champion Architecture</div>
-        <div style="font-size:0.9rem; font-weight:800; color:{accent_glow}; margin:0.2rem 0;">{model_title}</div>
+        <div style="font-size:0.75rem; text-transform:uppercase; color:{text_muted}; font-weight:700;">Valuation approach</div>
+        <div style="font-size:0.9rem; font-weight:800; color:{accent_glow}; margin:0.2rem 0;">Ensemble property model</div>
         <div style="display:flex; justify-content:space-between; margin-top:0.4rem; font-size:0.82rem;">
-            <span>Holdout R²:</span> <strong>{r2_score:.1%}</strong>
+            <span>Held-out R²:</span> <strong>{r2_score:.1%}</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.82rem;">
-            <span>Mean Accuracy:</span> <strong>±{mape_val:.1f}%</strong>
+            <span>Mean percentage error:</span> <strong>{mape_val:.1f}%</strong>
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+with st.container(key="mobile_navigation"):
+    st.selectbox(
+        "Menu",
+        NAVIGATION_OPTIONS,
+        key="mobile_navigation_choice",
+        on_change=sync_navigation,
+        args=("mobile_navigation_choice", "main_navigation")
+    )
+
+app_tab = st.radio(
+    "Main navigation",
+    NAVIGATION_OPTIONS,
+    horizontal=True,
+    label_visibility="collapsed",
+    key="main_navigation",
+    on_change=sync_navigation,
+    args=("main_navigation", "mobile_navigation_choice")
+)
+st.markdown("<hr style='border:0;border-top:1px solid #dfe5e4;margin:.25rem 0 1rem'>", unsafe_allow_html=True)
 
 
 # ------------------------------------------------------------------------------
@@ -796,29 +977,47 @@ def location_selector(prefix="", default_country="India", default_city="Mumbai (
 # ==============================================================================
 # TAB 1: VALUATION & FINANCIAL ENGINE
 # ==============================================================================
-if app_tab == "🎯 Valuation & Financial Engine":
+if app_tab in ["Home", "Predict"]:
 
-    # Hero Header Banner
-    st.markdown(f"""
-    <div class="hero-header">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
-            <div class="live-pulse">
-                <span class="live-pulse-dot"></span>
-                <span>2026 CALIBRATED HEDONIC AI</span>
+    if app_tab == "Home":
+        st.markdown("""
+        <section class="landing-hero">
+            <div class="landing-hero-copy">
+                <div class="hero-kicker">A clearer view of property value</div>
+                <h1>Know what a home could be worth.</h1>
+                <p>Build a considered estimate from the details that matter: living area, condition and location. Get a value range in the market and currency you choose.</p>
+                <div class="hero-actions">
+                    <a class="hero-link hero-link-primary" href="#property-details">Predict property price ↓</a>
+                    <a class="hero-link hero-link-secondary" href="#how-it-works">Explore how it works</a>
+                </div>
             </div>
-            <div style="font-size:0.85rem; color:rgba(255,255,255,0.75); font-weight:600;">
-                Currency: <strong>{active_currency} ({active_curr_info['symbol']})</strong>
+            <div class="landing-hero-visual">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85" alt="Modern home with a landscaped garden">
             </div>
+        </section>
+        """, unsafe_allow_html=True)
+        st.markdown("""
+        <section id="how-it-works">
+            <div class="section-eyebrow">A simple process</div>
+            <div class="step-grid">
+                <article class="step-panel"><div class="step-number">01 · DETAILS</div><h3>Describe the home</h3><p>Enter its area, layout, condition and year built.</p></article>
+                <article class="step-panel"><div class="step-number">02 · MARKET</div><h3>Choose a location</h3><p>Select a supported country, city and currency.</p></article>
+                <article class="step-panel"><div class="step-number">03 · ESTIMATE</div><h3>Get a value range</h3><p>The existing model estimates value and a 95% range.</p></article>
+                <article class="step-panel"><div class="step-number">04 · PLAN</div><h3>Explore the details</h3><p>Review per-area pricing and optional finance scenarios.</p></article>
+            </div>
+        </section>
+        """, unsafe_allow_html=True)
+    else:
+        st.markdown("""
+        <div class="section-heading">
+            <div class="section-eyebrow">Valuation workspace</div>
+            <h1>Estimate a property's value</h1>
+            <p>Start with the essentials. Your estimate updates when you submit the property details.</p>
         </div>
-        <h1 style="margin:0; font-size:2.4rem; font-weight:900; letter-spacing:-0.5px;">Global Real Estate Valuation Engine</h1>
-        <p style="margin:0.5rem 0 0 0; opacity:0.9; font-size:1.05rem; max-width:850px;">
-            Institutional econometric property appraisal powered by an ensemble machine learning pipeline. Calibrated for 20+ countries and 100+ global metropolitan hubs.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
     # ----------------- 1-CLICK FAST PRESET SELECTOR -----------------
-    st.markdown("##### ⚡ Quick Property Presets")
+    st.markdown("##### Start with an example")
     pr_col1, pr_col2, pr_col3, pr_col4, pr_col5 = st.columns(5)
 
     if pr_col1.button("🇮🇳 Mumbai South 2BHK", use_container_width=True):
@@ -883,6 +1082,10 @@ if app_tab == "🎯 Valuation & Financial Engine":
 
     st.markdown("<div style='height:8px;'></div>", unsafe_allow_html=True)
 
+    st.markdown("<div id='property-details'></div>", unsafe_allow_html=True)
+    st.markdown("### Property details")
+    st.caption("Choose a market, then enter a few practical details about the home.")
+
     # Location Selector
     selected_country, selected_city, custom_city_name, custom_mult_val = location_selector(
         prefix="v_",
@@ -892,56 +1095,61 @@ if app_tab == "🎯 Valuation & Financial Engine":
 
     # Valuation Form
     with st.form("valuation_form"):
-        st.markdown("#### 📐 Property Attributes & Space Architecture")
-        col1, col2, col3 = st.columns(3)
+        st.markdown("<div class='form-panel'><h3>Space and layout</h3><p>Use the approximate interior living area; common spaces are not required.</p></div>", unsafe_allow_html=True)
+        col1, col2 = st.columns(2)
 
         with col1:
             default_loc = st.session_state.get("p_loc", url_params.get("Location", "Downtown"))
             loc_idx = VALID_LOCATIONS.index(default_loc) if default_loc in VALID_LOCATIONS else 0
             settlement_label = st.selectbox(
-                "Settlement Density Tier",
+                "Neighborhood setting",
                 list(SETTLEMENT_TIERS.keys()),
                 index=loc_idx,
-                help="Urbanization density: Downtown central core, urban metro ring, suburban commuter belt, or countryside."
+                help="Select the closest match: central, urban, suburban, or rural."
             )
             location_tier = SETTLEMENT_TIERS[settlement_label]
 
             default_cond = st.session_state.get("p_cond", url_params.get("Condition", "Good"))
             cond_idx = VALID_CONDITIONS.index(default_cond) if default_cond in VALID_CONDITIONS else 1
-            condition = st.selectbox("Physical Upkeep / Finish Grade", VALID_CONDITIONS, index=cond_idx)
+            condition = st.selectbox("Overall condition", VALID_CONDITIONS, index=cond_idx)
 
-            garage = st.selectbox("Garage / Covered Parking", VALID_GARAGES, index=0)
+            garage = st.selectbox("Covered parking", VALID_GARAGES, index=0, format_func=lambda value: "Available" if value == "Yes" else "Not available")
 
         with col2:
             default_area = float(st.session_state.get("p_area", url_params.get("Area", 2000.0)))
             if is_sqm:
-                area_input = st.number_input("Living Floor Area (m²)", min_value=30, max_value=2500,
-                                             value=int(default_area * 0.0929) or 185, step=5)
-                st.caption(f"Equivalent: **~{area_input * 10.764:,.0f} sq ft**")
+                area_input = st.number_input("Living area (m²)", min_value=10, max_value=2787,
+                                             value=min(2787, max(10, int(default_area * 0.0929) or 185)), step=5,
+                                             help="Enter the approximate interior living area.")
+                st.caption(f"Approximately {area_input * 10.764:,.0f} sq ft")
             else:
-                area_input = st.number_input("Living Floor Area (sq ft)", min_value=350, max_value=25000,
-                                             value=int(default_area) or 2000, step=50)
-                st.caption(f"Equivalent: **~{area_input * 0.0929:,.0f} m²**")
+                area_input = st.number_input("Living area (sq ft)", min_value=100, max_value=30000,
+                                             value=min(30000, max(100, int(default_area) or 2000)), step=50,
+                                             help="Enter the approximate interior living area.")
+                st.caption(f"Approximately {area_input * 0.0929:,.0f} m²")
 
             default_bed = int(st.session_state.get("p_bed", url_params.get("Bedrooms", 3)))
             default_bath = float(st.session_state.get("p_bath", url_params.get("Bathrooms", 2.0)))
-            bedrooms  = st.slider("Bedrooms", 1, 8, default_bed, 1)
-            bathrooms = st.slider("Bathrooms", 1.0, 6.0, default_bath, 0.5)
+            bedrooms = st.number_input("Bedrooms", min_value=1, max_value=20, value=min(20, max(1, default_bed)), step=1)
+            bathrooms = st.number_input("Bathrooms", min_value=0.5, max_value=20.0,
+                                        value=min(20.0, max(0.5, default_bath)), step=0.5)
+            floors = st.number_input("Floors", min_value=1, max_value=20, value=1, step=1)
 
+        st.markdown("<div class='form-panel'><h3>Condition and age</h3><p>These details help the model distinguish between otherwise similar homes.</p></div>", unsafe_allow_html=True)
+        _, col3 = st.columns(2)
         with col3:
-            floors = st.selectbox("Story Levels / Floors", [1, 2, 3, 4, 5], index=0)
             default_yr = int(st.session_state.get("p_yr", url_params.get("YearBuilt", 2018)))
-            year_built = st.number_input("Construction Year", min_value=1900, max_value=2026,
-                                         value=default_yr, step=1)
+            year_built = st.number_input("Year built", min_value=1850, max_value=2026,
+                                         value=min(2026, max(1850, default_yr)), step=1)
             age_years = 2026 - year_built
-            st.caption(f"Vintage: **{age_years} years old** ({'Modern' if age_years < 10 else 'Established'})")
+            st.caption(f"About {age_years} years old")
 
-        calculate_btn = st.form_submit_button(f"⚡ Generate AI Valuation ({active_currency})", use_container_width=True)
+        calculate_btn = st.form_submit_button("Get property estimate", use_container_width=True)
 
     # Handle automatic trigger from presets or submit
     auto_trigger = st.session_state.pop("trigger_calc", False)
 
-    if calculate_btn or auto_trigger or "last_res" not in st.session_state:
+    if calculate_btn or auto_trigger:
         payload = {
             "Location":          location_tier,
             "Condition":         condition,
@@ -959,9 +1167,19 @@ if app_tab == "🎯 Valuation & Financial Engine":
             "Currency":          active_currency
         }
         st.session_state["last_payload"] = payload
-        with st.spinner("Executing Super Ensemble Hedonic Valuation..."):
-            res = predict_house_price(payload)
-        st.session_state["last_res"] = res
+        st.session_state.pop("last_res", None)
+        st.session_state.pop("prediction_error", None)
+        try:
+            with st.spinner("Analyzing property details..."):
+                res = predict_house_price(payload)
+            st.session_state["last_res"] = res
+        except (ValueError, TypeError) as exc:
+            st.session_state["prediction_error"] = str(exc)
+        except Exception:
+            st.session_state["prediction_error"] = "We couldn't reach the valuation service. Please try again in a moment."
+
+    if "prediction_error" in st.session_state:
+        st.error(st.session_state["prediction_error"])
 
     # ----------------- DISPLAY VALUATION RESULTS -----------------
     if "last_res" in st.session_state:
@@ -969,103 +1187,50 @@ if app_tab == "🎯 Valuation & Financial Engine":
         payload = st.session_state["last_payload"]
         total_price = res["predicted_price"]
 
-        loc_summary = f"{res['city']}, {res['country']}"
+        loc_summary = escape(f"{res['city']}, {res['country']}")
+        low_value = res["prediction_interval_95"]["lower_formatted"]
+        high_value = res["prediction_interval_95"]["upper_formatted"]
 
-        # Primary Valuation Hero Card
         st.markdown(f"""
-        <div class="val-hero-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-                <div class="badge-pill badge-accent">📍 {loc_summary} • {payload['Location']}</div>
-                <div class="live-pulse">
-                    <span class="live-pulse-dot"></span>
-                    <span>AI APPRAISAL READY</span>
-                </div>
-            </div>
-            <div class="price-hero">{res['price_formatted']}</div>
-            <div class="price-sub">Model: {res.get('model_used', 'Super Ensemble')} • 2026 Baseline Calibrated</div>
-            
-            <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.6rem;">
-                <div class="badge-pill">📐 <strong>{res['price_per_sqft_formatted']} / sq ft</strong></div>
-                <div class="badge-pill">📏 <strong>{res['price_per_sqm_formatted']} / m²</strong></div>
-                <div class="badge-pill">🏙️ Market Multiplier: <strong>{res['regional_multiplier']:.2f}x</strong></div>
-            </div>
-
-            <!-- Confidence Interval Range Bar -->
-            <div class="range-box">
-                <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:700;">
-                    <span style="color:{text_muted};">Conservative (95% Low): {res['prediction_interval_95']['lower_formatted']}</span>
-                    <span style="color:{accent_glow};">Market Valuation</span>
-                    <span style="color:{text_muted};">Premium (95% High): {res['prediction_interval_95']['upper_formatted']}</span>
-                </div>
-                <div class="range-track">
-                    <div class="range-fill" style="width:100%;"></div>
-                </div>
-                <div style="font-size:0.75rem; color:{text_muted}; text-align:center;">
-                    Standard Error: ±{mape_val:.1f}% econometric dispersion based on {payload['Condition']} finish and {payload['Location']} density tier.
-                </div>
-            </div>
+        <div class="result-panel">
+            <div class="result-topline">Estimated property value</div>
+            <div class="result-price">{escape(str(res['price_formatted']))}</div>
+            <div class="result-place">{loc_summary} · {escape(str(payload['Location']))} setting</div>
+            <div class="range-title">Model-estimated range · 95%</div>
+            <div class="range-track"><span class="range-marker"></span></div>
+            <div class="range-labels"><span>Lower · {escape(str(low_value))}</span><span>Upper · {escape(str(high_value))}</span></div>
+            <div class="range-note">This range is based on the model's evaluation error; it is an estimate, not a guaranteed sale price.</div>
         </div>
         """, unsafe_allow_html=True)
 
-        # 4 KPI Stat Cards
         k1, k2, k3, k4 = st.columns(4)
-        with k1:
-            st.markdown(f"""
-            <div class="stat-card">
-                <div class="stat-chip">Habitable Rooms</div>
-                <div class="stat-val">{res['key_characteristics']['Total_Rooms']}</div>
-                <div class="stat-sub">{payload['Bedrooms']} Bed • {payload['Bathrooms']} Bath</div>
-            </div>
-            """, unsafe_allow_html=True)
-        with k2:
-            st.markdown(f"""
-            <div class="stat-card">
-                <div class="stat-chip">Effective Living Area</div>
-                <div class="stat-val">{res['key_characteristics']['Area_sqft']:,.0f} <span style="font-size:1rem;">sqft</span></div>
-                <div class="stat-sub">~{res['key_characteristics']['Area_sqm']:.1f} m²</div>
-            </div>
-            """, unsafe_allow_html=True)
-        with k3:
-            st.markdown(f"""
-            <div class="stat-card">
-                <div class="stat-chip">Regional Market Index</div>
-                <div class="stat-val">{res['regional_multiplier']:.2f}x</div>
-                <div class="stat-sub">Relative to US-Baseline Anchor</div>
-            </div>
-            """, unsafe_allow_html=True)
-        with k4:
-            st.markdown(f"""
-            <div class="stat-card">
-                <div class="stat-chip">Property Vintage</div>
-                <div class="stat-val">{res['key_characteristics']['Property_Age']} <span style="font-size:1rem;">yrs</span></div>
-                <div class="stat-sub">Built Year {payload['YearBuilt']}</div>
-            </div>
-            """, unsafe_allow_html=True)
+        k1.metric("Living area", f"{res['key_characteristics']['Area_sqft']:,.0f} sq ft", f"{res['key_characteristics']['Area_sqm']:.1f} m²")
+        k2.metric("Bedrooms · bathrooms", f"{payload['Bedrooms']} · {payload['Bathrooms']}")
+        k3.metric("Price per sq ft", res["price_per_sqft_formatted"])
+        k4.metric("Year built", str(payload["YearBuilt"]), f"{res['key_characteristics']['Property_Age']} years old")
+        k3.caption(f"{res['price_per_sqm_formatted']} per m²")
+        parking_summary = "covered parking" if payload["Garage"] == "Yes" else "no covered parking"
+        st.caption(f"{payload['Floors']} floors · {payload['Condition']} condition · {parking_summary}")
 
-        st.markdown("<div style='height:16px;'></div>", unsafe_allow_html=True)
+        with st.expander("What informs the estimate?"):
+            st.write("The estimate uses the property's area, room count, year built, neighborhood setting, condition and covered parking, plus the selected market and currency.")
+            st.caption("A property-specific feature contribution breakdown is not provided by this model.")
 
-        # ----------------- SHAP & TREND CHARTS -----------------
-        col_ch1, col_ch2 = st.columns(2)
-        with col_ch1:
-            shap_fig = plot_shap_waterfall(res, payload, dark_mode=dark)
-            st.pyplot(shap_fig)
-            plt.close()
+        if payload["Currency"] != active_currency:
+            st.info("The selected currency changed. Submit the property details again to refresh this estimate.")
 
-        with col_ch2:
-            trend_fig = plot_price_trend(total_price, active_currency, dark_mode=dark)
-            st.pyplot(trend_fig)
-            plt.close()
+        st.markdown("<a class='hero-link hero-link-secondary' style='border-color:#cbd6da;color:#19364a' href='#property-details'>Edit property details ↑</a>", unsafe_allow_html=True)
 
         st.markdown("<div style='height:16px;'></div>", unsafe_allow_html=True)
 
         # ----------------- FINANCIAL EMI & ROI CALCULATOR -----------------
-        st.subheader("💳 Institutional Financial & Investment Suite")
+        st.subheader("Financing scenarios")
         fin1, fin2 = st.columns(2)
 
         with fin1:
             st.markdown(f"""
             <div class="glass-card">
-                <h4 style="margin-top:0;">🏦 Mortgage & EMI Financing Forecaster</h4>
+                <h4 style="margin-top:0;">Mortgage payment estimate</h4>
             """, unsafe_allow_html=True)
             down_pct = st.slider("Equity Down Payment (%)", 10, 50, 20, 5)
             loan_tenure = st.selectbox("Loan Tenure (Years)", [10, 15, 20, 25, 30], index=2)
@@ -1087,19 +1252,20 @@ if app_tab == "🎯 Valuation & Financial Engine":
         with fin2:
             st.markdown(f"""
             <div class="glass-card">
-                <h4 style="margin-top:0;">📈 Rental Yield & Capital Appreciation</h4>
+                <h4 style="margin-top:0;">Rental and appreciation scenario</h4>
             """, unsafe_allow_html=True)
-            est_gross_yield = 4.5 if payload["Location"] in ["Downtown", "Urban"] else 3.6
+            est_gross_yield = st.slider("Assumed gross rental yield (%)", 0.0, 12.0, 4.5, 0.25)
+            expected_appreciation = st.slider("Assumed annual appreciation (%)", 0.0, 15.0, 5.5, 0.5)
             annual_rental = total_price * (est_gross_yield / 100.0)
             monthly_rental = annual_rental / 12.0
-            appreciation_5yr = total_price * ((1.0 + 0.055)**5 - 1.0)
+            appreciation_5yr = total_price * ((1.0 + expected_appreciation / 100.0)**5 - 1.0)
 
             fmt_rent   = format_currency_value(monthly_rental, active_currency)
             fmt_apprec = format_currency_value(appreciation_5yr, active_currency)
 
-            st.info(f"Gross Yield: **{est_gross_yield:.1f}% per annum**")
+            st.info(f"Scenario only · {est_gross_yield:.1f}% assumed gross yield and {expected_appreciation:.1f}% annual appreciation.")
             st.markdown(f"- **Est. Monthly Rental Cashflow:** `{fmt_rent['compact']} / month`")
-            st.markdown(f"- **5-Year Equity Appreciation (+5.5% CAGR):** `+{fmt_apprec['compact']}`")
+            st.markdown(f"- **5-Year Value Change:** `+{fmt_apprec['compact']}`")
             st.markdown("</div>", unsafe_allow_html=True)
 
         # ----------------- WHAT-IF SIMULATOR -----------------
@@ -1164,7 +1330,7 @@ if app_tab == "🎯 Valuation & Financial Engine":
             st.download_button(
                 label=f"⬇️ Download Valuation Dossier (.{ext})",
                 data=pdf_bytes,
-                file_name=f"PropIntel_Valuation_{res['city'].replace(' ', '_')}_{datetime.now().strftime('%Y%m%d')}.{ext}",
+                file_name=f"PropIQ_Valuation_{res['city'].replace(' ', '_')}_{datetime.now().strftime('%Y%m%d')}.{ext}",
                 mime=mime,
                 use_container_width=True
             )
@@ -1173,7 +1339,7 @@ if app_tab == "🎯 Valuation & Financial Engine":
 # ==============================================================================
 # TAB 2: SIDE-BY-SIDE COMPARISON
 # ==============================================================================
-elif app_tab == "🆚 Side-by-Side Comparison":
+elif app_tab == "Compare properties":
     st.markdown(f"""
     <div class="hero-header">
         <h1 style="margin:0; font-size:2.3rem; font-weight:900;">Side-by-Side Property Comparison</h1>
@@ -1258,7 +1424,7 @@ elif app_tab == "🆚 Side-by-Side Comparison":
 # ==============================================================================
 # TAB 3: LIVE MARKET ANALYTICS
 # ==============================================================================
-elif app_tab == "📈 Live Market Analytics":
+elif app_tab == "Market insights":
     st.markdown(f"""
     <div class="hero-header">
         <h1 style="margin:0; font-size:2.3rem; font-weight:900;">Market Distribution Analytics</h1>
@@ -1327,7 +1493,7 @@ elif app_tab == "📈 Live Market Analytics":
 # ==============================================================================
 # TAB 4: MODEL INTELLIGENCE & XAI
 # ==============================================================================
-elif app_tab == "🧠 Model Intelligence & XAI":
+elif app_tab == "Model insights":
     st.markdown(f"""
     <div class="hero-header">
         <h1 style="margin:0; font-size:2.3rem; font-weight:900;">Model Intelligence & Explainability</h1>
@@ -1383,3 +1549,35 @@ elif app_tab == "🧠 Model Intelligence & XAI":
                   .highlight_min(subset=["Test_MAE", "Test_MAPE"], color="#dcfce7" if not dark else "#1e3a5f"),
                 use_container_width=True
             )
+
+elif app_tab == "How it works":
+    st.markdown("""
+    <div class="section-heading">
+        <div class="section-eyebrow">From details to estimate</div>
+        <h1>How the valuation works</h1>
+        <p>A straightforward workflow, using the property's existing model inputs.</p>
+    </div>
+    <div class="step-grid">
+        <article class="step-panel"><div class="step-number">01 · PROPERTY</div><h3>Enter home details</h3><p>Add approximate living area, bedrooms, bathrooms, floors, year built, condition and parking.</p></article>
+        <article class="step-panel"><div class="step-number">02 · LOCATION</div><h3>Set the market</h3><p>Choose a country and city, then select the currency and area unit that suit you.</p></article>
+        <article class="step-panel"><div class="step-number">03 · MODEL</div><h3>Run the estimate</h3><p>The existing machine-learning pipeline evaluates the supplied property details.</p></article>
+        <article class="step-panel"><div class="step-number">04 · RESULT</div><h3>Review the range</h3><p>See the estimated value, model range, price per area and a summary of your inputs.</p></article>
+    </div>
+    """, unsafe_allow_html=True)
+    st.info("Estimates are informational and should not be treated as a formal appraisal or guaranteed sale price.")
+
+elif app_tab == "About":
+    st.markdown("""
+    <div class="section-heading">
+        <div class="section-eyebrow">About PropIQ</div>
+        <h1>Property estimates, made easier to explore.</h1>
+        <p>A real-estate valuation interface backed by the project's existing ensemble model and market-localization logic.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    about_cols = st.columns(3)
+    about_cols[0].metric("Model test R²", f"{r2_score:.1%}", "Holdout evaluation")
+    about_cols[1].metric("Mean absolute error", f"${mae_val:,.0f}", "US baseline evaluation")
+    about_cols[2].metric("Supported currencies", str(len(EXCHANGE_RATES)), "Market conversion options")
+    st.markdown("#### What is included")
+    st.write("The application estimates a property value from living area, bedrooms, bathrooms, floors, year built, neighborhood setting, condition and garage availability. Country, city and currency are applied by the existing market-localization layer.")
+    st.caption("Model performance metrics describe the held-out evaluation set and do not guarantee accuracy for an individual property.")
