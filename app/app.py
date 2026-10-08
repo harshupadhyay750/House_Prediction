@@ -26,6 +26,13 @@ from html import escape
 from pathlib import Path
 from datetime import datetime
 import time
+import textwrap
+
+
+def render_html(html_str: str):
+    """Render HTML cleanly without CommonMark markdown indentation issues."""
+    st.markdown(textwrap.dedent(html_str).strip(), unsafe_allow_html=True)
+
 
 # Add project root to sys.path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -1451,7 +1458,7 @@ elif app_tab == NAV_PREDICT:
         high_val = res["prediction_interval_95"]["upper_formatted"]
         loc_str = f"{res['city']}, {res['country']}"
 
-        st.markdown(f"""
+        render_html(f"""
         <div class="val-hero-box">
             <div class="val-hero-top">
                 <span>PropIQ AI Valuation Result · Calibrated Hedonic Estimate</span>
@@ -1459,7 +1466,6 @@ elif app_tab == NAV_PREDICT:
             </div>
             <div class="val-hero-price">{escape(str(res['price_formatted']))}</div>
             <div class="val-hero-location">📍 {escape(loc_str)} · {escape(str(payload['Location']))} Zone</div>
-            
             <div style="font-size:0.85rem; font-weight:700; color:{text_muted}; margin-top:1rem;">
                 95% Model Confidence Range
             </div>
@@ -1471,7 +1477,6 @@ elif app_tab == NAV_PREDICT:
                 <span>Lower Bound: <strong>{escape(str(low_val))}</strong></span>
                 <span>Upper Bound: <strong>{escape(str(high_val))}</strong></span>
             </div>
-            
             <div style="margin-top:1.2rem;">
                 <span class="spec-chip">📐 {res['key_characteristics']['Area_sqft']:,.0f} sq ft ({res['key_characteristics']['Area_sqm']:.1f} m²)</span>
                 <span class="spec-chip">🛏️ {payload['Bedrooms']} Beds</span>
@@ -1482,7 +1487,8 @@ elif app_tab == NAV_PREDICT:
                 <span class="spec-chip">💎 Rate: {res['price_per_sqft_formatted']}</span>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
+
 
         # ----------------- ACTION BAR -----------------
         act_c1, act_c2, act_c3, act_c4, act_c5 = st.columns(5)
