@@ -504,6 +504,36 @@ st.markdown("""
         .step-grid { grid-template-columns:1fr; }
         div[role="radiogroup"] label { padding:.36rem .5rem; font-size:.82rem; }
     }
+
+    /* Auth Portal Landing Styles */
+    .auth-portal-wrap { margin: 0.5rem 0 2rem; }
+    .auth-badge {
+        display: inline-flex; align-items: center; gap: .45rem;
+        padding: .35rem .85rem; border-radius: 9999px;
+        font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+        background: #eaf1f4; color: var(--navy); border: 1px solid #cbdde3; margin-bottom: .8rem;
+    }
+    .auth-hero-h1 {
+        font-family: 'DM Serif Display', serif; font-size: 2.75rem; line-height: 1.12;
+        color: var(--navy); margin: .4rem 0 .8rem; font-weight: 400;
+    }
+    .auth-hero-p { font-size: 1.02rem; line-height: 1.6; color: var(--muted); margin-bottom: 1.5rem; }
+    .auth-perk-item { display: flex; align-items: flex-start; gap: .9rem; margin-bottom: 1.1rem; }
+    .auth-perk-icon {
+        width: 38px; height: 38px; border-radius: 10px;
+        background: #eaf1f4; border: 1px solid #d2e0e5;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.15rem; flex-shrink: 0;
+    }
+    .auth-perk-title { font-weight: 700; font-size: .95rem; color: var(--navy); margin-bottom: .15rem; }
+    .auth-perk-desc { font-size: .83rem; color: var(--muted); line-height: 1.45; }
+    .auth-card-box {
+        background: white; border: 1px solid var(--line); border-radius: 14px;
+        padding: 1.8rem 2rem; box-shadow: 0 12px 35px rgba(25, 54, 74, .08);
+    }
+    .auth-card-header { text-align: center; margin-bottom: 1.2rem; }
+    .auth-card-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.85rem; margin: 0 0 .3rem; color: var(--navy); font-weight: 400; }
+    .auth-card-header p { font-size: .88rem; color: var(--muted); margin: 0; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -522,8 +552,15 @@ if dark:
         .badge-pill { background:#2a3942; color:var(--ink); border-color:var(--line); }
         .badge-accent { background:#3c3429; color:#f0cc97; border-color:#65543c; }
         .share-box { background:#202d35; color:#c3d5dc; }
+        .auth-badge { background: #20313c; color: #a5c7d8; border-color: #3b4e5a; }
+        .auth-hero-h1 { color: var(--ink) !important; }
+        .auth-perk-icon { background: #20313c; border-color: #344754; }
+        .auth-perk-title { color: var(--ink) !important; }
+        .auth-card-box { background: var(--white) !important; border-color: var(--line) !important; }
+        .auth-card-header h2 { color: var(--ink) !important; }
     </style>
     """, unsafe_allow_html=True)
+
 
 
 # ------------------------------------------------------------------------------
@@ -575,8 +612,9 @@ def load_supabase_config():
         setting("SUPABASE_URL"),
         setting("SUPABASE_PUBLISHABLE_KEY", "SUPABASE_ANON_KEY"),
         setting("SUPABASE_SECRET_KEY", "SUPABASE_SERVICE_ROLE_KEY"),
-        setting("SUPABASE_REDIRECT_URL") or "http://localhost:8502",
+        setting("SUPABASE_REDIRECT_URL") or "http://localhost:8501",
     )
+
 
 
 def store_auth_session(auth_response):
@@ -985,7 +1023,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
     if auth_session:
         signed_in_email = auth_session.get("user", {}).get("email", "Signed-in account")
-        st.caption(f"Signed in as {signed_in_email}")
+        st.caption(f"👤 {signed_in_email}")
         if st.button("Sign out", key="sidebar_sign_out", use_container_width=True):
             try:
                 if supabase_client:
@@ -993,13 +1031,16 @@ with st.sidebar:
             except SupabaseError:
                 pass
             st.session_state.pop("supabase_session", None)
+            st.session_state["guest_mode"] = False
+            st.rerun()
+    elif st.session_state.get("guest_mode"):
+        st.caption("👁️ Guest preview mode")
+        if st.button("🔐 Sign in / Register", key="sidebar_exit_guest", use_container_width=True):
+            st.session_state["guest_mode"] = False
             st.rerun()
     elif supabase_client:
         st.caption("Sign in to save valuation history.")
-        if st.button("Sign in", key="sidebar_sign_in", use_container_width=True):
-            st.session_state["main_navigation"] = "Account"
-            st.session_state["mobile_navigation_choice"] = "Account"
-            st.rerun()
+
     col_mode_label, col_mode_button = st.columns([3, 1])
     with col_mode_label:
         st.caption("Dark appearance" if dark else "Light appearance")
@@ -1008,28 +1049,33 @@ with st.sidebar:
             st.session_state.dark_mode = not st.session_state.dark_mode
             st.rerun()
 
-    st.markdown("---")
-    st.markdown("#### Currency & units")
+    if auth_session or st.session_state.get("guest_mode"):
+        st.markdown("---")
+        st.markdown("#### Currency & units")
 
-    currency_keys = active_currency_options
-    curr_labels = [f"{EXCHANGE_RATES[c]['flag']} {c} ({EXCHANGE_RATES[c]['symbol']})" for c in currency_keys]
-    default_curr = url_params.get("Currency", "INR")
-    default_curr_idx = currency_keys.index(default_curr) if default_curr in currency_keys else 0
-    sel_curr_idx = st.selectbox(
-        "Settlement Currency",
-        range(len(currency_keys)),
-        format_func=lambda i: curr_labels[i],
-        index=default_curr_idx
-    )
-    active_currency = currency_keys[sel_curr_idx]
-    active_curr_info = EXCHANGE_RATES[active_currency]
+        currency_keys = active_currency_options
+        curr_labels = [f"{EXCHANGE_RATES[c]['flag']} {c} ({EXCHANGE_RATES[c]['symbol']})" for c in currency_keys]
+        default_curr = url_params.get("Currency", "INR")
+        default_curr_idx = currency_keys.index(default_curr) if default_curr in currency_keys else 0
+        sel_curr_idx = st.selectbox(
+            "Settlement Currency",
+            range(len(currency_keys)),
+            format_func=lambda i: curr_labels[i],
+            index=default_curr_idx
+        )
+        active_currency = currency_keys[sel_curr_idx]
+        active_curr_info = EXCHANGE_RATES[active_currency]
 
-    active_unit = st.radio(
-        "Measurement Unit",
-        ["Square Feet (sq ft)", "Square Meters (m²)"],
-        index=0
-    )
-    is_sqm = "Meter" in active_unit
+        active_unit = st.radio(
+            "Measurement Unit",
+            ["Square Feet (sq ft)", "Square Meters (m²)"],
+            index=0
+        )
+        is_sqm = "Meter" in active_unit
+    else:
+        active_currency = "INR"
+        active_curr_info = EXCHANGE_RATES["INR"]
+        is_sqm = False
 
     st.markdown("---")
     st.markdown("#### Model performance")
@@ -1045,6 +1091,142 @@ with st.sidebar:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+# ------------------------------------------------------------------------------
+# AUTHENTICATION GATE / LANDING LOGIN PORTAL
+# ------------------------------------------------------------------------------
+if not auth_session and not st.session_state.get("guest_mode", False):
+    auth_notice = st.session_state.pop("supabase_auth_notice", None)
+    if auth_notice:
+        if auth_notice.startswith("Your email is confirmed") or auth_notice.startswith("Password updated"):
+            st.success(auth_notice)
+        else:
+            st.warning(auth_notice)
+
+    col_hero, col_auth = st.columns([1.15, 1], gap="large")
+
+    with col_hero:
+        st.markdown(f"""
+        <div class="auth-portal-wrap">
+            <div class="auth-badge">✨ AI-Powered Property Valuation</div>
+            <div style="margin: 0.8rem 0 1.2rem;">
+                <img src="data:image/png;base64,{logo_data}" style="max-width:220px; height:auto; display:block;" alt="PropIQ Logo">
+            </div>
+            <h1 class="auth-hero-h1">Predict Smarter.<br>Choose Better.</h1>
+            <p class="auth-hero-p">
+                Access deterministic hedonic property appraisals, market confidence intervals,
+                and financial forecasts with <strong>98.8% model accuracy</strong> across global real estate markets.
+            </p>
+            <div class="auth-perk-item">
+                <div class="auth-perk-icon">💎</div>
+                <div>
+                    <div class="auth-perk-title">Super Ensemble ML Engine</div>
+                    <div class="auth-perk-desc">Combines XGBoost, GradientBoosting & HistGB with target log-transforms.</div>
+                </div>
+            </div>
+            <div class="auth-perk-item">
+                <div class="auth-perk-icon">🌍</div>
+                <div>
+                    <div class="auth-perk-title">Global Multi-Currency Appraisals</div>
+                    <div class="auth-perk-desc">Multi-market valuations in INR (Cr/Lakh), USD, EUR, GBP, AED, SGD, and more.</div>
+                </div>
+            </div>
+            <div class="auth-perk-item">
+                <div class="auth-perk-icon">📊</div>
+                <div>
+                    <div class="auth-perk-title">SHAP Feature Explainability</div>
+                    <div class="auth-perk-desc">Clear value-driver decomposition showing every amenity's monetary impact.</div>
+                </div>
+            </div>
+            <div class="auth-perk-item">
+                <div class="auth-perk-icon">🔒</div>
+                <div>
+                    <div class="auth-perk-title">Cloud Valuation History</div>
+                    <div class="auth-perk-desc">Save, compare, and export your property estimates anytime.</div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col_auth:
+        st.markdown("""
+        <div class="auth-card-box">
+            <div class="auth-card-header">
+                <h2>Welcome to PropIQ</h2>
+                <p>Sign in to access your valuation workspace</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        if not supabase_client:
+            st.warning("Supabase is not configured yet. Configure your credentials in .env to enable authentication.")
+        else:
+            auth_portal_tabs = st.tabs(["Sign In", "Create Account", "Forgot Password"])
+
+            with auth_portal_tabs[0]:
+                with st.form("portal_sign_in_form"):
+                    portal_login_email = st.text_input("Email address", key="portal_login_email")
+                    portal_login_password = st.text_input("Password", type="password", key="portal_login_password")
+                    portal_login_submit = st.form_submit_button("Sign In →", use_container_width=True)
+                if portal_login_submit:
+                    if not portal_login_email.strip() or not portal_login_password:
+                        st.error("Please enter your email address and password.")
+                    else:
+                        try:
+                            res = supabase_client.sign_in(portal_login_email.strip(), portal_login_password)
+                            store_auth_session(res)
+                            st.session_state["guest_mode"] = False
+                            st.rerun()
+                        except SupabaseError as exc:
+                            st.error(str(exc))
+
+            with auth_portal_tabs[1]:
+                with st.form("portal_sign_up_form"):
+                    portal_signup_name = st.text_input("Full Name", max_chars=100, key="portal_signup_name")
+                    portal_signup_email = st.text_input("Email address", key="portal_signup_email")
+                    portal_signup_password = st.text_input("Password (min 8 chars)", type="password", key="portal_signup_password")
+                    portal_signup_confirm = st.text_input("Confirm Password", type="password", key="portal_signup_confirm")
+                    portal_signup_submit = st.form_submit_button("Create Account →", use_container_width=True)
+                if portal_signup_submit:
+                    if not portal_signup_name.strip() or not portal_signup_email.strip():
+                        st.error("Please enter your full name and email address.")
+                    elif len(portal_signup_password) < 8:
+                        st.error("Password must contain at least 8 characters.")
+                    elif portal_signup_password != portal_signup_confirm:
+                        st.error("Passwords do not match.")
+                    else:
+                        try:
+                            res = supabase_client.sign_up(
+                                portal_signup_email.strip(), portal_signup_password, portal_signup_name.strip(), supabase_redirect_url
+                            )
+                            if res.get("access_token"):
+                                store_auth_session(res)
+                                st.session_state["guest_mode"] = False
+                                st.rerun()
+                            st.success("Account created! Check your email to confirm, then sign in.")
+                        except SupabaseError as exc:
+                            st.error(str(exc))
+
+            with auth_portal_tabs[2]:
+                with st.form("portal_reset_form"):
+                    portal_reset_email = st.text_input("Account Email address", key="portal_reset_email")
+                    portal_reset_submit = st.form_submit_button("Send Reset Link", use_container_width=True)
+                if portal_reset_submit:
+                    if not portal_reset_email.strip():
+                        st.error("Please enter your account email address.")
+                    else:
+                        try:
+                            supabase_client.request_password_reset(portal_reset_email.strip(), supabase_redirect_url)
+                            st.success("If the account is registered, a password reset link has been emailed.")
+                        except SupabaseError as exc:
+                            st.error(str(exc))
+
+        st.markdown("<div style='margin: 1.2rem 0; text-align: center;'><hr style='border:0;border-top:1px solid #dfe5e4;margin: 1rem 0;'></div>", unsafe_allow_html=True)
+        if st.button("Explore as Guest / Public Demo →", key="portal_guest_btn", use_container_width=True):
+            st.session_state["guest_mode"] = True
+            st.rerun()
+
+    st.stop()
 
 with st.container(key="mobile_navigation"):
     st.selectbox(
@@ -1065,6 +1247,7 @@ app_tab = st.radio(
     args=("main_navigation", "mobile_navigation_choice")
 )
 st.markdown("<hr style='border:0;border-top:1px solid #dfe5e4;margin:.25rem 0 1rem'>", unsafe_allow_html=True)
+
 
 
 # ------------------------------------------------------------------------------
