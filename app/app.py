@@ -1,20 +1,20 @@
 """
 Streamlit Web Application: PropIQ — Predict Smarter. Choose Better.
-Enterprise PropTech Platform powered by Log-Target Super Ensemble (XGBoost + GradientBoosting + HistGradientBoosting).
+Production Hedonic AI Engine powered by Super Ensemble (XGBoost + GradientBoosting + HistGradientBoosting).
 
 Architecture:
-- Full-width modern SaaS layout (sidebar integrated into top navbar and Profile/Preferences section)
-- Landing / Home: SaaS Hero, Live Features, Global Coverage, Step-by-Step Guide
-- Authentication: Branded Auth Gate with Supabase Sign-in, Sign-up, Password Recovery, and Guest Exploration
-- Dashboard: Real Estate Portfolio KPIs, Recent Valuations, Quick Launcher, Currency Ticker
-- Property Prediction: 4-Step Grouped Form, 1-Click Fast Presets, Instant Validation
-- Prediction Result: Hero Valuation Card, 95% Confidence Interval Meter, Specs Chips, Action Bar (Save, Predict Again, View History, PDF, Share), SHAP Waterfall Breakdown, Mortgage EMI & Rental ROI Simulator, Renovation Upgrades Studio
-- Saved History & Details: Cloud Valuations List, Search & Filter, Specs Drill-Down, Delete, CSV Export
-- Compare Properties: Side-by-side comparative analysis with delta metrics
-- Market Insights: Global Metro Multipliers & Settlement Tier Economics
-- How It Works: Hedonic ML Pipeline Architecture, Leaderboard, Feature Importance
-- Profile & Preferences: User Account, Display Name, Currency & Unit Preferences, Theme Toggle, Model Reliability Summary, Security & Sign Out
-- Admin Panel: Market Allowlist Controls, User Banning, Global Appraisals Feed
+- Global Multi-Currency Valuation (INR Crores/Lakhs, USD, EUR, GBP, AED, CAD, AUD, JPY, SGD, etc.)
+- Measurement Unit Toggle (Square Feet sq ft <-> Square Meters m²)
+- 1-Click Fast Presets (Mumbai, Bengaluru, NYC, Dallas, London)
+- Luxury Glassmorphism & Modern PropTech SaaS Aesthetic
+- Dynamic Model Confidence Interval Visual Range Meter
+- Value Driver Decomposition Breakdown & SHAP-Style Feature Waterfall
+- Real Estate Financials: Mortgage EMI Calculator & Rental Yield / ROI Forecaster
+- Dynamic What-If Renovation & Upgrades Simulator
+- Saved History & Cloud Persistence via Supabase PostgreSQL
+- Side-by-Side Property Comparison & Global Market Intelligence
+- Full-featured Profile & System Preferences
+- Light & Dark Mode Toggle with Curated Luxury Palettes
 """
 
 import os
@@ -58,7 +58,7 @@ from src.supabase_store import SupabaseError, SupabaseRESTClient
 load_dotenv(PROJECT_ROOT / ".env", override=False)
 
 # ------------------------------------------------------------------------------
-# PAGE CONFIGURATION (Full-width modern layout without sidebar)
+# PAGE CONFIGURATION (Clean Full-Width Web Layout)
 # ------------------------------------------------------------------------------
 st.set_page_config(
     page_title="PropIQ | Predict Smarter. Choose Better.",
@@ -78,19 +78,18 @@ dark = st.session_state.dark_mode
 # Luxury Curated Color Tokens
 if dark:
     bg_main       = "#060b17"
-    bg_card       = "rgba(15, 23, 42, 0.82)"
+    bg_card       = "rgba(15, 23, 42, 0.85)"
     bg_card_solid = "#0f172a"
     bg_hover      = "rgba(30, 41, 59, 0.9)"
     text_main     = "#f8fafc"
     text_muted    = "#94a3b8"
-    border_col    = "rgba(56, 189, 248, 0.2)"
+    border_col    = "rgba(56, 189, 248, 0.22)"
     border_glow   = "rgba(56, 189, 248, 0.45)"
     hero_grad     = "linear-gradient(135deg, #090e1f 0%, #172554 45%, #1e1b4b 100%)"
     accent_blue   = "#38bdf8"
     accent_glow   = "#60a5fa"
     accent_gold   = "#fbbf24"
     accent_emerald= "#10b981"
-    stat_num_col  = "#60a5fa"
     fig_bg        = "#0f172a"
     mpl_text      = "#e2e8f0"
     mpl_grid      = "#1e293b"
@@ -101,44 +100,30 @@ else:
     bg_hover      = "#f1f5f9"
     text_main     = "#0f172a"
     text_muted    = "#475569"
-    border_col    = "rgba(203, 213, 225, 0.85)"
+    border_col    = "rgba(203, 213, 225, 0.9)"
     border_glow   = "rgba(37, 99, 235, 0.35)"
     hero_grad     = "linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1d4ed8 100%)"
     accent_blue   = "#2563eb"
     accent_glow   = "#3b82f6"
     accent_gold   = "#d97706"
     accent_emerald= "#059669"
-    stat_num_col  = "#1e40af"
     fig_bg        = "#f8fafc"
     mpl_text      = "#1e293b"
     mpl_grid      = "#e2e8f0"
 
 # ------------------------------------------------------------------------------
-# INJECT FULL-WIDTH DESIGN SYSTEM CSS (HIDES STREAMLIT SIDEBAR)
+# INJECT FULL-WIDTH DESIGN SYSTEM CSS (HIDES SIDEBAR FOR CLEAN LAYOUT)
 # ------------------------------------------------------------------------------
 st.markdown(f"""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-    :root {{
-        --bg-main: {bg_main};
-        --bg-card: {bg_card};
-        --bg-card-solid: {bg_card_solid};
-        --text-main: {text_main};
-        --text-muted: {text_muted};
-        --border-col: {border_col};
-        --accent-blue: {accent_blue};
-        --accent-glow: {accent_glow};
-        --accent-gold: {accent_gold};
-        --accent-emerald: {accent_emerald};
-    }}
-
-    /* Completely hide Streamlit sidebar for a true full-width web app */
+    /* Hide Streamlit sidebar for clean web application feel */
     [data-testid="stSidebar"], [data-testid="collapsedControl"], section[data-testid="stSidebar"] {{
         display: none !important;
     }}
     .block-container {{
-        padding-top: 1.5rem !important;
+        padding-top: 1.2rem !important;
         padding-bottom: 3.5rem !important;
         max-width: 1280px !important;
     }}
@@ -152,27 +137,38 @@ st.markdown(f"""
         background: {bg_main};
     }}
 
-    /* Top Navbar Branding */
-    .top-nav-brand {{
+    /* Top Brand Header */
+    .brand-header-box {{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 1.4rem;
+        background: {bg_card};
+        border: 1px solid {border_col};
+        border-radius: 16px;
+        margin-bottom: 1.2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,{'0.25' if dark else '0.04'});
+    }}
+    .brand-left {{
         display: flex;
         align-items: center;
         gap: 0.9rem;
     }}
-    .top-nav-brand img {{
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
+    .brand-left img {{
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
         object-fit: cover;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }}
-    .top-brand-text h2 {{
+    .brand-titles h1 {{
         font-family: 'DM Serif Display', serif;
         font-size: 1.65rem;
         margin: 0;
-        line-height: 1;
+        line-height: 1.1;
         color: {text_main};
     }}
-    .top-brand-text p {{
+    .brand-titles p {{
         font-size: 0.76rem;
         font-weight: 700;
         letter-spacing: 0.08em;
@@ -184,35 +180,25 @@ st.markdown(f"""
     /* Hero Banner */
     .saas-hero {{
         background: {hero_grad};
-        padding: 2.6rem 2.8rem;
-        border-radius: 22px;
+        padding: 2.4rem 2.6rem;
+        border-radius: 20px;
         color: white;
-        margin-bottom: 1.8rem;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.4);
+        margin-bottom: 1.6rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.35);
         position: relative;
         overflow: hidden;
     }}
-    .saas-hero::after {{
-        content: '';
-        position: absolute;
-        top: -60%;
-        right: -15%;
-        width: 380px;
-        height: 380px;
-        background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
-        pointer-events: none;
-    }}
     .saas-hero h1 {{
         font-family: 'DM Serif Display', serif;
-        font-size: 2.9rem;
+        font-size: 2.75rem;
         line-height: 1.15;
         font-weight: 400;
-        margin: 0.6rem 0 0.8rem;
+        margin: 0.5rem 0 0.7rem;
         color: white !important;
     }}
     .saas-hero p {{
-        font-size: 1.05rem;
+        font-size: 1.02rem;
         line-height: 1.6;
         color: #e0e7ff !important;
         max-width: 650px;
@@ -221,36 +207,35 @@ st.markdown(f"""
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
-        background: rgba(255, 255, 255, 0.16);
-        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         color: #fef08a;
-        padding: 0.35rem 0.95rem;
+        padding: 0.32rem 0.85rem;
         border-radius: 9999px;
-        font-size: 0.78rem;
+        font-size: 0.75rem;
         font-weight: 800;
-        letter-spacing: 0.07em;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
     }}
 
     /* Card Panels */
     .prop-card {{
         background: {bg_card};
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border: 1px solid {border_col};
-        border-radius: 18px;
-        padding: 1.6rem 1.8rem;
-        margin: 1rem 0;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, {'0.35' if dark else '0.06'});
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        border-radius: 16px;
+        padding: 1.5rem 1.7rem;
+        margin: 0.9rem 0;
+        box-shadow: 0 8px 25px -8px rgba(0, 0, 0, {'0.35' if dark else '0.05'});
+        transition: transform 0.2s ease, border-color 0.2s ease;
     }}
     .prop-card:hover {{
         border-color: {border_glow};
-        box-shadow: 0 16px 36px -10px rgba(37, 99, 235, {'0.3' if dark else '0.12'});
     }}
 
     .card-title {{
-        font-size: 1.15rem;
+        font-size: 1.12rem;
         font-weight: 800;
         color: {text_main};
         margin-bottom: 0.25rem;
@@ -259,24 +244,23 @@ st.markdown(f"""
         gap: 0.5rem;
     }}
     .card-desc {{
-        font-size: 0.85rem;
+        font-size: 0.84rem;
         color: {text_muted};
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.1rem;
     }}
 
-    /* Hero Valuation Result Box */
+    /* Hero Valuation Box */
     .val-hero-box {{
         background: {f"linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 27, 75, 0.8) 100%)" if dark else "linear-gradient(135deg, #ffffff 0%, #eff6ff 100%)"};
-        backdrop-filter: blur(22px);
+        backdrop-filter: blur(20px);
         border: 1.5px solid {border_glow};
-        border-radius: 22px;
+        border-radius: 20px;
         padding: 2.2rem 2.4rem;
         margin: 1.2rem 0;
-        box-shadow: 0 25px 60px -15px rgba(37, 99, 235, {'0.45' if dark else '0.16'});
-        position: relative;
+        box-shadow: 0 20px 50px -12px rgba(37, 99, 235, {'0.4' if dark else '0.14'});
     }}
     .val-hero-top {{
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         text-transform: uppercase;
         letter-spacing: 0.08em;
         font-weight: 800;
@@ -285,16 +269,14 @@ st.markdown(f"""
     }}
     .val-hero-price {{
         font-family: 'DM Serif Display', serif;
-        font-size: 3.4rem;
+        font-size: 3.3rem;
         line-height: 1.05;
         font-weight: 400;
-        margin: 0.2rem 0 0.6rem;
-        background: {f"linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #f472b6 100%)" if dark else "linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #7c3aed 100%)"};
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        margin: 0.2rem 0 0.5rem;
+        color: {accent_glow if dark else "#1e3a8a"};
     }}
     .val-hero-location {{
-        font-size: 1.05rem;
+        font-size: 1rem;
         font-weight: 600;
         color: {text_muted};
         margin-bottom: 1.2rem;
@@ -328,7 +310,7 @@ st.markdown(f"""
         background: white;
         border: 3.5px solid {accent_blue};
         transform: translate(-50%, -50%);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }}
 
     /* Spec Chips */
@@ -336,9 +318,9 @@ st.markdown(f"""
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
-        padding: 0.42rem 0.98rem;
+        padding: 0.38rem 0.9rem;
         border-radius: 9999px;
-        font-size: 0.85rem;
+        font-size: 0.84rem;
         font-weight: 600;
         background: {f"rgba(30, 41, 59, 0.75)" if dark else "#e2e8f0"};
         border: 1px solid {border_col};
@@ -349,11 +331,11 @@ st.markdown(f"""
 
     /* Buttons */
     div.stButton > button, div.stFormSubmitButton > button, div[data-testid="stDownloadButton"] button {{
-        min-height: 2.85rem;
-        border-radius: 11px;
+        min-height: 2.8rem;
+        border-radius: 10px;
         font-weight: 700;
-        font-size: 0.92rem;
-        transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+        font-size: 0.9rem;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }}
     div.stFormSubmitButton > button {{
         background: {accent_blue} !important;
@@ -363,17 +345,17 @@ st.markdown(f"""
     div.stFormSubmitButton > button:hover {{
         background: #1d4ed8 !important;
         transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
     }}
 
     /* Navigation Radio */
     div[data-testid="stRadio"] > label {{ display: none; }}
-    div[role="radiogroup"] {{ gap: 0.35rem; }}
+    div[role="radiogroup"] {{ gap: 0.3rem; flex-wrap: wrap; }}
     div[role="radiogroup"] label {{
         border-radius: 10px;
-        padding: 0.5rem 0.95rem;
+        padding: 0.48rem 0.88rem;
         font-weight: 600;
-        font-size: 0.88rem;
+        font-size: 0.86rem;
         border: 1px solid transparent;
         transition: all 0.15s ease;
     }}
@@ -388,72 +370,35 @@ st.markdown(f"""
     [data-testid="stMetric"] {{
         background: {bg_card};
         border: 1px solid {border_col};
-        border-radius: 16px;
-        padding: 1.15rem 1.35rem;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, {'0.25' if dark else '0.04'});
+        border-radius: 14px;
+        padding: 1.1rem 1.3rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, {'0.2' if dark else '0.04'});
     }}
-    [data-testid="stMetricLabel"] {{ color: {text_muted}; font-size: 0.85rem; font-weight: 600; }}
+    [data-testid="stMetricLabel"] {{ color: {text_muted}; font-size: 0.84rem; font-weight: 600; }}
     [data-testid="stMetricValue"] {{ color: {text_main}; font-weight: 800; }}
-
-    /* Auth Portal Styles */
-    .auth-portal-wrap {{ margin: 0.5rem 0 2rem; }}
-    .auth-badge {{
-        display: inline-flex; align-items: center; gap: .45rem;
-        padding: .35rem .85rem; border-radius: 9999px;
-        font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-        background: {f"#1e293b" if dark else "#e0e7ff"};
-        color: {accent_glow if dark else "#1d4ed8"};
-        border: 1px solid {border_glow};
-        margin-bottom: .8rem;
-    }}
-    .auth-hero-h1 {{
-        font-family: 'DM Serif Display', serif; font-size: 2.85rem; line-height: 1.12;
-        color: {text_main}; margin: .4rem 0 .8rem; font-weight: 400;
-    }}
-    .auth-hero-p {{ font-size: 1.05rem; line-height: 1.6; color: {text_muted}; margin-bottom: 1.5rem; }}
-    .auth-perk-item {{ display: flex; align-items: flex-start; gap: .9rem; margin-bottom: 1.1rem; }}
-    .auth-perk-icon {{
-        width: 38px; height: 38px; border-radius: 10px;
-        background: {f"#1e293b" if dark else "#f1f5f9"};
-        border: 1px solid {border_col};
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.15rem; flex-shrink: 0;
-    }}
-    .auth-perk-title {{ font-weight: 700; font-size: .95rem; color: {text_main}; margin-bottom: .15rem; }}
-    .auth-perk-desc {{ font-size: .83rem; color: {text_muted}; line-height: 1.45; }}
-    .auth-card-box {{
-        background: {bg_card};
-        border: 1.5px solid {border_glow};
-        border-radius: 20px;
-        padding: 2.2rem 2.4rem;
-        box-shadow: 0 18px 45px rgba(0, 0, 0, {'0.45' if dark else '0.08'});
-    }}
-    .auth-card-header {{ text-align: center; margin-bottom: 1.2rem; }}
-    .auth-card-header h2 {{ font-family: 'DM Serif Display', serif; font-size: 2rem; margin: 0 0 .3rem; color: {text_main}; font-weight: 400; }}
-    .auth-card-header p {{ font-size: .9rem; color: {text_muted}; margin: 0; }}
 
     /* Step Grid */
     .step-grid {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin: 1.2rem 0; }}
     .step-card {{
         background: {bg_card};
         border: 1px solid {border_col};
-        border-radius: 16px;
-        padding: 1.3rem;
+        border-radius: 14px;
+        padding: 1.2rem;
         transition: transform 0.2s ease, border-color 0.2s ease;
     }}
-    .step-card:hover {{ transform: translateY(-3px); border-color: {border_glow}; }}
-    .step-num {{ font-size: 0.78rem; font-weight: 800; color: {accent_gold}; letter-spacing: 0.06em; text-transform: uppercase; }}
-    .step-card h3 {{ font-size: 1.05rem; font-weight: 700; margin: 0.4rem 0 0.3rem; color: {text_main}; }}
-    .step-card p {{ font-size: 0.85rem; color: {text_muted}; line-height: 1.45; margin: 0; }}
+    .step-card:hover {{ transform: translateY(-2px); border-color: {border_glow}; }}
+    .step-num {{ font-size: 0.76rem; font-weight: 800; color: {accent_gold}; letter-spacing: 0.06em; text-transform: uppercase; }}
+    .step-card h3 {{ font-size: 1rem; font-weight: 700; margin: 0.35rem 0 0.25rem; color: {text_main}; }}
+    .step-card p {{ font-size: 0.83rem; color: {text_muted}; line-height: 1.45; margin: 0; }}
 
     @media (max-width: 850px) {{
-        .saas-hero {{ padding: 1.8rem 1.5rem; }}
-        .saas-hero h1 {{ font-size: 2.1rem; }}
+        .saas-hero {{ padding: 1.6rem 1.4rem; }}
+        .saas-hero h1 {{ font-size: 2rem; }}
         .step-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
     }}
     @media (max-width: 540px) {{
         .step-grid {{ grid-template-columns: 1fr; }}
-        .val-hero-price {{ font-size: 2.5rem; }}
+        .val-hero-price {{ font-size: 2.3rem; }}
     }}
 </style>
 """, unsafe_allow_html=True)
@@ -568,7 +513,7 @@ if supabase_client:
                 st.session_state["password_recovery_mode"] = True
             else:
                 st.session_state["supabase_auth_notice"] = "Your email is confirmed. You are signed in."
-            st.session_state["main_navigation"] = "👤 Profile"
+            st.session_state["main_navigation"] = "👤 Profile & Preferences"
         except SupabaseError as exc:
             st.session_state["supabase_auth_notice"] = f"This email link could not be verified: {exc}"
         for query_key in ("token_hash", "type"):
@@ -617,7 +562,6 @@ def get_url_params():
 
 url_params = get_url_params()
 
-# Initialize currency & measurement unit in session state
 if "active_currency" not in st.session_state:
     st.session_state["active_currency"] = url_params.get("Currency", "INR")
 if "is_sqm" not in st.session_state:
@@ -791,207 +735,36 @@ def plot_shap_waterfall(res, payload, dark_mode=True):
 
 
 # ------------------------------------------------------------------------------
-# AUTHENTICATION GATE / LANDING LOGIN PORTAL
+# TOP NAVBAR & BRAND HEADER
 # ------------------------------------------------------------------------------
 logo_data = base64.b64encode((PROJECT_ROOT / "PropIQ.png").read_bytes()).decode("ascii")
 
-if not auth_session and not st.session_state.get("guest_mode", False):
-    auth_notice = st.session_state.pop("supabase_auth_notice", None)
-    if auth_notice:
-        if auth_notice.startswith("Your email is confirmed") or auth_notice.startswith("Password updated"):
-            st.success(auth_notice)
-        else:
-            st.warning(auth_notice)
+auth_status_badge = f"👤 {auth_session['user']['email']}" if auth_session else "👁️ Guest Mode"
 
-    col_hero, col_auth = st.columns([1.15, 1], gap="large")
-
-    with col_hero:
-        st.markdown(f"""
-        <div class="auth-portal-wrap">
-            <div class="auth-badge">✨ AI-Powered Hedonic Valuation</div>
-            <div style="margin: 0.8rem 0 1.2rem; display:flex; align-items:center; gap:1rem;">
-                <img src="data:image/png;base64,{logo_data}" style="max-width:80px; height:80px; border-radius:18px; box-shadow:0 8px 24px rgba(0,0,0,0.3);" alt="PropIQ Logo">
-                <div>
-                    <h2 style="font-family:'DM Serif Display',serif; font-size:2.4rem; margin:0; line-height:1; color:{text_main};">PropIQ</h2>
-                    <p style="font-size:0.85rem; font-weight:700; color:{accent_gold}; margin:0.2rem 0 0; letter-spacing:0.06em; text-transform:uppercase;">Predict Smarter. Choose Better.</p>
-                </div>
-            </div>
-            <h1 class="auth-hero-h1">Next-Gen Real Estate<br>Valuation Intelligence</h1>
-            <p class="auth-hero-p">
-                Deterministic residential appraisals, confidence intervals, and investment analytics
-                powered by a calibrated <strong>Super Ensemble (98.8% R²)</strong> across global metros.
-            </p>
-            <div class="auth-perk-item">
-                <div class="auth-perk-icon">💎</div>
-                <div>
-                    <div class="auth-perk-title">Super Ensemble Regressor</div>
-                    <div class="auth-perk-desc">XGBoost + GradientBoosting + HistGB with log-target transformation.</div>
-                </div>
-            </div>
-            <div class="auth-perk-item">
-                <div class="auth-perk-icon">🌍</div>
-                <div>
-                    <div class="auth-perk-title">Multi-Market Multi-Currency</div>
-                    <div class="auth-perk-desc">Direct valuations in INR (Cr/Lakh), USD, EUR, GBP, AED, SGD, and more.</div>
-                </div>
-            </div>
-            <div class="auth-perk-item">
-                <div class="auth-perk-icon">📊</div>
-                <div>
-                    <div class="auth-perk-title">Explainable SHAP Contributions</div>
-                    <div class="auth-perk-desc">Exact dollar/rupee impact for every room, sq ft, location, and garage.</div>
-                </div>
-            </div>
-            <div class="auth-perk-item">
-                <div class="auth-perk-icon">🔒</div>
-                <div>
-                    <div class="auth-perk-title">Secure Cloud History</div>
-                    <div class="auth-perk-desc">Save, compare, track, and export your property estimates anytime.</div>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col_auth:
-        st.markdown("""
-        <div class="auth-card-box">
-            <div class="auth-card-header">
-                <h2>Welcome to PropIQ</h2>
-                <p>Sign in to access your valuation workspace</p>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        if not supabase_client:
-            st.warning("Supabase is not configured yet. Configure your credentials in .env.")
-        else:
-            auth_portal_tabs = st.tabs(["Sign In", "Create Account", "Forgot Password"])
-
-            with auth_portal_tabs[0]:
-                with st.form("portal_sign_in_form"):
-                    portal_login_email = st.text_input("Email address", key="portal_login_email")
-                    portal_login_password = st.text_input("Password", type="password", key="portal_login_password")
-                    portal_login_submit = st.form_submit_button("Sign In →", use_container_width=True)
-                if portal_login_submit:
-                    if not portal_login_email.strip() or not portal_login_password:
-                        st.error("Please enter your email address and password.")
-                    else:
-                        try:
-                            res = supabase_client.sign_in(portal_login_email.strip(), portal_login_password)
-                            store_auth_session(res)
-                            st.session_state["guest_mode"] = False
-                            st.rerun()
-                        except SupabaseError as exc:
-                            st.error(str(exc))
-
-            with auth_portal_tabs[1]:
-                with st.form("portal_sign_up_form"):
-                    portal_signup_name = st.text_input("Full Name", max_chars=100, key="portal_signup_name")
-                    portal_signup_email = st.text_input("Email address", key="portal_signup_email")
-                    portal_signup_password = st.text_input("Password (min 8 chars)", type="password", key="portal_signup_password")
-                    portal_signup_confirm = st.text_input("Confirm Password", type="password", key="portal_signup_confirm")
-                    portal_signup_submit = st.form_submit_button("Create Account →", use_container_width=True)
-                if portal_signup_submit:
-                    if not portal_signup_name.strip() or not portal_signup_email.strip():
-                        st.error("Please enter your full name and email address.")
-                    elif len(portal_signup_password) < 8:
-                        st.error("Password must contain at least 8 characters.")
-                    elif portal_signup_password != portal_signup_confirm:
-                        st.error("Passwords do not match.")
-                    else:
-                        try:
-                            res = supabase_client.sign_up(
-                                portal_signup_email.strip(), portal_signup_password, portal_signup_name.strip(), supabase_redirect_url
-                            )
-                            if res.get("access_token"):
-                                store_auth_session(res)
-                                st.session_state["guest_mode"] = False
-                                st.rerun()
-                            st.success("Account created! Check your email to confirm, then sign in.")
-                        except SupabaseError as exc:
-                            st.error(str(exc))
-
-            with auth_portal_tabs[2]:
-                with st.form("portal_reset_form"):
-                    portal_reset_email = st.text_input("Account Email address", key="portal_reset_email")
-                    portal_reset_submit = st.form_submit_button("Send Reset Link", use_container_width=True)
-                if portal_reset_submit:
-                    if not portal_reset_email.strip():
-                        st.error("Please enter your account email address.")
-                    else:
-                        try:
-                            supabase_client.request_password_reset(portal_reset_email.strip(), supabase_redirect_url)
-                            st.success("If the account is registered, a password reset link has been emailed.")
-                        except SupabaseError as exc:
-                            st.error(str(exc))
-
-        st.markdown("<div style='margin: 1.2rem 0; text-align: center;'><hr style='border:0;border-top:1px solid rgba(226,232,240,0.6);margin: 1rem 0;'></div>", unsafe_allow_html=True)
-        if st.button("Explore as Guest / Public Demo →", key="portal_guest_btn", use_container_width=True):
-            st.session_state["guest_mode"] = True
-            st.rerun()
-
-    st.stop()
-
-
-# ------------------------------------------------------------------------------
-# TOP NAVBAR HEADER (MODERN FULL-WIDTH LAYOUT)
-# ------------------------------------------------------------------------------
-top_col1, top_col2, top_col3, top_col4 = st.columns([3.5, 1.2, 1.2, 0.8], gap="small")
-
-with top_col1:
-    st.markdown(f"""
-    <div class="top-nav-brand">
+st.markdown(f"""
+<div class="brand-header-box">
+    <div class="brand-left">
         <img src="data:image/png;base64,{logo_data}" alt="PropIQ Logo">
-        <div class="top-brand-text">
-            <h2>PropIQ</h2>
+        <div class="brand-titles">
+            <h1>PropIQ</h1>
             <p>Predict Smarter. Choose Better.</p>
         </div>
     </div>
-    """, unsafe_allow_html=True)
-
-with top_col2:
-    currency_keys = active_currency_options
-    curr_labels = [f"{EXCHANGE_RATES[c]['flag']} {c}" for c in currency_keys]
-    curr_idx = currency_keys.index(active_currency) if active_currency in currency_keys else 0
-    new_curr_idx = st.selectbox(
-        "Currency",
-        range(len(currency_keys)),
-        format_func=lambda i: curr_labels[i],
-        index=curr_idx,
-        key="top_nav_curr_select",
-        label_visibility="collapsed"
-    )
-    if currency_keys[new_curr_idx] != st.session_state["active_currency"]:
-        st.session_state["active_currency"] = currency_keys[new_curr_idx]
-        st.rerun()
-
-with top_col3:
-    unit_choices = ["sq ft", "m²"]
-    unit_idx = 1 if is_sqm else 0
-    new_unit_idx = st.selectbox(
-        "Units",
-        range(len(unit_choices)),
-        format_func=lambda i: unit_choices[i],
-        index=unit_idx,
-        key="top_nav_unit_select",
-        label_visibility="collapsed"
-    )
-    if (new_unit_idx == 1) != st.session_state["is_sqm"]:
-        st.session_state["is_sqm"] = (new_unit_idx == 1)
-        st.rerun()
-
-with top_col4:
-    if st.button("🌙" if not dark else "☀️", key="top_nav_theme_btn", help="Switch theme appearance", use_container_width=True):
-        st.session_state.dark_mode = not st.session_state.dark_mode
-        st.rerun()
+    <div style="display:flex; align-items:center; gap:0.7rem;">
+        <span class="spec-chip">💎 98.8% R² Model</span>
+        <span class="spec-chip">💱 {active_currency}</span>
+        <span class="spec-chip">{auth_status_badge}</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 
 # ------------------------------------------------------------------------------
 # MAIN TOP NAVIGATION PILL TABS
 # ------------------------------------------------------------------------------
 NAV_HOME         = "🏠 Home"
-NAV_DASHBOARD    = "📊 Dashboard"
 NAV_PREDICT      = "🔮 Predict Valuation"
+NAV_DASHBOARD    = "📊 Dashboard"
 NAV_HISTORY      = "📜 Saved History"
 NAV_COMPARE      = "⚖️ Compare Properties"
 NAV_MARKET       = "📈 Market Insights"
@@ -1002,8 +775,8 @@ NAV_ABOUT        = "ℹ️ About"
 
 NAVIGATION_OPTIONS = [
     NAV_HOME,
-    NAV_DASHBOARD,
     NAV_PREDICT,
+    NAV_DASHBOARD,
     NAV_HISTORY,
     NAV_COMPARE,
     NAV_MARKET,
@@ -1125,83 +898,13 @@ if app_tab == NAV_HOME:
 
 
 # ==============================================================================
-# PAGE 2: DASHBOARD
-# ==============================================================================
-elif app_tab == NAV_DASHBOARD:
-    st.markdown("""
-    <div class="prop-card" style="margin-top:0;">
-        <div class="card-title">📊 Real Estate Portfolio & Market Dashboard</div>
-        <div class="card-desc">Overview of your saved valuations, model accuracy benchmarks, and global exchange rates.</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Fetch user valuations from Supabase
-    user_valuations = []
-    if auth_session and supabase_client:
-        try:
-            user_valuations = supabase_client.list_valuations(auth_session["access_token"])
-        except SupabaseError:
-            pass
-
-    # Top KPI Metrics
-    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-    total_saved = len(user_valuations)
-    avg_price_str = "—"
-    if total_saved > 0:
-        prices = [v.get("predicted_price", 0) for v in user_valuations]
-        avg_price = sum(prices) / len(prices)
-        avg_price_fmt = format_currency_value(avg_price, active_currency)
-        avg_price_str = avg_price_fmt["compact"]
-
-    kpi1.metric("Saved Valuations", str(total_saved), "Cloud synced" if auth_session else "Guest preview")
-    kpi2.metric(f"Avg Valuation ({active_currency})", avg_price_str)
-    kpi3.metric("Model Precision (R²)", f"{r2_score:.2%}", "Super Ensemble")
-    kpi4.metric("Global Metros", f"{len(GLOBAL_COUNTRIES)} Countries", "15+ Currencies")
-
-    st.markdown("---")
-    dash_c1, dash_c2 = st.columns([1.4, 1], gap="large")
-
-    with dash_c1:
-        st.markdown("#### ⚡ Quick Valuation Launcher")
-        st.markdown("Launch a new appraisal in your active currency (`" + active_currency + "`):")
-        if st.button("🔮 Open Property Predictor", key="dash_open_predict", use_container_width=True):
-            st.session_state["main_navigation"] = NAV_PREDICT
-            st.rerun()
-
-        if user_valuations:
-            st.markdown("#### 🕒 Recent Saved Valuations")
-            for v in user_valuations[:4]:
-                loc = ", ".join(x for x in [v.get("city"), v.get("country")] if x)
-                st.markdown(f"""
-                <div class="prop-card" style="padding:1rem 1.2rem; margin:0.6rem 0;">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <div>
-                            <strong style="font-size:1.1rem; color:{f'#60a5fa' if dark else '#1e40af'};">{v.get('price_formatted', '—')}</strong>
-                            <div style="font-size:0.82rem; color:{text_muted};">{loc} · {str(v.get('created_at', ''))[:10]}</div>
-                        </div>
-                        <span class="spec-chip">Saved</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.info("💡 You haven't saved any property valuations yet. Run your first prediction to see it tracked here!")
-
-    with dash_c2:
-        st.markdown("#### 💱 Global Settlement Currency Rates")
-        rate_rows = []
-        for code, info in list(EXCHANGE_RATES.items())[:8]:
-            rate_rows.append({"Currency": f"{info['flag']} {code}", "Rate to USD": info["rate_to_usd"], "Symbol": info["symbol"]})
-        st.dataframe(pd.DataFrame(rate_rows), use_container_width=True, hide_index=True)
-
-
-# ==============================================================================
-# PAGE 3: PROPERTY PREDICTION (CORE WORKFLOW)
+# PAGE 2: PROPERTY PREDICTION (CORE WORKFLOW)
 # ==============================================================================
 elif app_tab == NAV_PREDICT:
     st.markdown("""
     <div class="prop-card" style="margin-top:0;">
         <div class="card-title">🔮 Hedonic Property Valuation Workspace</div>
-        <div class="card-desc">Enter the property specifications below to calculate an instant market appraisal with 95% confidence bounds.</div>
+        <div class="card-desc">Enter property specifications below to calculate an instant market appraisal with 95% confidence bounds.</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1442,7 +1145,7 @@ elif app_tab == NAV_PREDICT:
                         st.error(str(exc))
             else:
                 if st.button("🔐 Sign in to Save", key="btn_signin_save", use_container_width=True):
-                    st.session_state["guest_mode"] = False
+                    st.session_state["main_navigation"] = NAV_PROFILE
                     st.rerun()
 
         with act_c2:
@@ -1517,6 +1220,76 @@ elif app_tab == NAV_PREDICT:
 
 
 # ==============================================================================
+# PAGE 3: DASHBOARD
+# ==============================================================================
+elif app_tab == NAV_DASHBOARD:
+    st.markdown("""
+    <div class="prop-card" style="margin-top:0;">
+        <div class="card-title">📊 Real Estate Portfolio & Market Dashboard</div>
+        <div class="card-desc">Overview of your saved valuations, model accuracy benchmarks, and global exchange rates.</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Fetch user valuations from Supabase
+    user_valuations = []
+    if auth_session and supabase_client:
+        try:
+            user_valuations = supabase_client.list_valuations(auth_session["access_token"])
+        except SupabaseError:
+            pass
+
+    # Top KPI Metrics
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+    total_saved = len(user_valuations)
+    avg_price_str = "—"
+    if total_saved > 0:
+        prices = [v.get("predicted_price", 0) for v in user_valuations]
+        avg_price = sum(prices) / len(prices)
+        avg_price_fmt = format_currency_value(avg_price, active_currency)
+        avg_price_str = avg_price_fmt["compact"]
+
+    kpi1.metric("Saved Valuations", str(total_saved), "Cloud synced" if auth_session else "Guest preview")
+    kpi2.metric(f"Avg Valuation ({active_currency})", avg_price_str)
+    kpi3.metric("Model Precision (R²)", f"{r2_score:.2%}", "Super Ensemble")
+    kpi4.metric("Global Metros", f"{len(GLOBAL_COUNTRIES)} Countries", "15+ Currencies")
+
+    st.markdown("---")
+    dash_c1, dash_c2 = st.columns([1.4, 1], gap="large")
+
+    with dash_c1:
+        st.markdown("#### ⚡ Quick Valuation Launcher")
+        st.markdown("Launch a new appraisal in your active currency (`" + active_currency + "`):")
+        if st.button("🔮 Open Property Predictor", key="dash_open_predict", use_container_width=True):
+            st.session_state["main_navigation"] = NAV_PREDICT
+            st.rerun()
+
+        if user_valuations:
+            st.markdown("#### 🕒 Recent Saved Valuations")
+            for v in user_valuations[:4]:
+                loc = ", ".join(x for x in [v.get("city"), v.get("country")] if x)
+                st.markdown(f"""
+                <div class="prop-card" style="padding:1rem 1.2rem; margin:0.6rem 0;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <strong style="font-size:1.1rem; color:{f'#60a5fa' if dark else '#1e40af'};">{v.get('price_formatted', '—')}</strong>
+                            <div style="font-size:0.82rem; color:{text_muted};">{loc} · {str(v.get('created_at', ''))[:10]}</div>
+                        </div>
+                        <span class="spec-chip">Saved</span>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+        else:
+            st.info("💡 You haven't saved any property valuations yet. Run your first prediction to see it tracked here!")
+
+    with dash_c2:
+        st.markdown("#### 💱 Global Settlement Currency Rates")
+        rate_rows = []
+        for code, info in list(EXCHANGE_RATES.items())[:8]:
+            rate_rows.append({"Currency": f"{info['flag']} {code}", "Rate to USD": info["rate_to_usd"], "Symbol": info["symbol"]})
+        st.dataframe(pd.DataFrame(rate_rows), use_container_width=True, hide_index=True)
+
+
+# ==============================================================================
 # PAGE 4: SAVED HISTORY & DETAILS
 # ==============================================================================
 elif app_tab == NAV_HISTORY:
@@ -1532,7 +1305,7 @@ elif app_tab == NAV_HISTORY:
     elif not auth_session:
         st.info("💡 You are currently browsing in Guest Preview. Sign in to sync and access your permanent valuation history.")
         if st.button("🔐 Sign In to View Saved History", key="hist_signin_btn"):
-            st.session_state["guest_mode"] = False
+            st.session_state["main_navigation"] = NAV_PROFILE
             st.rerun()
     else:
         try:
@@ -1708,7 +1481,7 @@ elif app_tab == NAV_HOW_IT_WORKS:
 
 
 # ==============================================================================
-# PAGE 8: PROFILE & PREFERENCES (INTEGRATED SIDEBAR CONTROLS)
+# PAGE 8: PROFILE & PREFERENCES (INTEGRATED SIDEBAR CONTROLS & AUTH)
 # ==============================================================================
 elif app_tab == NAV_PROFILE:
     st.markdown("""
@@ -1722,10 +1495,64 @@ elif app_tab == NAV_PROFILE:
 
     with prof_col1:
         if not auth_session:
-            st.info("💡 You are currently in Guest Preview mode. Sign in or register to sync your account profile.")
-            if st.button("🔐 Sign In / Register", key="prof_signin_btn", use_container_width=True):
-                st.session_state["guest_mode"] = False
-                st.rerun()
+            st.markdown("#### 🔐 Sign In or Register")
+            auth_tabs = st.tabs(["Sign In", "Create Account", "Forgot Password"])
+
+            with auth_tabs[0]:
+                with st.form("prof_login_form"):
+                    p_email = st.text_input("Email address", key="p_login_email")
+                    p_pass = st.text_input("Password", type="password", key="p_login_pass")
+                    p_sub = st.form_submit_button("Sign In →", use_container_width=True)
+                if p_sub:
+                    if not p_email.strip() or not p_pass:
+                        st.error("Please enter email and password.")
+                    else:
+                        try:
+                            res = supabase_client.sign_in(p_email.strip(), p_pass)
+                            store_auth_session(res)
+                            st.success("Signed in successfully.")
+                            st.rerun()
+                        except SupabaseError as exc:
+                            st.error(str(exc))
+
+            with auth_tabs[1]:
+                with st.form("prof_signup_form"):
+                    s_name = st.text_input("Full Name", key="p_s_name")
+                    s_email = st.text_input("Email address", key="p_s_email")
+                    s_pass = st.text_input("Password (min 8 chars)", type="password", key="p_s_pass")
+                    s_confirm = st.text_input("Confirm Password", type="password", key="p_s_confirm")
+                    s_sub = st.form_submit_button("Create Account →", use_container_width=True)
+                if s_sub:
+                    if not s_name.strip() or not s_email.strip():
+                        st.error("Please enter name and email.")
+                    elif len(s_pass) < 8:
+                        st.error("Password must contain at least 8 characters.")
+                    elif s_pass != s_confirm:
+                        st.error("Passwords do not match.")
+                    else:
+                        try:
+                            res = supabase_client.sign_up(s_email.strip(), s_pass, s_name.strip(), supabase_redirect_url)
+                            if res.get("access_token"):
+                                store_auth_session(res)
+                                st.rerun()
+                            st.success("Account created! Check your email to confirm.")
+                        except SupabaseError as exc:
+                            st.error(str(exc))
+
+            with auth_tabs[2]:
+                with st.form("prof_reset_form"):
+                    r_email = st.text_input("Account Email", key="p_r_email")
+                    r_sub = st.form_submit_button("Send Reset Link", use_container_width=True)
+                if r_sub:
+                    if not r_email.strip():
+                        st.error("Please enter your email.")
+                    else:
+                        try:
+                            supabase_client.request_password_reset(r_email.strip(), supabase_redirect_url)
+                            st.success("Password reset email sent.")
+                        except SupabaseError as exc:
+                            st.error(str(exc))
+
         else:
             user = auth_session["user"]
             access_token = auth_session["access_token"]
