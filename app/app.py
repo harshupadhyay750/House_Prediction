@@ -74,18 +74,18 @@ if "dark_mode" not in st.session_state:
 
 dark = st.session_state.dark_mode
 
-# Dynamic Palette
+# Luxury Curated Color Tokens
 if dark:
-    bg_main       = "#070c18"
-    bg_card       = "rgba(15, 23, 42, 0.75)"
+    bg_main       = "#060b17"
+    bg_card       = "rgba(15, 23, 42, 0.82)"
     bg_card_solid = "#0f172a"
-    bg_hover      = "rgba(30, 41, 59, 0.85)"
+    bg_hover      = "rgba(30, 41, 59, 0.9)"
     text_main     = "#f8fafc"
     text_muted    = "#94a3b8"
-    border_col    = "rgba(255, 255, 255, 0.1)"
-    border_glow   = "rgba(59, 130, 246, 0.4)"
+    border_col    = "rgba(56, 189, 248, 0.2)"
+    border_glow   = "rgba(56, 189, 248, 0.45)"
     hero_grad     = "linear-gradient(135deg, #090e1f 0%, #172554 45%, #1e1b4b 100%)"
-    accent_blue   = "#3b82f6"
+    accent_blue   = "#38bdf8"
     accent_glow   = "#60a5fa"
     accent_gold   = "#fbbf24"
     accent_emerald= "#10b981"
@@ -95,13 +95,13 @@ if dark:
     mpl_grid      = "#1e293b"
 else:
     bg_main       = "#f8fafc"
-    bg_card       = "rgba(255, 255, 255, 0.92)"
+    bg_card       = "rgba(255, 255, 255, 0.96)"
     bg_card_solid = "#ffffff"
     bg_hover      = "#f1f5f9"
     text_main     = "#0f172a"
-    text_muted    = "#64748b"
-    border_col    = "rgba(226, 232, 240, 0.9)"
-    border_glow   = "rgba(37, 99, 235, 0.3)"
+    text_muted    = "#475569"
+    border_col    = "rgba(203, 213, 225, 0.85)"
+    border_glow   = "rgba(37, 99, 235, 0.35)"
     hero_grad     = "linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1d4ed8 100%)"
     accent_blue   = "#2563eb"
     accent_glow   = "#3b82f6"
@@ -113,7 +113,7 @@ else:
     mpl_grid      = "#e2e8f0"
 
 # ------------------------------------------------------------------------------
-# INJECT PREMIUM SAAS DESIGN SYSTEM CSS
+# INJECT ADVANCED SAAS DESIGN SYSTEM CSS
 # ------------------------------------------------------------------------------
 st.markdown(f"""
 <style>
@@ -147,28 +147,39 @@ st.markdown(f"""
         padding: 0.6rem 0 1.2rem;
     }}
     .brand-logo-container img {{
-        max-width: 190px;
+        max-width: 195px;
         height: auto;
         object-fit: contain;
         display: block;
         margin: 0 auto;
+        filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
     }}
 
     /* Hero Banner */
     .saas-hero {{
         background: {hero_grad};
         padding: 2.6rem 2.8rem;
-        border-radius: 20px;
+        border-radius: 22px;
         color: white;
         margin-bottom: 1.8rem;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.4);
         position: relative;
         overflow: hidden;
     }}
+    .saas-hero::after {{
+        content: '';
+        position: absolute;
+        top: -60%;
+        right: -15%;
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+        pointer-events: none;
+    }}
     .saas-hero h1 {{
         font-family: 'DM Serif Display', serif;
-        font-size: 2.85rem;
+        font-size: 2.9rem;
         line-height: 1.15;
         font-weight: 400;
         margin: 0.6rem 0 0.8rem;
@@ -177,31 +188,31 @@ st.markdown(f"""
     .saas-hero p {{
         font-size: 1.05rem;
         line-height: 1.6;
-        color: #dbeafe !important;
-        max-width: 640px;
+        color: #e0e7ff !important;
+        max-width: 650px;
     }}
     .hero-badge {{
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.35);
         color: #fef08a;
-        padding: 0.35rem 0.9rem;
+        padding: 0.35rem 0.95rem;
         border-radius: 9999px;
         font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.06em;
+        font-weight: 800;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
     }}
 
     /* Card Panels */
     .prop-card {{
         background: {bg_card};
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
         border: 1px solid {border_col};
-        border-radius: 16px;
+        border-radius: 18px;
         padding: 1.6rem 1.8rem;
         margin: 1rem 0;
         box-shadow: 0 10px 30px -10px rgba(0, 0, 0, {'0.35' if dark else '0.06'});
@@ -209,7 +220,7 @@ st.markdown(f"""
     }}
     .prop-card:hover {{
         border-color: {border_glow};
-        box-shadow: 0 15px 35px -10px rgba(37, 99, 235, {'0.25' if dark else '0.12'});
+        box-shadow: 0 16px 36px -10px rgba(37, 99, 235, {'0.3' if dark else '0.12'});
     }}
 
     .card-title {{
@@ -229,13 +240,14 @@ st.markdown(f"""
 
     /* Hero Valuation Result Box */
     .val-hero-box {{
-        background: {f"linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 27, 75, 0.75) 100%)" if dark else "linear-gradient(135deg, #ffffff 0%, #eff6ff 100%)"};
-        backdrop-filter: blur(20px);
+        background: {f"linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 27, 75, 0.8) 100%)" if dark else "linear-gradient(135deg, #ffffff 0%, #eff6ff 100%)"};
+        backdrop-filter: blur(22px);
         border: 1.5px solid {border_glow};
-        border-radius: 20px;
+        border-radius: 22px;
         padding: 2.2rem 2.4rem;
         margin: 1.2rem 0;
-        box-shadow: 0 20px 50px -15px rgba(37, 99, 235, {'0.4' if dark else '0.15'});
+        box-shadow: 0 25px 60px -15px rgba(37, 99, 235, {'0.45' if dark else '0.16'});
+        position: relative;
     }}
     .val-hero-top {{
         font-size: 0.8rem;
@@ -247,11 +259,13 @@ st.markdown(f"""
     }}
     .val-hero-price {{
         font-family: 'DM Serif Display', serif;
-        font-size: 3.2rem;
+        font-size: 3.4rem;
         line-height: 1.05;
         font-weight: 400;
         margin: 0.2rem 0 0.6rem;
-        color: {f"#60a5fa" if dark else "#1e3a8a"};
+        background: {f"linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #f472b6 100%)" if dark else "linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #7c3aed 100%)"};
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }}
     .val-hero-location {{
         font-size: 1.05rem;
@@ -262,7 +276,7 @@ st.markdown(f"""
 
     /* Range Meter */
     .confidence-meter {{
-        background: {f"rgba(30, 41, 59, 0.8)" if dark else "#e2e8f0"};
+        background: {f"rgba(30, 41, 59, 0.85)" if dark else "#e2e8f0"};
         border-radius: 9999px;
         height: 10px;
         position: relative;
@@ -286,9 +300,9 @@ st.markdown(f"""
         height: 18px;
         border-radius: 50%;
         background: white;
-        border: 3px solid {accent_blue};
+        border: 3.5px solid {accent_blue};
         transform: translate(-50%, -50%);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     }}
 
     /* Spec Chips */
@@ -296,11 +310,11 @@ st.markdown(f"""
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
-        padding: 0.4rem 0.95rem;
+        padding: 0.42rem 0.98rem;
         border-radius: 9999px;
         font-size: 0.85rem;
         font-weight: 600;
-        background: {f"rgba(30, 41, 59, 0.7)" if dark else "#e2e8f0"};
+        background: {f"rgba(30, 41, 59, 0.75)" if dark else "#e2e8f0"};
         border: 1px solid {border_col};
         color: {text_main};
         margin-right: 0.4rem;
@@ -309,11 +323,11 @@ st.markdown(f"""
 
     /* Buttons */
     div.stButton > button, div.stFormSubmitButton > button, div[data-testid="stDownloadButton"] button {{
-        min-height: 2.8rem;
-        border-radius: 10px;
+        min-height: 2.85rem;
+        border-radius: 11px;
         font-weight: 700;
         font-size: 0.92rem;
-        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
     }}
     div.stFormSubmitButton > button {{
         background: {accent_blue} !important;
@@ -322,16 +336,16 @@ st.markdown(f"""
     }}
     div.stFormSubmitButton > button:hover {{
         background: #1d4ed8 !important;
-        transform: translateY(-1px);
-        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
     }}
 
     /* Navigation Radio */
     div[data-testid="stRadio"] > label {{ display: none; }}
     div[role="radiogroup"] {{ gap: 0.35rem; }}
     div[role="radiogroup"] label {{
-        border-radius: 9px;
-        padding: 0.48rem 0.9rem;
+        border-radius: 10px;
+        padding: 0.5rem 0.95rem;
         font-weight: 600;
         font-size: 0.88rem;
         border: 1px solid transparent;
@@ -348,9 +362,9 @@ st.markdown(f"""
     [data-testid="stMetric"] {{
         background: {bg_card};
         border: 1px solid {border_col};
-        border-radius: 14px;
-        padding: 1.1rem 1.3rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, {'0.2' if dark else '0.04'});
+        border-radius: 16px;
+        padding: 1.15rem 1.35rem;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, {'0.25' if dark else '0.04'});
     }}
     [data-testid="stMetricLabel"] {{ color: {text_muted}; font-size: 0.85rem; font-weight: 600; }}
     [data-testid="stMetricValue"] {{ color: {text_main}; font-weight: 800; }}
@@ -384,9 +398,9 @@ st.markdown(f"""
     .auth-card-box {{
         background: {bg_card};
         border: 1.5px solid {border_glow};
-        border-radius: 18px;
-        padding: 2rem 2.2rem;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, {'0.4' if dark else '0.08'});
+        border-radius: 20px;
+        padding: 2.2rem 2.4rem;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, {'0.45' if dark else '0.08'});
     }}
     .auth-card-header {{ text-align: center; margin-bottom: 1.2rem; }}
     .auth-card-header h2 {{ font-family: 'DM Serif Display', serif; font-size: 2rem; margin: 0 0 .3rem; color: {text_main}; font-weight: 400; }}
@@ -397,11 +411,11 @@ st.markdown(f"""
     .step-card {{
         background: {bg_card};
         border: 1px solid {border_col};
-        border-radius: 14px;
-        padding: 1.2rem;
-        transition: transform 0.2s ease;
+        border-radius: 16px;
+        padding: 1.3rem;
+        transition: transform 0.2s ease, border-color 0.2s ease;
     }}
-    .step-card:hover {{ transform: translateY(-2px); border-color: {border_glow}; }}
+    .step-card:hover {{ transform: translateY(-3px); border-color: {border_glow}; }}
     .step-num {{ font-size: 0.78rem; font-weight: 800; color: {accent_gold}; letter-spacing: 0.06em; text-transform: uppercase; }}
     .step-card h3 {{ font-size: 1.05rem; font-weight: 700; margin: 0.4rem 0 0.3rem; color: {text_main}; }}
     .step-card p {{ font-size: 0.85rem; color: {text_muted}; line-height: 1.45; margin: 0; }}
@@ -413,7 +427,7 @@ st.markdown(f"""
     }}
     @media (max-width: 540px) {{
         .step-grid {{ grid-template-columns: 1fr; }}
-        .val-hero-price {{ font-size: 2.4rem; }}
+        .val-hero-price {{ font-size: 2.5rem; }}
     }}
 </style>
 """, unsafe_allow_html=True)
@@ -529,7 +543,6 @@ if supabase_client:
             else:
                 st.session_state["supabase_auth_notice"] = "Your email is confirmed. You are signed in."
             st.session_state["main_navigation"] = "👤 Profile"
-            st.session_state["mobile_navigation_choice"] = "👤 Profile"
         except SupabaseError as exc:
             st.session_state["supabase_auth_notice"] = f"This email link could not be verified: {exc}"
         for query_key in ("token_hash", "type"):
@@ -676,7 +689,7 @@ def make_share_url(payload):
 # CHART HELPERS
 # ------------------------------------------------------------------------------
 def plot_shap_waterfall(res, payload, dark_mode=True):
-    bg = "#070c18" if dark_mode else "#ffffff"
+    bg = "#060b17" if dark_mode else "#ffffff"
     card_bg = "#0f172a" if dark_mode else "#f8fafc"
     tc = "#e2e8f0" if dark_mode else "#0f172a"
     gc = "#1e293b" if dark_mode else "#e2e8f0"
@@ -694,11 +707,11 @@ def plot_shap_waterfall(res, payload, dark_mode=True):
 
     drivers = [
         ("Base Hedonic Anchor", base_val, "#64748b"),
-        ("Living Space Area",   area_contrib, "#3b82f6"),
+        ("Living Space Area",   area_contrib, "#38bdf8"),
         ("Room Configuration",  rooms_contrib, "#0ea5e9"),
         ("Location Premium",    loc_contrib, "#10b981"),
-        ("Condition Rating",    cond_contrib, "#f59e0b" if cond_contrib >= 0 else "#ef4444"),
-        ("Garage & Parking",    garage_contrib, "#8b5cf6"),
+        ("Condition Rating",    cond_contrib, "#fbbf24" if cond_contrib >= 0 else "#ef4444"),
+        ("Garage & Parking",    garage_contrib, "#818cf8"),
         ("Age Depreciation",    age_penalty, "#ef4444"),
     ]
 
@@ -764,10 +777,6 @@ NAVIGATION_OPTIONS = [
 
 if auth_session:
     NAVIGATION_OPTIONS.append(NAV_ADMIN)
-
-
-def sync_navigation(source_key, target_key):
-    st.session_state[target_key] = st.session_state[source_key]
 
 
 with st.sidebar:
@@ -837,9 +846,9 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("#### Model Reliability")
     st.markdown(f"""
-    <div style="background:{'rgba(30,41,59,0.7)' if dark else '#f1f5f9'}; border-radius:12px; padding:0.85rem; border:1px solid {border_col};">
+    <div style="background:{'rgba(30,41,59,0.7)' if dark else '#f1f5f9'}; border-radius:14px; padding:0.9rem; border:1px solid {border_col};">
         <div style="font-size:0.75rem; text-transform:uppercase; color:{text_muted}; font-weight:700;">Super Ensemble Engine</div>
-        <div style="font-size:0.9rem; font-weight:800; color:{accent_glow}; margin:0.2rem 0;">98.83% Model R² Score</div>
+        <div style="font-size:0.95rem; font-weight:800; color:{accent_glow}; margin:0.2rem 0;">98.83% Model R² Score</div>
         <div style="display:flex; justify-content:space-between; margin-top:0.4rem; font-size:0.82rem;">
             <span>Mean Absolute Error:</span> <strong>${mae_val:,.0f}</strong>
         </div>
