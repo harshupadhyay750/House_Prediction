@@ -331,12 +331,53 @@ python -m src.eda_analysis
 python -m src.train
 ```
 
-### 4. Launch the Interactive Web App
+### 4. Configure Accounts and Valuation History (Optional)
+
+PropIQ can run without accounts. To enable email sign-in, profiles, private saved valuations, and administrator tools:
+
+1. Create a Supabase project and run [`supabase/schema.sql`](supabase/schema.sql) in its SQL Editor.
+2. Add the project URL, publishable/anon key, and service-role key to `.streamlit/secrets.toml` (local) or the Streamlit deployment's Secrets settings:
+
+```toml
+[supabase]
+url = "https://YOUR_PROJECT_ID.supabase.co"
+anon_key = "YOUR_SUPABASE_ANON_KEY"
+service_role_key = "YOUR_SUPABASE_SERVICE_ROLE_KEY"
+redirect_url = "http://localhost:8502"
+```
+
+Never commit this secrets file or expose the service-role key in browser code. The local file is ignored by Git. The service-role key is used only by the Streamlit server for administrator actions.
+
+Set the Supabase Site URL to your app URL and add it to the Auth redirect allowlist. For server-side email verification, update the **Confirm signup** and **Reset password** email templates to link directly to PropIQ with the one-time token hash:
+
+```html
+<!-- Confirm signup -->
+<a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email">Confirm email</a>
+
+<!-- Reset password -->
+<a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=recovery">Choose a new password</a>
+```
+
+Use the deployed PropIQ URL for `redirect_url` in production. Configure SMTP in Supabase for reliable confirmation and reset emails.
+
+3. Create your account through the app, then promote the first administrator in the Supabase SQL Editor:
+
+```sql
+update public.profiles as p
+set role = 'admin'
+from auth.users as u
+where p.id = u.id
+  and lower(u.email) = lower('YOUR_ADMIN_EMAIL');
+```
+
+Row-level security restricts profiles and saved valuations to their owner. Administrator market controls only filter available country/currency choices; model parameters and prediction behavior remain read-only.
+
+### 5. Launch the Interactive Web App
 ```bash
 streamlit run app/app.py
 ```
 
-### 5. Launch the FastAPI Backend Service
+### 6. Launch the FastAPI Backend Service
 ```bash
 uvicorn src.api:app --host 127.0.0.1 --port 8000 --reload
 ```

@@ -27,6 +27,7 @@ import urllib.parse
 from html import escape
 from pathlib import Path
 from datetime import datetime
+import time
 
 # Add project root to sys.path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -52,6 +53,7 @@ from src.global_market import (
     convert_and_localize_price, format_currency_value,
     convert_area_to_sqft, convert_sqft_to_sqm
 )
+from src.supabase_store import SupabaseError, SupabaseRESTClient
 
 # ------------------------------------------------------------------------------
 # PAGE CONFIGURATION
@@ -547,6 +549,109 @@ mape_val = final_metrics.get("MAPE", 17.1)
 model_title = metadata.get("model_name", "Super Ensemble (XGB+GB+HGB)")
 
 
+def load_supabase_config():
+    try:
+        secrets = st.secrets
+        section = secrets.get("supabase", {})
+    except Exception:
+        secrets = {}
+        section = {}
+
+    def setting(name):
+        return os.environ.get(name) or secrets.get(name) or section.get(name.removeprefix("SUPABASE_").lower())
+
+    return (
+        setting("SUPABASE_URL"),
+        setting("SUPABASE_ANON_KEY"),
+        setting("SUPABASE_SERVICE_ROLE_KEY"),
+        setting("SUPABASE_REDIRECT_URL"),
+    )
+
+
+def store_auth_session(auth_response):
+    user = auth_response.get("user")
+    access_token = auth_response.get("access_token")
+    if not user or not access_token:
+        raise SupabaseError("Email confirmation is required. Check your inbox, then sign in.")
+    st.session_state["supabase_session"] = {
+        "user": user,
+        "access_token": access_token,
+        "refresh_token": auth_response.get("refresh_token"),
+        "expires_at": time.time() + int(auth_response.get("expires_in", 3600)),
+    }
+
+
+def get_auth_session():
+    auth_session = st.session_state.get("supabase_session")
+    if not auth_session or auth_session.get("expires_at", 0) > time.time() + 60:
+        return auth_session
+    refresh_token = auth_session.get("refresh_token")
+    if not supabase_client or not refresh_token:
+        st.session_state.pop("supabase_session", None)
+        st.session_state["supabase_auth_notice"] = "Your sign-in expired. Please sign in again."
+        return None
+    try:
+        refreshed = supabase_client.refresh_session(refresh_token)
+        store_auth_session(refreshed)
+        return st.session_state["supabase_session"]
+    except SupabaseError:
+        st.session_state.pop("supabase_session", None)
+        st.session_state["supabase_auth_notice"] = "Your sign-in expired. Please sign in again."
+        return None
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def load_public_market_settings(project_url, anon_key):
+    return SupabaseRESTClient(project_url, anon_key).get_market_settings()
+
+
+supabase_url, supabase_anon_key, supabase_service_role_key, supabase_redirect_url = load_supabase_config()
+supabase_client = (
+    SupabaseRESTClient(supabase_url, supabase_anon_key, supabase_service_role_key)
+    if supabase_url and supabase_anon_key
+    else None
+)
+if supabase_client:
+    email_token_hash = st.query_params.get("token_hash")
+    email_token_type = st.query_params.get("type")
+    if email_token_hash and email_token_type in {"email", "recovery"}:
+        try:
+            callback_session = supabase_client.verify_email_token(email_token_hash, email_token_type)
+            store_auth_session(callback_session)
+            if email_token_type == "recovery":
+                st.session_state["password_recovery_mode"] = True
+            else:
+                st.session_state["supabase_auth_notice"] = "Your email is confirmed. You are signed in."
+            st.session_state["main_navigation"] = "Account"
+            st.session_state["mobile_navigation_choice"] = "Account"
+        except SupabaseError as exc:
+            st.session_state["supabase_auth_notice"] = f"This email link could not be verified: {exc}"
+        for query_key in ("token_hash", "type"):
+            try:
+                del st.query_params[query_key]
+            except KeyError:
+                pass
+auth_session = get_auth_session()
+market_settings = None
+market_settings_error = None
+if supabase_client:
+    try:
+        market_settings = load_public_market_settings(supabase_url, supabase_anon_key)
+    except SupabaseError as exc:
+        market_settings_error = str(exc)
+
+all_country_options = list(GLOBAL_COUNTRIES)
+all_currency_options = list(EXCHANGE_RATES)
+enabled_country_names = set((market_settings or {}).get("enabled_countries") or all_country_options)
+enabled_currency_codes = set((market_settings or {}).get("enabled_currencies") or all_currency_options)
+active_country_options = [country for country in all_country_options if country in enabled_country_names]
+active_currency_options = [currency for currency in all_currency_options if currency in enabled_currency_codes]
+if not active_country_options:
+    active_country_options = all_country_options
+if not active_currency_options:
+    active_currency_options = all_currency_options
+
+
 # ------------------------------------------------------------------------------
 # REPORT GENERATION HELPER
 # ------------------------------------------------------------------------------
@@ -854,7 +959,7 @@ def plot_shap_waterfall(res, payload, dark_mode=True):
 url_params = get_url_params()
 
 
-NAVIGATION_OPTIONS = ["Home", "Predict", "How it works", "Compare properties", "Market insights", "Model insights", "About"]
+NAVIGATION_OPTIONS = ["Home", "Predict", "How it works", "Compare properties", "Market insights", "Model insights", "Account", "Admin", "About"]
 
 
 def sync_navigation(source_key, target_key):
@@ -867,6 +972,23 @@ with st.sidebar:
         <img src="data:image/png;base64,{logo_data}" alt="PropIQ - Predict Smarter, Choose Better">
     </div>
     """, unsafe_allow_html=True)
+    if auth_session:
+        signed_in_email = auth_session.get("user", {}).get("email", "Signed-in account")
+        st.caption(f"Signed in as {signed_in_email}")
+        if st.button("Sign out", key="sidebar_sign_out", use_container_width=True):
+            try:
+                if supabase_client:
+                    supabase_client.sign_out(auth_session["access_token"])
+            except SupabaseError:
+                pass
+            st.session_state.pop("supabase_session", None)
+            st.rerun()
+    elif supabase_client:
+        st.caption("Sign in to save valuation history.")
+        if st.button("Sign in", key="sidebar_sign_in", use_container_width=True):
+            st.session_state["main_navigation"] = "Account"
+            st.session_state["mobile_navigation_choice"] = "Account"
+            st.rerun()
     col_mode_label, col_mode_button = st.columns([3, 1])
     with col_mode_label:
         st.caption("Dark appearance" if dark else "Light appearance")
@@ -878,10 +1000,10 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("#### Currency & units")
 
-    currency_keys = list(EXCHANGE_RATES.keys())
+    currency_keys = active_currency_options
     curr_labels = [f"{EXCHANGE_RATES[c]['flag']} {c} ({EXCHANGE_RATES[c]['symbol']})" for c in currency_keys]
     default_curr = url_params.get("Currency", "INR")
-    default_curr_idx = currency_keys.index(default_curr) if default_curr in currency_keys else 1
+    default_curr_idx = currency_keys.index(default_curr) if default_curr in currency_keys else 0
     sel_curr_idx = st.selectbox(
         "Settlement Currency",
         range(len(currency_keys)),
@@ -938,12 +1060,11 @@ st.markdown("<hr style='border:0;border-top:1px solid #dfe5e4;margin:.25rem 0 1r
 # LOCATION SELECTOR HELPER
 # ------------------------------------------------------------------------------
 def location_selector(prefix="", default_country="India", default_city="Mumbai (MMR)"):
-    country_list = list(GLOBAL_COUNTRIES.keys())
+    country_list = active_country_options
     country_labels = [f"{GLOBAL_COUNTRIES[c]['flag']} {c}" for c in country_list]
 
     active_c = st.session_state.get(f"{prefix}country_val", url_params.get("Country", default_country))
-    def_c_idx = country_list.index(active_c) if active_c in country_list else 1
-
+    def_c_idx = country_list.index(active_c) if active_c in country_list else 0
     col_c1, col_c2 = st.columns(2)
     with col_c1:
         sel_c_idx = st.selectbox("🌍 Global Country / Market", range(len(country_list)),
@@ -1169,10 +1290,22 @@ if app_tab in ["Home", "Predict"]:
         st.session_state["last_payload"] = payload
         st.session_state.pop("last_res", None)
         st.session_state.pop("prediction_error", None)
+        st.session_state.pop("prediction_save_message", None)
         try:
             with st.spinner("Analyzing property details..."):
                 res = predict_house_price(payload)
             st.session_state["last_res"] = res
+            if auth_session and supabase_client:
+                try:
+                    supabase_client.save_valuation(
+                        auth_session["access_token"],
+                        auth_session["user"]["id"],
+                        payload,
+                        res,
+                    )
+                    st.session_state["prediction_save_message"] = ("success", "Estimate saved to your account history.")
+                except SupabaseError as exc:
+                    st.session_state["prediction_save_message"] = ("warning", f"Estimate completed, but could not be saved: {exc}")
         except (ValueError, TypeError) as exc:
             st.session_state["prediction_error"] = str(exc)
         except Exception:
@@ -1211,6 +1344,14 @@ if app_tab in ["Home", "Predict"]:
         k3.caption(f"{res['price_per_sqm_formatted']} per m²")
         parking_summary = "covered parking" if payload["Garage"] == "Yes" else "no covered parking"
         st.caption(f"{payload['Floors']} floors · {payload['Condition']} condition · {parking_summary}")
+        if "prediction_save_message" in st.session_state:
+            save_kind, save_message = st.session_state["prediction_save_message"]
+            if save_kind == "success":
+                st.success(save_message)
+            else:
+                st.warning(save_message)
+        elif supabase_client and not auth_session:
+            st.caption("Sign in from Account to save this estimate to your history.")
 
         with st.expander("What informs the estimate?"):
             st.write("The estimate uses the property's area, room count, year built, neighborhood setting, condition and covered parking, plus the selected market and currency.")
@@ -1298,8 +1439,9 @@ if app_tab in ["Home", "Predict"]:
         # ----------------- GLOBAL CURRENCY MATRIX -----------------
         st.subheader("💱 Worldwide Currency Matrix")
         usd_base = res["base_usd_price"] * res["regional_multiplier"]
-        mat_cols = st.columns(6)
-        for idx, m_c in enumerate(["INR", "USD", "EUR", "GBP", "AED", "JPY"]):
+        matrix_currencies = [code for code in ["INR", "USD", "EUR", "GBP", "AED", "JPY"] if code in active_currency_options]
+        mat_cols = st.columns(len(matrix_currencies))
+        for idx, m_c in enumerate(matrix_currencies):
             m_inf = EXCHANGE_RATES[m_c]
             m_v   = usd_base * m_inf["rate"]
             m_f   = format_currency_value(m_v, m_c)
@@ -1355,10 +1497,10 @@ elif app_tab == "Compare properties":
         with col:
             st.markdown(f"### {label}")
             with st.form(f"form_{prefix}"):
-                c_list = list(GLOBAL_COUNTRIES.keys())
+                c_list = active_country_options
                 c_labels = [f"{GLOBAL_COUNTRIES[c]['flag']} {c}" for c in c_list]
                 def_c = defaults.get("Country", "India")
-                def_c_idx = c_list.index(def_c) if def_c in c_list else 1
+                def_c_idx = c_list.index(def_c) if def_c in c_list else 0
                 sel_c_idx = st.selectbox("Market / Country", range(len(c_list)),
                                          format_func=lambda i: c_labels[i],
                                          index=def_c_idx, key=f"{prefix}_country")
@@ -1581,3 +1723,260 @@ elif app_tab == "About":
     st.markdown("#### What is included")
     st.write("The application estimates a property value from living area, bedrooms, bathrooms, floors, year built, neighborhood setting, condition and garage availability. Country, city and currency are applied by the existing market-localization layer.")
     st.caption("Model performance metrics describe the held-out evaluation set and do not guarantee accuracy for an individual property.")
+
+elif app_tab == "Account":
+    st.markdown("""
+    <div class="section-heading">
+        <div class="section-eyebrow">Your PropIQ account</div>
+        <h1>Account and saved estimates</h1>
+        <p>Sign in to keep your valuations and manage your profile. Predictions remain available without an account.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    auth_notice = st.session_state.pop("supabase_auth_notice", None)
+    if auth_notice:
+        if auth_notice.startswith("Your email is confirmed") or auth_notice.startswith("Password updated"):
+            st.success(auth_notice)
+        else:
+            st.warning(auth_notice)
+
+    if not supabase_client:
+        st.warning("Account services are not configured yet. Public predictions continue to work.")
+        st.code("SUPABASE_URL=...\nSUPABASE_ANON_KEY=...\nSUPABASE_SERVICE_ROLE_KEY=...", language="text")
+        st.caption("See the Supabase setup instructions in the project README. Never expose the service-role key in browser code.")
+    elif auth_session and st.session_state.get("password_recovery_mode"):
+        st.markdown("#### Choose a new password")
+        with st.form("complete_password_recovery_form"):
+            new_password = st.text_input("New password", type="password")
+            confirm_new_password = st.text_input("Confirm new password", type="password")
+            submit_new_password = st.form_submit_button("Update password", use_container_width=True)
+        if submit_new_password:
+            if len(new_password) < 8:
+                st.error("Use a password with at least 8 characters.")
+            elif new_password != confirm_new_password:
+                st.error("The passwords do not match.")
+            else:
+                try:
+                    supabase_client.update_password(auth_session["access_token"], new_password)
+                    st.session_state.pop("password_recovery_mode", None)
+                    st.session_state["supabase_auth_notice"] = "Password updated successfully."
+                    st.rerun()
+                except SupabaseError as exc:
+                    st.error(f"Could not update your password: {exc}")
+    elif auth_session:
+        user = auth_session["user"]
+        access_token = auth_session["access_token"]
+        user_id = user["id"]
+        profile_tab, history_tab = st.tabs(["Profile", "Saved estimates"])
+
+        with profile_tab:
+            try:
+                profile = supabase_client.get_profile(access_token, user_id) or {}
+            except SupabaseError as exc:
+                profile = {}
+                st.error(f"Could not load your profile: {exc}")
+
+            with st.form("profile_form"):
+                display_name = st.text_input("Name", value=profile.get("display_name", ""), max_chars=100)
+                st.text_input("Email", value=user.get("email", ""), disabled=True)
+                save_profile = st.form_submit_button("Save profile", use_container_width=True)
+            if save_profile:
+                if not display_name.strip():
+                    st.error("Enter a name for your profile.")
+                else:
+                    try:
+                        supabase_client.update_profile(access_token, user_id, display_name)
+                        st.success("Profile updated.")
+                    except SupabaseError as exc:
+                        st.error(f"Could not update your profile: {exc}")
+
+            with st.expander("Reset your password"):
+                with st.form("password_reset_signed_in_form"):
+                    reset_password = st.form_submit_button("Email me a password reset link")
+                if reset_password:
+                    try:
+                        supabase_client.request_password_reset(user.get("email", ""), supabase_redirect_url)
+                        st.success("If the account is eligible, a password reset link has been sent.")
+                    except SupabaseError as exc:
+                        st.error(f"Could not request a password reset: {exc}")
+
+        with history_tab:
+            try:
+                valuations = supabase_client.list_valuations(access_token)
+            except SupabaseError as exc:
+                valuations = []
+                st.error(f"Could not load saved estimates: {exc}")
+            if not valuations:
+                st.info("Your saved estimates will appear here after you submit a prediction while signed in.")
+            for valuation in valuations:
+                property_data = valuation.get("property_data") or {}
+                result_data = valuation.get("result_data") or {}
+                location = ", ".join(value for value in [valuation.get("city"), valuation.get("country")] if value)
+                created_date = str(valuation.get("created_at", ""))[:10]
+                title = f"{valuation.get('price_formatted', 'Estimate')} · {location or 'Property'} · {created_date}"
+                with st.expander(title):
+                    st.write(
+                        f"{property_data.get('Area', '—')} {property_data.get('Area_Unit', 'sq ft')} · "
+                        f"{property_data.get('Bedrooms', '—')} bedrooms · "
+                        f"{property_data.get('Bathrooms', '—')} bathrooms · "
+                        f"{property_data.get('Condition', '—')} condition"
+                    )
+                    interval = result_data.get("prediction_interval_95", {})
+                    if interval:
+                        st.caption(f"95% model range: {interval.get('lower_formatted', '—')} – {interval.get('upper_formatted', '—')}")
+                    if st.button("Delete estimate", key=f"delete_valuation_{valuation['id']}"):
+                        try:
+                            supabase_client.delete_valuation(access_token, valuation["id"])
+                            st.rerun()
+                        except SupabaseError as exc:
+                            st.error(f"Could not delete this estimate: {exc}")
+    else:
+        sign_in_tab, create_account_tab, reset_tab = st.tabs(["Sign in", "Create account", "Forgot password"])
+
+        with sign_in_tab:
+            with st.form("sign_in_form"):
+                login_email = st.text_input("Email address", key="login_email")
+                login_password = st.text_input("Password", type="password", key="login_password")
+                submit_login = st.form_submit_button("Sign in", use_container_width=True)
+            if submit_login:
+                try:
+                    response = supabase_client.sign_in(login_email.strip(), login_password)
+                    store_auth_session(response)
+                    st.rerun()
+                except SupabaseError as exc:
+                    st.error(str(exc))
+
+        with create_account_tab:
+            with st.form("create_account_form"):
+                signup_name = st.text_input("Name", max_chars=100, key="signup_name")
+                signup_email = st.text_input("Email address", key="signup_email")
+                signup_password = st.text_input("Password", type="password", key="signup_password")
+                signup_confirmation = st.text_input("Confirm password", type="password", key="signup_confirmation")
+                submit_signup = st.form_submit_button("Create account", use_container_width=True)
+            if submit_signup:
+                if not signup_name.strip() or not signup_email.strip():
+                    st.error("Enter your name and email address.")
+                elif len(signup_password) < 8:
+                    st.error("Use a password with at least 8 characters.")
+                elif signup_password != signup_confirmation:
+                    st.error("The passwords do not match.")
+                else:
+                    try:
+                        response = supabase_client.sign_up(
+                            signup_email.strip(), signup_password, signup_name.strip(), supabase_redirect_url
+                        )
+                        if response.get("access_token"):
+                            store_auth_session(response)
+                            st.rerun()
+                        st.success("Check your email to confirm your account, then sign in.")
+                    except SupabaseError as exc:
+                        st.error(str(exc))
+
+        with reset_tab:
+            with st.form("password_reset_form"):
+                reset_email = st.text_input("Account email address", key="reset_email")
+                submit_reset = st.form_submit_button("Send reset link", use_container_width=True)
+            if submit_reset:
+                if not reset_email.strip():
+                    st.error("Enter the email address for your account.")
+                else:
+                    try:
+                        supabase_client.request_password_reset(reset_email.strip(), supabase_redirect_url)
+                        st.success("If the account is eligible, a password reset link has been sent.")
+                    except SupabaseError as exc:
+                        st.error(str(exc))
+
+elif app_tab == "Admin":
+    st.markdown("""
+    <div class="section-heading">
+        <div class="section-eyebrow">Restricted workspace</div>
+        <h1>Administration</h1>
+        <p>Account and market tools are available only to designated administrators.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if not supabase_client:
+        st.warning("Configure Supabase before using administrator tools.")
+    elif not auth_session:
+        st.info("Sign in with an administrator account to continue.")
+    else:
+        try:
+            admin_user_id = supabase_client.verify_admin(auth_session["access_token"])
+        except SupabaseError as exc:
+            admin_user_id = None
+            st.error(str(exc))
+
+        if admin_user_id:
+            admin_tool = st.selectbox("Administration tools", ["User accounts", "Valuation history", "Market access", "Model status"])
+
+            if admin_tool == "User accounts":
+                st.caption("Accounts can be temporarily suspended or restored. User records are not permanently deleted here.")
+                try:
+                    users = supabase_client.list_admin_users(auth_session["access_token"])
+                    for account in users:
+                        account_id = account.get("id", "")
+                        email = account.get("email") or "No email"
+                        banned_until = account.get("banned_until")
+                        is_banned = bool(banned_until)
+                        user_cols = st.columns([3, 2, 1])
+                        user_cols[0].write(email)
+                        user_cols[1].caption("Suspended" if is_banned else "Active")
+                        if account_id != admin_user_id and account_id:
+                            action_label = "Restore" if is_banned else "Suspend"
+                            if user_cols[2].button(action_label, key=f"account_status_{account_id}"):
+                                supabase_client.set_user_banned(auth_session["access_token"], account_id, not is_banned)
+                                st.rerun()
+                except SupabaseError as exc:
+                    st.error(f"Could not load user accounts: {exc}")
+
+            elif admin_tool == "Valuation history":
+                try:
+                    admin_valuations = supabase_client.list_admin_valuations(auth_session["access_token"])
+                    if admin_valuations:
+                        history_rows = []
+                        for row in admin_valuations:
+                            profile_data = row.get("profiles") or {}
+                            history_rows.append({
+                                "Date": str(row.get("created_at", ""))[:10],
+                                "Account": profile_data.get("email", "—"),
+                                "Location": ", ".join(value for value in [row.get("city"), row.get("country")] if value),
+                                "Estimate": row.get("price_formatted", "—"),
+                            })
+                        st.dataframe(pd.DataFrame(history_rows), use_container_width=True, hide_index=True)
+                    else:
+                        st.info("There are no saved valuations yet.")
+                except SupabaseError as exc:
+                    st.error(f"Could not load valuation history: {exc}")
+
+            elif admin_tool == "Market access":
+                try:
+                    current_settings = supabase_client.get_market_settings() or {}
+                    current_countries = current_settings.get("enabled_countries") or all_country_options
+                    current_currencies = current_settings.get("enabled_currencies") or all_currency_options
+                    with st.form("market_access_form"):
+                        selected_countries = st.multiselect("Enabled countries", all_country_options, default=current_countries)
+                        selected_currencies = st.multiselect("Enabled currencies", all_currency_options, default=current_currencies)
+                        save_markets = st.form_submit_button("Save market access", use_container_width=True)
+                    if save_markets:
+                        if not selected_countries or not selected_currencies:
+                            st.error("Keep at least one country and one currency enabled.")
+                        else:
+                            supabase_client.save_market_settings(
+                                auth_session["access_token"], selected_countries, selected_currencies
+                            )
+                            load_public_market_settings.clear()
+                            st.success("Market access updated for future property forms.")
+                            st.rerun()
+                except SupabaseError as exc:
+                    st.error(f"Could not load market settings: {exc}")
+                    if market_settings_error:
+                        st.caption("Apply the SQL schema from supabase/schema.sql, then reload this page.")
+
+            else:
+                st.subheader("Model status · read only")
+                status_cols = st.columns(3)
+                status_cols[0].metric("Model", "Ensemble")
+                status_cols[1].metric("Held-out R²", f"{r2_score:.1%}")
+                status_cols[2].metric("Mean absolute error", f"${mae_val:,.0f}")
+                st.caption(f"Training date: {metadata.get('trained_timestamp', 'Not available')}")
+                st.info("Prediction behavior and model parameters are intentionally read-only in this admin console.")
