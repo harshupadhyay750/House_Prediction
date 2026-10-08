@@ -1244,8 +1244,13 @@ elif app_tab == NAV_DASHBOARD:
         st.markdown("#### 💱 Global Settlement Currency Rates")
         rate_rows = []
         for code, info in list(EXCHANGE_RATES.items())[:8]:
-            rate_rows.append({"Currency": f"{info['flag']} {code}", "Rate to USD": info["rate_to_usd"], "Symbol": info["symbol"]})
+            rate_rows.append({
+                "Currency": f"{info.get('flag', '')} {code}",
+                "Rate to USD": info.get("rate", 1.0),
+                "Symbol": info.get("symbol", "")
+            })
         st.dataframe(pd.DataFrame(rate_rows), use_container_width=True, hide_index=True)
+
 
 
 # ==============================================================================
