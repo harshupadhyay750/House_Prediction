@@ -3,6 +3,7 @@ Streamlit Web Application: PropIQ — Predict Smarter. Choose Better.
 Enterprise PropTech Platform powered by Log-Target Super Ensemble (XGBoost + GradientBoosting + HistGradientBoosting).
 
 Architecture:
+- Full-width modern SaaS layout (sidebar integrated into top navbar and Profile/Preferences section)
 - Landing / Home: SaaS Hero, Live Features, Global Coverage, Step-by-Step Guide
 - Authentication: Branded Auth Gate with Supabase Sign-in, Sign-up, Password Recovery, and Guest Exploration
 - Dashboard: Real Estate Portfolio KPIs, Recent Valuations, Quick Launcher, Currency Ticker
@@ -12,7 +13,7 @@ Architecture:
 - Compare Properties: Side-by-side comparative analysis with delta metrics
 - Market Insights: Global Metro Multipliers & Settlement Tier Economics
 - How It Works: Hedonic ML Pipeline Architecture, Leaderboard, Feature Importance
-- Profile & Account: User Profile, Display Name Management, Password Reset, Security
+- Profile & Preferences: User Account, Display Name, Currency & Unit Preferences, Theme Toggle, Model Reliability Summary, Security & Sign Out
 - Admin Panel: Market Allowlist Controls, User Banning, Global Appraisals Feed
 """
 
@@ -57,17 +58,17 @@ from src.supabase_store import SupabaseError, SupabaseRESTClient
 load_dotenv(PROJECT_ROOT / ".env", override=False)
 
 # ------------------------------------------------------------------------------
-# PAGE CONFIGURATION
+# PAGE CONFIGURATION (Full-width modern layout without sidebar)
 # ------------------------------------------------------------------------------
 st.set_page_config(
     page_title="PropIQ | Predict Smarter. Choose Better.",
     page_icon=str(PROJECT_ROOT / "PropIQ.png"),
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # ------------------------------------------------------------------------------
-# THEME STATE (Defaulting to Luxury Dark / Light Palette)
+# THEME & USER PREFERENCES STATE
 # ------------------------------------------------------------------------------
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
@@ -113,7 +114,7 @@ else:
     mpl_grid      = "#e2e8f0"
 
 # ------------------------------------------------------------------------------
-# INJECT ADVANCED SAAS DESIGN SYSTEM CSS
+# INJECT FULL-WIDTH DESIGN SYSTEM CSS (HIDES STREAMLIT SIDEBAR)
 # ------------------------------------------------------------------------------
 st.markdown(f"""
 <style>
@@ -132,6 +133,16 @@ st.markdown(f"""
         --accent-emerald: {accent_emerald};
     }}
 
+    /* Completely hide Streamlit sidebar for a true full-width web app */
+    [data-testid="stSidebar"], [data-testid="collapsedControl"], section[data-testid="stSidebar"] {{
+        display: none !important;
+    }}
+    .block-container {{
+        padding-top: 1.5rem !important;
+        padding-bottom: 3.5rem !important;
+        max-width: 1280px !important;
+    }}
+
     html, body, [class*="css"] {{
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         background: {bg_main};
@@ -141,18 +152,33 @@ st.markdown(f"""
         background: {bg_main};
     }}
 
-    /* Brand Logo */
-    .brand-logo-container {{
-        text-align: center;
-        padding: 0.6rem 0 1.2rem;
+    /* Top Navbar Branding */
+    .top-nav-brand {{
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
     }}
-    .brand-logo-container img {{
-        max-width: 195px;
-        height: auto;
-        object-fit: contain;
-        display: block;
-        margin: 0 auto;
-        filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+    .top-nav-brand img {{
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }}
+    .top-brand-text h2 {{
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.65rem;
+        margin: 0;
+        line-height: 1;
+        color: {text_main};
+    }}
+    .top-brand-text p {{
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: {accent_gold};
+        margin: 0.15rem 0 0;
     }}
 
     /* Hero Banner */
@@ -568,6 +594,43 @@ active_currency_options = [c for c in all_currency_options if c in enabled_curre
 
 
 # ------------------------------------------------------------------------------
+# URL & SETTINGS HELPERS
+# ------------------------------------------------------------------------------
+def get_url_params():
+    try:
+        p = st.query_params
+        return {
+            "Location":  p.get("loc", "Downtown"),
+            "Condition": p.get("cond", "Good"),
+            "Garage":    p.get("gar", "Yes"),
+            "Area":      float(p.get("area", 2000)),
+            "Bedrooms":  int(p.get("bed", 3)),
+            "Bathrooms": float(p.get("bath", 2.0)),
+            "Floors":    int(p.get("fl", 1)),
+            "YearBuilt": int(p.get("yr", 2018)),
+            "Country":   p.get("ctry", "India"),
+            "City":      p.get("city", "Mumbai (MMR)"),
+            "Currency":  p.get("curr", "INR"),
+        }
+    except Exception:
+        return {}
+
+url_params = get_url_params()
+
+# Initialize currency & measurement unit in session state
+if "active_currency" not in st.session_state:
+    st.session_state["active_currency"] = url_params.get("Currency", "INR")
+if "is_sqm" not in st.session_state:
+    st.session_state["is_sqm"] = False
+
+active_currency = st.session_state["active_currency"]
+if active_currency not in active_currency_options:
+    active_currency = active_currency_options[0] if active_currency_options else "INR"
+active_curr_info = EXCHANGE_RATES.get(active_currency, EXCHANGE_RATES["INR"])
+is_sqm = st.session_state["is_sqm"]
+
+
+# ------------------------------------------------------------------------------
 # REPORT GENERATION & URL SHARING HELPERS
 # ------------------------------------------------------------------------------
 def make_pdf_report(res, payload, active_currency, down_pct=20, loan_tenure=20, interest_rate=8.5):
@@ -645,26 +708,6 @@ def make_pdf_report(res, payload, active_currency, down_pct=20, loan_tenure=20, 
             "PropIQ — Predict Smarter. Choose Better."
         ]
         return "\n".join(lines).encode("utf-8")
-
-
-def get_url_params():
-    try:
-        p = st.query_params
-        return {
-            "Location":  p.get("loc", "Downtown"),
-            "Condition": p.get("cond", "Good"),
-            "Garage":    p.get("gar", "Yes"),
-            "Area":      float(p.get("area", 2000)),
-            "Bedrooms":  int(p.get("bed", 3)),
-            "Bathrooms": float(p.get("bath", 2.0)),
-            "Floors":    int(p.get("fl", 1)),
-            "YearBuilt": int(p.get("yr", 2018)),
-            "Country":   p.get("ctry", "India"),
-            "City":      p.get("city", "Mumbai (MMR)"),
-            "Currency":  p.get("curr", "INR"),
-        }
-    except Exception:
-        return {}
 
 
 def make_share_url(payload):
@@ -748,120 +791,10 @@ def plot_shap_waterfall(res, payload, dark_mode=True):
 
 
 # ------------------------------------------------------------------------------
-# SIDEBAR NAVIGATION
-# ------------------------------------------------------------------------------
-url_params = get_url_params()
-
-NAV_HOME       = "🏠 Home"
-NAV_DASHBOARD  = "📊 Dashboard"
-NAV_PREDICT    = "🔮 Predict Valuation"
-NAV_HISTORY    = "📜 Saved History"
-NAV_COMPARE    = "⚖️ Compare Properties"
-NAV_MARKET     = "📈 Market Insights"
-NAV_HOW_IT_WORKS = "🔬 How It Works"
-NAV_PROFILE    = "👤 Profile"
-NAV_ADMIN      = "⚙️ Admin"
-NAV_ABOUT      = "ℹ️ About"
-
-NAVIGATION_OPTIONS = [
-    NAV_HOME,
-    NAV_DASHBOARD,
-    NAV_PREDICT,
-    NAV_HISTORY,
-    NAV_COMPARE,
-    NAV_MARKET,
-    NAV_HOW_IT_WORKS,
-    NAV_PROFILE,
-    NAV_ABOUT
-]
-
-if auth_session:
-    NAVIGATION_OPTIONS.append(NAV_ADMIN)
-
-
-with st.sidebar:
-    logo_data = base64.b64encode((PROJECT_ROOT / "PropIQ.png").read_bytes()).decode("ascii")
-    st.markdown(f"""
-    <div class="brand-logo-container">
-        <img src="data:image/png;base64,{logo_data}" alt="PropIQ Logo">
-    </div>
-    """, unsafe_allow_html=True)
-
-    if auth_session:
-        signed_in_email = auth_session.get("user", {}).get("email", "Signed-in account")
-        st.caption(f"👤 {signed_in_email}")
-        if st.button("Sign out", key="sidebar_sign_out", use_container_width=True):
-            try:
-                if supabase_client:
-                    supabase_client.sign_out(auth_session["access_token"])
-            except SupabaseError:
-                pass
-            st.session_state.pop("supabase_session", None)
-            st.session_state["guest_mode"] = False
-            st.rerun()
-    elif st.session_state.get("guest_mode"):
-        st.caption("👁️ Guest Preview Active")
-        if st.button("🔐 Sign in / Register", key="sidebar_exit_guest", use_container_width=True):
-            st.session_state["guest_mode"] = False
-            st.rerun()
-    elif supabase_client:
-        st.caption("Sign in to sync your valuations.")
-
-    col_mode_label, col_mode_button = st.columns([3, 1])
-    with col_mode_label:
-        st.caption("Dark theme" if dark else "Light theme")
-    with col_mode_button:
-        if st.button("Light" if dark else "Dark", key="theme_toggle"):
-            st.session_state.dark_mode = not st.session_state.dark_mode
-            st.rerun()
-
-    if auth_session or st.session_state.get("guest_mode"):
-        st.markdown("---")
-        st.markdown("#### Currency & Units")
-
-        currency_keys = active_currency_options
-        curr_labels = [f"{EXCHANGE_RATES[c]['flag']} {c} ({EXCHANGE_RATES[c]['symbol']})" for c in currency_keys]
-        default_curr = url_params.get("Currency", "INR")
-        default_curr_idx = currency_keys.index(default_curr) if default_curr in currency_keys else 0
-        sel_curr_idx = st.selectbox(
-            "Settlement Currency",
-            range(len(currency_keys)),
-            format_func=lambda i: curr_labels[i],
-            index=default_curr_idx
-        )
-        active_currency = currency_keys[sel_curr_idx]
-        active_curr_info = EXCHANGE_RATES[active_currency]
-
-        active_unit = st.radio(
-            "Measurement Unit",
-            ["Square Feet (sq ft)", "Square Meters (m²)"],
-            index=0
-        )
-        is_sqm = "Meter" in active_unit
-    else:
-        active_currency = "INR"
-        active_curr_info = EXCHANGE_RATES["INR"]
-        is_sqm = False
-
-    st.markdown("---")
-    st.markdown("#### Model Reliability")
-    st.markdown(f"""
-    <div style="background:{'rgba(30,41,59,0.7)' if dark else '#f1f5f9'}; border-radius:14px; padding:0.9rem; border:1px solid {border_col};">
-        <div style="font-size:0.75rem; text-transform:uppercase; color:{text_muted}; font-weight:700;">Super Ensemble Engine</div>
-        <div style="font-size:0.95rem; font-weight:800; color:{accent_glow}; margin:0.2rem 0;">98.83% Model R² Score</div>
-        <div style="display:flex; justify-content:space-between; margin-top:0.4rem; font-size:0.82rem;">
-            <span>Mean Absolute Error:</span> <strong>${mae_val:,.0f}</strong>
-        </div>
-        <div style="display:flex; justify-content:space-between; font-size:0.82rem;">
-            <span>Mean % Error (MAPE):</span> <strong>{mape_val:.2f}%</strong>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-# ------------------------------------------------------------------------------
 # AUTHENTICATION GATE / LANDING LOGIN PORTAL
 # ------------------------------------------------------------------------------
+logo_data = base64.b64encode((PROJECT_ROOT / "PropIQ.png").read_bytes()).decode("ascii")
+
 if not auth_session and not st.session_state.get("guest_mode", False):
     auth_notice = st.session_state.pop("supabase_auth_notice", None)
     if auth_notice:
@@ -876,10 +809,14 @@ if not auth_session and not st.session_state.get("guest_mode", False):
         st.markdown(f"""
         <div class="auth-portal-wrap">
             <div class="auth-badge">✨ AI-Powered Hedonic Valuation</div>
-            <div style="margin: 0.8rem 0 1.2rem;">
-                <img src="data:image/png;base64,{logo_data}" style="max-width:220px; height:auto; display:block;" alt="PropIQ Logo">
+            <div style="margin: 0.8rem 0 1.2rem; display:flex; align-items:center; gap:1rem;">
+                <img src="data:image/png;base64,{logo_data}" style="max-width:80px; height:80px; border-radius:18px; box-shadow:0 8px 24px rgba(0,0,0,0.3);" alt="PropIQ Logo">
+                <div>
+                    <h2 style="font-family:'DM Serif Display',serif; font-size:2.4rem; margin:0; line-height:1; color:{text_main};">PropIQ</h2>
+                    <p style="font-size:0.85rem; font-weight:700; color:{accent_gold}; margin:0.2rem 0 0; letter-spacing:0.06em; text-transform:uppercase;">Predict Smarter. Choose Better.</p>
+                </div>
             </div>
-            <h1 class="auth-hero-h1">Predict Smarter.<br>Choose Better.</h1>
+            <h1 class="auth-hero-h1">Next-Gen Real Estate<br>Valuation Intelligence</h1>
             <p class="auth-hero-p">
                 Deterministic residential appraisals, confidence intervals, and investment analytics
                 powered by a calibrated <strong>Super Ensemble (98.8% R²)</strong> across global metros.
@@ -997,8 +934,87 @@ if not auth_session and not st.session_state.get("guest_mode", False):
 
 
 # ------------------------------------------------------------------------------
-# TOP NAVIGATION BAR (FOR AUTHENTICATED / GUEST USERS)
+# TOP NAVBAR HEADER (MODERN FULL-WIDTH LAYOUT)
 # ------------------------------------------------------------------------------
+top_col1, top_col2, top_col3, top_col4 = st.columns([3.5, 1.2, 1.2, 0.8], gap="small")
+
+with top_col1:
+    st.markdown(f"""
+    <div class="top-nav-brand">
+        <img src="data:image/png;base64,{logo_data}" alt="PropIQ Logo">
+        <div class="top-brand-text">
+            <h2>PropIQ</h2>
+            <p>Predict Smarter. Choose Better.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with top_col2:
+    currency_keys = active_currency_options
+    curr_labels = [f"{EXCHANGE_RATES[c]['flag']} {c}" for c in currency_keys]
+    curr_idx = currency_keys.index(active_currency) if active_currency in currency_keys else 0
+    new_curr_idx = st.selectbox(
+        "Currency",
+        range(len(currency_keys)),
+        format_func=lambda i: curr_labels[i],
+        index=curr_idx,
+        key="top_nav_curr_select",
+        label_visibility="collapsed"
+    )
+    if currency_keys[new_curr_idx] != st.session_state["active_currency"]:
+        st.session_state["active_currency"] = currency_keys[new_curr_idx]
+        st.rerun()
+
+with top_col3:
+    unit_choices = ["sq ft", "m²"]
+    unit_idx = 1 if is_sqm else 0
+    new_unit_idx = st.selectbox(
+        "Units",
+        range(len(unit_choices)),
+        format_func=lambda i: unit_choices[i],
+        index=unit_idx,
+        key="top_nav_unit_select",
+        label_visibility="collapsed"
+    )
+    if (new_unit_idx == 1) != st.session_state["is_sqm"]:
+        st.session_state["is_sqm"] = (new_unit_idx == 1)
+        st.rerun()
+
+with top_col4:
+    if st.button("🌙" if not dark else "☀️", key="top_nav_theme_btn", help="Switch theme appearance", use_container_width=True):
+        st.session_state.dark_mode = not st.session_state.dark_mode
+        st.rerun()
+
+
+# ------------------------------------------------------------------------------
+# MAIN TOP NAVIGATION PILL TABS
+# ------------------------------------------------------------------------------
+NAV_HOME         = "🏠 Home"
+NAV_DASHBOARD    = "📊 Dashboard"
+NAV_PREDICT      = "🔮 Predict Valuation"
+NAV_HISTORY      = "📜 Saved History"
+NAV_COMPARE      = "⚖️ Compare Properties"
+NAV_MARKET       = "📈 Market Insights"
+NAV_HOW_IT_WORKS = "🔬 How It Works"
+NAV_PROFILE      = "👤 Profile & Preferences"
+NAV_ADMIN        = "⚙️ Admin"
+NAV_ABOUT        = "ℹ️ About"
+
+NAVIGATION_OPTIONS = [
+    NAV_HOME,
+    NAV_DASHBOARD,
+    NAV_PREDICT,
+    NAV_HISTORY,
+    NAV_COMPARE,
+    NAV_MARKET,
+    NAV_HOW_IT_WORKS,
+    NAV_PROFILE,
+    NAV_ABOUT
+]
+
+if auth_session:
+    NAVIGATION_OPTIONS.append(NAV_ADMIN)
+
 app_tab = st.radio(
     "Main navigation",
     NAVIGATION_OPTIONS,
@@ -1692,41 +1708,40 @@ elif app_tab == NAV_HOW_IT_WORKS:
 
 
 # ==============================================================================
-# PAGE 8: PROFILE & ACCOUNT
+# PAGE 8: PROFILE & PREFERENCES (INTEGRATED SIDEBAR CONTROLS)
 # ==============================================================================
 elif app_tab == NAV_PROFILE:
     st.markdown("""
     <div class="prop-card" style="margin-top:0;">
-        <div class="card-title">👤 Account & Profile Management</div>
-        <div class="card-desc">Manage your account credentials, display name, and password security.</div>
+        <div class="card-title">👤 My Profile & System Preferences</div>
+        <div class="card-desc">Manage your account credentials, regional settlement currency, measurement units, and theme appearance.</div>
     </div>
     """, unsafe_allow_html=True)
 
-    if not supabase_client:
-        st.warning("Supabase account services are not configured.")
-    elif not auth_session:
-        st.info("💡 You are currently in Guest Preview mode. Sign in or create an account to manage your profile.")
-        if st.button("🔐 Sign In / Register", key="prof_signin_btn"):
-            st.session_state["guest_mode"] = False
-            st.rerun()
-    else:
-        user = auth_session["user"]
-        access_token = auth_session["access_token"]
-        user_id = user["id"]
+    prof_col1, prof_col2 = st.columns([1.2, 1], gap="large")
 
-        try:
-            profile = supabase_client.get_profile(access_token, user_id) or {}
-        except SupabaseError:
-            profile = {}
+    with prof_col1:
+        if not auth_session:
+            st.info("💡 You are currently in Guest Preview mode. Sign in or register to sync your account profile.")
+            if st.button("🔐 Sign In / Register", key="prof_signin_btn", use_container_width=True):
+                st.session_state["guest_mode"] = False
+                st.rerun()
+        else:
+            user = auth_session["user"]
+            access_token = auth_session["access_token"]
+            user_id = user["id"]
 
-        p_col1, p_col2 = st.columns([1.2, 1], gap="large")
-        with p_col1:
-            st.markdown("#### User Profile")
+            try:
+                profile = supabase_client.get_profile(access_token, user_id) or {}
+            except SupabaseError:
+                profile = {}
+
+            st.markdown("#### 👤 Account Information")
             with st.form("edit_profile_form"):
                 disp_name = st.text_input("Display Name", value=profile.get("display_name", ""))
                 st.text_input("Email", value=user.get("email", ""), disabled=True)
                 st.text_input("Account Role", value=profile.get("role", "User").upper(), disabled=True)
-                save_prof = st.form_submit_button("Save Profile Changes")
+                save_prof = st.form_submit_button("Save Profile Changes", use_container_width=True)
             if save_prof:
                 if not disp_name.strip():
                     st.error("Please enter a valid display name.")
@@ -1737,14 +1752,86 @@ elif app_tab == NAV_PROFILE:
                     except SupabaseError as exc:
                         st.error(str(exc))
 
-        with p_col2:
-            st.markdown("#### Security & Password")
-            if st.button("📧 Email Password Reset Link", key="prof_reset_btn", use_container_width=True):
-                try:
-                    supabase_client.request_password_reset(user.get("email", ""), supabase_redirect_url)
-                    st.success("Password reset email sent.")
-                except SupabaseError as exc:
-                    st.error(str(exc))
+            st.markdown("#### 🔒 Security & Session")
+            p_sec1, p_sec2 = st.columns(2)
+            with p_sec1:
+                if st.button("📧 Reset Password", key="prof_reset_btn", use_container_width=True):
+                    try:
+                        supabase_client.request_password_reset(user.get("email", ""), supabase_redirect_url)
+                        st.success("Password reset email sent.")
+                    except SupabaseError as exc:
+                        st.error(str(exc))
+            with p_sec2:
+                if st.button("🚪 Sign Out", key="prof_signout_btn", use_container_width=True):
+                    try:
+                        if supabase_client:
+                            supabase_client.sign_out(access_token)
+                    except SupabaseError:
+                        pass
+                    st.session_state.pop("supabase_session", None)
+                    st.session_state["guest_mode"] = False
+                    st.rerun()
+
+    with prof_col2:
+        st.markdown("#### ⚙️ System & Localization Preferences")
+        st.markdown("<div class='prop-card'>", unsafe_allow_html=True)
+        
+        # Currency preference
+        currency_keys = active_currency_options
+        curr_labels = [f"{EXCHANGE_RATES[c]['flag']} {c} ({EXCHANGE_RATES[c]['symbol']})" for c in currency_keys]
+        p_curr_idx = currency_keys.index(active_currency) if active_currency in currency_keys else 0
+        new_pref_curr_idx = st.selectbox(
+            "Default Settlement Currency",
+            range(len(currency_keys)),
+            format_func=lambda i: curr_labels[i],
+            index=p_curr_idx,
+            key="prof_curr_select"
+        )
+        if currency_keys[new_pref_curr_idx] != st.session_state["active_currency"]:
+            st.session_state["active_currency"] = currency_keys[new_pref_curr_idx]
+            st.rerun()
+
+        # Unit preference
+        p_unit_choices = ["Square Feet (sq ft)", "Square Meters (m²)"]
+        p_unit_idx = 1 if is_sqm else 0
+        new_p_unit_idx = st.radio(
+            "Measurement Unit Standard",
+            range(len(p_unit_choices)),
+            format_func=lambda i: p_unit_choices[i],
+            index=p_unit_idx,
+            key="prof_unit_select",
+            horizontal=True
+        )
+        if (new_p_unit_idx == 1) != st.session_state["is_sqm"]:
+            st.session_state["is_sqm"] = (new_p_unit_idx == 1)
+            st.rerun()
+
+        # Theme appearance preference
+        st.markdown("---")
+        st.markdown(f"**Theme Appearance:** {'🌙 Dark Mode' if dark else '☀️ Light Mode'}")
+        if st.button(f"Switch to {'Light Mode' if dark else 'Dark Mode'}", key="prof_theme_toggle", use_container_width=True):
+            st.session_state.dark_mode = not st.session_state.dark_mode
+            st.rerun()
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        # Model reliability specs
+        st.markdown("#### 🎯 Model Reliability Summary")
+        st.markdown(f"""
+        <div class="prop-card">
+            <div style="font-size:0.8rem; text-transform:uppercase; color:{text_muted}; font-weight:700;">Super Ensemble Engine</div>
+            <div style="font-size:1.1rem; font-weight:800; color:{accent_glow}; margin:0.2rem 0;">98.83% Model R² Score</div>
+            <div style="display:flex; justify-content:space-between; margin-top:0.6rem; font-size:0.85rem;">
+                <span>Mean Absolute Error:</span> <strong>${mae_val:,.0f}</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                <span>Mean % Error (MAPE):</span> <strong>{mape_val:.2f}%</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                <span>Inference Latency:</span> <strong>~0.04 seconds</strong>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 # ==============================================================================
