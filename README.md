@@ -336,17 +336,26 @@ python -m src.train
 PropIQ can run without accounts. To enable email sign-in, profiles, private saved valuations, and administrator tools:
 
 1. Create a Supabase project and run [`supabase/schema.sql`](supabase/schema.sql) in its SQL Editor.
-2. Add the project URL, publishable/anon key, and service-role key to `.streamlit/secrets.toml` (local) or the Streamlit deployment's Secrets settings:
+2. Add the project URL and server-side keys to the ignored local `.env` file, or configure Streamlit's deployment Secrets:
+
+```dotenv
+SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co
+SUPABASE_PUBLISHABLE_KEY=YOUR_SUPABASE_PUBLISHABLE_KEY
+SUPABASE_SECRET_KEY=YOUR_SUPABASE_SECRET_KEY
+SUPABASE_REDIRECT_URL=http://localhost:8502
+```
+
+For Streamlit-hosted deployments, use `.streamlit/secrets.toml`:
 
 ```toml
 [supabase]
 url = "https://YOUR_PROJECT_ID.supabase.co"
-anon_key = "YOUR_SUPABASE_ANON_KEY"
-service_role_key = "YOUR_SUPABASE_SERVICE_ROLE_KEY"
-redirect_url = "http://localhost:8502"
+publishable_key = "YOUR_SUPABASE_PUBLISHABLE_KEY"
+secret_key = "YOUR_SUPABASE_SECRET_KEY"
+redirect_url = "https://YOUR_DEPLOYED_APP_URL"
 ```
 
-Never commit this secrets file or expose the service-role key in browser code. The local file is ignored by Git. The service-role key is used only by the Streamlit server for administrator actions.
+Never commit credentials or expose the secret key in browser code. `.env` and `.streamlit/secrets.toml` are ignored by Git. The secret key is only used by the Streamlit server for administrator actions.
 
 Set the Supabase Site URL to your app URL and add it to the Auth redirect allowlist. For server-side email verification, update the **Confirm signup** and **Reset password** email templates to link directly to PropIQ with the one-time token hash:
 

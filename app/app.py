@@ -42,6 +42,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import seaborn as sns
+from dotenv import load_dotenv
 
 from src.config import (
     CLEANED_DATA_PATH, METADATA_PATH, FEATURE_IMPORTANCE_PATH,
@@ -54,6 +55,8 @@ from src.global_market import (
     convert_area_to_sqft, convert_sqft_to_sqm
 )
 from src.supabase_store import SupabaseError, SupabaseRESTClient
+
+load_dotenv(PROJECT_ROOT / ".env", override=False)
 
 # ------------------------------------------------------------------------------
 # PAGE CONFIGURATION
@@ -557,14 +560,22 @@ def load_supabase_config():
         secrets = {}
         section = {}
 
-    def setting(name):
-        return os.environ.get(name) or secrets.get(name) or section.get(name.removeprefix("SUPABASE_").lower())
+    def setting(*names):
+        for name in names:
+            value = os.environ.get(name) or secrets.get(name)
+            if value:
+                return value
+            section_key = name.removeprefix("SUPABASE_").lower()
+            value = section.get(section_key)
+            if value:
+                return value
+        return None
 
     return (
         setting("SUPABASE_URL"),
-        setting("SUPABASE_ANON_KEY"),
-        setting("SUPABASE_SERVICE_ROLE_KEY"),
-        setting("SUPABASE_REDIRECT_URL"),
+        setting("SUPABASE_PUBLISHABLE_KEY", "SUPABASE_ANON_KEY"),
+        setting("SUPABASE_SECRET_KEY", "SUPABASE_SERVICE_ROLE_KEY"),
+        setting("SUPABASE_REDIRECT_URL") or "http://localhost:8502",
     )
 
 
